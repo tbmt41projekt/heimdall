@@ -1,0 +1,6 @@
+
+Martin/OpenCVRoot/External_Libraries/*
+Martin/OpenCVRoot/OpenCVTutorial/Debug/*.dll
+Martin/OpenCVRoot/OpenCVTutorial/x64/Debug/*.dll
+Martin/OpenCVRoot/OpenCVTutorial/x64/Release/*.dll
+Martin/OpenCVRoot/OpenCVTutorial/OpenCVTutorial/*.dll
