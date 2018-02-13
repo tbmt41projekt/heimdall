@@ -121,7 +121,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="realtime.cpp" />
+    <ClCompile Include="respi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="helpers.h" />
+    <ClInclude Include="opencvincludes.h" />
+    <ClInclude Include="realtime.h" />
+    <ClInclude Include="respi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
