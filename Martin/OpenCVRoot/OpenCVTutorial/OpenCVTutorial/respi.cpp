@@ -10,7 +10,8 @@ RespiVision::RespiVision(){
 }
 
 
-RespiVision::RespiVision(int pBuffLen, VideoCapture *pCapture):RealTimeVideo(pBuffLen, pCapture)
+RespiVision::RespiVision(int pBuffLen, VideoCapture *pCapture)
+	:RealTimeVideo(pBuffLen, pCapture)
 {
 
   cerr << "\nInitialized RespiVision\n" ;

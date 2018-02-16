@@ -10,17 +10,15 @@ RealTimeVideo::RealTimeVideo(){
 }
 
 RealTimeVideo::RealTimeVideo(int pBuffLen, VideoCapture *pCapture)
+	:
+	buffLen{pBuffLen},
+	capture{pCapture},
+	ans{0},
+	sampleLen{200}
 {
-  capture = pCapture;
-  buffLen = pBuffLen;
   frameBuffer.resize(buffLen);
 
-  ans = 0;
-  sampleLen = 200;
-
-
   cerr << "\nInitialized RealtimeVideo\n" ;
-
 }
 
 bool RealTimeVideo::putFrameInBuffer(Mat &f){
@@ -42,7 +40,11 @@ void RealTimeVideo::producer(){
 
   while(1){
 
-    capture->read(f); 
+	  if (capture->read(f) == NULL)
+	  {
+		  capture->open("baby.mp4");
+		  capture->read(f);
+	  }
     frame = f.clone();
     putFrameInBuffer(f);
     

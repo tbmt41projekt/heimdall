@@ -1,45 +1,45 @@
 #include <opencv2\opencv.hpp>
+#include <opencv2\objdetect.hpp>
+#include <opencv2\highgui.hpp>
+#include <opencv2\imgproc.hpp>
+#include <opencv\cv.h>
 #include <iostream>
 #include <stdint.h>
-#include "opencv2/objdetect.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgproc.hpp"
 #include <stdio.h>
+
+#include "respi.h"
 using namespace std;
 using namespace cv;
-typedef cv::Point3_<uint8_t> Pixel;
+
+
+//web-cam live
+//int main()
+//{
+//	VideoCapture cap;
+//	cap.open("baby.mp4");
+//	if (!cap.isOpened())
+//	{
+//		cout << "Cam could not be opened" << endl;
+//		return -1;
+//	}
 //
+//	namedWindow("Video");
+//	while (char(waitKey(1)) != 'q' && cap.isOpened())
+//	{
+//		Mat frame;
+//		cap >> frame;
 //
+//		if (frame.empty())
+//		{
+//			cout << "Video over" << endl;
+//			break;
+//		}
 //
+//		imshow("Video", frame);
+//	}
 //
-//
-//////web-cam live
-////int main()
-////{
-////	VideoCapture cap(0);
-////	if (!cap.isOpened())
-////	{
-////		cout << "Cam could not be opened" << endl;
-////		return -1;
-////	}
-////
-////	namedWindow("Video");
-////	while (char(waitKey(1)) != 'q' && cap.isOpened())
-////	{
-////		Mat frame;
-////		cap >> frame;
-////
-////		if (frame.empty())
-////		{
-////			cout << "Video over" << endl;
-////			break;
-////		}
-////
-////		imshow("Video", frame);
-////	}
-////
-////	return 0;
-////}
+//	return 0;
+//}
 //
 //
 //
@@ -350,18 +350,19 @@ typedef cv::Point3_<uint8_t> Pixel;
 //	imshow(window_name, frame);
 //}
 
-#include "respi.h"
 
 
-Mat toGray(Mat &m) {
 
-	Mat ret;
-
-	cvtColor(m, ret, COLOR_BGR2GRAY);
-
-	return ret;
-
-}
+//Mat toGray(Mat &m)
+//{
+//
+//	Mat ret;
+//
+//	cvtColor(m, ret, COLOR_BGR2GRAY);
+//
+//	return ret;
+//
+//}
 
 //int main2(int argc, const char *argv[])
 //{
@@ -384,8 +385,8 @@ int main(int argc, const char *argv[])
 	}
 	else {
 
-		//VideoCapture cap("baby.mp4");
-		VideoCapture cap(0); // open the default camera
+		VideoCapture cap("baby.mp4");
+		//VideoCapture cap(0); // open the default camera
 		RespiVision r(1000, &cap);
 		r.runThreads();
 	}

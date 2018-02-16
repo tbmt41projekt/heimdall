@@ -1,3 +1,9 @@
-﻿  main.cpp
-  OpenCVTutorial.vcxproj -> C:\Users\Martin\Desktop\OpenCVRoot\OpenCVTutorial\Debug\OpenCVTutorial.exe
-  OpenCVTutorial.vcxproj -> C:\Users\Martin\Desktop\OpenCVRoot\OpenCVTutorial\Debug\OpenCVTutorial.pdb (Partial PDB)
+﻿  respi.cpp
+c:\users\martin\desktop\kandidatprojektet\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
+  realtime.cpp
+c:\users\martin\desktop\kandidatprojektet\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
+  main.cpp
+c:\users\martin\desktop\kandidatprojektet\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\main.cpp(1): fatal error C1083: Cannot open include file: 'opencv2\opencv.hpp': No such file or directory
+  helpers.cpp
+c:\users\martin\desktop\kandidatprojektet\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
+  Generating Code...
