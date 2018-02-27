@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -25,9 +26,10 @@ QT_BEGIN_NAMESPACE
 class Ui_heimdall_VSClass
 {
 public:
+    QWidget *centralWidget;
+    QRadioButton *radioButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *heimdall_VSClass)
@@ -35,15 +37,19 @@ public:
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
         heimdall_VSClass->resize(600, 400);
+        centralWidget = new QWidget(heimdall_VSClass);
+        centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        radioButton = new QRadioButton(centralWidget);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(250, 140, 82, 17));
+        heimdall_VSClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(heimdall_VSClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 600, 21));
         heimdall_VSClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        heimdall_VSClass->addToolBar(mainToolBar);
-        centralWidget = new QWidget(heimdall_VSClass);
-        centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        heimdall_VSClass->setCentralWidget(centralWidget);
+        heimdall_VSClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(heimdall_VSClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         heimdall_VSClass->setStatusBar(statusBar);
@@ -56,6 +62,7 @@ public:
     void retranslateUi(QMainWindow *heimdall_VSClass)
     {
         heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
+        radioButton->setText(QApplication::translate("heimdall_VSClass", "RadioButton", 0));
     } // retranslateUi
 
 };
