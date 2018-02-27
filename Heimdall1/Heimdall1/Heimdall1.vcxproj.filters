@@ -33,22 +33,22 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Heimdall1.cpp">
+    <ClCompile Include="Grafik\Heimdall1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Heimdall1.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="Heimdall1.ui">
+    <QtUic Include="Grafik\Heimdall1.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Heimdall1.qrc">
+    <QtMoc Include="Grafik\Heimdall1.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Grafik\Heimdall1.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
   </ItemGroup>

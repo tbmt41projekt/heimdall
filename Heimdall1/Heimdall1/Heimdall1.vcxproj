@@ -115,17 +115,17 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Heimdall1.cpp" />
+    <ClCompile Include="Grafik\Heimdall1.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Heimdall1.h" />
+    <QtMoc Include="Grafik\Heimdall1.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Heimdall1.ui" />
+    <QtRcc Include="Grafik\Heimdall1.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Heimdall1.qrc" />
+    <QtUic Include="Grafik\Heimdall1.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
