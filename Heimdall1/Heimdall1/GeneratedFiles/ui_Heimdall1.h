@@ -16,9 +16,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
-#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,7 +27,7 @@ class Ui_Heimdall1Class
 {
 public:
     QWidget *centralWidget;
-    QToolButton *toolButton;
+    QRadioButton *radioButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -39,9 +39,9 @@ public:
         Heimdall1Class->resize(600, 400);
         centralWidget = new QWidget(Heimdall1Class);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        toolButton = new QToolButton(centralWidget);
-        toolButton->setObjectName(QStringLiteral("toolButton"));
-        toolButton->setGeometry(QRect(260, 80, 131, 191));
+        radioButton = new QRadioButton(centralWidget);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(200, 140, 82, 17));
         Heimdall1Class->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Heimdall1Class);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -62,7 +62,7 @@ public:
     void retranslateUi(QMainWindow *Heimdall1Class)
     {
         Heimdall1Class->setWindowTitle(QApplication::translate("Heimdall1Class", "Heimdall1", 0));
-        toolButton->setText(QApplication::translate("Heimdall1Class", "...", 0));
+        radioButton->setText(QApplication::translate("Heimdall1Class", "RadioButton", 0));
     } // retranslateUi
 
 };
