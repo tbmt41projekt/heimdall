@@ -13,9 +13,11 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -28,6 +30,8 @@ class Ui_heimdall_VSClass
 public:
     QWidget *centralWidget;
     QRadioButton *radioButton;
+    QPushButton *pushButton;
+    QCalendarWidget *calendarWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -42,6 +46,12 @@ public:
         radioButton = new QRadioButton(centralWidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
         radioButton->setGeometry(QRect(250, 140, 82, 17));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(140, 190, 75, 23));
+        calendarWidget = new QCalendarWidget(centralWidget);
+        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
+        calendarWidget->setGeometry(QRect(320, 160, 248, 183));
         heimdall_VSClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(heimdall_VSClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -63,6 +73,7 @@ public:
     {
         heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
         radioButton->setText(QApplication::translate("heimdall_VSClass", "RadioButton", 0));
+        pushButton->setText(QApplication::translate("heimdall_VSClass", "PushButton", 0));
     } // retranslateUi
 
 };

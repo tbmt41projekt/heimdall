@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
 //
 //#include <stdint.h>
 //#include <stdio.h>
-
+//
 //using namespace cv;
-
+//
 //int main(int argc, char *argv[])
 //{
 //	QApplication a(argc, argv);
