@@ -69,79 +69,79 @@ using namespace std;
 //	return a.exec();
 //}
 
-#include <opencv2\opencv.hpp>
-#include <opencv2\objdetect.hpp>
-#include <opencv2\highgui.hpp>
-#include <opencv2\imgproc.hpp>
-#include <opencv\cv.h>
-
-#include <iostream>
-
-#include <stdint.h>
-#include <stdio.h>
-#include <map>
-#include <iostream>
-
-#include "DeviceEnumerator.h"
-
-using namespace cv;
-
-int main()
-{
-
-	/*
-	The id field of the Device struct can be used with an OpenCV VideoCapture object
-	*/
-
-	DeviceEnumerator de;
-
-	// Audio Devices
-	std::map<int, Device> devices = de.getAudioDevicesMap();
-
-	// Print information about the devices
-	for (auto const &device : devices) {
-		std::cout << "== AUDIO DEVICE (id:" << device.first << ") ==" << std::endl;
-		std::cout << "Name: " << device.second.deviceName << std::endl;
-		std::cout << "Path: " << device.second.devicePath << std::endl;
-	}
-
-	// Video Devices
-	devices = de.getVideoDevicesMap();
-	int id;
-	// Print information about the devices
-	for (auto const &device : devices) {
-		std::cout << "== VIDEO DEVICE (id:" << device.first << ") ==" << std::endl;
-		std::cout << "Name: " << device.second.deviceName << std::endl;
-		std::cout << "Path: " << device.second.devicePath << std::endl;
-		string filename = device.second.devicePath;
-		id = device.first;
-	}
-
-		//Visa default-kameran
-		//Om det bara finns en kamera så är det lätt att visa usb-kameran
-		//Men på en laptop tex med inbyggd web-kamera så är det lurigare får då är "0" automatiskt web-kameran
-		VideoCapture cap(id);
-	
-		if (!cap.isOpened())
-		{
-			cout << "Cam could not be opened" << endl;
-			return -1;
-		}
-	
-		namedWindow("Video");
-		while (char(waitKey(1)) != 'q' && cap.isOpened())
-		{
-			Mat frame;
-			cap >> frame;
-	
-			if (frame.empty())
-			{
-				cout << "Video over" << endl;
-				break;
-			}
-	
-			imshow("Video", frame);
-		}
-
-	return 0;
-}
+//#include <opencv2\opencv.hpp>
+//#include <opencv2\objdetect.hpp>
+//#include <opencv2\highgui.hpp>
+//#include <opencv2\imgproc.hpp>
+//#include <opencv\cv.h>
+//
+//#include <iostream>
+//
+//#include <stdint.h>
+//#include <stdio.h>
+//#include <map>
+//#include <iostream>
+//
+//#include "DeviceEnumerator.h"
+//
+//using namespace cv;
+//
+//int main()
+//{
+//
+//	/*
+//	The id field of the Device struct can be used with an OpenCV VideoCapture object
+//	*/
+//
+//	DeviceEnumerator de;
+//
+//	// Audio Devices
+//	std::map<int, Device> devices = de.getAudioDevicesMap();
+//
+//	// Print information about the devices
+//	for (auto const &device : devices) {
+//		std::cout << "== AUDIO DEVICE (id:" << device.first << ") ==" << std::endl;
+//		std::cout << "Name: " << device.second.deviceName << std::endl;
+//		std::cout << "Path: " << device.second.devicePath << std::endl;
+//	}
+//
+//	// Video Devices
+//	devices = de.getVideoDevicesMap();
+//	int id;
+//	// Print information about the devices
+//	for (auto const &device : devices) {
+//		std::cout << "== VIDEO DEVICE (id:" << device.first << ") ==" << std::endl;
+//		std::cout << "Name: " << device.second.deviceName << std::endl;
+//		std::cout << "Path: " << device.second.devicePath << std::endl;
+//		string filename = device.second.devicePath;
+//		id = device.first;
+//	}
+//
+//		//Visa default-kameran
+//		//Om det bara finns en kamera så är det lätt att visa usb-kameran
+//		//Men på en laptop tex med inbyggd web-kamera så är det lurigare får då är "0" automatiskt web-kameran
+//		VideoCapture cap(id);
+//	
+//		if (!cap.isOpened())
+//		{
+//			cout << "Cam could not be opened" << endl;
+//			return -1;
+//		}
+//	
+//		namedWindow("Video");
+//		while (char(waitKey(1)) != 'q' && cap.isOpened())
+//		{
+//			Mat frame;
+//			cap >> frame;
+//	
+//			if (frame.empty())
+//			{
+//				cout << "Video over" << endl;
+//				break;
+//			}
+//	
+//			imshow("Video", frame);
+//		}
+//
+//	return 0;
+//}
