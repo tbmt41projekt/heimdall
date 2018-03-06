@@ -1,18 +1,29 @@
-#include "heimdall_VS.h"
-#include <QtWidgets/QApplication>
+#include "Engine.h"
 
 
 
-using namespace std;
+//__________run()_________________________________________________________________________________
 
+//Körs igång när programmet startas, dens uppgift är att skapa en ny Engine-klass och kalla på
+//dess run-funktion. Den väntar sedan på att en int ska returneras, detta görs från run-funktionen.
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	heimdall_VS w;
-	w.show();
-	return a.exec();
+	/* Gammalt, ska bort
+
+	//QApplication a(argc, argv);
+	//heimdall_VS w;
+	//w.show();
+	//return a.exec();
+	
+	*/
+
+	Engine engine{ argc, argv };
+	engine.run();
 }
+
+//________________________________________________________________________________________________
+
 
 
 //Koden nedan behövs om man vill visa en videofil, tänkte att det kan va nice å spara den här tills vidare
