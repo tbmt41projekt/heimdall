@@ -1,6 +1,9 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QDateTime>
+#include <QString>
+#include <Qt>
 #include "ui_heimdall_VS.h"
 
 class heimdall_VS : public QMainWindow
