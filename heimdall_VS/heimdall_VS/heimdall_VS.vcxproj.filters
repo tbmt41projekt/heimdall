@@ -36,6 +36,19 @@
     <ClCompile Include="heimdall_VS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pulse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Respiration.cpp">
+=======
+    <ClCompile Include="DeviceEnumerator.cpp">
+>>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="heimdall_VS.h">
@@ -51,5 +64,20 @@
     <QtRcc Include="heimdall_VS.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pulse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Respiration.h">
+=======
+    <ClInclude Include="DeviceEnumerator.h">
+>>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
