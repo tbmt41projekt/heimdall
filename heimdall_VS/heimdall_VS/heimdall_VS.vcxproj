@@ -129,9 +129,6 @@
     <QtUic Include="heimdall_VS.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="heimdall_VS.qrc" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="Respiration.h" />

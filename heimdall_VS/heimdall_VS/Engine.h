@@ -19,7 +19,8 @@ public:
 		aPtr{ new QApplication(argc,argv) },
 		windowPtr{ new heimdall_VS() },
 		pulse{ Pulse() },
-		resp{ Respiration() }
+		resp{ Respiration() },
+		isProgramRunning{true}
 	{}
 
 	int run();
@@ -32,5 +33,7 @@ private:
 	heimdall_VS* windowPtr;
 	Pulse pulse;
 	Respiration resp;
+
+	bool isProgramRunning;
 };
 

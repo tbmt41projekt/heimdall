@@ -37,8 +37,15 @@ int Engine::run()
 	//calcRespThread kör igång funktionen calcResp som hittas längre ner i filen
 	thread calcRespThread(&Engine::calcResp, this);
 
-	//Fortfarande lite oklart vad som händer här, men vet att om fönstret kryssas så returneras 0
-	return aPtr->exec();
+	//Denna if-sats är för när programmet stängs av, eftersom dom olika threadsen körs separat måste
+	//man vänta på att allt körs klart innan programmet stängs av helt
+	if (aPtr->exec() == 0)
+	{
+		isProgramRunning = false;
+		calcPulseThread.join();
+		calcRespThread.join();
+		return 0;
+	}
 }
 
 //________________________________________________________________________________________________
@@ -52,7 +59,7 @@ int Engine::run()
 
 void Engine::calcPulse()
 {
-	while (true)
+	while (isProgramRunning)
 	{
 		//Här kallar vi på pulse.calculate()
 		//Den returnerar det beräknade värdet på pulsen som en float
@@ -70,7 +77,7 @@ void Engine::calcPulse()
 
 void Engine::calcResp()
 {
-	while (true)
+	while (isProgramRunning)
 	{
 		//Här kallar vi på resp.calculate()
 		//Den returnerar det beräknade värdet på andningen som en float
