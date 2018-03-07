@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heimdall_VS.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.2
+** Created by: Qt User Interface Compiler version 5.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -41,10 +41,9 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLabel *labelDateTime_2;
-    QLabel *labelPnr_2;
+    QLabel *label_7;
     QFrame *frame_3;
     QFrame *frame_4;
-    QLabel *label_8;
     QFrame *frame_1;
     QPushButton *pushSelectROI;
     QPushButton *pushStart;
@@ -124,9 +123,9 @@ public:
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
         labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
-        labelPnr_2 = new QLabel(frame_2);
-        labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
-        labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
+        label_7 = new QLabel(frame_2);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(180, 0, 151, 31));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 410, 501, 371));
@@ -137,11 +136,6 @@ public:
         frame_4->setGeometry(QRect(0, 410, 501, 371));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
-        label_8 = new QLabel(frame_4);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(310, 90, 141, 71));
-        label_8->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";"));
         frame_1 = new QFrame(centralWidget);
         frame_1->setObjectName(QStringLiteral("frame_1"));
         frame_1->setGeometry(QRect(0, 0, 501, 371));
@@ -211,6 +205,8 @@ public:
         heimdall_VSClass->setStatusBar(statusBar);
 
         retranslateUi(heimdall_VSClass);
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_2, SLOT(show()));
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_1, SLOT(close()));
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
@@ -229,8 +225,7 @@ public:
         label_5->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
-        label_8->setText(QApplication::translate("heimdall_VSClass", "WARNING!", 0));
+        label_7->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));

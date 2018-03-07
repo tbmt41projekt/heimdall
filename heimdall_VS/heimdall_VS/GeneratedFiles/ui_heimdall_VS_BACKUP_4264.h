@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heimdall_VS.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.2
+** Created by: Qt User Interface Compiler version 5.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,7 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -29,6 +29,9 @@ class Ui_heimdall_VSClass
 {
 public:
     QWidget *centralWidget;
+<<<<<<< HEAD
+    QLabel *label;
+=======
     QFrame *frame_2;
     QLabel *labelHeartRate_2;
     QLabel *labelRespRate_2;
@@ -37,14 +40,30 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_6;
     QLabel *labelDateTime_2;
-    QLabel *labelPnr_2;
+    QLabel *label_7;
+<<<<<<< HEAD
+    QLabel *label_8;
+    QLabel *label_9;
+    QLabel *label_10;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QLabel *label_3;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_4;
+    QLineEdit *lineEdit_5;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_2;
+    QLineEdit *lineEdit_id;
+=======
     QFrame *frame_3;
     QFrame *frame_4;
-    QLabel *label_8;
     QFrame *frame_1;
     QPushButton *pushSelectROI;
     QPushButton *pushStart;
@@ -61,6 +80,7 @@ public:
     QLineEdit *inputMaxRR;
     QLineEdit *inputMaxHR;
     QLabel *labelDateTime;
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -68,7 +88,11 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
+<<<<<<< HEAD
+        heimdall_VSClass->resize(489, 369);
+=======
         heimdall_VSClass->resize(1124, 900);
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -81,6 +105,75 @@ public:
         heimdall_VSClass->setStyleSheet(QStringLiteral("font: 75 12pt \"MS Shell Dlg 2\";"));
         centralWidget = new QWidget(heimdall_VSClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+<<<<<<< HEAD
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(-214, 270, 361, 20));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(50, 150, 141, 31));
+        label_4->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
+"font: 75 12pt \"MS Shell Dlg 2\";"));
+        label_7 = new QLabel(centralWidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(230, 160, 47, 13));
+        label_8 = new QLabel(centralWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(230, 100, 47, 13));
+        label_9 = new QLabel(centralWidget);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(350, 100, 47, 13));
+        label_10 = new QLabel(centralWidget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(350, 160, 47, 13));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(160, 300, 181, 31));
+        pushButton->setFont(font);
+        pushButton->setMouseTracking(false);
+        pushButton->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
+""));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(190, 250, 121, 31));
+        pushButton_2->setStyleSheet(QStringLiteral(""));
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(90, 90, 91, 31));
+        label_3->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
+"font: 75 12pt \"MS Shell Dlg 2\";"));
+        lineEdit_2 = new QLineEdit(centralWidget);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(280, 100, 51, 20));
+        lineEdit_3 = new QLineEdit(centralWidget);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(390, 100, 51, 20));
+        lineEdit_4 = new QLineEdit(centralWidget);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        lineEdit_4->setGeometry(QRect(280, 160, 51, 20));
+        lineEdit_5 = new QLineEdit(centralWidget);
+        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+        lineEdit_5->setGeometry(QRect(390, 160, 51, 20));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(20, 30, 396, 27));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
+
+        horizontalLayout->addWidget(label_2);
+
+        lineEdit_id = new QLineEdit(widget);
+        lineEdit_id->setObjectName(QStringLiteral("lineEdit_id"));
+
+        horizontalLayout->addWidget(lineEdit_id);
+
+=======
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
         frame_2->setGeometry(QRect(550, 0, 501, 371));
@@ -124,9 +217,9 @@ public:
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
         labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
-        labelPnr_2 = new QLabel(frame_2);
-        labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
-        labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
+        label_7 = new QLabel(frame_2);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(180, 0, 151, 31));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 410, 501, 371));
@@ -137,11 +230,6 @@ public:
         frame_4->setGeometry(QRect(0, 410, 501, 371));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
-        label_8 = new QLabel(frame_4);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(310, 90, 141, 71));
-        label_8->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";"));
         frame_1 = new QFrame(centralWidget);
         frame_1->setObjectName(QStringLiteral("frame_1"));
         frame_1->setGeometry(QRect(0, 0, 501, 371));
@@ -202,6 +290,7 @@ public:
         labelDateTime->setObjectName(QStringLiteral("labelDateTime"));
         labelDateTime->setGeometry(QRect(10, 0, 231, 31));
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -211,6 +300,12 @@ public:
         heimdall_VSClass->setStatusBar(statusBar);
 
         retranslateUi(heimdall_VSClass);
+<<<<<<< HEAD
+        QObject::connect(pushButton, SIGNAL(clicked()), pushButton, SLOT(close()));
+=======
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_2, SLOT(show()));
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_1, SLOT(close()));
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
@@ -218,6 +313,18 @@ public:
     void retranslateUi(QMainWindow *heimdall_VSClass)
     {
         heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
+<<<<<<< HEAD
+        label->setText(QString());
+        label_4->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-weight:600;\">Respiratory rate</span></p></body></html>", 0));
+        label_7->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
+        label_8->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
+        label_9->setText(QApplication::translate("heimdall_VSClass", "Max:", 0));
+        label_10->setText(QApplication::translate("heimdall_VSClass", "Max:", 0));
+        pushButton->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
+        pushButton_2->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
+        label_3->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-weight:600;\">Heart rate</span></p></body></html>", 0));
+        label_2->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", 0));
+=======
         labelHeartRate_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
         labelRespRate_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
         labelHRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:400;\">120</span></p></body></html>", 0));
@@ -229,8 +336,7 @@ public:
         label_5->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
-        label_8->setText(QApplication::translate("heimdall_VSClass", "WARNING!", 0));
+        label_7->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
@@ -241,6 +347,7 @@ public:
         labelHeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-weight:600;\">Heart rate</span></p></body></html>", 0));
         labelPnr->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", 0));
         labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
+>>>>>>> 7c2c7f7a73fcf42670592c16d8d0ebc9057fb6c3
     } // retranslateUi
 
 };
