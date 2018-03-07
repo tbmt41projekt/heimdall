@@ -87,45 +87,45 @@ public:
         frame_2->setFrameShadow(QFrame::Raised);
         labelHeartRate_2 = new QLabel(frame_2);
         labelHeartRate_2->setObjectName(QStringLiteral("labelHeartRate_2"));
-        labelHeartRate_2->setGeometry(QRect(50, 110, 131, 31));
+        labelHeartRate_2->setGeometry(QRect(60, 140, 131, 31));
         labelHeartRate_2->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
 "font: 75 12pt \"MS Shell Dlg 2\";"));
         labelRespRate_2 = new QLabel(frame_2);
         labelRespRate_2->setObjectName(QStringLiteral("labelRespRate_2"));
-        labelRespRate_2->setGeometry(QRect(30, 220, 201, 31));
+        labelRespRate_2->setGeometry(QRect(30, 250, 201, 31));
         labelRespRate_2->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
 "font: 75 12pt \"MS Shell Dlg 2\";"));
         labelHRNumber = new QLabel(frame_2);
         labelHRNumber->setObjectName(QStringLiteral("labelHRNumber"));
-        labelHRNumber->setGeometry(QRect(50, 140, 121, 61));
+        labelHRNumber->setGeometry(QRect(50, 170, 121, 61));
         labelRRNumber = new QLabel(frame_2);
         labelRRNumber->setObjectName(QStringLiteral("labelRRNumber"));
-        labelRRNumber->setGeometry(QRect(50, 260, 121, 61));
+        labelRRNumber->setGeometry(QRect(50, 280, 121, 61));
         label = new QLabel(frame_2);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(50, 200, 41, 16));
+        label->setGeometry(QRect(50, 230, 41, 16));
         label_2 = new QLabel(frame_2);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 320, 41, 16));
+        label_2->setGeometry(QRect(50, 340, 41, 16));
         label_3 = new QLabel(frame_2);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(120, 200, 41, 16));
+        label_3->setGeometry(QRect(120, 230, 41, 16));
         label_4 = new QLabel(frame_2);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(120, 320, 41, 16));
+        label_4->setGeometry(QRect(120, 340, 41, 16));
         label_5 = new QLabel(frame_2);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(170, 160, 61, 31));
+        label_5->setGeometry(QRect(170, 200, 61, 31));
         label_6 = new QLabel(frame_2);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(170, 280, 61, 31));
+        label_6->setGeometry(QRect(170, 310, 61, 31));
         labelDateTime_2 = new QLabel(frame_2);
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
-        labelDateTime_2->setGeometry(QRect(10, 10, 221, 21));
+        labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         label_7 = new QLabel(frame_2);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(170, 10, 151, 31));
+        label_7->setGeometry(QRect(180, 0, 151, 31));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 410, 501, 371));
@@ -194,7 +194,7 @@ public:
         inputMaxHR->setGeometry(QRect(370, 130, 61, 31));
         labelDateTime = new QLabel(frame_1);
         labelDateTime->setObjectName(QStringLiteral("labelDateTime"));
-        labelDateTime->setGeometry(QRect(10, 10, 231, 21));
+        labelDateTime->setGeometry(QRect(10, 0, 231, 31));
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
@@ -205,7 +205,8 @@ public:
         heimdall_VSClass->setStatusBar(statusBar);
 
         retranslateUi(heimdall_VSClass);
-        QObject::connect(pushStart, SIGNAL(clicked()), centralWidget, SLOT(lower()));
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_2, SLOT(show()));
+        QObject::connect(pushStart, SIGNAL(clicked()), frame_1, SLOT(close()));
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
