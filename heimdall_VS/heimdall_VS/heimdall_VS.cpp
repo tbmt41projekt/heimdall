@@ -9,7 +9,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	QDateTime date = QDateTime::currentDateTime();
 	QString dateString = date.toString();
 	ui.labelDateTime->setText(dateString);
-
+	ui.labelDateTime_2->setText(dateString);
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
 	pal.setColor(QPalette::Background, Qt::white);
@@ -28,12 +28,25 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_3->setVisible(false);
 	ui.frame_4->setVisible(false);
 
-	// Test
-	// Att 
-	// Lägga till text och se om gui uppdaterar
 
+	//QString pnrString = ui.inputPnr->text();
+	//ui.labelHeartRate_2->setText(pnrString);
 
+	
+}
 
+//heimdall_VS::heimdall_VS()
+//{
+//	delete ui;
+//}
+
+void heimdall_VS::on_pushStart_clicked()
+{
+	
+	ui.frame_2->setVisible(true);
+	ui.frame_1->setVisible(false);
+	ui.labelPnr->setText("Pnr");
+	
 
 
 }

@@ -41,7 +41,7 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLabel *labelDateTime_2;
-    QLabel *label_7;
+    QLabel *labelPnr_2;
     QFrame *frame_3;
     QFrame *frame_4;
     QFrame *frame_1;
@@ -123,9 +123,9 @@ public:
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
         labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
-        label_7 = new QLabel(frame_2);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(180, 0, 151, 31));
+        labelPnr_2 = new QLabel(frame_2);
+        labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
+        labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 410, 501, 371));
@@ -205,8 +205,6 @@ public:
         heimdall_VSClass->setStatusBar(statusBar);
 
         retranslateUi(heimdall_VSClass);
-        QObject::connect(pushStart, SIGNAL(clicked()), frame_2, SLOT(show()));
-        QObject::connect(pushStart, SIGNAL(clicked()), frame_1, SLOT(close()));
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
@@ -225,7 +223,7 @@ public:
         label_5->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        label_7->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
+        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
