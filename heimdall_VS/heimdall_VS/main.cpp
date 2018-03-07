@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
 {
 	Engine engine{ argc, argv };
 	engine.run();
-	//TEST-kommentar
 }
 
 //________________________________________________________________________________________________
