@@ -28,7 +28,9 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_3->setVisible(false);
 	ui.frame_4->setVisible(false);
 
-
+	// Test
+	// Att 
+	// Lägga till text och se om gui uppdaterar
 
 
 
