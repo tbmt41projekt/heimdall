@@ -115,11 +115,8 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <ClCompile Include="Engine.cpp" />
-=======
     <ClCompile Include="DeviceEnumerator.cpp" />
->>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
     <ClCompile Include="heimdall_VS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pulse.cpp" />
@@ -135,13 +132,10 @@
     <QtRcc Include="heimdall_VS.qrc" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="Respiration.h" />
-=======
     <ClInclude Include="DeviceEnumerator.h" />
->>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
