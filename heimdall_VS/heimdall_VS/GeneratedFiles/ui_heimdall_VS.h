@@ -44,6 +44,7 @@ public:
     QLabel *label_7;
     QFrame *frame_3;
     QFrame *frame_4;
+    QLabel *label_8;
     QFrame *frame_1;
     QPushButton *pushSelectROI;
     QPushButton *pushStart;
@@ -136,6 +137,11 @@ public:
         frame_4->setGeometry(QRect(0, 410, 501, 371));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
+        label_8 = new QLabel(frame_4);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(310, 90, 141, 71));
+        label_8->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";"));
         frame_1 = new QFrame(centralWidget);
         frame_1->setObjectName(QStringLiteral("frame_1"));
         frame_1->setGeometry(QRect(0, 0, 501, 371));
@@ -205,8 +211,6 @@ public:
         heimdall_VSClass->setStatusBar(statusBar);
 
         retranslateUi(heimdall_VSClass);
-        QObject::connect(pushStart, SIGNAL(clicked()), frame_2, SLOT(show()));
-        QObject::connect(pushStart, SIGNAL(clicked()), frame_1, SLOT(close()));
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
@@ -226,6 +230,7 @@ public:
         label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
         label_7->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
+        label_8->setText(QApplication::translate("heimdall_VSClass", "WARNING!", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));

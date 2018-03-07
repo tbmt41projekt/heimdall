@@ -1,4 +1,7 @@
 #include "heimdall_VS.h"
+#include <QPushButton>
+#include <QtCore>
+#include <QtGui>
 
 heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
@@ -22,6 +25,9 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setAutoFillBackground(true);
 	ui.frame_4->setPalette(pal);
 
+	//skriv in grejer
+	
+	
 
 	//Startruta
 	ui.frame_2->setVisible(false);
@@ -31,7 +37,14 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 
 
+	
 
 
+}
+
+
+void heimdall_VS::on_pushStart_clicked()
+{
+	ui.frame_1->setVisible(false);
 
 }

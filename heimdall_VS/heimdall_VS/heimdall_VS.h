@@ -15,4 +15,5 @@ public:
 
 private:
 	Ui::heimdall_VSClass ui;
+	void on_pushStart_clicked();
 };
