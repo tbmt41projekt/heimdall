@@ -1,17 +1,13 @@
 #include "Engine.h"
 
-<<<<<<< HEAD
 
 
 //__________run()_________________________________________________________________________________
-=======
-using namespace std;
->>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
 
 //Körs igång när programmet startas, dens uppgift är att skapa en ny Engine-klass och kalla på
 //dess run-funktion. Den väntar sedan på att en int ska returneras, detta görs från run-funktionen.
 
-<<<<<<< HEAD
+
 int main(int argc, char *argv[])
 {
 	/* Gammalt, ska bort
@@ -26,8 +22,6 @@ int main(int argc, char *argv[])
 	Engine engine{ argc, argv };
 	engine.run();
 }
-=======
->>>>>>> 24e71b5f119bd912f77ae1fd532435f5ef4cc9b4
 
 //________________________________________________________________________________________________
 
