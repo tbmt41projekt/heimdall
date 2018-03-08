@@ -3,8 +3,10 @@
 #include "heimdall_VS.h"
 #include "Pulse.h"
 #include "Respiration.h"
+#include <vector>
 
 #include <QtWidgets/QApplication>
+#include <opencv2\opencv.hpp>
 
 
 //Engine-klassen fungerar som en motor och uppgiftsuppdelare. Den säger till andra klassen vad
@@ -20,20 +22,27 @@ public:
 		windowPtr{ new heimdall_VS() },
 		pulse{ Pulse() },
 		resp{ Respiration() },
-		isProgramRunning{true}
+		fps{ 10 },							//Ändra här om ni vill ändra fps
+		timeStored{ 10 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
+		isProgramRunning{ true },
+		videoQueue{ std::vector<cv::Mat>(fps * timeStored) }
 	{}
 
 	int run();
 
 	void calcPulse();
 	void calcResp();
+	void runCamera();
 
 private:
-	QApplication* aPtr;
+	QApplication * aPtr;
 	heimdall_VS* windowPtr;
 	Pulse pulse;
 	Respiration resp;
 
+	int fps;
+	int timeStored;
 	bool isProgramRunning;
+	std::vector<cv::Mat> videoQueue;
 };
 
