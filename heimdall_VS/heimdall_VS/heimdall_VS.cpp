@@ -7,7 +7,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 	//Skriver ut dagens datum och klockslag, måste fixas till med rätt format
 	QDateTime date = QDateTime::currentDateTime();
-	QString dateString = date.toString();
+	QString dateString = date.toString("ddMMyy hh:mm:ss");
 	ui.labelDateTime->setText(dateString);
 	ui.labelDateTime_2->setText(dateString);
 	//Fixar bakgrundsfärg på samtliga rutor
@@ -66,21 +66,16 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelMinHR_2->setText(minHR);
 		ui.labelMaxRR_2->setText(maxRR);
 		ui.labelMinRR_2->setText(minRR);
-
 	}
-	else if (ui.inputPnr->hasAcceptableInput() == false ||
-			ui.inputMaxHR->hasAcceptableInput() == false ||
-			ui.inputMinHR->hasAcceptableInput() == false ||
-			ui.inputMaxRR->hasAcceptableInput() == false ||
-			ui.inputMinRR->hasAcceptableInput() == false)
-			{
-			QMessageBox msgBoxError;
-			msgBoxError.setIcon(QMessageBox::Information);
-			msgBoxError.setWindowTitle("Error message");
-			msgBoxError.setText("Not valid ID-number and/or input values.");
-			msgBoxError.setInformativeText("Please make sure to type your ID-number as YYMMDD-XXXX");
-			msgBoxError.exec();
-			}
+	else
+	{
+		QMessageBox msgBoxError;
+		msgBoxError.setIcon(QMessageBox::Warning);
+		msgBoxError.setWindowTitle("Error message");
+		msgBoxError.setText("Not valid ID-number and/or input values.");
+		msgBoxError.setInformativeText("Please make sure to type the ID-number as YYMMDD-XXXX, and fill in all empty boxes.");
+		msgBoxError.exec();
+	}
 	
 
 	
