@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heimdall_VS.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.0
+** Created by: Qt User Interface Compiler version 5.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -42,7 +42,7 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLabel *labelDateTime_2;
-    QLabel *label_7;
+    QLabel *labelPnr_2;
     QFrame *frame_3;
     QGroupBox *groupBox_2;
     QLabel *label_30;
@@ -150,9 +150,9 @@ public:
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
         labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
-        label_7 = new QLabel(frame_2);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(180, 0, 151, 31));
+        labelPnr_2 = new QLabel(frame_2);
+        labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
+        labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 400, 501, 371));
@@ -344,6 +344,7 @@ public:
         label_5->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
+<<<<<<< HEAD
         label_7->setText(QApplication::translate("heimdall_VSClass", "PNR: ", 0));
         groupBox_2->setTitle(QString());
         label_30->setText(QApplication::translate("heimdall_VSClass", " WARNING!", 0));
@@ -358,6 +359,9 @@ public:
         label_35->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
         label_36->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
         label_37->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
+=======
+        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
+>>>>>>> origin/gui.lina
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));

@@ -2,6 +2,10 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QDateTime>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QPushButton>
+#include <QLabel>
 #include <QString>
 #include <Qt>
 #include "ui_heimdall_VS.h"
@@ -18,6 +22,8 @@
 
 using namespace cv;
 
+class QPushButton;
+
 class heimdall_VS : public QMainWindow
 {
 	Q_OBJECT
@@ -27,10 +33,15 @@ public:
 	
 private:
 	Ui::heimdall_VSClass ui;
+
 	
 
 	private slots:
 	void on_pushStart_clicked();
 	void on_pushSelectROI_clicked();
 	void alarm();
+
+	void on_pushStart_clicked();
+	//heimdall_VS();
+
 };

@@ -201,7 +201,7 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       <string>Date and Time</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="labelPnr_2">
      <property name="geometry">
       <rect>
        <x>180</x>

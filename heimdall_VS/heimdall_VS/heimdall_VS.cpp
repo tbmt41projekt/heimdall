@@ -15,7 +15,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	QDateTime date = QDateTime::currentDateTime();
 	QString dateString = date.toString();
 	ui.labelDateTime->setText(dateString);
-
+	ui.labelDateTime_2->setText(dateString);
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
 	pal.setColor(QPalette::Background, Qt::white);
@@ -38,12 +38,17 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setVisible(false);
 
 
+	//QString pnrString = ui.inputPnr->text();
+	//ui.labelHeartRate_2->setText(pnrString);
+
+	
+}
 
 
 	
 
 
-}
+
 void heimdall_VS::alarm()
 {
 
@@ -69,8 +74,26 @@ void heimdall_VS::on_pushSelectROI_clicked()
 
 {
 
+//heimdall_VS::heimdall_VS()
+//{
+//	delete ui;
+//}
+
+void heimdall_VS::on_pushStart_clicked()
+{
+	
+	ui.frame_2->setVisible(true);
+	ui.frame_1->setVisible(false);
+	ui.labelPnr->setText("Pnr");
+	
+
+
 	//Lägg till kod från team andning
 		
 	
+}
+
+
+
 }
 
