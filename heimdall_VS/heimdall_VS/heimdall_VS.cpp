@@ -2,6 +2,9 @@
 #include <QPushButton>
 #include <QtCore>
 #include <QtGui>
+#include <QMessageBox>
+#include <Qstring>
+
 
 heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
@@ -42,9 +45,15 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 }
 
-
 void heimdall_VS::on_pushStart_clicked()
-{
-	ui.frame_1->setVisible(false);
 
+{
+	QString pnr;
+	pnr = ui.inputPnr->text();
+
+	if (pnr == "1")
+	{
+		ui.frame_2->setVisible(true);
+
+	}
 }
