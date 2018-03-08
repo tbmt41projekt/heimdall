@@ -44,7 +44,13 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 
 }
+void heimdall_VS::alarm()
+{
 
+	
+	
+
+}
 void heimdall_VS::on_pushStart_clicked()
 
 {
@@ -54,7 +60,7 @@ void heimdall_VS::on_pushStart_clicked()
 	if (pnr == "1")
 	{
 		ui.frame_2->setVisible(true);
-
+		
 	}
 }
 

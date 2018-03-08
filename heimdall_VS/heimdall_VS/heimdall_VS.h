@@ -32,4 +32,5 @@ private:
 	private slots:
 	void on_pushStart_clicked();
 	void on_pushSelectROI_clicked();
+	void alarm();
 };
