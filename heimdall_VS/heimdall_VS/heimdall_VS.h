@@ -8,6 +8,9 @@
 #include <QLabel>
 #include <QString>
 #include <QMessageBox>
+#include <QMouseEvent>
+#include <QValidator>
+#include <QRegExp>
 #include <Qt>
 #include "ui_heimdall_VS.h"
 
@@ -26,4 +29,7 @@ private:
 private slots:
 	void on_pushStart_clicked();
 	//heimdall_VS();
+
+//protected:
+//	virtual void mousePressEvent(QMouseEvent *);
 };

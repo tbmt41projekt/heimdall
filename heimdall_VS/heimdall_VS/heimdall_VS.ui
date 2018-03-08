@@ -463,12 +463,24 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       <rect>
        <x>300</x>
        <y>50</y>
-       <width>111</width>
+       <width>121</width>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>9</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>XXXXXX-XXXX</string>
+      <string/>
+     </property>
+     <property name="cursorPosition">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QLineEdit" name="inputMinHR">
@@ -481,7 +493,7 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </rect>
      </property>
      <property name="text">
-      <string>XXX</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLineEdit" name="inputMinRR">
@@ -494,7 +506,7 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </rect>
      </property>
      <property name="text">
-      <string>XXX</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLineEdit" name="inputMaxRR">
@@ -507,7 +519,7 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </rect>
      </property>
      <property name="text">
-      <string>XXX</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLineEdit" name="inputMaxHR">
@@ -520,7 +532,7 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </rect>
      </property>
      <property name="text">
-      <string>XXX</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLabel" name="labelDateTime">

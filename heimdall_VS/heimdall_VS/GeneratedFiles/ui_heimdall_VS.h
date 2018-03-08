@@ -195,7 +195,9 @@ public:
         labelPnr->setStyleSheet(QStringLiteral("font: 14pt \"MS Shell Dlg 2\";"));
         inputPnr = new QLineEdit(frame_1);
         inputPnr->setObjectName(QStringLiteral("inputPnr"));
-        inputPnr->setGeometry(QRect(300, 50, 111, 31));
+        inputPnr->setGeometry(QRect(300, 50, 121, 31));
+        inputPnr->setFont(font);
+        inputPnr->setCursorPosition(0);
         inputMinHR = new QLineEdit(frame_1);
         inputMinHR->setObjectName(QStringLiteral("inputMinHR"));
         inputMinHR->setGeometry(QRect(260, 130, 61, 31));
@@ -253,11 +255,11 @@ public:
         labelMinHR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
         labelHeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
         labelPnr->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", 0));
-        inputPnr->setText(QApplication::translate("heimdall_VSClass", "XXXXXX-XXXX", 0));
-        inputMinHR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
-        inputMinRR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
-        inputMaxRR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
-        inputMaxHR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
+        inputPnr->setText(QString());
+        inputMinHR->setText(QString());
+        inputMinRR->setText(QString());
+        inputMaxRR->setText(QString());
+        inputMaxHR->setText(QString());
         labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
     } // retranslateUi
 

@@ -4,6 +4,8 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.inputPnr->setFocus();
+	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
 
 	//Skriver ut dagens datum och klockslag, måste fixas till med rätt format
 	QDateTime date = QDateTime::currentDateTime();
@@ -29,17 +31,31 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setVisible(false);
 
 	//Sätter tillåtna inputvärden för textrutorna
-	ui.inputPnr->setInputMask("999999-9999");
-	ui.inputMaxHR->setInputMask("990");
-	ui.inputMinHR->setInputMask("990");
-	ui.inputMaxRR->setInputMask("990");
-	ui.inputMinRR->setInputMask("990");
+	
+	QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
+	QValidator *validatorPnr = new QRegExpValidator(rxPnr);
+	ui.inputPnr->setValidator(validatorPnr);
+	
+	QRegExp rxMaxMin("\[0-9]{1,3}");
+	QValidator *validatorMaxMin = new QRegExpValidator(rxMaxMin);
+	ui.inputMaxHR->setValidator(validatorMaxMin);
+	ui.inputMinHR->setValidator(validatorMaxMin);
+	ui.inputMaxRR->setValidator(validatorMaxMin);
+	ui.inputMinRR->setValidator(validatorMaxMin);
 
 }
 
 //heimdall_VS::heimdall_VS()
 //{
 //	delete ui;
+//}
+
+//void heimdall_VS::mousePressEvent(QMouseEvent *event)
+//{ 
+//	if (event->buttons() == Qt::LeftButton)
+//	{
+//		
+//	}
 //}
 
 void heimdall_VS::on_pushStart_clicked()
@@ -80,4 +96,5 @@ void heimdall_VS::on_pushStart_clicked()
 
 	
 }
+
 
