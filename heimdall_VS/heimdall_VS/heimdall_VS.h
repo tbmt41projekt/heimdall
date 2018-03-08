@@ -6,6 +6,17 @@
 #include <Qt>
 #include "ui_heimdall_VS.h"
 #include <QPushButton>
+#include <opencv2\opencv.hpp>
+#include <opencv2\objdetect.hpp>
+#include <opencv2\highgui.hpp>
+#include <opencv2\imgproc.hpp>
+#include <opencv\cv.h>
+#include <iostream>
+
+#include <stdint.h>
+#include <stdio.h>
+
+using namespace cv;
 
 class heimdall_VS : public QMainWindow
 {
@@ -20,4 +31,5 @@ private:
 
 	private slots:
 	void on_pushStart_clicked();
+	void on_pushSelectROI_clicked();
 };

@@ -57,3 +57,14 @@ void heimdall_VS::on_pushStart_clicked()
 
 	}
 }
+
+
+void heimdall_VS::on_pushSelectROI_clicked()
+
+{
+
+	//Lägg till kod från team andning
+		
+	
+}
+
