@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heimdall_VS.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.2
+** Created by: Qt User Interface Compiler version 5.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -30,18 +30,22 @@ class Ui_heimdall_VSClass
 public:
     QWidget *centralWidget;
     QFrame *frame_2;
-    QLabel *labelHeartRate_2;
-    QLabel *labelRespRate_2;
-    QLabel *labelHRNumber;
-    QLabel *labelRRNumber;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
+    QLabel *HeartRate;
+    QLabel *RespRate;
+    QLabel *HRNumber;
+    QLabel *RRNumber;
+    QLabel *MinHR;
+    QLabel *MinRR;
+    QLabel *MaxHR;
+    QLabel *MaxRR;
+    QLabel *bpm1;
+    QLabel *bpm2;
     QLabel *labelDateTime_2;
     QLabel *labelPnr_2;
+    QLabel *labelMinHR_2;
+    QLabel *labelMaxHR_2;
+    QLabel *labelMinRR_2;
+    QLabel *labelMaxRR_2;
     QFrame *frame_3;
     QFrame *frame_4;
     QFrame *frame_1;
@@ -67,7 +71,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(1124, 900);
+        heimdall_VSClass->resize(1123, 900);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -85,47 +89,59 @@ public:
         frame_2->setGeometry(QRect(550, 0, 501, 371));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
-        labelHeartRate_2 = new QLabel(frame_2);
-        labelHeartRate_2->setObjectName(QStringLiteral("labelHeartRate_2"));
-        labelHeartRate_2->setGeometry(QRect(60, 140, 131, 31));
-        labelHeartRate_2->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
+        HeartRate = new QLabel(frame_2);
+        HeartRate->setObjectName(QStringLiteral("HeartRate"));
+        HeartRate->setGeometry(QRect(60, 140, 131, 31));
+        HeartRate->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
 "font: 75 12pt \"MS Shell Dlg 2\";"));
-        labelRespRate_2 = new QLabel(frame_2);
-        labelRespRate_2->setObjectName(QStringLiteral("labelRespRate_2"));
-        labelRespRate_2->setGeometry(QRect(30, 250, 201, 31));
-        labelRespRate_2->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
+        RespRate = new QLabel(frame_2);
+        RespRate->setObjectName(QStringLiteral("RespRate"));
+        RespRate->setGeometry(QRect(30, 250, 201, 31));
+        RespRate->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
 "font: 75 12pt \"MS Shell Dlg 2\";"));
-        labelHRNumber = new QLabel(frame_2);
-        labelHRNumber->setObjectName(QStringLiteral("labelHRNumber"));
-        labelHRNumber->setGeometry(QRect(50, 170, 121, 61));
-        labelRRNumber = new QLabel(frame_2);
-        labelRRNumber->setObjectName(QStringLiteral("labelRRNumber"));
-        labelRRNumber->setGeometry(QRect(50, 280, 121, 61));
-        label = new QLabel(frame_2);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(50, 230, 41, 16));
-        label_2 = new QLabel(frame_2);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 340, 41, 16));
-        label_3 = new QLabel(frame_2);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(120, 230, 41, 16));
-        label_4 = new QLabel(frame_2);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(120, 340, 41, 16));
-        label_5 = new QLabel(frame_2);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(170, 200, 61, 31));
-        label_6 = new QLabel(frame_2);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(170, 310, 61, 31));
+        HRNumber = new QLabel(frame_2);
+        HRNumber->setObjectName(QStringLiteral("HRNumber"));
+        HRNumber->setGeometry(QRect(50, 170, 121, 61));
+        RRNumber = new QLabel(frame_2);
+        RRNumber->setObjectName(QStringLiteral("RRNumber"));
+        RRNumber->setGeometry(QRect(50, 280, 121, 61));
+        MinHR = new QLabel(frame_2);
+        MinHR->setObjectName(QStringLiteral("MinHR"));
+        MinHR->setGeometry(QRect(40, 230, 41, 21));
+        MinRR = new QLabel(frame_2);
+        MinRR->setObjectName(QStringLiteral("MinRR"));
+        MinRR->setGeometry(QRect(40, 340, 41, 21));
+        MaxHR = new QLabel(frame_2);
+        MaxHR->setObjectName(QStringLiteral("MaxHR"));
+        MaxHR->setGeometry(QRect(120, 230, 41, 21));
+        MaxRR = new QLabel(frame_2);
+        MaxRR->setObjectName(QStringLiteral("MaxRR"));
+        MaxRR->setGeometry(QRect(120, 340, 41, 21));
+        bpm1 = new QLabel(frame_2);
+        bpm1->setObjectName(QStringLiteral("bpm1"));
+        bpm1->setGeometry(QRect(170, 200, 61, 31));
+        bpm2 = new QLabel(frame_2);
+        bpm2->setObjectName(QStringLiteral("bpm2"));
+        bpm2->setGeometry(QRect(170, 310, 61, 31));
         labelDateTime_2 = new QLabel(frame_2);
         labelDateTime_2->setObjectName(QStringLiteral("labelDateTime_2"));
-        labelDateTime_2->setGeometry(QRect(10, 0, 221, 31));
+        labelDateTime_2->setGeometry(QRect(10, 0, 191, 21));
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         labelPnr_2 = new QLabel(frame_2);
         labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
         labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
+        labelMinHR_2 = new QLabel(frame_2);
+        labelMinHR_2->setObjectName(QStringLiteral("labelMinHR_2"));
+        labelMinHR_2->setGeometry(QRect(80, 230, 41, 21));
+        labelMaxHR_2 = new QLabel(frame_2);
+        labelMaxHR_2->setObjectName(QStringLiteral("labelMaxHR_2"));
+        labelMaxHR_2->setGeometry(QRect(160, 230, 41, 21));
+        labelMinRR_2 = new QLabel(frame_2);
+        labelMinRR_2->setObjectName(QStringLiteral("labelMinRR_2"));
+        labelMinRR_2->setGeometry(QRect(80, 340, 41, 21));
+        labelMaxRR_2 = new QLabel(frame_2);
+        labelMaxRR_2->setObjectName(QStringLiteral("labelMaxRR_2"));
+        labelMaxRR_2->setGeometry(QRect(160, 340, 41, 21));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 410, 501, 371));
@@ -212,18 +228,22 @@ public:
     void retranslateUi(QMainWindow *heimdall_VSClass)
     {
         heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
-        labelHeartRate_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
-        labelRespRate_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
-        labelHRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:400;\">120</span></p></body></html>", 0));
-        labelRRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", 0));
-        label->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
-        label_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
-        label_3->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
-        label_4->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
-        label_5->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
-        label_6->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
+        HeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
+        RespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
+        HRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:400;\">120</span></p></body></html>", 0));
+        RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", 0));
+        MinHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
+        MinRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
+        MaxHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
+        MaxRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
+        bpm1->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
+        bpm2->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
         labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "Personal ID number", 0));
+        labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
+        labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
+        labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
+        labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
@@ -233,6 +253,11 @@ public:
         labelMinHR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
         labelHeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-weight:600;\">Heart rate</span></p></body></html>", 0));
         labelPnr->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", 0));
+        inputPnr->setText(QApplication::translate("heimdall_VSClass", "XXXXXX-XXXX", 0));
+        inputMinHR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
+        inputMinRR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
+        inputMaxRR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
+        inputMaxHR->setText(QApplication::translate("heimdall_VSClass", "XXX", 0));
         labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
     } // retranslateUi
 

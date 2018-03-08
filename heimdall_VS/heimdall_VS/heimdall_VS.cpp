@@ -28,11 +28,13 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_3->setVisible(false);
 	ui.frame_4->setVisible(false);
 
+	//Sätter tillåtna inputvärden för textrutorna
+	ui.inputPnr->setInputMask("999999-9999");
+	ui.inputMaxHR->setInputMask("990");
+	ui.inputMinHR->setInputMask("990");
+	ui.inputMaxRR->setInputMask("990");
+	ui.inputMinRR->setInputMask("990");
 
-	//QString pnrString = ui.inputPnr->text();
-	//ui.labelHeartRate_2->setText(pnrString);
-
-	
 }
 
 //heimdall_VS::heimdall_VS()
@@ -42,11 +44,45 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 void heimdall_VS::on_pushStart_clicked()
 {
-	
-	ui.frame_2->setVisible(true);
-	ui.frame_1->setVisible(false);
-	ui.labelPnr->setText("Pnr");
+	QString pnr = ui.inputPnr->text();
+	QString maxHR = ui.inputMaxHR->text();
+	QString minHR = ui.inputMinHR->text();
+	QString maxRR = ui.inputMaxRR->text();
+	QString minRR = ui.inputMinRR->text();
+
+	if (ui.inputPnr->hasAcceptableInput() && 
+		ui.inputMaxHR->hasAcceptableInput() &&
+		ui.inputMinHR->hasAcceptableInput() &&
+		ui.inputMaxRR->hasAcceptableInput() &&
+		ui.inputMinRR->hasAcceptableInput())
+	{
+		//Visa nästa frame, dvs mätrutan
+		ui.frame_2->setVisible(true);
+		ui.frame_1->setVisible(false);
+
+		//Flytta över inputvärden till rätt plats
+		ui.labelPnr_2->setText(pnr);
+		ui.labelMaxHR_2->setText(maxHR);
+		ui.labelMinHR_2->setText(minHR);
+		ui.labelMaxRR_2->setText(maxRR);
+		ui.labelMinRR_2->setText(minRR);
+
+	}
+	else if (ui.inputPnr->hasAcceptableInput() == false ||
+			ui.inputMaxHR->hasAcceptableInput() == false ||
+			ui.inputMinHR->hasAcceptableInput() == false ||
+			ui.inputMaxRR->hasAcceptableInput() == false ||
+			ui.inputMinRR->hasAcceptableInput() == false)
+			{
+			QMessageBox msgBoxError;
+			msgBoxError.setIcon(QMessageBox::Information);
+			msgBoxError.setWindowTitle("Error message");
+			msgBoxError.setText("Not valid ID-number and/or input values.");
+			msgBoxError.setInformativeText("Please make sure to type your ID-number as YYMMDD-XXXX");
+			msgBoxError.exec();
+			}
 	
 
-
+	
 }
+

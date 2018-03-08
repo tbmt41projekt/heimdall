@@ -7,10 +7,11 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QString>
+#include <QMessageBox>
 #include <Qt>
 #include "ui_heimdall_VS.h"
 
-class QPushButton;
+
 
 class heimdall_VS : public QMainWindow
 {
@@ -19,8 +20,10 @@ class heimdall_VS : public QMainWindow
 public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
 
-private:
+private: 
 	Ui::heimdall_VSClass ui;
+
+private slots:
 	void on_pushStart_clicked();
 	//heimdall_VS();
 };
