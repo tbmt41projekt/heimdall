@@ -88,7 +88,17 @@ void Engine::calcPulse()
 	{
 		//Här kallar vi på pulse.calculate()
 		//Den returnerar det beräknade värdet på pulsen som en float
-		cout << pulse.calculate() << endl;
+
+		//vector<Mat>::const_iterator first = framesVector.begin();
+		//vector<Mat>::const_iterator last = framesVector.begin() + 20; //Antalet frames som väljs är 20 för tillfället
+		vector<Mat> pulseFrames;
+
+		for (int i = 0; i < 20; i++) //20 frames är valt för tillfället
+		{
+			pulseFrames.push_back(framesVector.at(i));
+		}
+
+		cout << pulse.calculate(pulseFrames) << endl;
 	}
 }
 
@@ -150,7 +160,7 @@ void Engine::runCamera()
 			if (i < timeStored*fps)
 			{
 				i++;
-				if (i == timeStored*fps)
+				if (i == timeStored * fps)
 				{
 					readyToCalc = true;
 				}
@@ -158,8 +168,8 @@ void Engine::runCamera()
 
 			//Tar bort sista framen i videoQueue och lägger till den nya framen längst fram.
 			//(OBS ingen queue utan en vector)
-			videoQueue.pop_back();
-			videoQueue.insert(videoQueue.begin(), frame);
+			framesVector.pop_back();
+			framesVector.insert(framesVector.begin(), frame);
 
 			imshow("Video", frame);
 
