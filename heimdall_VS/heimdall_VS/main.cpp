@@ -2,7 +2,12 @@
 
 
 
+
+
+using namespace std;
+
 //__________run()_________________________________________________________________________________
+
 
 
 //Körs igång när programmet startas, dens uppgift är att skapa en ny Engine-klass och kalla på

@@ -1,5 +1,8 @@
 #include "heimdall_VS.h"
 
+
+
+
 heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -11,8 +14,8 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
 	timer->start();
-	
-	
+
+
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
 	pal.setColor(QPalette::Background, Qt::white);
@@ -25,6 +28,9 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setAutoFillBackground(true);
 	ui.frame_4->setPalette(pal);
 
+	//skriv in grejer
+
+
 
 	//Startruta
 	ui.frame_2->setVisible(false);
@@ -32,32 +38,32 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setVisible(false);
 
 	//Sätter tillåtna inputvärden för textrutorna
-	
-	QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
+
+	/*QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
 	QValidator *validatorPnr = new QRegExpValidator(rxPnr);
 	ui.inputPnr->setValidator(validatorPnr);
-	
+
 	QRegExp rxMaxMin("\[0-9]{1,3}");
 	QValidator *validatorMaxMin = new QRegExpValidator(rxMaxMin);
 	ui.inputMaxHR->setValidator(validatorMaxMin);
 	ui.inputMinHR->setValidator(validatorMaxMin);
 	ui.inputMaxRR->setValidator(validatorMaxMin);
-	ui.inputMinRR->setValidator(validatorMaxMin);
+	ui.inputMinRR->setValidator(validatorMaxMin);*/
 
 }
 
-//heimdall_VS::heimdall_VS()
-//{
-//	delete ui;
-//}
 
-//void heimdall_VS::mousePressEvent(QMouseEvent *event)
-//{ 
-//	if (event->buttons() == Qt::LeftButton)
-//	{
-//		
-//	}
-//}
+
+
+
+
+void heimdall_VS::alarm()
+{
+
+
+
+
+}
 
 // Funktion som skapar och visar datum och tid
 void heimdall_VS::showTime()
@@ -66,6 +72,25 @@ void heimdall_VS::showTime()
 	QString dateString = date.toString("ddMMyy hh:mm:ss");
 	ui.labelDateTime->setText(dateString);
 	ui.labelDateTime_2->setText(dateString);
+}
+
+void heimdall_VS::on_pushSelectROI_clicked()
+
+{
+
+	//heimdall_VS::heimdall_VS()
+	//{
+	//	delete ui;
+	//}
+
+	//void heimdall_VS::mousePressEvent(QMouseEvent *event)
+	//{ 
+	//	if (event->buttons() == Qt::LeftButton)
+	//	{
+	//		
+	//	}
+	//}
+
 }
 
 // Startknappen
@@ -77,7 +102,7 @@ void heimdall_VS::on_pushStart_clicked()
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
 
-	if (ui.inputPnr->hasAcceptableInput() && 
+	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
 		ui.inputMinHR->hasAcceptableInput() &&
 		ui.inputMaxRR->hasAcceptableInput() &&
@@ -103,9 +128,20 @@ void heimdall_VS::on_pushStart_clicked()
 		msgBoxError.setInformativeText("Please make sure to type in the ID-number YYMMDD-XXXX, and fill in all empty boxes.");
 		msgBoxError.exec();
 	}
-	
 
-	
+
+
 }
+
+
+
+//Lägg till kod från team andning
+
+
+
+
+
+
+
 
 
