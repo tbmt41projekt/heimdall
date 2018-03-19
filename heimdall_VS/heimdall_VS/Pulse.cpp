@@ -7,10 +7,12 @@ using namespace std;
 
 //__________calculate()___________________________________________________________________________
 
-float Pulse::calculate()
+int Pulse::calculate() //ANVÄNDS FÖR GUI, endast ett värde
 {
-	return 0.0f;
+	int value = 17;
+	return value;
 }
+
 
 /*
 

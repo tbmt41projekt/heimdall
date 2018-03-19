@@ -7,9 +7,10 @@ using namespace std;
 
 //__________calculate()___________________________________________________________________________
 
-float Respiration::calculate()
+int Respiration::calculate()
 {
-	return 0.0f;
+	int respRate = 25;
+	return respRate;
 }
 
 /*

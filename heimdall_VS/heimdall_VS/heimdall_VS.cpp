@@ -1,8 +1,6 @@
 #include "heimdall_VS.h"
 
 
-
-
 heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -28,18 +26,15 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_4->setAutoFillBackground(true);
 	ui.frame_4->setPalette(pal);
 
-	//skriv in grejer
-
-
-
+	
 	//Startruta
 	ui.frame_2->setVisible(false);
 	ui.frame_3->setVisible(false);
 	ui.frame_4->setVisible(false);
 
-	//Sätter tillåtna inputvärden för textrutorna
 
-	/*QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
+	////Sätter tillåtna inputvärden för textrutorna
+	QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
 	QValidator *validatorPnr = new QRegExpValidator(rxPnr);
 	ui.inputPnr->setValidator(validatorPnr);
 
@@ -48,20 +43,12 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputMaxHR->setValidator(validatorMaxMin);
 	ui.inputMinHR->setValidator(validatorMaxMin);
 	ui.inputMaxRR->setValidator(validatorMaxMin);
-	ui.inputMinRR->setValidator(validatorMaxMin);*/
-
+	ui.inputMinRR->setValidator(validatorMaxMin);
 }
 
-
-
-
-
-
+// Larmfunktionen
 void heimdall_VS::alarm()
 {
-
-
-
 
 }
 
@@ -75,21 +62,9 @@ void heimdall_VS::showTime()
 }
 
 void heimdall_VS::on_pushSelectROI_clicked()
-
 {
 
-	//heimdall_VS::heimdall_VS()
-	//{
-	//	delete ui;
-	//}
 
-	//void heimdall_VS::mousePressEvent(QMouseEvent *event)
-	//{ 
-	//	if (event->buttons() == Qt::LeftButton)
-	//	{
-	//		
-	//	}
-	//}
 
 }
 
@@ -102,11 +77,13 @@ void heimdall_VS::on_pushStart_clicked()
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
 
-	if (ui.inputPnr->hasAcceptableInput() &&
+	if (ui.inputPnr->hasAcceptableInput()/* &&
 		ui.inputMaxHR->hasAcceptableInput() &&
 		ui.inputMinHR->hasAcceptableInput() &&
 		ui.inputMaxRR->hasAcceptableInput() &&
-		ui.inputMinRR->hasAcceptableInput())
+		ui.inputMinRR->hasAcceptableInput() &&
+		maxHR > minHR && 
+		maxRR > minRR*/)
 	{
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
@@ -118,6 +95,11 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelMinHR_2->setText(minHR);
 		ui.labelMaxRR_2->setText(maxRR);
 		ui.labelMinRR_2->setText(minRR);
+		
+		
+		getValues();
+
+
 	}
 	else
 	{
@@ -125,14 +107,27 @@ void heimdall_VS::on_pushStart_clicked()
 		msgBoxError.setIcon(QMessageBox::Warning);
 		msgBoxError.setWindowTitle("Error message");
 		msgBoxError.setText("Not valid ID-number and/or input values.");
-		msgBoxError.setInformativeText("Please make sure to type in the ID-number YYMMDD-XXXX, and fill in all empty boxes.");
+		msgBoxError.setInformativeText("Please make sure to type in the ID-number YYMMDD-XXXX, and that your intervals are correct.");
 		msgBoxError.exec();
 	}
 
-
-
 }
 
+void heimdall_VS::getValues()
+{
+	//QFont numFont ("Arial", 5, QFont::Bold);
+	//ui.HRNumber->setFont(numFont);
+	//ui.RRNumber->setFont(numFont);
+	
+	Pulse pulse;
+	QString pulseString = QString::number(pulse.calculate());
+	ui.HRNumber->setText(pulseString);
+
+	Respiration respiration;
+	QString respString = QString::number(respiration.calculate());
+	ui.RRNumber->setText(respString);
+
+}
 
 
 //Lägg till kod från team andning

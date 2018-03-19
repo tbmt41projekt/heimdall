@@ -11,7 +11,8 @@ public:
 	Pulse() = default;
 	~Pulse() = default;
 
-	float calculate();
+	int calculate();
+
 
 private:
 	/*

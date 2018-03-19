@@ -11,7 +11,7 @@ public:
 	Respiration() = default;
 	~Respiration() = default;
 
-	float calculate();
+	int calculate();
 	
 private:
 	/*

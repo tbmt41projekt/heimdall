@@ -13,20 +13,21 @@
 #include <QValidator>
 #include <QRegExp>
 #include <Qt>
-#include "ui_heimdall_VS.h"
-#include <QPushButton>
+#include <QtCore>
+#include <QtGui>
+#include <QFont>
 #include <opencv2\opencv.hpp>
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
 #include <opencv\cv.h>
 #include <iostream>
-#include <QtCore>
-#include <QtGui>
 
 #include <stdint.h>
 #include <stdio.h>
-
+#include "ui_heimdall_VS.h"
+#include "Pulse.h"
+#include "Respiration.h"
 using namespace cv;
 
 
@@ -46,14 +47,12 @@ private slots:
 	//heimdall_VS();
 
 	void showTime();
-
-	//protected:
-//	virtual void mousePressEvent(QMouseEvent *);
-	
 	void on_pushSelectROI_clicked();
+	void getValues();
 	void alarm();
 
-	//heimdall_VS();
+	
+
 
 
 };

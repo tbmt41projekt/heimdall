@@ -128,10 +128,41 @@ public:
 "font: 75 12pt \"MS Shell Dlg 2\";"));
         HRNumber = new QLabel(frame_2);
         HRNumber->setObjectName(QStringLiteral("HRNumber"));
-        HRNumber->setGeometry(QRect(50, 170, 121, 61));
+        HRNumber->setEnabled(true);
+        HRNumber->setGeometry(QRect(50, 170, 120, 61));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(1);
+        sizePolicy.setVerticalStretch(1);
+        sizePolicy.setHeightForWidth(HRNumber->sizePolicy().hasHeightForWidth());
+        HRNumber->setSizePolicy(sizePolicy);
+        HRNumber->setMinimumSize(QSize(120, 61));
+        HRNumber->setSizeIncrement(QSize(0, 0));
+        HRNumber->setBaseSize(QSize(0, 0));
+        QFont font1;
+        font1.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font1.setPointSize(36);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
+        HRNumber->setFont(font1);
+        HRNumber->setFocusPolicy(Qt::NoFocus);
+        HRNumber->setContextMenuPolicy(Qt::NoContextMenu);
+        HRNumber->setText(QLatin1String("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:36pt; font-weight:72; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:36px; margin-bottom:36px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt;\">80</span></p></body></html>"));
+        HRNumber->setTextFormat(Qt::AutoText);
+        HRNumber->setScaledContents(false);
+        HRNumber->setAlignment(Qt::AlignCenter);
+        HRNumber->setMargin(0);
+        HRNumber->setIndent(-1);
         RRNumber = new QLabel(frame_2);
         RRNumber->setObjectName(QStringLiteral("RRNumber"));
         RRNumber->setGeometry(QRect(50, 280, 121, 61));
+        RRNumber->setFont(font1);
+        RRNumber->setTextFormat(Qt::RichText);
+        RRNumber->setAlignment(Qt::AlignCenter);
         MinHR = new QLabel(frame_2);
         MinHR->setObjectName(QStringLiteral("MinHR"));
         MinHR->setGeometry(QRect(40, 230, 41, 21));
@@ -172,6 +203,7 @@ public:
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(550, 400, 501, 371));
+        frame_3->setFont(font);
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
         groupBox_2 = new QGroupBox(frame_3);
@@ -353,7 +385,6 @@ public:
         heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
         HeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
         RespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
-        HRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:400;\">120</span></p></body></html>", 0));
         RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", 0));
         MinHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
         MinRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
