@@ -7,11 +7,12 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputPnr->setFocus();
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
 
-	//Skriver ut dagens datum och klockslag, måste fixas till med rätt format
-	QDateTime date = QDateTime::currentDateTime();
-	QString dateString = date.toString("ddMMyy hh:mm:ss");
-	ui.labelDateTime->setText(dateString);
-	ui.labelDateTime_2->setText(dateString);
+	//Skapar en timer så att klockan rullar
+	QTimer *timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+	timer->start();
+	
+	
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
 	pal.setColor(QPalette::Background, Qt::white);
@@ -58,6 +59,16 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 //	}
 //}
 
+// Funktion som skapar och visar datum och tid
+void heimdall_VS::showTime()
+{
+	QDateTime date = QDateTime::currentDateTime();
+	QString dateString = date.toString("ddMMyy hh:mm:ss");
+	ui.labelDateTime->setText(dateString);
+	ui.labelDateTime_2->setText(dateString);
+}
+
+// Startknappen
 void heimdall_VS::on_pushStart_clicked()
 {
 	QString pnr = ui.inputPnr->text();
@@ -89,7 +100,7 @@ void heimdall_VS::on_pushStart_clicked()
 		msgBoxError.setIcon(QMessageBox::Warning);
 		msgBoxError.setWindowTitle("Error message");
 		msgBoxError.setText("Not valid ID-number and/or input values.");
-		msgBoxError.setInformativeText("Please make sure to type the ID-number as YYMMDD-XXXX, and fill in all empty boxes.");
+		msgBoxError.setInformativeText("Please make sure to type in the ID-number YYMMDD-XXXX, and fill in all empty boxes.");
 		msgBoxError.exec();
 	}
 	

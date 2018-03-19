@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QDateTime>
+#include <QTimer>
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QPushButton>
@@ -30,6 +31,8 @@ private slots:
 	void on_pushStart_clicked();
 	//heimdall_VS();
 
-//protected:
+	void showTime();
+
+	//protected:
 //	virtual void mousePressEvent(QMouseEvent *);
 };
