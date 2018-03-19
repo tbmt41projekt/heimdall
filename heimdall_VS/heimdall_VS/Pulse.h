@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
+#include <iostream>
 #include <opencv2\opencv.hpp>
+#include "filt.h"
 
 //Pulse-klassen är den klass som är ansvarig för att beräkna pulsen.
 //Tanken är att den ska ta in en videosekvens, bearbeta den och sedan returnera ett uppdaterat
@@ -14,7 +16,11 @@ public:
 
 	float calculate(std::vector<cv::Mat> pulseFrames);
 	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
 	std::vector<float> getMeanValues(std::vector<cv::Mat> greenFrames);
+	std::vector<float> bandpassFilter(std::vector<float> realValues);
+	float getPulse(std::vector<float> filteredValues);
+
 
 private:
 	/*

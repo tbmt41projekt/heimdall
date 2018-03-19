@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="DeviceEnumerator.cpp" />
+    <ClCompile Include="filt.cpp" />
     <ClCompile Include="heimdall_VS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pulse.cpp" />
@@ -130,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="filt.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="Respiration.h" />
     <ClInclude Include="DeviceEnumerator.h" />

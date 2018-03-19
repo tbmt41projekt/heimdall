@@ -98,7 +98,9 @@ void Engine::calcPulse()
 			pulseFrames.push_back(framesVector.at(i));
 		}
 
-		cout << pulse.calculate(pulseFrames) << endl;
+		float test = pulse.calculate(pulseFrames);
+		//cout << test << endl;
+		waitKey(2000);
 	}
 }
 
