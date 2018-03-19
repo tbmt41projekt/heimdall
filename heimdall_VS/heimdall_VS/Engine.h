@@ -25,6 +25,7 @@ public:
 		fps{ 10 },							//Ändra här om ni vill ändra fps
 		timeStored{ 10 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
 		isProgramRunning{ true },
+		readyToCalc{false},
 		videoQueue{ std::vector<cv::Mat>(fps * timeStored) }
 	{}
 
@@ -43,6 +44,7 @@ private:
 	int fps;
 	int timeStored;
 	bool isProgramRunning;
+	bool readyToCalc;
 	std::vector<cv::Mat> videoQueue;
 };
 

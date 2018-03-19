@@ -80,10 +80,15 @@ int Engine::run()
 
 void Engine::calcPulse()
 {
+	while (!readyToCalc)
+	{
+	}
+
 	while (isProgramRunning)
 	{
 		//Här kallar vi på pulse.calculate()
 		//Den returnerar det beräknade värdet på pulsen som en float
+		cout << pulse.calculate() << endl;
 	}
 }
 
@@ -98,6 +103,10 @@ void Engine::calcPulse()
 
 void Engine::calcResp()
 {
+	while (!readyToCalc)
+	{
+	}
+
 	while (isProgramRunning)
 	{
 		//Här kallar vi på resp.calculate()
@@ -126,6 +135,7 @@ void Engine::runCamera()
 			cout << "Cam could not be opened" << endl;
 		}
 
+		int i = 0;
 		while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
 		{
 			Mat frame;
@@ -135,6 +145,15 @@ void Engine::runCamera()
 			{
 				cout << "Video over" << endl;
 				break;
+			}
+
+			if (i < timeStored*fps)
+			{
+				i++;
+				if (i == timeStored*fps)
+				{
+					readyToCalc = true;
+				}
 			}
 
 			//Tar bort sista framen i videoQueue och lägger till den nya framen längst fram.
