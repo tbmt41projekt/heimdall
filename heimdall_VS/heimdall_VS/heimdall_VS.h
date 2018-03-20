@@ -23,7 +23,6 @@
 #include <iostream>
 #include <QtCore>
 #include <QtGui>
-
 #include <stdint.h>
 #include <stdio.h>
 
