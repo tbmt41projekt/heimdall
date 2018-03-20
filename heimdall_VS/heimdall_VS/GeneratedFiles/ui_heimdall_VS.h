@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -49,9 +48,8 @@ public:
     QLabel *labelMaxRR_2;
     QLabel *labellowHR;
     QLabel *labellowRR;
-    QGroupBox *groupBox_2;
-    QLabel *label_30;
-    QLabel *label_31;
+    QLabel *labelhighHR;
+    QLabel *labelhighRR;
     QFrame *frame_1;
     QPushButton *pushSelectROI;
     QPushButton *pushStart;
@@ -75,7 +73,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(1123, 900);
+        heimdall_VSClass->resize(1090, 411);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -90,7 +88,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(560, 10, 501, 371));
+        frame_2->setGeometry(QRect(560, 0, 501, 371));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -117,7 +115,13 @@ public:
         HRNumber->setMinimumSize(QSize(120, 61));
         HRNumber->setSizeIncrement(QSize(0, 0));
         HRNumber->setBaseSize(QSize(0, 0));
-        HRNumber->setFont(font);
+        QFont font1;
+        font1.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font1.setPointSize(12);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(50);
+        HRNumber->setFont(font1);
         HRNumber->setFocusPolicy(Qt::NoFocus);
         HRNumber->setContextMenuPolicy(Qt::NoContextMenu);
         HRNumber->setText(QLatin1String("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -133,7 +137,7 @@ public:
         RRNumber = new QLabel(frame_2);
         RRNumber->setObjectName(QStringLiteral("RRNumber"));
         RRNumber->setGeometry(QRect(50, 280, 121, 61));
-        RRNumber->setFont(font);
+        RRNumber->setFont(font1);
         RRNumber->setTextFormat(Qt::RichText);
         RRNumber->setAlignment(Qt::AlignCenter);
         MinHR = new QLabel(frame_2);
@@ -179,29 +183,28 @@ public:
         labelMaxRR_2->setGeometry(QRect(160, 340, 41, 21));
         labellowHR = new QLabel(frame_2);
         labellowHR->setObjectName(QStringLiteral("labellowHR"));
-        labellowHR->setGeometry(QRect(270, 130, 191, 111));
+        labellowHR->setGeometry(QRect(270, 160, 191, 111));
         labellowHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
         labellowRR = new QLabel(frame_2);
         labellowRR->setObjectName(QStringLiteral("labellowRR"));
-        labellowRR->setGeometry(QRect(260, 240, 221, 111));
+        labellowRR->setGeometry(QRect(250, 250, 221, 111));
         labellowRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
-        groupBox_2 = new QGroupBox(frame_2);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(230, 60, 261, 241));
-        label_30 = new QLabel(groupBox_2);
-        label_30->setObjectName(QStringLiteral("label_30"));
-        label_30->setGeometry(QRect(50, 0, 151, 111));
-        label_30->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);\n"
-"font: 16pt \"MS Shell Dlg 2\";"));
-        label_31 = new QLabel(groupBox_2);
-        label_31->setObjectName(QStringLiteral("label_31"));
-        label_31->setGeometry(QRect(10, 100, 251, 61));
-        label_31->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);\n"
-"font: 16pt \"MS Shell Dlg 2\";"));
+        labelhighHR = new QLabel(frame_2);
+        labelhighHR->setObjectName(QStringLiteral("labelhighHR"));
+        labelhighHR->setGeometry(QRect(270, 160, 191, 111));
+        labelhighHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
+        labelhighRR = new QLabel(frame_2);
+        labelhighRR->setObjectName(QStringLiteral("labelhighRR"));
+        labelhighRR->setGeometry(QRect(250, 250, 221, 111));
+        labelhighRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
         frame_1 = new QFrame(centralWidget);
         frame_1->setObjectName(QStringLiteral("frame_1"));
         frame_1->setGeometry(QRect(0, 0, 501, 371));
@@ -297,9 +300,8 @@ public:
         labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         labellowHR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low heart rate", 0));
         labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", 0));
-        groupBox_2->setTitle(QString());
-        label_30->setText(QApplication::translate("heimdall_VSClass", " WARNING!", 0));
-        label_31->setText(QApplication::translate("heimdall_VSClass", "LOW RESPIRATORY RATE", 0));
+        labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", 0));
+        labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", 0));
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));

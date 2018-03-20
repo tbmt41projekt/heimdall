@@ -59,8 +59,6 @@ void heimdall_VS::showTime()
 void heimdall_VS::on_pushSelectROI_clicked()
 {
 
-
-
 }
 
 // Startknappen
@@ -77,13 +75,13 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.inputMinHR->hasAcceptableInput() &&
 		ui.inputMaxRR->hasAcceptableInput() &&
 		ui.inputMinRR->hasAcceptableInput() &&
-		maxHR > minHR && 
+		maxHR > minHR &&
 		maxRR > minRR)
 	{
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
 		ui.frame_1->setVisible(false);
-		
+
 		//Flytta över inputvärden till rätt plats
 		ui.labelPnr_2->setText(pnr);
 		ui.labelMaxHR_2->setText(maxHR);
@@ -93,11 +91,15 @@ void heimdall_VS::on_pushStart_clicked()
 
 		//Hämtar värden från puls- och andningsklasserna
 		getValues();
+		ui.labellowHR->hide();
+		ui.labelhighHR->hide();
+		ui.labellowRR->hide();
+		ui.labelhighRR->hide();
 
 		QTimer *timer2 = new QTimer(this);
+		timer2->setInterval(0);
 		connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
 		timer2->start();
-		
 	}
 	else
 	{
@@ -118,7 +120,7 @@ void heimdall_VS::getValues()
 	//QFont numFont ("Arial", 5, QFont::Bold);
 	//ui.HRNumber->setFont(numFont);
 	//ui.RRNumber->setFont(numFont);
-	
+
 	/*Pulse pulse;
 	QString pulseString = QString::number(pulse.calculate());
 	ui.HRNumber->setText(pulseString);
@@ -128,29 +130,90 @@ void heimdall_VS::getValues()
 	ui.RRNumber->setText(respString);*/
 
 	//Gömmer varningstexten på frame 2
-	ui.labellowHR->hide();
+	/*ui.labellowHR->hide();
+	ui.labelhighHR->hide();
 	ui.labellowRR->hide();
-	
-	{
-		if (ui.labellowHR->isHidden())
-		{
-			
-			ui.labellowHR->show();
-		}
-		else
-		{
-			ui.labellowHR->hide();
-			
-		}
-	}
+	ui.labelhighRR->hide();*/
 
 }
 
 void heimdall_VS::updateRandomNumber()
 {
 	qsrand((unsigned)time(0));
-	ui.RRNumber->setText(QString::number(qrand() % 30));
+	ui.RRNumber->setText(QString::number(qrand() % 60));
 	ui.HRNumber->setText(QString::number(qrand() % 30));
+
+	if (ui.RRNumber->text() > ui.inputMaxRR->text() &&
+		ui.labelhighRR->isHidden())
+	{
+		ui.labelhighRR->show();
+	}
+	/*else if ((ui.RRNumber->text() > ui.inputMaxRR->text() && ui.labelhighHR->isVisible()) || 
+		(ui.RRNumber->text() < ui.inputMaxRR->text() &&	ui.labelhighHR->isHidden()))
+	{
+		
+	}*/
+	else if ((ui.RRNumber->text() < ui.inputMinRR->text()) || (ui.RRNumber->text() < ui.inputMaxRR->text()))
+	{
+		ui.labelhighRR->hide();
+	}
+	
+	/*else
+	{
+		ui.labellowRR->hide();
+		ui.labelhighRR->hide();
+	}*/
+
+
+	/*if (ui.RRNumber->text() > ui.inputMaxRR->text())
+	{
+		ui.labellowRR->hide();
+		ui.labelhighRR->show();
+
+		if (ui.HRNumber->text() > ui.inputMaxHR->text())
+		{
+			ui.labellowHR->hide();
+			ui.labelhighHR->show();
+		}
+		else if (ui.HRNumber->text() < ui.inputMinHR->text())
+		{
+			ui.labelhighHR->hide();
+			ui.labellowHR->show();
+		}
+		else
+		{
+			ui.labellowHR->hide();
+			ui.labelhighHR->hide();
+		}
+	}
+	else if (ui.RRNumber->text() < ui.inputMinRR->text())
+	{
+		ui.labelhighRR->hide();
+		ui.labellowRR->show();
+
+		if (ui.HRNumber->text() > ui.inputMaxHR->text())
+		{
+			ui.labellowHR->hide();
+			ui.labelhighHR->show();
+		}
+		else if (ui.HRNumber->text() < ui.inputMinHR->text())
+		{
+			ui.labelhighHR->hide();
+			ui.labellowHR->show();
+		}
+		else
+		{
+			ui.labellowHR->hide();
+			ui.labelhighHR->hide();
+		}
+	}
+	else
+	{
+		ui.labellowRR->hide();
+		ui.labelhighRR->hide();
+	}*/
+
+
 }
 
 
