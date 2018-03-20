@@ -22,19 +22,13 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_1->setPalette(pal);
 	ui.frame_2->setAutoFillBackground(true);
 	ui.frame_2->setPalette(pal);
-	ui.frame_3->setAutoFillBackground(true);
-	ui.frame_3->setPalette(pal);
-	ui.frame_4->setAutoFillBackground(true);
-	ui.frame_4->setPalette(pal);
 
-	
+
 	//Startruta
 	ui.frame_2->setVisible(false);
-	ui.frame_3->setVisible(false);
-	ui.frame_4->setVisible(false);
-
 
 	////Sätter tillåtna inputvärden för textrutorna
+
 	QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
 	QValidator *validatorPnr = new QRegExpValidator(rxPnr);
 	ui.inputPnr->setValidator(validatorPnr);
@@ -89,7 +83,7 @@ void heimdall_VS::on_pushStart_clicked()
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
 		ui.frame_1->setVisible(false);
-
+		
 		//Flytta över inputvärden till rätt plats
 		ui.labelPnr_2->setText(pnr);
 		ui.labelMaxHR_2->setText(maxHR);
@@ -98,7 +92,7 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelMinRR_2->setText(minRR);
 
 		//Hämtar värden från puls- och andningsklasserna
-		//getValues();
+		getValues();
 
 		QTimer *timer2 = new QTimer(this);
 		connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
@@ -132,6 +126,23 @@ void heimdall_VS::getValues()
 	Respiration respiration;
 	QString respString = QString::number(respiration.calculate());
 	ui.RRNumber->setText(respString);*/
+
+	//Gömmer varningstexten på frame 2
+	ui.labellowHR->hide();
+	ui.labellowRR->hide();
+	
+	{
+		if (ui.labellowHR->isHidden())
+		{
+			
+			ui.labellowHR->show();
+		}
+		else
+		{
+			ui.labellowHR->hide();
+			
+		}
+	}
 
 }
 

@@ -24,6 +24,8 @@
 #include <iostream>
 #include <random>
 
+#include <QtCore>
+#include <QtGui>
 #include <stdint.h>
 #include <stdio.h>
 #include "ui_heimdall_VS.h"
