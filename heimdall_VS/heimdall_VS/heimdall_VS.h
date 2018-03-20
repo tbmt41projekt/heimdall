@@ -22,6 +22,7 @@
 #include <opencv2\imgproc.hpp>
 #include <opencv\cv.h>
 #include <iostream>
+#include <random>
 
 #include <stdint.h>
 #include <stdio.h>
@@ -49,6 +50,7 @@ private slots:
 	void showTime();
 	void on_pushSelectROI_clicked();
 	void getValues();
+	void updateRandomNumber();
 	void alarm();
 
 	

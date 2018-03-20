@@ -7,6 +7,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.setupUi(this);
 	ui.inputPnr->setFocus();
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
+	srand(time(NULL)); //SKA BORT, ENDAST FÖR TEST AV LARM
 
 	//Skapar en timer så att klockan rullar
 	QTimer *timer = new QTimer(this);
@@ -77,13 +78,13 @@ void heimdall_VS::on_pushStart_clicked()
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
 
-	if (ui.inputPnr->hasAcceptableInput()/* &&
+	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
 		ui.inputMinHR->hasAcceptableInput() &&
 		ui.inputMaxRR->hasAcceptableInput() &&
 		ui.inputMinRR->hasAcceptableInput() &&
 		maxHR > minHR && 
-		maxRR > minRR*/)
+		maxRR > minRR)
 	{
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
@@ -95,11 +96,14 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelMinHR_2->setText(minHR);
 		ui.labelMaxRR_2->setText(maxRR);
 		ui.labelMinRR_2->setText(minRR);
-		
-		
-		getValues();
 
+		//Hämtar värden från puls- och andningsklasserna
+		//getValues();
 
+		QTimer *timer2 = new QTimer(this);
+		connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
+		timer2->start();
+		
 	}
 	else
 	{
@@ -113,24 +117,31 @@ void heimdall_VS::on_pushStart_clicked()
 
 }
 
+//Funktion som hämtar värden från puls- och andningsklasserna
 void heimdall_VS::getValues()
 {
+	//De tre raderna nedan funkar ej, men visa ex på vad som borde funka
 	//QFont numFont ("Arial", 5, QFont::Bold);
 	//ui.HRNumber->setFont(numFont);
 	//ui.RRNumber->setFont(numFont);
 	
-	Pulse pulse;
+	/*Pulse pulse;
 	QString pulseString = QString::number(pulse.calculate());
 	ui.HRNumber->setText(pulseString);
 
 	Respiration respiration;
 	QString respString = QString::number(respiration.calculate());
-	ui.RRNumber->setText(respString);
+	ui.RRNumber->setText(respString);*/
 
 }
 
+void heimdall_VS::updateRandomNumber()
+{
+	qsrand((unsigned)time(0));
+	ui.RRNumber->setText(QString::number(qrand() % 30));
+	ui.HRNumber->setText(QString::number(qrand() % 30));
+}
 
-//Lägg till kod från team andning
 
 
 

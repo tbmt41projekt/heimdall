@@ -9,6 +9,7 @@ using namespace std;
 
 int Pulse::calculate() //ANVÄNDS FÖR GUI, endast ett värde
 {
+	
 	int value = 17;
 	return value;
 }
