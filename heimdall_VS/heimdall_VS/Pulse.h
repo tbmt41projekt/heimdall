@@ -2,6 +2,9 @@
 #include <vector>
 #include <iostream>
 #include <opencv2\opencv.hpp>
+#include "opencv2/core/core.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
 #include "filt.h"
 
 //Pulse-klassen är den klass som är ansvarig för att beräkna pulsen.
@@ -11,18 +14,24 @@
 class Pulse
 {
 public:
-	Pulse() = default;
 	~Pulse() = default;
+	Pulse()
+		:
+		time{3}
+	{}
 
-	float calculate(std::vector<cv::Mat> pulseFrames);
-	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
-	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
-	std::vector<float> getMeanValues(std::vector<cv::Mat> greenFrames);
-	std::vector<float> bandpassFilter(std::vector<float> realValues);
-	float getPulse(std::vector<float> filteredValues);
+	int time;
+
+	float calculate(std::vector<cv::Mat> pulseFrames, float fps);
+
 
 
 private:
+	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
+	cv::Mat getMeanValues(std::vector<cv::Mat> greenFrames);
+	cv::Mat bandpassFilter(cv::Mat realValues, float fps);
+	float getPulse(std::vector<float> filteredValues, float fps);
 	/*
 	Här tänker jag att vi skapar funktioner för dom olika momenten. Lite osäker på vad dom olika
 	typerna heter men ni kanske förstår vad jag menar med exemplen nedan.

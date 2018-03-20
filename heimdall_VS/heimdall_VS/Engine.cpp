@@ -80,12 +80,11 @@ int Engine::run()
 
 void Engine::calcPulse()
 {
-	while (!readyToCalc)
-	{
-	}
-
 	while (isProgramRunning)
 	{
+		while (!readyToCalc)
+		{
+		}
 		//Här kallar vi på pulse.calculate()
 		//Den returnerar det beräknade värdet på pulsen som en float
 
@@ -93,14 +92,14 @@ void Engine::calcPulse()
 		//vector<Mat>::const_iterator last = framesVector.begin() + 20; //Antalet frames som väljs är 20 för tillfället
 		vector<Mat> pulseFrames;
 
-		for (int i = 0; i < 20; i++) //20 frames är valt för tillfället
+		for (int i = 0; i < (int)fps * pulse.time; i++) //fps * antalet sekunder
 		{
 			pulseFrames.push_back(framesVector.at(i));
 		}
 
-		float test = pulse.calculate(pulseFrames);
+		float test = pulse.calculate(pulseFrames, fps);
 		//cout << test << endl;
-		waitKey(2000);
+		waitKey(1000 * pulse.time); //millisekunder
 	}
 }
 
@@ -121,6 +120,9 @@ void Engine::calcResp()
 
 	while (isProgramRunning)
 	{
+		while (!readyToCalc)
+		{
+		}
 		//Här kallar vi på resp.calculate()
 		//Den returnerar det beräknade värdet på andningen som en float
 	}
@@ -142,12 +144,14 @@ void Engine::runCamera()
 		VideoCapture cap(0);
 		namedWindow("Video");
 
+		int i = 0;
 		if (!cap.isOpened())
 		{
 			cout << "Cam could not be opened" << endl;
+			readyToCalc = false;
 		}
 
-		int i = 0;
+		
 		while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
 		{
 			Mat frame;

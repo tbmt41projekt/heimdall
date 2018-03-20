@@ -22,7 +22,7 @@ public:
 		windowPtr{ new heimdall_VS() },
 		pulse{ Pulse() },
 		resp{ Respiration() },
-		fps{ 10 },							//Ändra här om ni vill ändra fps
+		fps{ 10.0f },							//Ändra här om ni vill ändra fps
 		timeStored{ 10 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
 		isProgramRunning{ true },
 		readyToCalc{false},
@@ -41,7 +41,7 @@ private:
 	Pulse pulse;
 	Respiration resp;
 
-	int fps;
+	float fps;
 	int timeStored;
 	bool isProgramRunning;
 	bool readyToCalc;

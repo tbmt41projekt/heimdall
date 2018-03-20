@@ -9,12 +9,12 @@ using namespace cv;
 
 //__________calculate()___________________________________________________________________________
 
-float Pulse::calculate(vector<Mat> pulseFrames)
+float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
 	vector<Mat> greenFrames = getGreenFrames(pulseFrames);
 	vector<Mat> normFrames = normalizeFrames(greenFrames);
-	vector<float> meanValues = getMeanValues(normFrames);
-	vector<float> bpFilteredValues = bandpassFilter(meanValues);
+	Mat meanValues = getMeanValues(normFrames);
+	vector<float> bpFilteredValues = bandpassFilter(meanValues, fps);
 
 	//ofstream myfile1;
 	//myfile1.open("example.txt");
@@ -32,7 +32,7 @@ float Pulse::calculate(vector<Mat> pulseFrames)
 	//}
 	//myfile.close();
 
-	return getPulse(bpFilteredValues);
+	return getPulse(bpFilteredValues, fps);
 }
 
 vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
@@ -61,33 +61,75 @@ vector<Mat> Pulse::normalizeFrames(vector<Mat> greenFrames)
 	return normalizedFrames;
 }
 
-vector<float> Pulse::getMeanValues(vector<Mat> greenFrames)
+Mat Pulse::getMeanValues(vector<Mat> greenFrames)
 {
-	vector<float> meanValues;
-
+	Mat meanValues(greenFrames.size(), 1, CV_32F);
+	int i = 0;
 	for (Mat currentFrame : greenFrames)
 	{
-		meanValues.push_back(mean(currentFrame).val[0]);
+		//meanValues.push_back(mean(currentFrame).val[0]);
+		meanValues.at<float>(i++, 0) = (float)mean(currentFrame).val[0];
 	}
-
 	return meanValues;
 }
 
-vector<float> Pulse::bandpassFilter(vector<float> realValues)
+
+Mat Pulse::bandpassFilter(cv::Mat realValues, float fps)
 {
 	vector<float> bpValuesReal;
 
-	Filter bpFilter(BPF, realValues.size(), 10, 0.6, 2.8);
+	//dft(realArray, dftArray, DFT_ROWS | DFT_COMPLEX_OUTPUT);
 
-	for (float value : realValues)
+
+	Mat originalComplex[2] = { realValues, Mat::zeros(realValues.size(), CV_32F) };
+
+	Mat dftReady;
+
+	merge(originalComplex, 2, dftReady);
+
+	Mat dftOfOriginal;
+
+	dft(dftReady, dftOfOriginal, DFT_COMPLEX_OUTPUT);
+
+	//HIT KOM VI IDAG!! nästa steg är att förstå sig på hur fouriertransform fungerar 
+	ofstream myfile1;
+	myfile1.open("example.txt");
+	for (float value : bpValuesReal)
 	{
-		bpValuesReal.push_back((float)bpFilter.do_sample((double)value));
+		myfile1 << value << " ";
 	}
 
-	return bpValuesReal;
+	for (int i = 0; i < dftOfOriginal.rows + 1; i++)
+	{
+		for (int j = 0; j < dftOfOriginal.cols + 1; j++)
+		{
+			myfile1 << dftOfOriginal.at<float>(i, j) << " ";
+		}
+		myfile1 << endl;
+	}
+	myfile1.close();
+
+	//Filter bpFilter(BPF, realValues.rows(), fps, 0.6, 2.8);
+
+	//for (float value : realValues)
+	//{
+	//	bpValuesReal.push_back((float)bpFilter.do_sample((double)value));
+	//}
+
+	//ofstream myfile1;
+	//myfile1.open("example.txt");
+	//for (float value : bpValuesReal)
+	//{
+	//	myfile1 << value << " ";
+	//}
+	//myfile1.close();
+	return dftOfOriginal;
 }
 
-float Pulse::getPulse(vector<float> filteredValues)
+
+
+
+float Pulse::getPulse(vector<float> filteredValues, float fps)
 {
 	const int NOISE = -1;               // Level up to and including which peaks will be excluded
 	int wideStart = -1;                 // The start of any current wide peak
@@ -129,6 +171,13 @@ float Pulse::getPulse(vector<float> filteredValues)
 			grad = 1;
 		}
 	}
+	ofstream myfile1;
+	myfile1.open("example1.txt");
+	for (float value : peakPosVector)
+	{
+		myfile1 << value << " ";
+	}
+	myfile1.close();
 
 	vector<float> peakPeriodTime;
 
@@ -139,8 +188,7 @@ float Pulse::getPulse(vector<float> filteredValues)
 			peakPeriodTime.push_back(peakPosVector.at(i) - peakPosVector.at(i - 1));
 		}
 
-		cout << mean(peakPeriodTime).val[0] << endl;
-		return (1.0f / mean(peakPeriodTime).val[0]) * (1.0f / 10.0f) * 60.0f;
+		return (fps / mean(peakPeriodTime).val[0]) * 60.0f;
 	}
 	else
 	{
