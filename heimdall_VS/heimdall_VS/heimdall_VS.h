@@ -23,20 +23,15 @@
 #include <opencv\cv.h>
 #include <iostream>
 #include <random>
-#include <QtCore>
-#include <QtGui>
 #include <QPixmap>
+#include <QImage>
 #include <QApplication>
 #include <stdint.h>
 #include <stdio.h>
 #include "ui_heimdall_VS.h"
 #include "Pulse.h"
 #include "Respiration.h"
-#include <opencv2\opencv.hpp>
-#include <opencv2\objdetect.hpp>
-#include <opencv2\highgui.hpp>
-#include <opencv2\imgproc.hpp>
-#include <opencv\cv.h>
+
 using namespace cv;
 
 

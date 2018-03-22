@@ -16,9 +16,9 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
 	timer->start();
 	
-	//Skapar en timer för randomupdatenumber
+	//Skapar en timer för updaterandomnumber, tillfällig funktion
 	QTimer *timer2 = new QTimer(this);
-	timer2->setInterval(1000);
+	timer2->setInterval(2000);
 	connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
 	timer2->start();
 
@@ -105,9 +105,15 @@ void heimdall_VS::on_pushStart_clicked()
 
 		//Hur man kan visa en bild på en label. 
 		//Ej klart men något liknande kan göras med film
-		//QPixmap babypic(":/babypng.png");
-		//ui.labelvideo->setPixmap(babypic);
-		//ui.labelvideo->show();
+		/*QPixmap babypic("C:/My documents/babypng.png");
+		ui.labelvideo->setPixmap(babypic);
+		ui.labelvideo->show();*/
+
+		/*cv::Mat babypic = cv::imread("\\ad.liu.se\home\linab920\Desktop\Kandidatprojekt\heimdall\babypng.png");
+		cvtColor(babypic, babypic, CV_BGR2RGB);
+		QImage Image(babypic.data, babypic.cols, babypic.rows, babypic.step, QImage::Format_RGB888);
+		ui.labelvideo->resize(Image.size());
+		ui.labelvideo->setPixmap(QPixmap::fromImage(Image));*/
 	}
 	else
 	{
@@ -142,86 +148,95 @@ void heimdall_VS::getValues()
 	ui.labelhighHR->hide();
 	ui.labellowRR->hide();
 	ui.labelhighRR->hide();*/
-
 }
 
 void heimdall_VS::updateRandomNumber()
 {
 	qsrand((unsigned)time(0));
-	ui.RRNumber->setText(QString::number(qrand() % 60));
-	ui.HRNumber->setText(QString::number(qrand() % 30));
+	//Gör om alla strings till ints för enklare jämförelse
+	//Detta behöver fixas för inputs från puls- och andningsklasser
+	int RRNum = qrand() % 30; //värde för andningsfrekvens
+	int HRNum = qrand() % 30; //värde för hjärtfrekvens
+	ui.RRNumber->setText(QString::number(RRNum));
+	ui.HRNumber->setText(QString::number(HRNum));
 
-	if (ui.RRNumber->text() > ui.labelMaxRR_2->text() &&
-		ui.labelhighRR->isHidden())
-	{
-		ui.labelhighRR->show();
-	}
-	/*else if ((ui.RRNumber->text() > ui.inputMaxRR->text() && ui.labelhighHR->isVisible()) || 
-		(ui.RRNumber->text() < ui.inputMaxRR->text() &&	ui.labelhighHR->isHidden()))
-	{
-		
-	}*/
-	else if ((ui.RRNumber->text() < ui.inputMinRR->text()) || (ui.RRNumber->text() < ui.inputMaxRR->text()))
-	{
-		ui.labelhighRR->hide();
-	}
+//--------Koden nedan ska in i larmfunktionen-----------//
+
+	//Gör om alla strings till ints för enklare jämförelse
+	QString MaxRRstring = ui.labelMaxRR_2->text();
+	QString MaxHRstring = ui.labelMaxHR_2->text();
+	QString MinRRstring = ui.labelMinRR_2->text();
+	QString MinHRstring = ui.labelMinHR_2->text();
+	int MaxRR = MaxRRstring.toInt();
+	int MaxHR = MaxHRstring.toInt();
+	int MinRR = MinRRstring.toInt();
+	int MinHR = MinHRstring.toInt();
+
+	//Visar larmtext om värdet går utanför intervallen - fungerar!
 	
-	/*else
+	if (HRNum > MaxHR)
 	{
-		ui.labellowRR->hide();
-		ui.labelhighRR->hide();
-	}*/
+		ui.labelhighHR->show();
+		ui.labellowHR->hide();
 
-
-	/*if (ui.RRNumber->text() > ui.inputMaxRR->text())
-	{
-		ui.labellowRR->hide();
-		ui.labelhighRR->show();
-
-		if (ui.HRNumber->text() > ui.inputMaxHR->text())
+		if (RRNum > MaxRR)
 		{
-			ui.labellowHR->hide();
-			ui.labelhighHR->show();
+			ui.labelhighRR->show();
+			ui.labellowRR->hide();
 		}
-		else if (ui.HRNumber->text() < ui.inputMinHR->text())
+		else if (RRNum < MinRR)
 		{
-			ui.labelhighHR->hide();
-			ui.labellowHR->show();
+			ui.labellowRR->show();
+			ui.labelhighRR->hide();
 		}
 		else
 		{
-			ui.labellowHR->hide();
-			ui.labelhighHR->hide();
+			ui.labelhighRR->hide();
+			ui.labellowRR->hide();
 		}
 	}
-	else if (ui.RRNumber->text() < ui.inputMinRR->text())
+	else if (HRNum < MinHR)
 	{
-		ui.labelhighRR->hide();
-		ui.labellowRR->show();
+		ui.labellowHR->show();
+		ui.labelhighHR->hide();
 
-		if (ui.HRNumber->text() > ui.inputMaxHR->text())
+		if (RRNum > MaxRR)
 		{
-			ui.labellowHR->hide();
-			ui.labelhighHR->show();
+			ui.labelhighRR->show();
+			ui.labellowRR->hide();
 		}
-		else if (ui.HRNumber->text() < ui.inputMinHR->text())
+		else if (RRNum < MinRR)
 		{
-			ui.labelhighHR->hide();
-			ui.labellowHR->show();
+			ui.labellowRR->show();
+			ui.labelhighRR->hide();
 		}
 		else
 		{
-			ui.labellowHR->hide();
-			ui.labelhighHR->hide();
+			ui.labelhighRR->hide();
+			ui.labellowRR->hide();
 		}
 	}
-	else
+	else 
 	{
-		ui.labellowRR->hide();
-		ui.labelhighRR->hide();
-	}*/
+		ui.labelhighHR->hide();
+		ui.labellowHR->hide();
 
-
+		if (RRNum > MaxRR)
+		{
+			ui.labelhighRR->show();
+			ui.labellowRR->hide();
+		}
+		else if (RRNum < MinRR)
+		{
+			ui.labellowRR->show();
+			ui.labelhighRR->hide();
+		}
+		else
+		{
+			ui.labelhighRR->hide();
+			ui.labellowRR->hide();
+		}
+	}
 }
 
 
