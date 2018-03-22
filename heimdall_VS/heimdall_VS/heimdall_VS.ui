@@ -430,6 +430,19 @@ color: rgb(255, 0, 0);
       <string>Warning! High respiratory rate</string>
      </property>
     </widget>
+    <widget class="QLabel" name="labelvideo">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>20</y>
+       <width>181</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_1">
     <property name="geometry">

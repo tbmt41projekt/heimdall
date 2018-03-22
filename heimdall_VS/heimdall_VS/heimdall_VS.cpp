@@ -9,11 +9,18 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
 	srand(time(NULL)); //SKA BORT, ENDAST FÖR TEST AV LARM
 
+	
+
 	//Skapar en timer så att klockan rullar
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
 	timer->start();
-
+	
+	//Skapar en timer för randomupdatenumber
+	QTimer *timer2 = new QTimer(this);
+	timer2->setInterval(1000);
+	connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
+	timer2->start();
 
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
@@ -96,10 +103,11 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labellowRR->hide();
 		ui.labelhighRR->hide();
 
-		QTimer *timer2 = new QTimer(this);
-		timer2->setInterval(0);
-		connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
-		timer2->start();
+		//Hur man kan visa en bild på en label. 
+		//Ej klart men något liknande kan göras med film
+		//QPixmap babypic(":/babypng.png");
+		//ui.labelvideo->setPixmap(babypic);
+		//ui.labelvideo->show();
 	}
 	else
 	{
@@ -143,7 +151,7 @@ void heimdall_VS::updateRandomNumber()
 	ui.RRNumber->setText(QString::number(qrand() % 60));
 	ui.HRNumber->setText(QString::number(qrand() % 30));
 
-	if (ui.RRNumber->text() > ui.inputMaxRR->text() &&
+	if (ui.RRNumber->text() > ui.labelMaxRR_2->text() &&
 		ui.labelhighRR->isHidden())
 	{
 		ui.labelhighRR->show();

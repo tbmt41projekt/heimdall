@@ -50,6 +50,7 @@ public:
     QLabel *labellowRR;
     QLabel *labelhighHR;
     QLabel *labelhighRR;
+    QLabel *labelvideo;
     QFrame *frame_1;
     QPushButton *pushSelectROI;
     QPushButton *pushStart;
@@ -205,6 +206,9 @@ public:
         labelhighRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
+        labelvideo = new QLabel(frame_2);
+        labelvideo->setObjectName(QStringLiteral("labelvideo"));
+        labelvideo->setGeometry(QRect(280, 20, 181, 131));
         frame_1 = new QFrame(centralWidget);
         frame_1->setObjectName(QStringLiteral("frame_1"));
         frame_1->setGeometry(QRect(0, 0, 501, 371));
@@ -302,6 +306,7 @@ public:
         labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", 0));
         labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", 0));
         labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", 0));
+        labelvideo->setText(QString());
         pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
         pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
         labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
