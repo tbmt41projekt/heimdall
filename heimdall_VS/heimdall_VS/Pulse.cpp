@@ -14,7 +14,7 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 	vector<Mat> greenFrames = getGreenFrames(pulseFrames);
 	vector<Mat> normFrames = normalizeFrames(greenFrames);
 	Mat meanValues = getMeanValues(normFrames);
-	vector<float> bpFilteredValues = bandpassFilter(meanValues, fps);
+	Mat bpFilteredValues = bandpassFilter(meanValues, fps);
 
 	//ofstream myfile1;
 	//myfile1.open("example.txt");
@@ -32,7 +32,8 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 	//}
 	//myfile.close();
 
-	return getPulse(bpFilteredValues, fps);
+	//return getPulse(bpFilteredValues, fps);
+	return 0.0f;
 }
 
 vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
@@ -74,7 +75,7 @@ Mat Pulse::getMeanValues(vector<Mat> greenFrames)
 }
 
 
-Mat Pulse::bandpassFilter(cv::Mat realValues, float fps)
+Mat Pulse::bandpassFilter(Mat realValues, float fps)
 {
 	vector<float> bpValuesReal;
 
@@ -91,23 +92,74 @@ Mat Pulse::bandpassFilter(cv::Mat realValues, float fps)
 
 	dft(dftReady, dftOfOriginal, DFT_COMPLEX_OUTPUT);
 
-	//HIT KOM VI IDAG!! nästa steg är att förstå sig på hur fouriertransform fungerar 
+/*
 	ofstream myfile1;
-	myfile1.open("example.txt");
-	for (float value : bpValuesReal)
+	myfile1.open("example6.txt");*/
+	//for (int i = 0; i < dftOfOriginal.rows + 1; i++)
+	//{
+	//	for (int j = 0; j < dftOfOriginal.cols + 1; j++)
+	//	{
+	//		myfile1 << dftOfOriginal.at<float>(i, j) << " ";
+	//	}
+	//	myfile1 << endl;
+	//}
+	//myfile1.close();
+
+	Mat p1((dftOfOriginal.rows / 2) + 1, 1, CV_32F);
+	Mat p2(dftOfOriginal.rows, 1, CV_32F);
+
+	for (int i = 0; i < p2.rows; i++)
 	{
-		myfile1 << value << " ";
+		p2.at<float>(i, 0) = sqrt(powf(dftOfOriginal.at<float>(i, 0), 2) + powf(dftOfOriginal.at<float>(i, 1), 2));
 	}
 
-	for (int i = 0; i < dftOfOriginal.rows + 1; i++)
+	for (int i = 0; i < p1.rows; i++)
 	{
-		for (int j = 0; j < dftOfOriginal.cols + 1; j++)
+		p1.at<float>(i, 0) = p2.at<float>(i, 0);
+	}
+
+	for (int i = 1; i < p1.rows - 1; i++)
+	{
+		p1.at<float>(i, 0) = 2 * p1.at<float>(i, 0);
+	}
+
+	Mat frequency(p1.rows, 1, CV_32F);
+
+	for (int i = 0; i < frequency.rows; i++)
+	{
+		frequency.at<float>(i, 0) = i * fps / dftOfOriginal.rows;
+	}
+
+	for (int i = 0; i < p1.rows; i++)
+	{
+		if (frequency.at<float>(i, 0) < 0.6 || frequency.at<float>(i, 0) > 2.5)
 		{
-			myfile1 << dftOfOriginal.at<float>(i, j) << " ";
+			p1.at<float>(i, 0) = 0.0f;
 		}
+	}
+
+	ofstream myfile1;
+	myfile1.open("p1.txt");
+	for (int i = 0; i < p1.rows; i++)
+	{
+		myfile1 << p1.at<float>(i, 0) << " ";
 		myfile1 << endl;
 	}
 	myfile1.close();
+
+	ofstream myfile2;
+	myfile2.open("freq.txt");
+	for (int i = 0; i < frequency.rows; i++)
+	{
+		myfile2 << frequency.at<float>(i, 0) << " ";
+		myfile2 << endl;
+	}
+	myfile2.close();
+
+
+	//TAGIT FRAM P1 OCH FREQ, NÄSTA STEG ATT TESTA OM DET ÄR RÄTT
+	//METOD: Skriv dftOfOriginal till textfil som innan och jämför
+
 
 	//Filter bpFilter(BPF, realValues.rows(), fps, 0.6, 2.8);
 
@@ -171,29 +223,30 @@ float Pulse::getPulse(vector<float> filteredValues, float fps)
 			grad = 1;
 		}
 	}
-	ofstream myfile1;
-	myfile1.open("example1.txt");
-	for (float value : peakPosVector)
-	{
-		myfile1 << value << " ";
-	}
-	myfile1.close();
+	//ofstream myfile1;
+	//myfile1.open("example1.txt");
+	//for (float value : peakPosVector)
+	//{
+	//	myfile1 << value << " ";
+	//}
+	//myfile1.close();
 
-	vector<float> peakPeriodTime;
+	//vector<float> peakPeriodTime;
 
-	if (peakPosVector.size() > 1)
-	{
-		for (int i = peakPosVector.size() - 1; i > 0; i--)
-		{
-			peakPeriodTime.push_back(peakPosVector.at(i) - peakPosVector.at(i - 1));
-		}
+	//if (peakPosVector.size() > 1)
+	//{
+	//	for (int i = peakPosVector.size() - 1; i > 0; i--)
+	//	{
+	//		peakPeriodTime.push_back(peakPosVector.at(i) - peakPosVector.at(i - 1));
+	//	}
 
-		return (fps / mean(peakPeriodTime).val[0]) * 60.0f;
-	}
-	else
-	{
-		return -1.0f;
-	}
+	//	return (fps / mean(peakPeriodTime).val[0]) * 60.0f;
+	//}
+	//else
+	//{
+	//	return -1.0f;
+	//}
+	return (peakPosVector.size() / (filteredValues.size() / fps)) * 60.0f;
 }
 
 /*

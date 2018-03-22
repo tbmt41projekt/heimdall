@@ -98,7 +98,6 @@ void Engine::calcPulse()
 		}
 
 		float test = pulse.calculate(pulseFrames, fps);
-		//cout << test << endl;
 		waitKey(1000 * pulse.time); //millisekunder
 	}
 }
