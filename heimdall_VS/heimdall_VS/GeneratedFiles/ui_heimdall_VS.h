@@ -151,7 +151,7 @@ public:
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(530, 0, 501, 371));
+        frame_2->setGeometry(QRect(480, -10, 501, 371));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -271,7 +271,7 @@ public:
         labelvideo = new QLabel(frame_2);
         labelvideo->setObjectName(QStringLiteral("labelvideo"));
         labelvideo->setEnabled(true);
-        labelvideo->setGeometry(QRect(270, 20, 181, 131));
+        labelvideo->setGeometry(QRect(40, 30, 161, 121));
         labelvideo->setPixmap(QPixmap(QString::fromUtf8("../../../../../baby.jpg")));
         labelvideo->setScaledContents(true);
         heimdall_VSClass->setCentralWidget(centralWidget);
