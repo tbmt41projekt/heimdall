@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 //#include <stdio.h>
 //
 //using namespace cv;
+//using namespace std;
 //
 //int main(int argc, char *argv[])
 //{
@@ -49,13 +50,13 @@ int main(int argc, char *argv[])
 //	w.show();
 //
 //	//Visa en video
-//	//VideoCapture cap;
-//	//cap.open("baby.mp4");
+//	VideoCapture cap;
+//	cap.open("baby.mp4");
 //
 //	//Visa default-kameran
 //	//Om det bara finns en kamera så är det lätt att visa usb-kameran
 //	//Men på en laptop tex med inbyggd web-kamera så är det lurigare får då är "0" automatiskt web-kameran
-//	VideoCapture cap(0);
+//	/*VideoCapture cap(0);*/
 //
 //	if (!cap.isOpened())
 //	{

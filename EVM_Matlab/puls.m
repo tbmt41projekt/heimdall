@@ -6,7 +6,7 @@ workspace;  % Make sure the workspace panel is showing.
 fontSize = 22;
  
  
-videoObject = VideoReader('../heimdall_VS/heimdall_VS/baby.mp4')
+videoObject = VideoReader('../heimdall_VS/heimdall_VS/martin_puls_90.mp4')
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
 vidHeight = videoObject.Height;

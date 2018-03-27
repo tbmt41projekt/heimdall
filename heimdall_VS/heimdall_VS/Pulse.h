@@ -28,10 +28,11 @@ public:
 
 private:
 	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> noiseReduction(std::vector<cv::Mat> greenFrames);
 	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
 	cv::Mat getMeanValues(std::vector<cv::Mat> greenFrames);
 	cv::Mat bandpassFilter(cv::Mat realValues, float fps);
-	float getPulse(std::vector<float> filteredValues, float fps);
+	float getPulse(cv::Mat filteredValues, float fps);
 	/*
 	Här tänker jag att vi skapar funktioner för dom olika momenten. Lite osäker på vad dom olika
 	typerna heter men ni kanske förstår vad jag menar med exemplen nedan.

@@ -12,9 +12,11 @@ using namespace cv;
 float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
 	vector<Mat> greenFrames = getGreenFrames(pulseFrames);
-	vector<Mat> normFrames = normalizeFrames(greenFrames);
-	Mat meanValues = getMeanValues(normFrames);
-	Mat bpFilteredValues = bandpassFilter(meanValues, fps);
+	//vector<Mat> noiseRedFrames = noiseReduction(greenFrames);
+	//vector<Mat> normFrames = normalizeFrames(greenFrames);
+	Mat meanValues = getMeanValues(greenFrames);
+	//Mat bpFilteredValues = bandpassFilter(meanValues, fps);
+	float value = getPulse(meanValues, fps);
 
 	//ofstream myfile1;
 	//myfile1.open("example.txt");
@@ -33,7 +35,7 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 	//myfile.close();
 
 	//return getPulse(bpFilteredValues, fps);
-	return 0.0f;
+	return value;
 }
 
 vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
@@ -48,6 +50,21 @@ vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
 	}
 
 	return greenFrames;
+}
+
+vector<Mat> Pulse::noiseReduction(vector<Mat> greenFrames)
+{
+	vector<Mat> noiseRedFrames;
+	int i = 0;
+	for (Mat currentFrame : greenFrames)
+	{
+		Mat temp;
+		fastNlMeansDenoising(currentFrame, temp, 30.0, 7, 21);
+		noiseRedFrames.push_back(temp);
+		cout << i++ << endl;
+	}
+
+	return noiseRedFrames;
 }
 
 vector<Mat> Pulse::normalizeFrames(vector<Mat> greenFrames)
@@ -68,9 +85,18 @@ Mat Pulse::getMeanValues(vector<Mat> greenFrames)
 	int i = 0;
 	for (Mat currentFrame : greenFrames)
 	{
-		//meanValues.push_back(mean(currentFrame).val[0]);
 		meanValues.at<float>(i++, 0) = (float)mean(currentFrame).val[0];
 	}
+
+	ofstream myfile1;
+	myfile1.open("meanGreen9.txt");
+	for (int r = 0; r < meanValues.rows; r++)
+	{
+		myfile1 << meanValues.at<float>(r, 0) << " ";
+		myfile1 << endl;
+	}
+	myfile1.close();
+
 	return meanValues;
 }
 
@@ -92,18 +118,17 @@ Mat Pulse::bandpassFilter(Mat realValues, float fps)
 
 	dft(dftReady, dftOfOriginal, DFT_COMPLEX_OUTPUT);
 
-/*
 	ofstream myfile1;
-	myfile1.open("example6.txt");*/
-	//for (int i = 0; i < dftOfOriginal.rows + 1; i++)
-	//{
-	//	for (int j = 0; j < dftOfOriginal.cols + 1; j++)
-	//	{
-	//		myfile1 << dftOfOriginal.at<float>(i, j) << " ";
-	//	}
-	//	myfile1 << endl;
-	//}
-	//myfile1.close();
+	myfile1.open("example8.txt");
+	for (int i = 0; i < dftOfOriginal.rows; i++)
+	{
+		for (int j = 0; j < dftOfOriginal.cols; j++)
+		{
+			myfile1 << dftOfOriginal.at<float>(i, j) << " ";
+		}
+		myfile1 << endl;
+	}
+	myfile1.close();
 
 	Mat p1((dftOfOriginal.rows / 2) + 1, 1, CV_32F);
 	Mat p2(dftOfOriginal.rows, 1, CV_32F);
@@ -130,6 +155,7 @@ Mat Pulse::bandpassFilter(Mat realValues, float fps)
 		frequency.at<float>(i, 0) = i * fps / dftOfOriginal.rows;
 	}
 
+	//Bandpass-filter typ kanske
 	for (int i = 0; i < p1.rows; i++)
 	{
 		if (frequency.at<float>(i, 0) < 0.6 || frequency.at<float>(i, 0) > 2.5)
@@ -138,23 +164,23 @@ Mat Pulse::bandpassFilter(Mat realValues, float fps)
 		}
 	}
 
-	ofstream myfile1;
-	myfile1.open("p1.txt");
-	for (int i = 0; i < p1.rows; i++)
-	{
-		myfile1 << p1.at<float>(i, 0) << " ";
-		myfile1 << endl;
-	}
-	myfile1.close();
+	//ofstream myfile1;
+	//myfile1.open("p1.txt");
+	//for (int i = 0; i < p1.rows; i++)
+	//{
+	//	myfile1 << p1.at<float>(i, 0) << " ";
+	//	myfile1 << endl;
+	//}
+	//myfile1.close();
 
-	ofstream myfile2;
-	myfile2.open("freq.txt");
-	for (int i = 0; i < frequency.rows; i++)
-	{
-		myfile2 << frequency.at<float>(i, 0) << " ";
-		myfile2 << endl;
-	}
-	myfile2.close();
+	//ofstream myfile2;
+	//myfile2.open("freq.txt");
+	//for (int i = 0; i < frequency.rows; i++)
+	//{
+	//	myfile2 << frequency.at<float>(i, 0) << " ";
+	//	myfile2 << endl;
+	//}
+	//myfile2.close();
 
 
 	//TAGIT FRAM P1 OCH FREQ, NÄSTA STEG ATT TESTA OM DET ÄR RÄTT
@@ -181,7 +207,7 @@ Mat Pulse::bandpassFilter(Mat realValues, float fps)
 
 
 
-float Pulse::getPulse(vector<float> filteredValues, float fps)
+float Pulse::getPulse(Mat filteredValues, float fps)
 {
 	const int NOISE = -1;               // Level up to and including which peaks will be excluded
 	int wideStart = -1;                 // The start of any current wide peak
@@ -192,29 +218,28 @@ float Pulse::getPulse(vector<float> filteredValues, float fps)
 										//    = -1 for decreasing OR level, but previously decreasing
 										// A sharp peak is identified by grad=1 -> grad=-1
 										// A wide  peak is identified by grad=0 -> grad=-1
-
 	vector<float> peakPosVector;
 
-	for (int i = 0; i < filteredValues.size() - 1; i++)
+	for (int r = 0; r < filteredValues.rows - 1; r++)
 	{
-		if (filteredValues.at(i + 1) < filteredValues.at(i))         // Only possibility of a peak
+		if (filteredValues.at<float>(r + 1, 0) < filteredValues.at<float>(r, 0))         // Only possibility of a peak
 		{
-			if (grad == 1 && filteredValues.at(i) > NOISE)
+			if (grad == 1 && filteredValues.at<float>(r, 0) > NOISE)
 			{
 				//cout << "Sharp peak of " << filteredValues.at(i) << " at i = " << i << '\n';
-				peakPosVector.push_back((float)i);
+				peakPosVector.push_back((float)r);
 			}
-			else if (grad == 0 && filteredValues.at(i) > NOISE)
+			else if (grad == 0 && filteredValues.at<float>(r, 0) > NOISE)
 			{
 				//cout << "Wide peak of " << filteredValues.at(i) << " from i = " << wideStart << " to " << i << '\n';
 			}
 			grad = -1;
 		}
-		else if (filteredValues.at(i + 1) == filteredValues.at(i))   // Check for start of a wide peak
+		else if (filteredValues.at<float>(r + 1, 0) == filteredValues.at<float>(r, 0))   // Check for start of a wide peak
 		{
 			if (grad == 1)
 			{
-				wideStart = i;
+				wideStart = r;
 				grad = 0;
 			}
 		}
@@ -246,28 +271,7 @@ float Pulse::getPulse(vector<float> filteredValues, float fps)
 	//{
 	//	return -1.0f;
 	//}
-	return (peakPosVector.size() / (filteredValues.size() / fps)) * 60.0f;
+	return (peakPosVector.size() / (filteredValues.rows / fps)) * 60.0f;
 }
-
-/*
-
-Tänker typ att den här funktionen ser ut på följande sett. Använder exemplen från h-filen
-
-float Pulse::calculate(Videosekvens Vid)
-{
-	Videosekvens filtVid = filterVideo(Vid);
-	signal newSignal = calcSignal(filtVid);
-	float value = calcValue(newSignal);
-	return value;
-}
-
-Skulle även kunna skrivas på följande sett:
-
-float Pulse::calculate(Videosekvens Vid)
-{
-	return calcValue(calcSignal(filterVideo(Vid)));
-}
-
-*/
 
 //________________________________________________________________________________________________
