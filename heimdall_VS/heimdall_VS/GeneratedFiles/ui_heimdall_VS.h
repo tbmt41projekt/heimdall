@@ -66,7 +66,7 @@ public:
     QLabel *labellowRR;
     QLabel *labelhighHR;
     QLabel *labelhighRR;
-    QLabel *labelvideo;
+    QLabel *labelVideo;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -74,7 +74,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(1043, 413);
+        heimdall_VSClass->resize(1019, 406);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -151,7 +151,7 @@ public:
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(480, -10, 501, 371));
+        frame_2->setGeometry(QRect(510, 0, 501, 371));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -268,12 +268,10 @@ public:
         labelhighRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
-        labelvideo = new QLabel(frame_2);
-        labelvideo->setObjectName(QStringLiteral("labelvideo"));
-        labelvideo->setEnabled(true);
-        labelvideo->setGeometry(QRect(40, 30, 161, 121));
-        labelvideo->setPixmap(QPixmap(QString::fromUtf8("../../../../../baby.jpg")));
-        labelvideo->setScaledContents(true);
+        labelVideo = new QLabel(frame_2);
+        labelVideo->setObjectName(QStringLiteral("labelVideo"));
+        labelVideo->setGeometry(QRect(16, 32, 211, 131));
+        labelVideo->setAutoFillBackground(true);
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -315,7 +313,7 @@ public:
         bpm1->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         bpm2->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "PNR: ", 0));
+        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\">PNR: </p></body></html>", 0));
         labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
@@ -324,7 +322,7 @@ public:
         labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", 0));
         labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", 0));
         labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", 0));
-        labelvideo->setText(QString());
+        labelVideo->setText(QString());
     } // retranslateUi
 
 };

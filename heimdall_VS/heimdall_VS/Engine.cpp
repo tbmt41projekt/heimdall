@@ -3,20 +3,16 @@
 #include <thread>
 #include <iostream>
 
-
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
+#include <opencv2\videoio.hpp>
 #include <opencv\cv.h>
-
-#include <iostream>
 
 #include <stdint.h>
 #include <stdio.h>
 
 using namespace cv;
-
-
 using namespace std;
 
 
@@ -127,9 +123,11 @@ void Engine::runCamera()
 {
 	while (isProgramRunning)
 	{
+		//Ui::heimdall_VSClass *ui;
 		VideoCapture cap(0);
 		namedWindow("Video");
-
+		
+		
 		if (!cap.isOpened())
 		{
 			cout << "Cam could not be opened" << endl;
@@ -162,6 +160,10 @@ void Engine::runCamera()
 			videoQueue.insert(videoQueue.begin(), frame);
 
 			imshow("Video", frame);
+			//cv::cvtColor(frame, frame, CV_BGR2RGB);
+			//QImage qimgVideo((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_RGB888);
+			//ui->labelVideo->setPixmap(QPixmap::fromImage(qimgVideo));
+
 
 			//loopen väntar i 1000/fps millisekunder innan den kör vidare.
 			//Dvs att vi säger till programmet vilken fps vi önskar.
