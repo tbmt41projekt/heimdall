@@ -270,8 +270,9 @@ public:
 ""));
         labelvideo = new QLabel(frame_2);
         labelvideo->setObjectName(QStringLiteral("labelvideo"));
-        labelvideo->setGeometry(QRect(20, 30, 181, 131));
-        labelvideo->setPixmap(QPixmap(QString::fromUtf8("C:/My documents/babypng.png")));
+        labelvideo->setEnabled(true);
+        labelvideo->setGeometry(QRect(270, 20, 181, 131));
+        labelvideo->setPixmap(QPixmap(QString::fromUtf8("../../../../../baby.jpg")));
         labelvideo->setScaledContents(true);
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);

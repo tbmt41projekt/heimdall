@@ -105,10 +105,28 @@ void heimdall_VS::on_pushStart_clicked()
 
 		//Hur man kan visa en bild på en label. 
 		//Ej klart men något liknande kan göras med film
-		/*QPixmap babypic("C:/My documents/babypng.png");
-		ui.labelvideo->setPixmap(babypic);
-		ui.labelvideo->show();*/
+		/*QPixmap babypic("\\ad.liu.se\home\idabj741\bild.jpg");
+	    ui.labelvideo->setPixmap(babypic);
+		ui.labelvideo->show();
 
+		bool stop = false;
+		cv::VideoCapture capture("\\ad.liu.se\home\idabj741\babymovie.mp4");
+		cv::Mat cur_frame;
+		
+		while (!stop) {
+		              
+			capture.read(cur_frame);
+			              
+			QImage img = QImage((const unsigned char*)(cur_frame.data),
+				cur_frame.cols, cur_frame.rows,
+				QImage::Format_RGB888);
+			ui.labelvideo->setPixmap(QPixmap::fromImage(img));
+			// resize the label to fit the image
+			ui.labelvideo->resize(ui.labelvideo->pixmap()->size());
+			
+			//cv::waitkey(50);
+		}
+		*/
 		/*cv::Mat babypic = cv::imread("\\ad.liu.se\home\linab920\Desktop\Kandidatprojekt\heimdall\babypng.png");
 		cvtColor(babypic, babypic, CV_BGR2RGB);
 		QImage Image(babypic.data, babypic.cols, babypic.rows, babypic.step, QImage::Format_RGB888);
