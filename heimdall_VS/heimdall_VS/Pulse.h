@@ -1,6 +1,8 @@
 #pragma once
 
 
+
+
 //Pulse-klassen är den klass som är ansvarig för att beräkna pulsen.
 //Tanken är att den ska ta in en videosekvens, bearbeta den och sedan returnera ett uppdaterat
 //värde för pulsen.
@@ -11,7 +13,8 @@ public:
 	Pulse() = default;
 	~Pulse() = default;
 
-	float calculate();
+	int calculate();
+
 
 private:
 	/*
