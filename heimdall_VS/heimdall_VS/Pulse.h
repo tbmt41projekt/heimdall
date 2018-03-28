@@ -28,6 +28,8 @@ public:
 
 private:
 	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> getRedFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> getBlueFrames(std::vector<cv::Mat> pulseFrames);
 	std::vector<cv::Mat> noiseReduction(std::vector<cv::Mat> greenFrames);
 	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
 	cv::Mat getMeanValues(std::vector<cv::Mat> greenFrames);

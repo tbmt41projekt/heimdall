@@ -12,11 +12,44 @@ using namespace cv;
 float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
 	vector<Mat> greenFrames = getGreenFrames(pulseFrames);
+	vector<Mat> redFrames = getRedFrames(pulseFrames);
+	vector<Mat> blueFrames = getBlueFrames(pulseFrames);
 	//vector<Mat> noiseRedFrames = noiseReduction(greenFrames);
 	//vector<Mat> normFrames = normalizeFrames(greenFrames);
-	Mat meanValues = getMeanValues(greenFrames);
+	Mat greenMeanValues = getMeanValues(greenFrames);
+	Mat redMeanValues = getMeanValues(redFrames);
+	Mat blueMeanValues = getMeanValues(blueFrames);
+
+	ofstream myfile1;
+	myfile1.open("MG.txt");
+	for (int r = 0; r < greenMeanValues.rows; r++)
+	{
+		myfile1 << greenMeanValues.at<float>(r, 0) << " ";
+		myfile1 << endl;
+	}
+	myfile1.close();
+
+	ofstream myfile2;
+	myfile2.open("MR.txt");
+	for (int r = 0; r < redMeanValues.rows; r++)
+	{
+		myfile2 << redMeanValues.at<float>(r, 0) << " ";
+		myfile2 << endl;
+	}
+	myfile2.close();
+
+	ofstream myfile3;
+	myfile3.open("MB.txt");
+	for (int r = 0; r < blueMeanValues.rows; r++)
+	{
+		myfile3 << blueMeanValues.at<float>(r, 0) << " ";
+		myfile3 << endl;
+	}
+	myfile3.close();
+
+
 	//Mat bpFilteredValues = bandpassFilter(meanValues, fps);
-	float value = getPulse(meanValues, fps);
+	float value = getPulse(greenMeanValues, fps);
 
 	//ofstream myfile1;
 	//myfile1.open("example.txt");
@@ -50,6 +83,34 @@ vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
 	}
 
 	return greenFrames;
+}
+
+std::vector<cv::Mat> Pulse::getRedFrames(std::vector<cv::Mat> pulseFrames)
+{
+	vector<Mat> redFrames;
+	for (Mat currentFrame : pulseFrames)
+	{
+		Mat splitChannels[3];
+		split(currentFrame, splitChannels);
+
+		redFrames.push_back(splitChannels[2]);
+	}
+
+	return redFrames;
+}
+
+std::vector<cv::Mat> Pulse::getBlueFrames(std::vector<cv::Mat> pulseFrames)
+{
+	vector<Mat> blueFrames;
+	for (Mat currentFrame : pulseFrames)
+	{
+		Mat splitChannels[3];
+		split(currentFrame, splitChannels);
+
+		blueFrames.push_back(splitChannels[0]);
+	}
+
+	return blueFrames;
 }
 
 vector<Mat> Pulse::noiseReduction(vector<Mat> greenFrames)
@@ -87,15 +148,6 @@ Mat Pulse::getMeanValues(vector<Mat> greenFrames)
 	{
 		meanValues.at<float>(i++, 0) = (float)mean(currentFrame).val[0];
 	}
-
-	ofstream myfile1;
-	myfile1.open("meanGreen4.txt");
-	for (int r = 0; r < meanValues.rows; r++)
-	{
-		myfile1 << meanValues.at<float>(r, 0) << " ";
-		myfile1 << endl;
-	}
-	myfile1.close();
 
 	return meanValues;
 }

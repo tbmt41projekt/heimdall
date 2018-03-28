@@ -37,12 +37,20 @@ formatSpec = '%f';
 
 f_test = fscanf(fileID2,formatSpec);
 
-fileID3 = fopen('..\heimdall_VS\heimdall_VS\meanGreen4.txt','r');
+fileID3 = fopen('..\heimdall_VS\heimdall_VS\MG.txt','r');
 formatSpec = '%f';
 
 meanGreen = fscanf(fileID3,formatSpec);
 
-MEANGREEN = fft(meanGreen);
+fileID4 = fopen('..\heimdall_VS\heimdall_VS\MR.txt','r');
+formatSpec = '%f';
+
+meanRed= fscanf(fileID4,formatSpec);
+
+fileID5 = fopen('..\heimdall_VS\heimdall_VS\MB.txt','r');
+formatSpec = '%f';
+
+meanBlue = fscanf(fileID5,formatSpec);
 
 %Det som kommer nedanför är för att plotta frekvensen
 L = length(Y_tot);
@@ -53,14 +61,18 @@ P1 = P2(1:L/2+1);
 P1(2:end-1) = 2*P1(2:end-1);
 
 f = Fs*(0:(L/2))/L;
-figure(1)
-plot(f, P1) 
-title('Single-Sided Amplitude Spectrum of X(t)')
-xlabel('f (Hz)')
-ylabel('|P1(f)|')
+% figure(1)
+% plot(f, P1) 
+% title('Single-Sided Amplitude Spectrum of X(t)')
+% xlabel('f (Hz)')
+% ylabel('|P1(f)|')
 
-figure(2)
-plot(meanGreen)
+figure(1)
+hold on
+plot(meanGreen, '-g');
+plot(meanRed, '-r');
+plot(meanBlue, '-b');
+hold off
 
 % doc pwelch
 % pwelch(meanGreen-mean(meanGreen))
@@ -69,10 +81,11 @@ plot(meanGreen)
 % figure, plot(meanGreen(50:end)-mean(meanGreen(50:end)))
 % figure, pwelch(meanGreen(50:end)-mean(meanGreen(50:end)))
 % figure, psd(meanGreen(50:end)-mean(meanGreen(50:end)))
-% [b,a]=butter(4, [0.05 0.1]);
+[b,a]=butter(4, [0.048 0.2]);
 % figurefiltfilt(b,a,meanGreen(50:end)-mean(meanGreen(50:end)))
-% T = filtfilt(b,a,meanGreen(50:end)-mean(meanGreen(50:end)))
-% figure, plot(T)
+redMinusGreen = (meanRed(57:end)-mean(meanRed(57:end)))-(meanGreen(57:end)-mean(meanGreen(57:end)));
+T = filtfilt(b,a,redMinusGreen);
+figure, plot(T)
 % [b,a]=butter(4, [0.05], 'high');
 % T = filtfilt(b,a,meanGreen(50:end)-mean(meanGreen(50:end)))
 % figure, plot(T)

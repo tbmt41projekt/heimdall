@@ -159,7 +159,7 @@ void Engine::runCamera()
 			readyToCalc = false;
 		}
 
-		
+
 		while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
 		{
 			Mat frame;
@@ -171,7 +171,7 @@ void Engine::runCamera()
 				break;
 			}
 
-			if (i < timeStored*fps)
+			if (i < timeStored*fps*2)
 			{
 				i++;
 				if (i == timeStored * fps)
