@@ -17,7 +17,7 @@ public:
 	~Pulse() = default;
 	Pulse()
 		:
-		time{5}
+		time{10}
 	{}
 
 	int time;

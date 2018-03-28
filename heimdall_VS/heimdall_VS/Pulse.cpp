@@ -89,7 +89,7 @@ Mat Pulse::getMeanValues(vector<Mat> greenFrames)
 	}
 
 	ofstream myfile1;
-	myfile1.open("meanGreen9.txt");
+	myfile1.open("meanGreen4.txt");
 	for (int r = 0; r < meanValues.rows; r++)
 	{
 		myfile1 << meanValues.at<float>(r, 0) << " ";

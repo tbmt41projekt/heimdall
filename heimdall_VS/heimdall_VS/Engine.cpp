@@ -94,7 +94,8 @@ void Engine::calcPulse()
 
 		for (int i = 0; i < (int)fps * pulse.time; i++) //fps * antalet sekunder
 		{
-			pulseFrames.push_back(framesVector.at(i));
+			//pulseFrames.push_back(framesVector.at(i));
+			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
 		}
 
 
@@ -145,10 +146,10 @@ void Engine::runCamera()
 	while (isProgramRunning)
 	{
 		//Nedan är för test av puls med video
-		VideoCapture cap;
-		cap.open("martin_puls_90.mp4");
+		//VideoCapture cap;
+		//cap.open("martin_puls_90.mp4");
 
-		/*VideoCapture cap(0);*/
+		VideoCapture cap(0);
 		namedWindow("Video");
 
 		int i = 0;
