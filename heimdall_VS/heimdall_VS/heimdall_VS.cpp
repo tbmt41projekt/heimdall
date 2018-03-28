@@ -1,5 +1,6 @@
 #include "heimdall_VS.h"
 
+//________________________________________________________________________________________________
 
 heimdall_VS::heimdall_VS(QWidget *parent)
 	: QMainWindow(parent)
@@ -8,16 +9,14 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputPnr->setFocus();
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
 	srand(time(NULL)); //SKA BORT, ENDAST FÖR TEST AV LARM
-
-	
-
+		
 	//Skapar en timer så att klockan rullar
-	QTimer *timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
-	timer->start();
+	timer1 = new QTimer(this);
+	connect(timer1, SIGNAL(timeout()), this, SLOT(showTime()));
+	timer1->start();
 	
 	//Skapar en timer för updaterandomnumber, tillfällig funktion
-	QTimer *timer2 = new QTimer(this);
+	timer2 = new QTimer(this);
 	timer2->setInterval(2000);
 	connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
 	timer2->start();
@@ -48,19 +47,33 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputMinRR->setValidator(validatorMaxMin);
 }
 
-//heimdall_VS::heimdall_VS()
-//{
-//	delete ui;
-//}
+//__________Destruktor____________________________________________________________________________
 
-// Larmfunktionen
-void heimdall_VS::alarm()
+heimdall_VS::~heimdall_VS()
 {
-
-
+	//delete ui;
 }
 
-// Funktion som skapar och visar datum och tid
+//__________alarm()_______________________________________________________________________________
+
+void heimdall_VS::alarm()
+{
+	
+}
+
+//__________processFrameAndUpdateGUI()_____________________________________________________________
+void heimdall_VS::processFrameAndUpdateGUI()
+{
+	Mat originalImage;
+	capCamera.read(originalImage);
+
+	if (originalImage.empty() == true) return;
+
+	QImage qOriginalImage((uchar*)originalImage.data, originalImage.cols, originalImage.rows, originalImage.step, QImage::Format_RGB888);
+	ui.labelVideo->setPixmap(QPixmap::fromImage(qOriginalImage));
+}
+
+//__________showTime()______________________________________________________________________________
 void heimdall_VS::showTime()
 {
 	QDateTime date = QDateTime::currentDateTime();
@@ -69,12 +82,13 @@ void heimdall_VS::showTime()
 	ui.labelDateTime_2->setText(dateString);
 }
 
+//__________SelectROI - klickfunktion________________________________________________________________
 void heimdall_VS::on_pushSelectROI_clicked()
 {
 
 }
 
-// Startknappen
+//__________Start - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushStart_clicked()
 {
 	QString pnr = ui.inputPnr->text();
@@ -104,16 +118,25 @@ void heimdall_VS::on_pushStart_clicked()
 
 		//Hämtar värden från puls- och andningsklasserna
 		getValues();
+		ui.labelWARNING->hide();
 		ui.labellowHR->hide();
 		ui.labelhighHR->hide();
 		ui.labellowRR->hide();
 		ui.labelhighRR->hide();
 
-		//Kör igång kameran från Engine-klassen
-		//Engine *engine;
-		//engine->runCamera();
+		//Kör igång kameran och placerar den på frame_2
+		//readyForCamera = true;
 
-		
+		capCamera.open(0);
+		if (capCamera.isOpened() == false)
+		{
+			qDebug() << "Camera can't open";
+			ui.labelVideo->setText("No camera connected");
+			return;
+		}
+		QTimer *timer = new QTimer(this);
+		connect(timer, SIGNAL(timeout()), this, SLOT(processFrameAndUpdateGUI()));
+		timer->start(20);
 	}
 	else
 	{
@@ -124,10 +147,9 @@ void heimdall_VS::on_pushStart_clicked()
 		msgBoxError.setInformativeText("Please make sure to type in the ID-number YYMMDD-XXXX, and that your intervals are correct.");
 		msgBoxError.exec();
 	}
-
 }
 
-
+//__________getValues()_____________________________________________________________________
 //Funktion som hämtar värden från puls- och andningsklasserna
 void heimdall_VS::getValues()
 {
@@ -151,6 +173,7 @@ void heimdall_VS::getValues()
 	ui.labelhighRR->hide();*/
 }
 
+//__________Tillfällig funktion_____________________________________________________________
 void heimdall_VS::updateRandomNumber()
 {
 	qsrand((unsigned)time(0));
@@ -179,16 +202,17 @@ void heimdall_VS::updateRandomNumber()
 	{
 		ui.labelhighHR->show();
 		ui.labellowHR->hide();
+		ui.labelWARNING->show(); 
 
 		if (RRNum > MaxRR)
 		{
 			ui.labelhighRR->show();
 			ui.labellowRR->hide();
-		}
+		} 
 		else if (RRNum < MinRR)
 		{
 			ui.labellowRR->show();
-			ui.labelhighRR->hide();
+			ui.labelhighRR->hide(); 
 		}
 		else
 		{
@@ -200,6 +224,7 @@ void heimdall_VS::updateRandomNumber()
 	{
 		ui.labellowHR->show();
 		ui.labelhighHR->hide();
+		ui.labelWARNING->show();
 
 		if (RRNum > MaxRR)
 		{
@@ -221,21 +246,25 @@ void heimdall_VS::updateRandomNumber()
 	{
 		ui.labelhighHR->hide();
 		ui.labellowHR->hide();
+		ui.labelWARNING->hide();
 
 		if (RRNum > MaxRR)
 		{
 			ui.labelhighRR->show();
 			ui.labellowRR->hide();
+			ui.labelWARNING->show();
 		}
 		else if (RRNum < MinRR)
 		{
 			ui.labellowRR->show();
 			ui.labelhighRR->hide();
+			ui.labelWARNING->show();
 		}
 		else
 		{
 			ui.labelhighRR->hide();
 			ui.labellowRR->hide();
+			ui.labelWARNING->hide();
 		}
 	}
 }

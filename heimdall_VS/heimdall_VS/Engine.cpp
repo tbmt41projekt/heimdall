@@ -41,8 +41,6 @@ int Engine::run()
 	//Visar fönstret
 	windowPtr->show();
 
-
-
 	//runCameraThread kör igång funktionen runCamera som hittas längre ner i filen
 	thread runCameraThread(&Engine::runCamera, this);
 
@@ -121,55 +119,60 @@ void Engine::calcResp()
 
 void Engine::runCamera()
 {
-	while (isProgramRunning)
-	{
-		//Ui::heimdall_VSClass *ui;
-		VideoCapture cap(0);
-		namedWindow("Video");
-		
-		
-		if (!cap.isOpened())
-		{
-			cout << "Cam could not be opened" << endl;
-		}
+	//while (isProgramRunning)
+	//{
+	//	
+	//	VideoCapture cap(0);
+	//	//namedWindow("Video");
+	//	
+	//	
+	//	if (!cap.isOpened())
+	//	{
+	//		cout << "Cam could not be opened" << endl;
+	//	}
 
-		int i = 0;
-		while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
-		{
-			Mat frame;
-			cap >> frame;
+	//	int i = 0;
+	//	while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
+	//	{
+	//		Mat frame;
+	//		cap >> frame;
 
-			if (frame.empty())
-			{
-				cout << "Video over" << endl;
-				break;
-			}
+	//		if (frame.empty())
+	//		{
+	//			cout << "Video over" << endl;
+	//			break;
+	//		}
 
-			if (i < timeStored*fps)
-			{
-				i++;
-				if (i == timeStored*fps)
-				{
-					readyToCalc = true;
-				}
-			}
+	//		if (i < timeStored*fps)
+	//		{
+	//			i++;
+	//			if (i == timeStored*fps)
+	//			{
+	//				readyToCalc = true;
+	//			}
+	//		}
 
-			//Tar bort sista framen i videoQueue och lägger till den nya framen längst fram.
-			//(OBS ingen queue utan en vector)
-			videoQueue.pop_back();
-			videoQueue.insert(videoQueue.begin(), frame);
+	//	//	//Tar bort sista framen i videoQueue och lägger till den nya framen längst fram.
+	//	//	//(OBS ingen queue utan en vector)
+	//		videoQueue.pop_back();
+	//		videoQueue.insert(videoQueue.begin(), frame);
 
-			imshow("Video", frame);
-			//cv::cvtColor(frame, frame, CV_BGR2RGB);
-			//QImage qimgVideo((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_RGB888);
-			//ui->labelVideo->setPixmap(QPixmap::fromImage(qimgVideo));
+	//	//	//imshow("Video", frame);
+	//		
+	//		//cv::cvtColor(frame, frame, CV_BGR2RGB);
+	//		//qimg = QImage((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_RGB888);
+	//		//ui->labelVideo->setPixmap(QPixmap::fromImage(qimg));
+	//		//ui->labelRespRate->setText("Jahaja");
+	//		
+	//		
+	//		
 
 
-			//loopen väntar i 1000/fps millisekunder innan den kör vidare.
-			//Dvs att vi säger till programmet vilken fps vi önskar.
-			waitKey(1000 / fps);
-		}
-	}
+	//	//	//loopen väntar i 1000/fps millisekunder innan den kör vidare.
+	//	//	//Dvs att vi säger till programmet vilken fps vi önskar.
+	//		waitKey(1000 / fps);
+	//	}
+	//}
 }
 
 //________________________________________________________________________________________________

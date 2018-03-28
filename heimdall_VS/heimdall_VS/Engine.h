@@ -35,6 +35,7 @@ public:
 	void calcPulse();
 	void calcResp();
 	void runCamera();
+	//QImage qimg;
 
 private:
 	QApplication * aPtr;

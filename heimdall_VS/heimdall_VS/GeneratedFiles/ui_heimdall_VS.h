@@ -67,6 +67,7 @@ public:
     QLabel *labelhighHR;
     QLabel *labelhighRR;
     QLabel *labelVideo;
+    QLabel *labelWARNING;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -74,7 +75,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(1019, 406);
+        heimdall_VSClass->resize(505, 399);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -151,7 +152,7 @@ public:
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(510, 0, 501, 371));
+        frame_2->setGeometry(QRect(0, 0, 501, 371));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -231,7 +232,7 @@ public:
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         labelPnr_2 = new QLabel(frame_2);
         labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
-        labelPnr_2->setGeometry(QRect(180, 0, 151, 31));
+        labelPnr_2->setGeometry(QRect(210, 0, 151, 31));
         labelMinHR_2 = new QLabel(frame_2);
         labelMinHR_2->setObjectName(QStringLiteral("labelMinHR_2"));
         labelMinHR_2->setGeometry(QRect(80, 240, 41, 21));
@@ -246,25 +247,25 @@ public:
         labelMaxRR_2->setGeometry(QRect(160, 340, 41, 21));
         labellowHR = new QLabel(frame_2);
         labellowHR->setObjectName(QStringLiteral("labellowHR"));
-        labellowHR->setGeometry(QRect(270, 200, 191, 21));
+        labellowHR->setGeometry(QRect(270, 200, 191, 31));
         labellowHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
         labellowRR = new QLabel(frame_2);
         labellowRR->setObjectName(QStringLiteral("labellowRR"));
-        labellowRR->setGeometry(QRect(250, 300, 221, 16));
+        labellowRR->setGeometry(QRect(250, 300, 221, 31));
         labellowRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
         labelhighHR = new QLabel(frame_2);
         labelhighHR->setObjectName(QStringLiteral("labelhighHR"));
-        labelhighHR->setGeometry(QRect(270, 200, 191, 21));
+        labelhighHR->setGeometry(QRect(270, 200, 191, 31));
         labelhighHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
         labelhighRR = new QLabel(frame_2);
         labelhighRR->setObjectName(QStringLiteral("labelhighRR"));
-        labelhighRR->setGeometry(QRect(250, 300, 221, 21));
+        labelhighRR->setGeometry(QRect(250, 300, 221, 31));
         labelhighRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(255, 0, 0);\n"
 ""));
@@ -272,6 +273,13 @@ public:
         labelVideo->setObjectName(QStringLiteral("labelVideo"));
         labelVideo->setGeometry(QRect(16, 32, 211, 131));
         labelVideo->setAutoFillBackground(true);
+        labelVideo->setAlignment(Qt::AlignCenter);
+        labelWARNING = new QLabel(frame_2);
+        labelWARNING->setObjectName(QStringLiteral("labelWARNING"));
+        labelWARNING->setGeometry(QRect(240, 130, 241, 221));
+        labelWARNING->setFont(font1);
+        labelWARNING->setFrameShape(QFrame::Box);
+        labelWARNING->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -318,11 +326,12 @@ public:
         labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
         labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labellowHR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low heart rate", 0));
-        labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", 0));
-        labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", 0));
-        labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", 0));
+        labellowHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Low heart rate</span></p></body></html>", 0));
+        labellowRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Low respiratory rate</span></p></body></html>", 0));
+        labelhighHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High heart rate</span></p></body></html>", 0));
+        labelhighRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High respiratory rate</span></p></body></html>", 0));
         labelVideo->setText(QString());
+        labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
     } // retranslateUi
 
 };

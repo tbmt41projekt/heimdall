@@ -20,6 +20,7 @@
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
+#include <opencv2\core.hpp>
 #include <opencv\cv.h>
 #include <iostream>
 #include <random>
@@ -43,13 +44,22 @@ class heimdall_VS : public QMainWindow
 
 public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
-
+	~heimdall_VS();
 private: 
 	Ui::heimdall_VSClass ui;
+	QTimer *timer1;
+	QTimer *timer2;
+	//bool readyForCamera;
+
+	cv::VideoCapture capCamera;
+	/*cv::Mat mat;
+	QImage qimg;*/
+	
 
 private slots:
 	void on_pushStart_clicked();
-	//heimdall_VS();
+	void processFrameAndUpdateGUI();
+	
 
 	void showTime();
 	void on_pushSelectROI_clicked();
