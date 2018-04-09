@@ -5,7 +5,7 @@ clear;  % Erase all existing variables.
 workspace;  % Make sure the workspace panel is showing.
 fontSize = 22;
  
-videoObject = VideoReader('Linnea-66.avi')
+videoObject = VideoReader('Jet-156.avi')
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
 vidHeight = videoObject.Height;
