@@ -85,8 +85,8 @@ hold off
 % figurefiltfilt(b,a,meanGreen(50:end)-mean(meanGreen(50:end)))
 redMinusGreen = (meanRed(57:end)-mean(meanRed(57:end)))-(meanGreen(57:end)-mean(meanGreen(57:end)));
 T = filtfilt(b,a,redMinusGreen);
-%S = detrend(T);
-figure, plot(T)
+
+figure, plot(S)
 % [b,a]=butter(4, [0.05], 'high');
 % T = filtfilt(b,a,meanGreen(50:end)-mean(meanGreen(50:end)))
 % figure, plot(T)
