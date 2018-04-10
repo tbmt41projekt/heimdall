@@ -1,8 +1,8 @@
 clear all, close all, clc;
 
-videoObject = VideoReader('Martin-72-PO.avi');
-expPulse = 100;
-deviation = 60;
+videoObject = VideoReader('Martin-hel-90-PO.avi');
+expPulse = 87;
+deviation = 30;
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
 vidHeight = videoObject.Height;
