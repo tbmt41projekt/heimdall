@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -68,6 +69,8 @@ public:
     QLabel *labelhighRR;
     QLabel *labelVideo;
     QLabel *labelWARNING;
+    QPushButton *pushLog;
+    QPlainTextEdit *logTextEdit;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -75,7 +78,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(505, 399);
+        heimdall_VSClass->resize(508, 397);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -280,6 +283,14 @@ public:
         labelWARNING->setFont(font1);
         labelWARNING->setFrameShape(QFrame::Box);
         labelWARNING->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+        pushLog = new QPushButton(frame_2);
+        pushLog->setObjectName(QStringLiteral("pushLog"));
+        pushLog->setGeometry(QRect(444, 10, 41, 31));
+        logTextEdit = new QPlainTextEdit(frame_2);
+        logTextEdit->setObjectName(QStringLiteral("logTextEdit"));
+        logTextEdit->setGeometry(QRect(240, 50, 241, 61));
+        logTextEdit->setAutoFillBackground(false);
+        logTextEdit->setReadOnly(true);
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -332,6 +343,7 @@ public:
         labelhighRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High respiratory rate</span></p></body></html>", 0));
         labelVideo->setText(QString());
         labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
+        pushLog->setText(QApplication::translate("heimdall_VSClass", "Log", 0));
     } // retranslateUi
 
 };

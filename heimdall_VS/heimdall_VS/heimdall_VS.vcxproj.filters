@@ -19,6 +19,9 @@
     <ClCompile Include="DeviceEnumerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LogWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Respiration.h">
@@ -38,9 +41,15 @@
     <QtMoc Include="heimdall_VS.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="LogWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="heimdall_VS.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LogWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

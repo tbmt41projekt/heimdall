@@ -16,6 +16,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QFont>
+#include <QFile>
+#include <QTextStream>
+//#include <QScrollBar>
 #include <opencv2\opencv.hpp>
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
@@ -32,6 +35,9 @@
 #include "ui_heimdall_VS.h"
 #include "Pulse.h"
 #include "Respiration.h"
+#include "LogWindow.h"
+#include "ui_LogWindow.h"
+
 //#include "Engine.h"
 
 using namespace cv;
@@ -45,6 +51,7 @@ class heimdall_VS : public QMainWindow
 public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
 	~heimdall_VS();
+	void setLog(QString logstr);
 private: 
 	Ui::heimdall_VSClass ui;
 	QTimer *timer1;
@@ -63,6 +70,7 @@ private slots:
 
 	void showTime();
 	void on_pushSelectROI_clicked();
+	void on_pushLog_clicked();
 	void getValues();
 	void updateRandomNumber();
 	void alarm();
