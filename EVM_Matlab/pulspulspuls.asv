@@ -1,8 +1,8 @@
 clear all, close all, clc;
 
-videoObject = VideoReader('Martin-72-PO.avi');
-expPulse = 100;
-deviation = 60;
+videoObject = VideoReader('Jet1-58-PO.avi');
+expPulse = 65;
+deviation = 30;
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
 vidHeight = videoObject.Height;
@@ -50,13 +50,13 @@ normRMG = mat2gray(redMinusGreen);
 Wp = [expPulse-deviation expPulse+deviation]/(60*f_nyquist);                                         % Passband Frequency (Normalised)
 
 %butter-filter
-%[b,a]=butter(6, Wp);
+[b,a]=butter(6, Wp);
 
 %cheby1-filter
-[b,a]=cheby1(6,3,Wp);
+%[b,a]=cheby1(6,3,Wp);
 
 %cheby2-filter
-%[b,a]=cheby2(6,30,Wp);
+%[b,a]=cheby2(6,20,Wp);
 
 filteredRMG = filtfilt(b,a,normRMG);
 normFiltRMG = mat2gray(filteredRMG);                        %Enbart för visualisering
