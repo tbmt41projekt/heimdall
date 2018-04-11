@@ -1,11 +1,20 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include <opencv2\opencv.hpp>
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
+#include "opencv2/opencv.hpp"
+#include "opencv2/objdetect.hpp"
+#include <opencv/cv.h>
+#include <stdint.h>
+#include <stdio.h>
+
+#include <vector>
+#include <iostream>
+
 #include "filt.h"
+using namespace std;
+using namespace cv;
+
 
 //Pulse-klassen är den klass som är ansvarig för att beräkna pulsen.
 //Tanken är att den ska ta in en videosekvens, bearbeta den och sedan returnera ett uppdaterat
@@ -15,10 +24,7 @@ class Pulse
 {
 public:
 	~Pulse() = default;
-	Pulse()
-		:
-		time{10}
-	{}
+	Pulse();
 
 	int time;
 
@@ -35,6 +41,10 @@ private:
 	cv::Mat getMeanValues(std::vector<cv::Mat> greenFrames);
 	cv::Mat bandpassFilter(cv::Mat realValues, float fps);
 	float getPulse(cv::Mat filteredValues, float fps);
+	std::vector<cv::Mat> getROI(std::vector<cv::Mat> frames);
+
+	cv::CascadeClassifier face_cascade;
+
 	/*
 	Här tänker jag att vi skapar funktioner för dom olika momenten. Lite osäker på vad dom olika
 	typerna heter men ni kanske förstår vad jag menar med exemplen nedan.

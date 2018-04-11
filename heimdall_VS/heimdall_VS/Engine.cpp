@@ -101,8 +101,6 @@ void Engine::calcPulse()
 
 		float test = pulse.calculate(pulseFrames, fps);
 
-		cout << test << endl;
-
 		waitKey(1000 * pulse.time); //millisekunder
 	}
 }
@@ -171,7 +169,7 @@ void Engine::runCamera()
 				break;
 			}
 
-			if (i < timeStored*fps*2)
+			if (i < timeStored*fps)
 			{
 				i++;
 				if (i == timeStored * fps)

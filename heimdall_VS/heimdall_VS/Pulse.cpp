@@ -5,51 +5,65 @@
 using namespace std;
 using namespace cv;
 
+//__________Konstruktor()________________________________________________________________________
 
+Pulse::Pulse()
+	:
+	time{ 3 }
+{
+	//-- 1. Load the cascades
+	if (!face_cascade.load("haarcascade_frontalface_alt.xml"))
+	{ 
+		printf("--(!)Error loading face cascade\n");
+	}
+}
+
+//________________________________________________________________________________________________
 
 //__________calculate()___________________________________________________________________________
 
 float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
-	vector<Mat> greenFrames = getGreenFrames(pulseFrames);
-	vector<Mat> redFrames = getRedFrames(pulseFrames);
-	vector<Mat> blueFrames = getBlueFrames(pulseFrames);
+	vector<Mat> framesROI = getROI(pulseFrames);
+	//vector<Mat> greenFrames = getGreenFrames(pulseFrames);
+	//vector<Mat> redFrames = getRedFrames(pulseFrames);
+	//vector<Mat> blueFrames = getBlueFrames(pulseFrames);
 	//vector<Mat> noiseRedFrames = noiseReduction(greenFrames);
 	//vector<Mat> normFrames = normalizeFrames(greenFrames);
-	Mat greenMeanValues = getMeanValues(greenFrames);
-	Mat redMeanValues = getMeanValues(redFrames);
-	Mat blueMeanValues = getMeanValues(blueFrames);
+	//Mat greenMeanValues = getMeanValues(greenFrames);
+	//Mat redMeanValues = getMeanValues(redFrames);
+	//Mat blueMeanValues = getMeanValues(blueFrames);
 
-	ofstream myfile1;
-	myfile1.open("MG.txt");
-	for (int r = 0; r < greenMeanValues.rows; r++)
-	{
-		myfile1 << greenMeanValues.at<float>(r, 0) << " ";
-		myfile1 << endl;
-	}
-	myfile1.close();
+	//ofstream myfile1;
+	//myfile1.open("MG.txt");
+	//for (int r = 0; r < greenMeanValues.rows; r++)
+	//{
+	//	myfile1 << greenMeanValues.at<float>(r, 0) << " ";
+	//	myfile1 << endl;
+	//}
+	//myfile1.close();
 
-	ofstream myfile2;
-	myfile2.open("MR.txt");
-	for (int r = 0; r < redMeanValues.rows; r++)
-	{
-		myfile2 << redMeanValues.at<float>(r, 0) << " ";
-		myfile2 << endl;
-	}
-	myfile2.close();
+	//ofstream myfile2;
+	//myfile2.open("MR.txt");
+	//for (int r = 0; r < redMeanValues.rows; r++)
+	//{
+	//	myfile2 << redMeanValues.at<float>(r, 0) << " ";
+	//	myfile2 << endl;
+	//}
+	//myfile2.close();
 
-	ofstream myfile3;
-	myfile3.open("MB.txt");
-	for (int r = 0; r < blueMeanValues.rows; r++)
-	{
-		myfile3 << blueMeanValues.at<float>(r, 0) << " ";
-		myfile3 << endl;
-	}
-	myfile3.close();
+	//ofstream myfile3;
+	//myfile3.open("MB.txt");
+	//for (int r = 0; r < blueMeanValues.rows; r++)
+	//{
+	//	myfile3 << blueMeanValues.at<float>(r, 0) << " ";
+	//	myfile3 << endl;
+	//}
+	//myfile3.close();
 
 
 	//Mat bpFilteredValues = bandpassFilter(meanValues, fps);
-	float value = getPulse(greenMeanValues, fps);
+	//float value = getPulse(greenMeanValues, fps);
 
 	//ofstream myfile1;
 	//myfile1.open("example.txt");
@@ -68,7 +82,7 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 	//myfile.close();
 
 	//return getPulse(bpFilteredValues, fps);
-	return value;
+	return 1.0f;
 }
 
 vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
@@ -327,3 +341,50 @@ float Pulse::getPulse(Mat filteredValues, float fps)
 }
 
 //________________________________________________________________________________________________
+
+
+vector<Mat> Pulse::getROI(vector<Mat> frames)
+{
+	vector<Mat> framesROI;
+
+	for (Mat currentFrame : frames)
+	{
+
+		std::vector<Rect> faces;
+		Mat grayFrame;
+
+		cvtColor(currentFrame, grayFrame, COLOR_BGR2GRAY);
+		equalizeHist(grayFrame, grayFrame);
+		//-- Detect faces
+		face_cascade.detectMultiScale(grayFrame, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(60, 60));
+
+		
+
+		if (!faces.empty())
+		{
+			Mat ROI((int)(faces[0].height / 4) - (int)(faces[0].height / 20), (int)(faces[0].width / 1.3) - (int)(faces[0].width / 5.5), CV_8UC3);
+
+			int r = 0;
+
+			for (int i = (int)(faces[0].y + faces[0].height / 20); i < (int)(faces[0].y + faces[0].height / 4); i++)
+			{
+				int k = 0;
+
+				for (int j = (int)(faces[0].x + faces[0].width / 5.5); j < (int)(faces[0].x + faces[0].width / 1.3); j++)
+				{
+					ROI.at<Vec3b>(r, k) = currentFrame.at<Vec3b>(i, j);
+					k++;
+				}
+				r++;
+			}
+
+			framesROI.push_back(ROI);
+		}
+		else
+		{
+
+		}
+
+	}
+	return framesROI;
+}
