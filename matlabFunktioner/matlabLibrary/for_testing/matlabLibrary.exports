@@ -1,0 +1,7 @@
+matlabLibraryInitialize
+matlabLibraryInitializeWithHandlers
+matlabLibraryTerminate
+matlabLibraryPrintStackTrace
+mlxDivideBy2
+mlxSquare
+

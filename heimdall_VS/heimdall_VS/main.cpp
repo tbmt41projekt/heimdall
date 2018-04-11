@@ -161,6 +161,7 @@
 //	return 0;
 //}
 
+/**************MATLAB-DEMO*****************/
 #include "matlabLibrary.h"
 
 int main(int argc, char** argv) {
@@ -184,7 +185,7 @@ int main(int argc, char** argv) {
 			in.SetData(&data, 1);
 
 			mwArray out;
-			square(1, out, in);
+			divideBy2(1, out, in);
 			std::cout << "The value is " << out << std::endl;
 
 		}
@@ -200,7 +201,4 @@ int main(int argc, char** argv) {
 	}
 	mclTerminateApplication();
 	return 0;
-
-
-
 }

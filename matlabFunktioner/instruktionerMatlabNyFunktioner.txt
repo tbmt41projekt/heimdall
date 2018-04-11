@@ -1,0 +1,24 @@
+I MATLAB:
+
+1. Gör din funktion och spara som <funktionsnamn>.m
+
+2. Under "apps": klicka på "Library Compiler"
+
+3. I Compiler rutan: Klicka på "Open Projekt" uppe till vänster och gå till 
+\..\heimdall\matlabFunktioner och välj filen "matlabLibrary.prj"
+
+4. I mitten och längst upp av Compiler-rutan: tryck på "+" och välj din matlab-funktion.
+
+5. Klicka på "Package" och vänta tills kompileringen är klar.
+
+6. Gå till \..\heimdall\matlabFunktioner\matlabLibrary\for_redistribution_files_only 
+(alt. klicka på "open output folder" när kompileringen är klar och gå in i mappen
+ "for_redistribution_files_only").
+
+7. Kopiera "matlabLibrary.dll" och "matlabLibrary.lib" och klistra in dessa i projektmappen
+(alltså \..\heimdall\heimdall_VS\heimdall_VS). När windows frågar om du vill ersätta filerna i
+målet så välj "Ersätt".
+
+8. Nu ska din nya funktion vara kör bar i vårt projekt givet att du följt setup-guiden och
+följt kodexemplet som ligger längst ner i main.cpp i master-branchen.
+

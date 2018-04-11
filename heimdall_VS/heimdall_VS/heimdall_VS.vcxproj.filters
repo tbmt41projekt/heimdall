@@ -71,10 +71,6 @@
     <ResourceCompile Include="heimdall_VS.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\matlabLibrary\matlabLibrary.dll" />
     <None Include="libfiler.bin" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\matlabLibrary\matlabLibrary.lib" />
   </ItemGroup>
 </Project>

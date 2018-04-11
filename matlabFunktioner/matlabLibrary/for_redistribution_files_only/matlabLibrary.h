@@ -1,11 +1,10 @@
 //
 // MATLAB Compiler: 6.6 (R2018a)
-// Date: Wed Apr 11 09:02:16 2018
+// Date: Wed Apr 11 10:05:47 2018
 // Arguments:
-// "-B""macro_default""-W""cpplib:matlabLibrary,all""-T""link:lib""-d""C:\Users\
-// nilsg\Documents\MATLAB\Compiled
-// Libraries\matlabLibrary\for_testing""-v""C:\Users\nilsg\Documents\MATLAB\squa
-// re.m"
+// "-B""macro_default""-W""cpplib:matlabLibrary,all""-T""link:lib""-d""C:\heimda
+// ll\matlabFunktioner\matlabLibrary\for_testing""-v""C:\Users\nilsg\Documents\M
+// ATLAB\divideBy2.m""C:\Users\nilsg\Documents\MATLAB\square.m"
 //
 
 #ifndef __matlabLibrary_h
@@ -48,6 +47,9 @@ void MW_CALL_CONV matlabLibraryPrintStackTrace(void);
 /* C INTERFACE -- MLX WRAPPERS FOR USER-DEFINED MATLAB FUNCTIONS -- START */
 
 extern LIB_matlabLibrary_C_API 
+bool MW_CALL_CONV mlxDivideBy2(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[]);
+
+extern LIB_matlabLibrary_C_API 
 bool MW_CALL_CONV mlxSquare(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[]);
 
 /* C INTERFACE -- MLX WRAPPERS FOR USER-DEFINED MATLAB FUNCTIONS -- END */
@@ -83,6 +85,8 @@ bool MW_CALL_CONV mlxSquare(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[]
 #endif
 
 #endif
+
+extern LIB_matlabLibrary_CPP_API void MW_CALL_CONV divideBy2(int nargout, mwArray& y, const mwArray& x);
 
 extern LIB_matlabLibrary_CPP_API void MW_CALL_CONV square(int nargout, mwArray& y, const mwArray& x);
 
