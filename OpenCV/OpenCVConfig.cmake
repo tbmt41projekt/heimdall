@@ -19,10 +19,10 @@
 #      - OpenCV_LIBS                     : The list of libraries to link against.
 #      - OpenCV_INCLUDE_DIRS             : The OpenCV include directories.
 #      - OpenCV_COMPUTE_CAPABILITIES     : The version of compute capability
-#      - OpenCV_VERSION                  : The version of this OpenCV build: "3.4.0"
+#      - OpenCV_VERSION                  : The version of this OpenCV build: "3.4.1"
 #      - OpenCV_VERSION_MAJOR            : Major version part of OpenCV_VERSION: "3"
 #      - OpenCV_VERSION_MINOR            : Minor version part of OpenCV_VERSION: "4"
-#      - OpenCV_VERSION_PATCH            : Patch version part of OpenCV_VERSION: "0"
+#      - OpenCV_VERSION_PATCH            : Patch version part of OpenCV_VERSION: "1"
 #      - OpenCV_VERSION_STATUS           : Development status of this build: ""
 #
 #    Advanced variables:
@@ -58,7 +58,7 @@ if(NOT DEFINED OpenCV_CUDA)
 endif()
 
 if(DEFINED OpenCV_ARCH AND DEFINED OpenCV_RUNTIME)
-  # custom overrided values
+  # custom overridden values
 elseif(MSVC)
   if(CMAKE_CL_64)
     set(OpenCV_ARCH x64)
