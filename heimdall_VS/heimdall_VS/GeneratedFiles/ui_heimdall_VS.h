@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heimdall_VS.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.0
+** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -289,41 +289,41 @@ public:
 
     void retranslateUi(QMainWindow *heimdall_VSClass)
     {
-        heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", 0));
-        pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", 0));
-        pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", 0));
-        labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
-        labelRespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
-        labelMaxRR->setText(QApplication::translate("heimdall_VSClass", "Max:", 0));
-        labelMaxHR->setText(QApplication::translate("heimdall_VSClass", "Max:", 0));
-        labelMinHR->setText(QApplication::translate("heimdall_VSClass", "Min:", 0));
-        labelHeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
-        labelPnr->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", 0));
+        heimdall_VSClass->setWindowTitle(QApplication::translate("heimdall_VSClass", "heimdall_VS", nullptr));
+        pushSelectROI->setText(QApplication::translate("heimdall_VSClass", "Select resp.ROI", nullptr));
+        pushStart->setText(QApplication::translate("heimdall_VSClass", "Start measurement", nullptr));
+        labelMinRR->setText(QApplication::translate("heimdall_VSClass", "Min:", nullptr));
+        labelRespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", nullptr));
+        labelMaxRR->setText(QApplication::translate("heimdall_VSClass", "Max:", nullptr));
+        labelMaxHR->setText(QApplication::translate("heimdall_VSClass", "Max:", nullptr));
+        labelMinHR->setText(QApplication::translate("heimdall_VSClass", "Min:", nullptr));
+        labelHeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", nullptr));
+        labelPnr->setText(QApplication::translate("heimdall_VSClass", "Personal identification number:", nullptr));
         inputPnr->setText(QString());
         inputMinHR->setText(QString());
         inputMinRR->setText(QString());
         inputMaxRR->setText(QString());
         inputMaxHR->setText(QString());
-        labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        HeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
-        RespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
-        RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", 0));
-        MinHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
-        MinRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
-        MaxHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
-        MaxRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
-        bpm1->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
-        bpm2->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
-        labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
-        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "PNR: ", 0));
-        labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labellowHR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low heart rate", 0));
-        labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", 0));
-        labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", 0));
-        labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", 0));
+        labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", nullptr));
+        HeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", nullptr));
+        RespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", nullptr));
+        RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", nullptr));
+        MinHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", nullptr));
+        MinRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", nullptr));
+        MaxHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", nullptr));
+        MaxRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", nullptr));
+        bpm1->setText(QApplication::translate("heimdall_VSClass", "bpm", nullptr));
+        bpm2->setText(QApplication::translate("heimdall_VSClass", "bpm", nullptr));
+        labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", nullptr));
+        labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "PNR: ", nullptr));
+        labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "130", nullptr));
+        labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", nullptr));
+        labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", nullptr));
+        labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", nullptr));
+        labellowHR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low heart rate", nullptr));
+        labellowRR->setText(QApplication::translate("heimdall_VSClass", "Warning! Low respiratory rate", nullptr));
+        labelhighHR->setText(QApplication::translate("heimdall_VSClass", "Warning! High heart rate", nullptr));
+        labelhighRR->setText(QApplication::translate("heimdall_VSClass", "Warning! High respiratory rate", nullptr));
         labelvideo->setText(QString());
     } // retranslateUi
 
