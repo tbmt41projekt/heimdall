@@ -1,9 +1,0 @@
-﻿  respi.cpp
-\\ad.liu.se\home\linja571\desktop\kandidatprojekt\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
-  realtime.cpp
-\\ad.liu.se\home\linja571\desktop\kandidatprojekt\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
-  main.cpp
-\\ad.liu.se\home\linja571\desktop\kandidatprojekt\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\main.cpp(1): fatal error C1083: Cannot open include file: 'opencv2\opencv.hpp': No such file or directory
-  helpers.cpp
-\\ad.liu.se\home\linja571\desktop\kandidatprojekt\heimdall\martin\opencvroot\opencvtutorial\opencvtutorial\opencvincludes.h(1): fatal error C1083: Cannot open include file: 'opencv2/core/core.hpp': No such file or directory
-  Generating Code...
