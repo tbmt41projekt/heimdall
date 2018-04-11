@@ -36,6 +36,9 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\matlabLibrary\matlabLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="heimdall_VS.h">
@@ -66,5 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="heimdall_VS.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\matlabLibrary\matlabLibrary.dll" />
+    <None Include="libfiler.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\matlabLibrary\matlabLibrary.lib" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,9 @@
+1. Öppna Properties i VS-projektet. Se till "All configurations", 
+annars måste allt detta göras enskilt för Debug och Release.
+
+2. Under VC++ Directories, i både "Include Directories" OCH the "Library Directories":
+se till att "C:\Program Files\MATLAB\MATLAB Runtime\v94\extern\lib\win64\microsoft" motsvarar
+rätt mapp på datorn du sitter på.Notera att "v94" kan vara godyckligt versionsnummer.
+
+3. Under C/C++ -> General -> Additional Include Directories: se till att "C:\Program Files\MATLAB\MATLAB Runtime\v94\extern\include" motsvarar
+rätt mapp på datorn du sitter på.
