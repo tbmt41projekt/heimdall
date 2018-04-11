@@ -22,6 +22,9 @@
     </widget>
    </item>
    <item>
+    <widget class="QTextEdit" name="logText"/>
+   </item>
+   <item>
     <widget class="QPlainTextEdit" name="logTextEdit">
      <property name="autoFillBackground">
       <bool>false</bool>

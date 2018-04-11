@@ -62,11 +62,11 @@ void heimdall_VS::setLog(QString logstr)
 	QFile log("logg.txt");
 
 	if (log.open(QIODevice::ReadOnly))
-	{
-		QTextStream read(&log);
-		contAnt.append(read.readAll());
-		log.close();
-	}
+		{
+			QTextStream read(&log);
+			contAnt.append(read.readAll());
+			log.close();
+		}
 	if (log.open(QIODevice::WriteOnly))
 	{
 		QTextStream write(&log);
@@ -81,7 +81,8 @@ void heimdall_VS::setLog(QString logstr)
 		log.close();
 	}
 
-	ui.logTextEdit->setPlainText(contAct);
+	//.logTextEdit->setPlainText(contAct);
+	
 	//ui.logTextEdit->verticalScrollBar->setValue(ui.logTextEdit->verticalScrollBar->maximum());
 
 }
@@ -130,7 +131,7 @@ void heimdall_VS::on_pushStart_clicked()
 	QString minRR = ui.inputMinRR->text();
 	QString emptyString = "";
 	setLog(emptyString);
-	ui.logTextEdit->clear();
+	
 
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&

@@ -18,7 +18,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -70,7 +69,6 @@ public:
     QLabel *labelVideo;
     QLabel *labelWARNING;
     QPushButton *pushLog;
-    QPlainTextEdit *logTextEdit;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -286,11 +284,6 @@ public:
         pushLog = new QPushButton(frame_2);
         pushLog->setObjectName(QStringLiteral("pushLog"));
         pushLog->setGeometry(QRect(444, 10, 41, 31));
-        logTextEdit = new QPlainTextEdit(frame_2);
-        logTextEdit->setObjectName(QStringLiteral("logTextEdit"));
-        logTextEdit->setGeometry(QRect(240, 50, 241, 61));
-        logTextEdit->setAutoFillBackground(false);
-        logTextEdit->setReadOnly(true);
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

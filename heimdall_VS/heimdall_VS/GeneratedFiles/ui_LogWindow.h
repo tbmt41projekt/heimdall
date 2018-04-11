@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -26,6 +27,7 @@ class Ui_LogWindow
 public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
+    QTextEdit *logText;
     QPlainTextEdit *logTextEdit;
 
     void setupUi(QWidget *LogWindow)
@@ -41,6 +43,11 @@ public:
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
+
+        logText = new QTextEdit(LogWindow);
+        logText->setObjectName(QStringLiteral("logText"));
+
+        verticalLayout->addWidget(logText);
 
         logTextEdit = new QPlainTextEdit(LogWindow);
         logTextEdit->setObjectName(QStringLiteral("logTextEdit"));

@@ -743,22 +743,6 @@ color: rgb(255, 0, 0);
       <string>Log</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="logTextEdit">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>50</y>
-       <width>241</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
