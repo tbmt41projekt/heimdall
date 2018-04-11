@@ -8,6 +8,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.setupUi(this);
 	ui.inputPnr->setFocus();
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
+	readyToMeasure = false;
 	srand(time(NULL)); //SKA BORT, ENDAST FÖR TEST AV LARM
 		
 	//Skapar en timer så att klockan rullar
@@ -80,11 +81,6 @@ void heimdall_VS::setLog(QString logstr)
 		contAct.append(read.readAll());
 		log.close();
 	}
-
-	//.logTextEdit->setPlainText(contAct);
-	
-	//ui.logTextEdit->verticalScrollBar->setValue(ui.logTextEdit->verticalScrollBar->maximum());
-
 }
 
 //__________alarm()_______________________________________________________________________________
@@ -124,14 +120,14 @@ void heimdall_VS::on_pushSelectROI_clicked()
 //__________Start - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushStart_clicked()
 {
+	readyToMeasure = true;
 	QString pnr = ui.inputPnr->text();
 	QString maxHR = ui.inputMaxHR->text();
 	QString minHR = ui.inputMinHR->text();
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
-	QString emptyString = "";
-	setLog(emptyString);
-	
+	QString startString = ("\n   ---: New measurement: " + pnr + " :--- \n");
+	setLog(startString);
 
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
@@ -224,144 +220,148 @@ void heimdall_VS::getValues()
 //__________Tillfällig funktion_____________________________________________________________
 void heimdall_VS::updateRandomNumber()
 {
-	qsrand((unsigned)time(0));
-	//Gör om alla strings till ints för enklare jämförelse
-	//Detta behöver fixas för inputs från puls- och andningsklasser
-	int RRNum = qrand() % 30; //värde för andningsfrekvens
-	int HRNum = qrand() % 30; //värde för hjärtfrekvens
-	ui.RRNumber->setText(QString::number(RRNum));
-	ui.HRNumber->setText(QString::number(HRNum));
-
-//--------Koden nedan ska in i larmfunktionen-----------//
-
-	//Gör om alla strings till ints för enklare jämförelse
-	QString MaxRRstring = ui.labelMaxRR_2->text();
-	QString MaxHRstring = ui.labelMaxHR_2->text();
-	QString MinRRstring = ui.labelMinRR_2->text();
-	QString MinHRstring = ui.labelMinHR_2->text();
-	int MaxRR = MaxRRstring.toInt();
-	int MaxHR = MaxHRstring.toInt();
-	int MinRR = MinRRstring.toInt();
-	int MinHR = MinHRstring.toInt();
-
-	//Visar larmtext om värdet går utanför intervallen - fungerar!
-	QString logString;
-
-	if (HRNum > MaxHR)
+	if (readyToMeasure == true)
 	{
-		ui.labelhighHR->show();
-		ui.labellowHR->hide();
-		ui.labelWARNING->show(); 
-		
-		logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-		logString.append(" ");
-		logString.append("High heart rate");
-		logString.append("\r\n");
-		setLog(logString);
 
-		if (RRNum > MaxRR)
+		qsrand((unsigned)time(0));
+		//Gör om alla strings till ints för enklare jämförelse
+		//Detta behöver fixas för inputs från puls- och andningsklasser
+		int RRNum = qrand() % 30; //värde för andningsfrekvens
+		int HRNum = qrand() % 30; //värde för hjärtfrekvens
+		ui.RRNumber->setText(QString::number(RRNum));
+		ui.HRNumber->setText(QString::number(HRNum));
+
+		//--------Koden nedan ska in i larmfunktionen-----------//
+
+			//Gör om alla strings till ints för enklare jämförelse
+		QString MaxRRstring = ui.labelMaxRR_2->text();
+		QString MaxHRstring = ui.labelMaxHR_2->text();
+		QString MinRRstring = ui.labelMinRR_2->text();
+		QString MinHRstring = ui.labelMinHR_2->text();
+		int MaxRR = MaxRRstring.toInt();
+		int MaxHR = MaxHRstring.toInt();
+		int MinRR = MinRRstring.toInt();
+		int MinHR = MinHRstring.toInt();
+
+		//Visar larmtext om värdet går utanför intervallen - fungerar!
+		QString logString;
+
+		if (HRNum > MaxHR)
 		{
-			ui.labelhighRR->show();
-			ui.labellowRR->hide();
-
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("High respiration rate");
-			logString.append("\r\n");
-			setLog(logString);
-		} 
-		else if (RRNum < MinRR)
-		{
-			ui.labellowRR->show();
-			ui.labelhighRR->hide(); 
-
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("Low respiration rate");
-			logString.append("\r\n");
-			setLog(logString);
-		}
-		else
-		{
-			ui.labelhighRR->hide();
-			ui.labellowRR->hide();
-		}
-	}
-	else if (HRNum < MinHR)
-	{
-		ui.labellowHR->show();
-		ui.labelhighHR->hide();
-		ui.labelWARNING->show();
-
-		logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-		logString.append(" ");
-		logString.append("Low heart rate");
-		logString.append("\r\n");
-		setLog(logString);
-
-		if (RRNum > MaxRR)
-		{
-			ui.labelhighRR->show();
-			ui.labellowRR->hide();
-
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("High respiration rate");
-			logString.append("\r\n");
-			setLog(logString);
-		}
-		else if (RRNum < MinRR)
-		{
-			ui.labellowRR->show();
-			ui.labelhighRR->hide();
-
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("Low respiration rate");
-			logString.append("\r\n");
-			setLog(logString);
-		}
-		else
-		{
-			ui.labelhighRR->hide();
-			ui.labellowRR->hide();
-		}
-	}
-	else 
-	{
-		ui.labelhighHR->hide();
-		ui.labellowHR->hide();
-		ui.labelWARNING->hide();
-
-		if (RRNum > MaxRR)
-		{
-			ui.labelhighRR->show();
-			ui.labellowRR->hide();
+			ui.labelhighHR->show();
+			ui.labellowHR->hide();
 			ui.labelWARNING->show();
 
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("High respiration rate");
+			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+			logString.append("  -  ");
+			logString.append("High heart rate.");
 			logString.append("\r\n");
 			setLog(logString);
+
+			if (RRNum > MaxRR)
+			{
+				ui.labelhighRR->show();
+				ui.labellowRR->hide();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("High respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else if (RRNum < MinRR)
+			{
+				ui.labellowRR->show();
+				ui.labelhighRR->hide();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("Low respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else
+			{
+				ui.labelhighRR->hide();
+				ui.labellowRR->hide();
+			}
 		}
-		else if (RRNum < MinRR)
+		else if (HRNum < MinHR)
 		{
-			ui.labellowRR->show();
-			ui.labelhighRR->hide();
+			ui.labellowHR->show();
+			ui.labelhighHR->hide();
 			ui.labelWARNING->show();
 
-			logString.append(QDateTime::currentDateTime().toString("hh:mm:ss"));
-			logString.append(" ");
-			logString.append("Low respiration rate");
+			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+			logString.append("  -  ");
+			logString.append("Low heart rate.");
 			logString.append("\r\n");
 			setLog(logString);
+
+			if (RRNum > MaxRR)
+			{
+				ui.labelhighRR->show();
+				ui.labellowRR->hide();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("High respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else if (RRNum < MinRR)
+			{
+				ui.labellowRR->show();
+				ui.labelhighRR->hide();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("Low respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else
+			{
+				ui.labelhighRR->hide();
+				ui.labellowRR->hide();
+			}
 		}
 		else
 		{
-			ui.labelhighRR->hide();
-			ui.labellowRR->hide();
+			ui.labelhighHR->hide();
+			ui.labellowHR->hide();
 			ui.labelWARNING->hide();
+
+			if (RRNum > MaxRR)
+			{
+				ui.labelhighRR->show();
+				ui.labellowRR->hide();
+				ui.labelWARNING->show();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("High respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else if (RRNum < MinRR)
+			{
+				ui.labellowRR->show();
+				ui.labelhighRR->hide();
+				ui.labelWARNING->show();
+
+				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+				logString.append("  -  ");
+				logString.append("Low respiratory rate.");
+				logString.append("\r\n");
+				setLog(logString);
+			}
+			else
+			{
+				ui.labelhighRR->hide();
+				ui.labellowRR->hide();
+				ui.labelWARNING->hide();
+			}
 		}
 	}
 }

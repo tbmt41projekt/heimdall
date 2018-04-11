@@ -12,11 +12,8 @@ class LogWindow : public QDialog
 public:
 	LogWindow(QDialog *parent = Q_NULLPTR);
 	~LogWindow();
-	void setLog(QString logstr);
 
 private:
 	Ui::LogWindow ui;
-
-
 
 };

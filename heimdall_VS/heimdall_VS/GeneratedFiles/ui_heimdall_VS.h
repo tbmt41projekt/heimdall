@@ -76,7 +76,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(508, 397);
+        heimdall_VSClass->resize(512, 419);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -153,7 +153,7 @@ public:
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(0, 0, 501, 371));
+        frame_2->setGeometry(QRect(9, 9, 494, 365));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -192,8 +192,8 @@ public:
         HRNumber->setText(QLatin1String("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:36pt; font-weight:72; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:36px; margin-bottom:36px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt;\">80</span></p></body></html>"));
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:36px; margin-bottom:36px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt; font-weight:72;\">-</span></p></body></html>"));
         HRNumber->setTextFormat(Qt::AutoText);
         HRNumber->setScaledContents(false);
         HRNumber->setAlignment(Qt::AlignCenter);
@@ -317,7 +317,7 @@ public:
         labelDateTime->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
         HeartRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Heart rate:</span></p></body></html>", 0));
         RespRate->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">Respiratory rate:</span></p></body></html>", 0));
-        RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">60</span></p></body></html>", 0));
+        RRNumber->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">-</span></p></body></html>", 0));
         MinHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
         MinRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Min: </p></body></html>", 0));
         MaxHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p>Max: </p></body></html>", 0));
@@ -326,10 +326,10 @@ public:
         bpm2->setText(QApplication::translate("heimdall_VSClass", "bpm", 0));
         labelDateTime_2->setText(QApplication::translate("heimdall_VSClass", "Date and Time", 0));
         labelPnr_2->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\">PNR: </p></body></html>", 0));
-        labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
-        labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "130", 0));
+        labelMinHR_2->setText(QApplication::translate("heimdall_VSClass", "0", 0));
+        labelMaxHR_2->setText(QApplication::translate("heimdall_VSClass", "0", 0));
+        labelMinRR_2->setText(QApplication::translate("heimdall_VSClass", "0", 0));
+        labelMaxRR_2->setText(QApplication::translate("heimdall_VSClass", "0", 0));
         labellowHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Low heart rate</span></p></body></html>", 0));
         labellowRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Low respiratory rate</span></p></body></html>", 0));
         labelhighHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High heart rate</span></p></body></html>", 0));

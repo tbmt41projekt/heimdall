@@ -18,7 +18,6 @@
 #include <QFont>
 #include <QFile>
 #include <QTextStream>
-//#include <QScrollBar>
 #include <opencv2\opencv.hpp>
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
@@ -57,17 +56,14 @@ private:
 	QTimer *timer1;
 	QTimer *timer2;
 	//bool readyForCamera;
+	bool readyToMeasure;
 
 	cv::VideoCapture capCamera;
-	/*cv::Mat mat;
-	QImage qimg;*/
 	
 
 private slots:
 	void on_pushStart_clicked();
 	void processFrameAndUpdateGUI();
-	
-
 	void showTime();
 	void on_pushSelectROI_clicked();
 	void on_pushLog_clicked();

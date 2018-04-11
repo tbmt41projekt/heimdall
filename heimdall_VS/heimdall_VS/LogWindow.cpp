@@ -4,10 +4,6 @@ LogWindow::LogWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
-	QString emptyString = "";
-	setLog(emptyString);
-	ui.logTextEdit->clear();
-	ui.logText->clear();
 
 	QString filename = "logg.txt";
 	QFile log(filename);
@@ -18,7 +14,7 @@ LogWindow::LogWindow(QDialog *parent)
 	}
 	else
 	{
-		qDebug() << filename << "Hittad.";
+		qDebug() << filename << " OK.";
 	}
 	
 	QString contAct;
@@ -31,39 +27,10 @@ LogWindow::LogWindow(QDialog *parent)
 	}
 
 	ui.logText->setText(contAct);
-
+	//ui.logTextEdit->verticalScrollBar->setValue(ui.logTextEdit->verticalScrollBar->maximum());
 	
 }
 
 LogWindow::~LogWindow()
 {
-}
-
-void LogWindow::setLog(QString logstr)
-{
-	QString contAct;
-	QFile log("logg.txt");
-	
-	if (log.open(QIODevice::ReadOnly | QIODevice::Truncate))
-	{
-		QTextStream read(&log);
-		contAct.append(read.readAll());
-		QString line;
-
-		while (!read.atEnd())
-		{
-			line = read.readLine();
-			ui.logTextEdit->setPlainText(line + "\n");
-			ui.logText->setText(line + "\n");
-			//qDebug() << line;
-		}
-
-		log.close();
-	}
-
-	ui.logTextEdit->setPlainText(contAct);
-	ui.logText->setText(contAct);
-
-	//ui.logTextEdit->verticalScrollBar->setValue(ui.logTextEdit->verticalScrollBar->maximum());
-
 }
