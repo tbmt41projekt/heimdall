@@ -33,15 +33,14 @@ public:
 
 
 private:
-	std::vector<cv::Mat> getGreenFrames(std::vector<cv::Mat> pulseFrames);
-	std::vector<cv::Mat> getRedFrames(std::vector<cv::Mat> pulseFrames);
-	std::vector<cv::Mat> getBlueFrames(std::vector<cv::Mat> pulseFrames);
+	std::vector<cv::Mat> getColorFrames(std::vector<cv::Mat> pulseFrames, cv::String color);
 	std::vector<cv::Mat> noiseReduction(std::vector<cv::Mat> greenFrames);
-	std::vector<cv::Mat> normalizeFrames(std::vector<cv::Mat> greenFrames);
-	cv::Mat getMeanValues(std::vector<cv::Mat> greenFrames);
+	cv::Mat normalizeMatrix(cv::Mat meanValuesMatrix);
+	cv::Mat getMeanValues(std::vector<cv::Mat> framesVector);
+	cv::Mat getRedMinusGreen(cv::Mat redMatrix, cv::Mat greenMatrix);
 	cv::Mat bandpassFilter(cv::Mat realValues, float fps);
 	float getPulse(cv::Mat filteredValues, float fps);
-	std::vector<cv::Mat> getROI(std::vector<cv::Mat> frames);
+	std::vector<cv::Mat> getROI(std::vector<cv::Mat> frames, float fps);
 
 	cv::CascadeClassifier face_cascade;
 

@@ -11,9 +11,9 @@ Pulse::Pulse()
 	:
 	time{ 3 }
 {
-	//-- 1. Load the cascades
+	// Load the cascad
 	if (!face_cascade.load("haarcascade_frontalface_alt.xml"))
-	{ 
+	{
 		printf("--(!)Error loading face cascade\n");
 	}
 }
@@ -24,108 +24,79 @@ Pulse::Pulse()
 
 float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
-	vector<Mat> framesROI = getROI(pulseFrames);
-	//vector<Mat> greenFrames = getGreenFrames(pulseFrames);
-	//vector<Mat> redFrames = getRedFrames(pulseFrames);
-	//vector<Mat> blueFrames = getBlueFrames(pulseFrames);
-	//vector<Mat> noiseRedFrames = noiseReduction(greenFrames);
-	//vector<Mat> normFrames = normalizeFrames(greenFrames);
-	//Mat greenMeanValues = getMeanValues(greenFrames);
-	//Mat redMeanValues = getMeanValues(redFrames);
-	//Mat blueMeanValues = getMeanValues(blueFrames);
+	vector<Mat> framesROI = getROI(pulseFrames, fps);
+	if (!framesROI.empty())
+	{
+		vector<Mat> greenFrames = getColorFrames(framesROI, "green");
+		vector<Mat> redFrames = getColorFrames(framesROI, "red");
 
-	//ofstream myfile1;
-	//myfile1.open("MG.txt");
-	//for (int r = 0; r < greenMeanValues.rows; r++)
-	//{
-	//	myfile1 << greenMeanValues.at<float>(r, 0) << " ";
-	//	myfile1 << endl;
-	//}
-	//myfile1.close();
-
-	//ofstream myfile2;
-	//myfile2.open("MR.txt");
-	//for (int r = 0; r < redMeanValues.rows; r++)
-	//{
-	//	myfile2 << redMeanValues.at<float>(r, 0) << " ";
-	//	myfile2 << endl;
-	//}
-	//myfile2.close();
-
-	//ofstream myfile3;
-	//myfile3.open("MB.txt");
-	//for (int r = 0; r < blueMeanValues.rows; r++)
-	//{
-	//	myfile3 << blueMeanValues.at<float>(r, 0) << " ";
-	//	myfile3 << endl;
-	//}
-	//myfile3.close();
+		Mat greenMeanValues = getMeanValues(greenFrames);
+		Mat redMeanValues = getMeanValues(redFrames);
+		Mat greenNormValues = normalizeMatrix(greenMeanValues);
+		Mat redNormValues = normalizeMatrix(redMeanValues);
+		Mat redMinusGreen = getRedMinusGreen(redNormValues, greenNormValues);
+		Mat normRMG = normalizeMatrix(redMinusGreen);
 
 
-	//Mat bpFilteredValues = bandpassFilter(meanValues, fps);
-	//float value = getPulse(greenMeanValues, fps);
+		ofstream myfile1;
+		myfile1.open("normRMG.txt");
+		for (int r = 0; r < normRMG.rows; r++)
+		{
+			myfile1 << normRMG.at<float>(r, 0) << " ";
+			myfile1 << endl;
+		}
+		myfile1.close();
 
-	//ofstream myfile1;
-	//myfile1.open("example.txt");
-	//for (float value : meanValues)
-	//{
-	//	myfile1 << value << " ";
-	//}
-	//myfile1.close();
 
-	//ofstream myfile;
-	//myfile.open("exampleFilt.txt");
-	//for (float value : bpFilteredValues)
-	//{
-	//	myfile << value << " ";
-	//}
-	//myfile.close();
 
-	//return getPulse(bpFilteredValues, fps);
-	return 1.0f;
+		//Mat bpFilteredValues = bandpassFilter(meanValues, fps);
+		//float value = getPulse(greenMeanValues, fps);
+
+		//ofstream myfile1;
+		//myfile1.open("example.txt");
+		//for (float value : meanValues)
+		//{
+		//	myfile1 << value << " ";
+		//}
+		//myfile1.close();
+
+		//ofstream myfile;
+		//myfile.open("exampleFilt.txt");
+		//for (float value : bpFilteredValues)
+		//{
+		//	myfile << value << " ";
+		//}
+		//myfile.close();
+
+		//return getPulse(bpFilteredValues, fps);
+		return 90.0f;
+	}
+	return -1.0f;
 }
 
-vector<Mat> Pulse::getGreenFrames(vector<Mat> pulseFrames)
+vector<Mat> Pulse::getColorFrames(vector<Mat> pulseFrames, String color)
 {
-	vector<Mat> greenFrames;
+	int i;
+	if (color == "green")
+	{
+		i = 1;
+	}
+	if (color == "red")
+	{
+		i = 2;
+	}
+	vector<Mat> colorFrames;
 	for (Mat currentFrame : pulseFrames)
 	{
 		Mat splitChannels[3];
 		split(currentFrame, splitChannels);
 
-		greenFrames.push_back(splitChannels[1]);
+		colorFrames.push_back(splitChannels[i]);
 	}
 
-	return greenFrames;
+	return colorFrames;
 }
 
-std::vector<cv::Mat> Pulse::getRedFrames(std::vector<cv::Mat> pulseFrames)
-{
-	vector<Mat> redFrames;
-	for (Mat currentFrame : pulseFrames)
-	{
-		Mat splitChannels[3];
-		split(currentFrame, splitChannels);
-
-		redFrames.push_back(splitChannels[2]);
-	}
-
-	return redFrames;
-}
-
-std::vector<cv::Mat> Pulse::getBlueFrames(std::vector<cv::Mat> pulseFrames)
-{
-	vector<Mat> blueFrames;
-	for (Mat currentFrame : pulseFrames)
-	{
-		Mat splitChannels[3];
-		split(currentFrame, splitChannels);
-
-		blueFrames.push_back(splitChannels[0]);
-	}
-
-	return blueFrames;
-}
 
 vector<Mat> Pulse::noiseReduction(vector<Mat> greenFrames)
 {
@@ -142,28 +113,31 @@ vector<Mat> Pulse::noiseReduction(vector<Mat> greenFrames)
 	return noiseRedFrames;
 }
 
-vector<Mat> Pulse::normalizeFrames(vector<Mat> greenFrames)
+Mat Pulse::normalizeMatrix(Mat meanValuesMatrix)
 {
-	vector<Mat> normalizedFrames;
-	for (Mat frame : greenFrames)
-	{
-		Mat normFrame;
-		normalize(frame, normFrame, 0, 1, CV_MINMAX);
-		normalizedFrames.push_back(normFrame);
-	}
-	return normalizedFrames;
+	Mat normValuesMatrix;
+	normalize(meanValuesMatrix, normValuesMatrix, 0, 1, CV_MINMAX);
+
+	return normValuesMatrix;
 }
 
-Mat Pulse::getMeanValues(vector<Mat> greenFrames)
+Mat Pulse::getMeanValues(vector<Mat> framesVector)
 {
-	Mat meanValues(greenFrames.size(), 1, CV_32F);
+	Mat meanValues(framesVector.size(), 1, CV_32F);
 	int i = 0;
-	for (Mat currentFrame : greenFrames)
+	for (Mat currentFrame : framesVector)
 	{
 		meanValues.at<float>(i++, 0) = (float)mean(currentFrame).val[0];
 	}
-
 	return meanValues;
+}
+
+Mat Pulse::getRedMinusGreen(Mat redMatrix, Mat greenMatrix)
+{
+	Mat redMinusGreen(redMatrix.rows, redMatrix.cols, CV_32F);
+	redMinusGreen = redMatrix - greenMatrix;
+
+	return redMinusGreen;
 }
 
 
@@ -271,8 +245,6 @@ Mat Pulse::bandpassFilter(Mat realValues, float fps)
 }
 
 
-
-
 float Pulse::getPulse(Mat filteredValues, float fps)
 {
 	const int NOISE = -1;               // Level up to and including which peaks will be excluded
@@ -343,34 +315,49 @@ float Pulse::getPulse(Mat filteredValues, float fps)
 //________________________________________________________________________________________________
 
 
-vector<Mat> Pulse::getROI(vector<Mat> frames)
+vector<Mat> Pulse::getROI(vector<Mat> frames, float fps)
 {
 	vector<Mat> framesROI;
+	vector<Rect> faces;
 
-	for (Mat currentFrame : frames)
+	for (int i = 0; i < frames.size() / fps; i++)
 	{
-
-		std::vector<Rect> faces;
-		Mat grayFrame;
-
-		cvtColor(currentFrame, grayFrame, COLOR_BGR2GRAY);
-		equalizeHist(grayFrame, grayFrame);
-		//-- Detect faces
-		face_cascade.detectMultiScale(grayFrame, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(60, 60));
-
-		
-
-		if (!faces.empty())
+		int k = i * fps;
+		vector<Rect> newFace;
+		do
 		{
-			Mat ROI((int)(faces[0].height / 4) - (int)(faces[0].height / 20), (int)(faces[0].width / 1.3) - (int)(faces[0].width / 5.5), CV_8UC3);
+			Mat grayFrame;
+
+			cvtColor(frames.at(k), grayFrame, COLOR_BGR2GRAY);
+			equalizeHist(grayFrame, grayFrame);
+			//-- Detect faces
+			face_cascade.detectMultiScale(grayFrame, newFace, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(60, 60));
+			k++;
+		} while (newFace.empty() && k < (i + 1) * fps);
+
+		if (!newFace.empty())
+		{
+			faces.push_back(newFace.front());
+		}
+
+	}
+
+	if (!faces.empty())
+	{
+		int facePos = 0;
+		int frameNumber = 0;
+		for (Mat currentFrame : frames)
+		{
+
+			Mat ROI((int)(faces.at(facePos).height / 4) - (int)(faces.at(facePos).height / 20), (int)(faces.at(facePos).width / 1.3) - (int)(faces.at(facePos).width / 5.5), CV_8UC3);
 
 			int r = 0;
 
-			for (int i = (int)(faces[0].y + faces[0].height / 20); i < (int)(faces[0].y + faces[0].height / 4); i++)
+			for (int i = (int)(faces.at(facePos).y + faces.at(facePos).height / 20); i < (int)(faces.at(facePos).y + faces.at(facePos).height / 4); i++)
 			{
 				int k = 0;
 
-				for (int j = (int)(faces[0].x + faces[0].width / 5.5); j < (int)(faces[0].x + faces[0].width / 1.3); j++)
+				for (int j = (int)(faces.at(facePos).x + faces.at(facePos).width / 5.5); j < (int)(faces.at(facePos).x + faces.at(facePos).width / 1.3); j++)
 				{
 					ROI.at<Vec3b>(r, k) = currentFrame.at<Vec3b>(i, j);
 					k++;
@@ -379,10 +366,12 @@ vector<Mat> Pulse::getROI(vector<Mat> frames)
 			}
 
 			framesROI.push_back(ROI);
-		}
-		else
-		{
 
+			frameNumber++;
+			if (frameNumber == (facePos + 1) * fps && facePos < faces.size() - 1)
+			{
+				facePos++;
+			}
 		}
 
 	}
