@@ -33,7 +33,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 	//Startruta
 	ui.frame_2->setVisible(false);
-
+	ui.calendarWidget->setVisible(false);
 	////Sätter tillåtna inputvärden för textrutorna
 
 	QRegExp rxPnr("\[0-9]{6}[-]\[0-9]{4}");
@@ -140,7 +140,7 @@ void heimdall_VS::on_pushStart_clicked()
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
 		ui.frame_1->setVisible(false);
-
+		ui.calendarWidget->setVisible(false);
 		//Flytta över inputvärden till rätt plats
 		ui.labelPnr_2->setText(pnr);
 		ui.labelMaxHR_2->setText(maxHR);
@@ -185,11 +185,39 @@ void heimdall_VS::on_pushStart_clicked()
 //__________Logg - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushLog_clicked() 
 {
+	ui.calendarWidget->setVisible(true);
+	
+	/*LogWindow logWindow;
+	logWindow.setModal(true);
+	logWindow.exec();
+*/
+}
+void heimdall_VS::on_pushLog_2_clicked()
+{
 	LogWindow logWindow;
 	logWindow.setModal(true);
 	logWindow.exec();
 
 }
+
+//_________Calendar_________________________________________________________________________________
+void heimdall_VS::on_calendarWidget_clicked()
+{
+	
+	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
+	
+	
+	qDebug() << dateStringnotis;
+	
+	LogWindow logWindow;
+	logWindow.setModal(true);
+	logWindow.exec();
+	ui.calendarWidget->setVisible(false);
+
+}
+
+
+
 
 
 

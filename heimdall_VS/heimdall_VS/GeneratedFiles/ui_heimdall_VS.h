@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -69,6 +70,8 @@ public:
     QLabel *labelVideo;
     QLabel *labelWARNING;
     QPushButton *pushLog;
+    QCalendarWidget *calendarWidget;
+    QPushButton *pushLog_2;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -76,7 +79,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(512, 419);
+        heimdall_VSClass->resize(504, 409);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -283,7 +286,15 @@ public:
         labelWARNING->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         pushLog = new QPushButton(frame_2);
         pushLog->setObjectName(QStringLiteral("pushLog"));
-        pushLog->setGeometry(QRect(444, 10, 41, 31));
+        pushLog->setGeometry(QRect(410, 10, 71, 31));
+        pushLog->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
+        calendarWidget = new QCalendarWidget(frame_2);
+        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
+        calendarWidget->setGeometry(QRect(90, 70, 336, 214));
+        pushLog_2 = new QPushButton(frame_2);
+        pushLog_2->setObjectName(QStringLiteral("pushLog_2"));
+        pushLog_2->setGeometry(QRect(410, 50, 71, 31));
+        pushLog_2->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -336,7 +347,8 @@ public:
         labelhighRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High respiratory rate</span></p></body></html>", 0));
         labelVideo->setText(QString());
         labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
-        pushLog->setText(QApplication::translate("heimdall_VSClass", "Log", 0));
+        pushLog->setText(QApplication::translate("heimdall_VSClass", "Log by date", 0));
+        pushLog_2->setText(QApplication::translate("heimdall_VSClass", "Log", 0));
     } // retranslateUi
 
 };

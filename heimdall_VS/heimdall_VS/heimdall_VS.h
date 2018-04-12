@@ -37,6 +37,7 @@
 #include "LogWindow.h"
 #include "ui_LogWindow.h"
 
+
 //#include "Engine.h"
 
 using namespace cv;
@@ -57,6 +58,7 @@ private:
 	QTimer *timer2;
 	//bool readyForCamera;
 	bool readyToMeasure;
+	
 
 	cv::VideoCapture capCamera;
 	
@@ -70,6 +72,6 @@ private slots:
 	void getValues();
 	void updateRandomNumber();
 	void alarm();
-
-
+	void on_calendarWidget_clicked();
+	void on_pushLog_2_clicked();
 };
