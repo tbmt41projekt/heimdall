@@ -1,7 +1,7 @@
 clear all, close all, clc;
 
-videoObject = VideoReader('Martin-hel-90-PO.avi');
-expPulse = 87;
+videoObject = VideoReader('Martin-72-PO.avi');
+expPulse = 60;
 deviation = 30;
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
@@ -58,7 +58,12 @@ Wp = [expPulse-deviation expPulse+deviation]/(60*f_nyquist);                    
 %cheby2-filter
 %[b,a]=cheby2(6,30,Wp);
 
-filteredRMG = filtfilt(b,a,normRMG);
+fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG1.txt','r');
+formatSpec = '%f';
+Y = fscanf(fileID,formatSpec);
+
+%filteredRMG = filtfilt(b,a,normRMG);
+filteredRMG = filtfilt(b,a,Y);
 normFiltRMG = mat2gray(filteredRMG);                        %Enbart för visualisering
 
 findpeaks(double(normFiltRMG));                             %Enbart för visualisering

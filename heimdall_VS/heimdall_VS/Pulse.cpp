@@ -9,7 +9,7 @@ using namespace cv;
 
 Pulse::Pulse()
 	:
-	time{ 3 }
+	time{ 60 }
 {
 	// Load the cascad
 	if (!face_cascade.load("haarcascade_frontalface_alt.xml"))

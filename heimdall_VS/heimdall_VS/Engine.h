@@ -23,7 +23,7 @@ public:
 		pulse{ Pulse() },
 		resp{ Respiration() },
 		fps{ 25.0f },							//Ändra här om ni vill ändra fps
-		timeStored{ 5 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
+		timeStored{ 70 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
 		isProgramRunning{ true },
 		readyToCalc{false},
 		framesVector{ std::vector<cv::Mat>(fps * timeStored) }
