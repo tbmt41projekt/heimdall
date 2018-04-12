@@ -9,7 +9,7 @@ using namespace cv;
 
 Pulse::Pulse()
 	:
-	time{ 60 }
+	time{ 5 }
 {
 	// Load the cascad
 	if (!face_cascade.load("haarcascade_frontalface_alt.xml"))
@@ -26,9 +26,14 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 {
 	vector<Mat> framesROI = getROI(pulseFrames, fps);
 	if (!framesROI.empty())
+	//if (true)
 	{
 		vector<Mat> greenFrames = getColorFrames(framesROI, "green");
 		vector<Mat> redFrames = getColorFrames(framesROI, "red");
+
+		//vector<Mat> greenFrames = getColorFrames(pulseFrames, "green");
+		//vector<Mat> redFrames = getColorFrames(pulseFrames, "red");
+
 
 		Mat greenMeanValues = getMeanValues(greenFrames);
 		Mat redMeanValues = getMeanValues(redFrames);
@@ -39,7 +44,7 @@ float Pulse::calculate(vector<Mat> pulseFrames, float fps)
 
 
 		ofstream myfile1;
-		myfile1.open("normRMG.txt");
+		myfile1.open("normRMG16.txt");
 		for (int r = 0; r < normRMG.rows; r++)
 		{
 			myfile1 << normRMG.at<float>(r, 0) << " ";

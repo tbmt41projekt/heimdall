@@ -32,7 +32,7 @@ normGreen = mat2gray(meanGreen);
 normBlue = mat2gray(meanBlue);
 
 redMinusGreen = normRed-normGreen;
-normRMG = mat2gray(redMinusGreen);
+
 %normFlippedGreen = mat2gray(normGreen*(-1));        %Flipper den gröna kanalen
 
   % Bandpassfiltrering, Nisses filter
@@ -48,22 +48,24 @@ normRMG = mat2gray(redMinusGreen);
  %filtered = filtfilt(sosbp, gbp,meanGreenLevels);    % Filter Signal% Convert To Second-Order-Section For Stability
 
 Wp = [expPulse-deviation expPulse+deviation]/(60*f_nyquist);                                         % Passband Frequency (Normalised)
-
+Wandning = 20/(60*f_nyquist);
 %butter-filter
-%[b,a]=butter(6, Wp);
+[b,a]=butter(6, Wp);
+[c,d] = butter(6, Wandning, 'high')
 
 %cheby1-filter
-[b,a]=cheby1(6,3,Wp);
+%[b,a]=cheby1(6,3,Wp);
 
 %cheby2-filter
 %[b,a]=cheby2(6,30,Wp);
 
-fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG1.txt','r');
+fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG16.txt','r');
 formatSpec = '%f';
-Y = fscanf(fileID,formatSpec);
-
-%filteredRMG = filtfilt(b,a,normRMG);
-filteredRMG = filtfilt(b,a,Y);
+normRMG = fscanf(fileID,formatSpec);
+%normRMG = mat2gray(redMinusGreen);
+highRMG = filtfilt(c,d, normRMG)
+normhigh = mat2gray(highRMG);
+filteredRMG = filtfilt(b,a,highRMG);
 normFiltRMG = mat2gray(filteredRMG);                        %Enbart för visualisering
 
 findpeaks(double(normFiltRMG));                             %Enbart för visualisering
@@ -78,7 +80,9 @@ hold on
 %plot(normRed, '-r');
 %plot(normGreen, '-g');
 %plot(normBlue, '-b');
-plot(normRMG, '-k');
+%plot(normRMG, '-k');
+plot(normhigh, '-k');
+plot(normRMG, '-g');
 plot(normFiltRMG, '-m');
 hold off
 

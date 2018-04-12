@@ -187,7 +187,8 @@ void Engine::runCamera()
 
 			//loopen väntar i 1000/fps millisekunder innan den kör vidare.
 			//Dvs att vi säger till programmet vilken fps vi önskar.
-			waitKey(1000 / fps);
+			//waitKey(1000 / fps);
+			cout << i << endl;
 		}
 	}
 }
