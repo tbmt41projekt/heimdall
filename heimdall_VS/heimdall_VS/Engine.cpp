@@ -14,6 +14,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include <chrono>
+
 using namespace cv;
 
 
@@ -75,20 +77,44 @@ int Engine::run()
 
 //__________calcPulse()___________________________________________________________________________
 
-//Denna funktion får ett nytt värde på pulsen varje gång som pulse.calculate() har körts klart.
-//Skickar sedan till window(?) att uppdatera det nya värdet.
+/*
+Funktionen calcPulse() får ett nytt värde på pulsen varje gång som pulse.calculate() har körts
+klart. Skickar sedan till window(?) att uppdatera det nya värdet.
+*/
 
 void Engine::calcPulse()
 {
-	while (!readyToCalc)
-	{
-	}
-
 	while (isProgramRunning)
 	{
-		//Här kallar vi på pulse.calculate()
-		//Den returnerar det beräknade värdet på pulsen som en float
-		cout << pulse.calculate() << endl;
+		auto loopStart = chrono::high_resolution_clock::now();
+
+		while (!readyToCalc)
+		{
+		}
+
+		vector<Mat> pulseFrames;
+
+		double firstFrameTime = timeVector.front();
+		int i = 0;
+
+		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
+		{
+			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
+			i++;
+		}
+
+		float fps = floor(pulseFrames.size() / pulse.time);
+		cout << fps << endl;
+
+		float test = pulse.calculate(pulseFrames, fps);
+
+		chrono::time_point<chrono::steady_clock> currentTime;
+		chrono::microseconds loopTime;
+		do
+		{
+			currentTime = chrono::high_resolution_clock::now();
+			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
+		} while (loopTime.count() < pulse.time * 1000000);
 	}
 }
 
@@ -98,8 +124,10 @@ void Engine::calcPulse()
 
 //__________calcResp()____________________________________________________________________________
 
-//Denna funktion får ett nytt värde på andningen varje gång som resp.calculate() har körts klart.
-//Skickar sedan till window(?) att uppdatera det nya värdet.
+/*
+Funktionen calcResp() får ett nytt värde på andningen varje gång som resp.calculate() har körts
+klart. Skickar sedan till window(?) att uppdatera det nya värdet.
+*/
 
 void Engine::calcResp()
 {
@@ -109,6 +137,9 @@ void Engine::calcResp()
 
 	while (isProgramRunning)
 	{
+		while (!readyToCalc)
+		{
+		}
 		//Här kallar vi på resp.calculate()
 		//Den returnerar det beräknade värdet på andningen som en float
 	}
@@ -116,12 +147,13 @@ void Engine::calcResp()
 
 //________________________________________________________________________________________________
 
-
-
 //__________runCamera()___________________________________________________________________________
 
-//Denna funktion hämtar frames från kameran och visar dom i ett fönster.
-//Den sköter även videoQueue där frames lagras. Antalet frames som lagras bestäms i Engine.h.
+/*
+Funktion runCamera() hämtar frames från kameran och visar dom i ett fönster. Den sköter även
+framesVector där frames lagras och timeVector där tiden då respektive frame hämtades lagras.
+Antalet frames som lagras bestäms i Engine.h.
+*/
 
 void Engine::runCamera()
 {
@@ -129,17 +161,24 @@ void Engine::runCamera()
 	{
 		VideoCapture cap(0);
 		namedWindow("Video");
+		cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
+		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 960);
 
+		int numOfFrames = 0;
 		if (!cap.isOpened())
 		{
 			cout << "Cam could not be opened" << endl;
+			readyToCalc = false;
 		}
 
-		int i = 0;
-		while (cap.isOpened() && isProgramRunning && char(waitKey(1)) != 'q')
+		auto startTime = std::chrono::high_resolution_clock::now();
+		while (cap.isOpened() && isProgramRunning)
 		{
+			auto loopStart = std::chrono::high_resolution_clock::now();
 			Mat frame;
 			cap >> frame;
+			auto currentTime = std::chrono::high_resolution_clock::now();
+			auto frameTime = std::chrono::duration_cast<std::chrono::microseconds>(currentTime - startTime);
 
 			if (frame.empty())
 			{
@@ -147,25 +186,30 @@ void Engine::runCamera()
 				break;
 			}
 
-			if (i < timeStored*fps)
+			if (numOfFrames < timeStored*maxFPS)
 			{
-				i++;
-				if (i == timeStored*fps)
+				numOfFrames++;
+				if (numOfFrames == timeStored * maxFPS)
 				{
 					readyToCalc = true;
 				}
 			}
 
-			//Tar bort sista framen i videoQueue och lägger till den nya framen längst fram.
-			//(OBS ingen queue utan en vector)
-			videoQueue.pop_back();
-			videoQueue.insert(videoQueue.begin(), frame);
-
+			//Tar bort sista framen i framesVector och lägger till den nya framen längst fram.
+			framesVector.pop_back();
+			framesVector.insert(framesVector.begin(), frame);
+			timeVector.pop_back();
+			timeVector.insert(timeVector.begin(), frameTime.count());
+			
+			waitKey(1);
 			imshow("Video", frame);
-
-			//loopen väntar i 1000/fps millisekunder innan den kör vidare.
-			//Dvs att vi säger till programmet vilken fps vi önskar.
-			waitKey(1000 / fps);
+			
+			std::chrono::microseconds loopTime;
+			do
+			{
+				currentTime = std::chrono::high_resolution_clock::now();
+				loopTime = std::chrono::duration_cast<std::chrono::microseconds>(currentTime - loopStart);
+			} while (loopTime.count() < (1 / maxFPS) * 1000000);
 		}
 	}
 }
