@@ -22,11 +22,12 @@ public:
 		windowPtr{ new heimdall_VS() },
 		pulse{ Pulse() },
 		resp{ Respiration() },
-		fps{ 12.0f },							//Ändra här om ni vill ändra fps
-		timeStored{ 10 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
+		maxFPS{ 15.0f },							//Ändra här om ni vill ändra maxFPS
+		timeStored{ 15 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
 		isProgramRunning{ true },
-		readyToCalc{false},
-		framesVector{ std::vector<cv::Mat>(fps * timeStored) }
+		readyToCalc{ false },
+		framesVector{ std::vector<cv::Mat>(maxFPS*timeStored) },
+		timeVector{ std::vector<double>(maxFPS*timeStored) }
 	{}
 
 	int run();
@@ -41,10 +42,11 @@ private:
 	Pulse pulse;
 	Respiration resp;
 
-	float fps;
+	float maxFPS;
 	int timeStored;
 	bool isProgramRunning;
 	bool readyToCalc;
 	std::vector<cv::Mat> framesVector;
+	std::vector<double> timeVector;
 };
 

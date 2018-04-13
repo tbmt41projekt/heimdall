@@ -40,6 +40,8 @@
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)/../OpenCV/x64/vc15/lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</GenerateDebugInformation>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;opencv_world341.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TreatLinkerWarningAsErrors Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</TreatLinkerWarningAsErrors>
+      <EmbedManagedResourceFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(EmbedManagedResourceFile)</EmbedManagedResourceFile>
     </Link>
     <QtMoc>
       <InputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FullPath)</InputFile>
@@ -98,6 +100,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)/../OpenCV/x64/vc15/lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+      <EmbedManagedResourceFile>%(EmbedManagedResourceFile)</EmbedManagedResourceFile>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -133,6 +137,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="filt.h" />
     <ClInclude Include="Pulse.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Respiration.h" />
     <ClInclude Include="DeviceEnumerator.h" />
   </ItemGroup>

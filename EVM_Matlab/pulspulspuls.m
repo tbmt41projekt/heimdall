@@ -1,7 +1,7 @@
 clear all, close all, clc;
 
 videoObject = VideoReader('Martin-72-PO.avi');
-expPulse = 60;
+expPulse = 80;
 deviation = 30;
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
@@ -10,7 +10,8 @@ vidWidth = videoObject.Width;
 meanRed = zeros(numberOfFrames, 1);
 meanGreen = zeros(numberOfFrames, 1);
 meanBlue = zeros(numberOfFrames, 1);
-frameRate = videoObject.FrameRate;              % Sampling Frequency (Hz)
+%%frameRate = videoObject.FrameRate;              % Sampling Frequency (Hz)
+frameRate = 15;
 f_nyquist = frameRate/2;                        % Nyquist Frequency (Hz)
 frameTime = 1/frameRate;
 frame = read(videoObject, 1);
@@ -59,7 +60,7 @@ Wandning = 20/(60*f_nyquist);
 %cheby2-filter
 %[b,a]=cheby2(6,30,Wp);
 
-fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG16.txt','r');
+fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG23.txt','r');
 formatSpec = '%f';
 normRMG = fscanf(fileID,formatSpec);
 %normRMG = mat2gray(redMinusGreen);
@@ -82,7 +83,7 @@ hold on
 %plot(normBlue, '-b');
 %plot(normRMG, '-k');
 plot(normhigh, '-k');
-plot(normRMG, '-g');
+%plot(normRMG, '-g');
 plot(normFiltRMG, '-m');
 hold off
 
