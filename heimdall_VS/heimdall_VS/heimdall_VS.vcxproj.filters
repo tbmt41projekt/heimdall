@@ -39,10 +39,10 @@
     <ClInclude Include="filt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="..\..\matlabLibrary\matlabLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\matlabLibrary\matlabLibrary.h">
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,9 +74,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="heimdall_VS.rc" />
+    <None Include="libfiler.bin" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="libfiler.bin" />
+    <ResourceCompile Include="heimdall_VS.rc" />
   </ItemGroup>
 </Project>

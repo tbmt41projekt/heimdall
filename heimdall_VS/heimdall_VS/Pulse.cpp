@@ -21,15 +21,6 @@ Pulse::Pulse()
 
 //__________calculate()___________________________________________________________________________
 
-<<<<<<< HEAD
-int Pulse::calculate() //ANVÄNDS FÖR GUI, endast ett värde
-{
-	
-	int value = 17;
-	return value;
-}
-
-=======
 /*
 Funktionen calculate() används för att köra hela processen för att beräkna pulsen. Den får in 
 en sekvens med bilder som sedan bearbetas av olika funktioner. Returvärdet är pulsen.
@@ -71,7 +62,6 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 //================================================================================================
 
 //__________getROI()_____________________________________________________________________________
->>>>>>> puls
 
 /*
 Funktionen getROI() använder ansiktsigenkänning för att hitta ett område i pannan på objektet.

@@ -147,10 +147,10 @@
     <ClInclude Include="DeviceEnumerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="heimdall_VS.rc" />
+    <None Include="libfiler.bin" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="libfiler.bin" />
+    <ResourceCompile Include="heimdall_VS.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
