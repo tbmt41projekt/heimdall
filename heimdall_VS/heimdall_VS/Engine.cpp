@@ -130,18 +130,38 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
-	while (!readyToCalc)
-	{
-	}
-
 	while (isProgramRunning)
 	{
+		auto loopStart = chrono::high_resolution_clock::now();
+
 		while (!readyToCalc)
 		{
 		}
-		//Här kallar vi på resp.calculate()
-		//Den returnerar det beräknade värdet på andningen som en float
+
+		vector<Mat> pulseFrames;
+
+		double firstFrameTime = timeVector.front();
+		int i = 0;
+
+		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
+		{
+			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
+			i++;
+		}
+
+		float fps = floor(pulseFrames.size() / pulse.time);
+
+		float test = pulse.calculate(pulseFrames, fps);
+
+		chrono::time_point<chrono::steady_clock> currentTime;
+		chrono::microseconds loopTime;
+		do
+		{
+			currentTime = chrono::high_resolution_clock::now();
+			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
+		} while (loopTime.count() < pulse.time * 1000000);
 	}
+
 }
 
 //________________________________________________________________________________________________
