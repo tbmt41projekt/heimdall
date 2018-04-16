@@ -347,6 +347,10 @@ void heimdall_VS::updateRandomNumber()
 		//Visar larmtext om värdet går utanför intervallen - fungerar!
 		QString logString;
 
+		QString HRNumString = QString::number(HRNum);
+		QString RRNumString = QString::number(RRNum);
+
+
 		if (HRNum > MaxHR)
 		{
 			ui.labelhighHR->show();
@@ -355,7 +359,8 @@ void heimdall_VS::updateRandomNumber()
 
 			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 			logString.append("  -  ");
-			logString.append("High heart rate.");
+			logString.append("High heart rate, ");
+			logString.append(HRNumString);
 			logString.append("\r\n");
 			setLog(logString);
 
@@ -366,7 +371,8 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("High respiratory rate.");
+				logString.append("High respiratory rate, ");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
@@ -377,7 +383,8 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("Low respiratory rate.");
+				logString.append("Low respiratory rate, ");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
@@ -395,7 +402,8 @@ void heimdall_VS::updateRandomNumber()
 
 			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 			logString.append("  -  ");
-			logString.append("Low heart rate.");
+			logString.append("Low heart rate, ");
+			logString.append(HRNumString);
 			logString.append("\r\n");
 			setLog(logString);
 
@@ -406,7 +414,8 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("High respiratory rate.");
+				logString.append("High respiratory rate, ");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
@@ -418,6 +427,7 @@ void heimdall_VS::updateRandomNumber()
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
 				logString.append("Low respiratory rate.");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
@@ -442,6 +452,7 @@ void heimdall_VS::updateRandomNumber()
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
 				logString.append("High respiratory rate.");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
@@ -454,6 +465,7 @@ void heimdall_VS::updateRandomNumber()
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
 				logString.append("Low respiratory rate.");
+				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
 			}
