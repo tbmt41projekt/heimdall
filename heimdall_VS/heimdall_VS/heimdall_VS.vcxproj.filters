@@ -22,6 +22,9 @@
     <ClCompile Include="LogWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LogbydateWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Respiration.h">
@@ -44,12 +47,18 @@
     <QtMoc Include="LogWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="LogbydateWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="heimdall_VS.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LogWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LogbydateWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

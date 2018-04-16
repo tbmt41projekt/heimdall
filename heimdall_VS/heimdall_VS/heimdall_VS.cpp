@@ -83,6 +83,10 @@ void heimdall_VS::setLog(QString logstr)
 	}
 }
 
+
+
+
+
 //__________alarm()_______________________________________________________________________________
 
 void heimdall_VS::alarm()
@@ -111,11 +115,6 @@ void heimdall_VS::showTime()
 	ui.labelDateTime_2->setText(dateString);
 }
 
-//__________SelectROI - klickfunktion________________________________________________________________
-void heimdall_VS::on_pushSelectROI_clicked()
-{
-
-}
 
 //__________Start - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushStart_clicked()
@@ -126,8 +125,9 @@ void heimdall_VS::on_pushStart_clicked()
 	QString minHR = ui.inputMinHR->text();
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
-	QString startString = ("\n   ---: New measurement: " + pnr + " :--- \n");
+	QString startString = ("\n   --- New measurement: " + pnr + " --- \n");
 	setLog(startString);
+	
 
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
@@ -187,6 +187,7 @@ void heimdall_VS::on_pushLog_clicked()
 {
 	ui.calendarWidget->setVisible(true);
 	
+
 	/*LogWindow logWindow;
 	logWindow.setModal(true);
 	logWindow.exec();
@@ -206,15 +207,82 @@ void heimdall_VS::on_calendarWidget_clicked()
 	
 	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
 	
+	findSelectedDate(dateStringnotis);
+	//qDebug() << dateStringnotis;
 	
-	qDebug() << dateStringnotis;
 	
-	LogWindow logWindow;
-	logWindow.setModal(true);
-	logWindow.exec();
+
+	LogbydateWindow LogbydateWindow;
+	LogbydateWindow.setModal(true);
+	LogbydateWindow.exec();
 	ui.calendarWidget->setVisible(false);
+}
+
+
+
+
+//_________findSelectedDate()_____________________________________________________________________________
+
+void heimdall_VS::findSelectedDate(QString search)
+{
+	//QString search("110418");
+	QFile outputFile("output.txt");
+	QFile inputFile("logg.txt");
+	QString semi (":");
+
+	bool ifDate = false;
+
+	outputFile.open(QFile::WriteOnly|QFile::Truncate);
+	QTextStream out(&outputFile);
+
+	if (inputFile.open(QIODevice::ReadOnly))
+	{
+		QTextStream in(&inputFile);
+		while (!in.atEnd())
+		{
+			QString line = in.readLine();
+
+			if (line.contains(search, Qt::CaseInsensitive)) {
+				
+				out << line << "\n";
+			}
+		}
+		inputFile.close();
+		outputFile.close();
+	}
 
 }
+
+//__________SelectROI - klickfunktion________________________________________________________________
+void heimdall_VS::on_pushSelectROI_clicked()
+{
+
+	capCamera.open(0);
+	namedWindow("Display window", 1);
+
+	if (capCamera.isOpened())
+	{
+		qDebug() << "Camera is open";
+	}
+
+
+	while (1)
+	{
+		Mat frame;
+		capCamera >> frame;
+		if (frame.empty()) break;
+		imshow("Display window", frame);
+
+		char c = (char)waitKey(25);
+		if (c == 27) break;
+
+	}
+
+	
+
+
+}
+
 
 
 

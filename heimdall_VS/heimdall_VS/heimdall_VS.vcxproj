@@ -118,6 +118,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="DeviceEnumerator.cpp" />
     <ClCompile Include="heimdall_VS.cpp" />
+    <ClCompile Include="LogbydateWindow.cpp" />
     <ClCompile Include="LogWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pulse.cpp" />
@@ -128,11 +129,13 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="heimdall_VS.ui" />
+    <QtUic Include="LogbydateWindow.ui" />
     <QtUic Include="LogWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <QtMoc Include="LogWindow.h" />
+    <QtMoc Include="LogbydateWindow.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="Respiration.h" />
     <ClInclude Include="DeviceEnumerator.h" />

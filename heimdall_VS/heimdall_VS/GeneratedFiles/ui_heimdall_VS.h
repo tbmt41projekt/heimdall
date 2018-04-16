@@ -70,8 +70,8 @@ public:
     QLabel *labelVideo;
     QLabel *labelWARNING;
     QPushButton *pushLog;
-    QCalendarWidget *calendarWidget;
     QPushButton *pushLog_2;
+    QCalendarWidget *calendarWidget;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -288,13 +288,13 @@ public:
         pushLog->setObjectName(QStringLiteral("pushLog"));
         pushLog->setGeometry(QRect(410, 10, 71, 31));
         pushLog->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
-        calendarWidget = new QCalendarWidget(frame_2);
-        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
-        calendarWidget->setGeometry(QRect(90, 70, 336, 214));
         pushLog_2 = new QPushButton(frame_2);
         pushLog_2->setObjectName(QStringLiteral("pushLog_2"));
         pushLog_2->setGeometry(QRect(410, 50, 71, 31));
         pushLog_2->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
+        calendarWidget = new QCalendarWidget(frame_2);
+        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
+        calendarWidget->setGeometry(QRect(100, 60, 341, 221));
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

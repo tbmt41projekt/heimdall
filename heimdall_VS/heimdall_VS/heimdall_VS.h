@@ -36,6 +36,9 @@
 #include "Respiration.h"
 #include "LogWindow.h"
 #include "ui_LogWindow.h"
+#include "LogbydateWindow.h"
+#include "ui_LogbydateWindow.h"
+
 
 
 //#include "Engine.h"
@@ -52,6 +55,7 @@ public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
 	~heimdall_VS();
 	void setLog(QString logstr);
+
 private: 
 	Ui::heimdall_VSClass ui;
 	QTimer *timer1;
@@ -59,7 +63,7 @@ private:
 	//bool readyForCamera;
 	bool readyToMeasure;
 	
-
+	void findSelectedDate(QString search);
 	cv::VideoCapture capCamera;
 	
 
