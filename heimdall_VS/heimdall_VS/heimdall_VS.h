@@ -55,6 +55,7 @@ public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
 	~heimdall_VS();
 	void setLog(QString logstr);
+	QString pnr;
 
 private: 
 	Ui::heimdall_VSClass ui;

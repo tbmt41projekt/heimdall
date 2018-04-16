@@ -1,11 +1,12 @@
 #include "LogWindow.h"
 
-LogWindow::LogWindow(QDialog *parent)
-	: QDialog(parent)
+LogWindow::LogWindow(QString pnr, QDialog *parent)
+	:
+	QDialog(parent)
 {
 	ui.setupUi(this);
 
-	QString filename = "logg.txt";
+	QString filename = pnr + "_logg.txt";
 	QFile log(filename);
 
 	if(!log.exists())

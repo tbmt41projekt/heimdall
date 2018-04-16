@@ -60,7 +60,7 @@ void heimdall_VS::setLog(QString logstr)
 	QString contAnt;
 	QString contAct;
 
-	QFile log("logg.txt");
+	QFile log(pnr + "_logg.txt");
 
 	if (log.open(QIODevice::ReadOnly))
 		{
@@ -120,7 +120,8 @@ void heimdall_VS::showTime()
 void heimdall_VS::on_pushStart_clicked()
 {
 	readyToMeasure = true;
-	QString pnr = ui.inputPnr->text();
+	pnr = ui.inputPnr->text();
+	//QString pnr = ui.inputPnr->text();
 	QString maxHR = ui.inputMaxHR->text();
 	QString minHR = ui.inputMinHR->text();
 	QString maxRR = ui.inputMaxRR->text();
@@ -195,7 +196,7 @@ void heimdall_VS::on_pushLog_clicked()
 }
 void heimdall_VS::on_pushLog_2_clicked()
 {
-	LogWindow logWindow;
+	LogWindow logWindow(pnr);
 	logWindow.setModal(true);
 	logWindow.exec();
 
@@ -204,7 +205,6 @@ void heimdall_VS::on_pushLog_2_clicked()
 //_________Calendar_________________________________________________________________________________
 void heimdall_VS::on_calendarWidget_clicked()
 {
-	
 	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
 	
 	findSelectedDate(dateStringnotis);
@@ -216,6 +216,9 @@ void heimdall_VS::on_calendarWidget_clicked()
 	LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
 	ui.calendarWidget->setVisible(false);
+
+	
+
 }
 
 
@@ -227,7 +230,7 @@ void heimdall_VS::findSelectedDate(QString search)
 {
 	//QString search("110418");
 	QFile outputFile("output.txt");
-	QFile inputFile("logg.txt");
+	QFile inputFile(pnr + "_logg.txt");
 	QString semi (":");
 
 	bool ifDate = false;
@@ -237,6 +240,7 @@ void heimdall_VS::findSelectedDate(QString search)
 
 	if (inputFile.open(QIODevice::ReadOnly))
 	{
+		out << "Personal code number: " << pnr << "  ---  Date: " << search << "\n";
 		QTextStream in(&inputFile);
 		while (!in.atEnd())
 		{
@@ -250,7 +254,8 @@ void heimdall_VS::findSelectedDate(QString search)
 		inputFile.close();
 		outputFile.close();
 	}
-
+	
+	
 }
 
 //__________SelectROI - klickfunktion________________________________________________________________

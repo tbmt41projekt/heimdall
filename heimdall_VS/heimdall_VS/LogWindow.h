@@ -10,7 +10,7 @@ class LogWindow : public QDialog
 	Q_OBJECT
 
 public:
-	LogWindow(QDialog *parent = Q_NULLPTR);
+	LogWindow(QString pnr, QDialog *parent = Q_NULLPTR);
 	~LogWindow();
 
 private:
