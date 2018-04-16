@@ -42,13 +42,14 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 
 		//Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
 		ofstream myfile1;
-		myfile1.open("normRMG23.txt");
+		myfile1.open("Tester_Puls/FPS2/20fps2_3.txt");
 		for (int r = 0; r < normRMG.rows; r++)
 		{
 			myfile1 << normRMG.at<float>(r, 0) << " ";
 			myfile1 << endl;
 		}
 		myfile1.close();
+		cout << "*************************KLART**********************" << endl;
 		//===============================================================
 
 		//float expectedPulse = currentPulse;

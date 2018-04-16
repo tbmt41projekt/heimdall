@@ -97,7 +97,7 @@ void Engine::calcPulse()
 		double firstFrameTime = timeVector.front();
 		int i = 0;
 
-		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
+		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)		//mikrosekunder
 		{
 			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
 			i++;
@@ -114,7 +114,7 @@ void Engine::calcPulse()
 		{
 			currentTime = chrono::high_resolution_clock::now();
 			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
-		} while (loopTime.count() < pulse.time * 1000000);
+		} while (loopTime.count() < pulse.time * 1000000);		//mikrosekunder
 	}
 }
 
@@ -161,8 +161,8 @@ void Engine::runCamera()
 	{
 		VideoCapture cap(0);
 		namedWindow("Video");
-		cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
-		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 960);
+		cap.set(CV_CAP_PROP_FRAME_WIDTH, 960);
+		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);
 
 		int numOfFrames = 0;
 		if (!cap.isOpened())
@@ -172,9 +172,15 @@ void Engine::runCamera()
 		}
 
 		auto startTime = std::chrono::high_resolution_clock::now();
-		while (cap.isOpened() && isProgramRunning)
+		while (true)
 		{
 			auto loopStart = std::chrono::high_resolution_clock::now();
+
+			if (!cap.isOpened() || !isProgramRunning)
+			{
+				break;
+			}
+
 			Mat frame;
 			cap >> frame;
 			auto currentTime = std::chrono::high_resolution_clock::now();
@@ -209,7 +215,7 @@ void Engine::runCamera()
 			{
 				currentTime = std::chrono::high_resolution_clock::now();
 				loopTime = std::chrono::duration_cast<std::chrono::microseconds>(currentTime - loopStart);
-			} while (loopTime.count() < (1 / maxFPS) * 1000000);
+			} while (loopTime.count() < (1 / maxFPS) * 1000000);		//mikrosekunder
 		}
 	}
 }
