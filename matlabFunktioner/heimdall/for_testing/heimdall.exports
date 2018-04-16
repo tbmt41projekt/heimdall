@@ -1,7 +1,0 @@
-heimdallInitialize
-heimdallInitializeWithHandlers
-heimdallTerminate
-heimdallPrintStackTrace
-mlxFilterAndCalcFreq
-mlxSquare
-

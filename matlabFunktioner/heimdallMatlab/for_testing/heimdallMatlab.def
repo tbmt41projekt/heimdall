@@ -1,0 +1,9 @@
+LIBRARY heimdallMatlab
+EXPORTS
+heimdallMatlabInitialize
+heimdallMatlabInitializeWithHandlers
+heimdallMatlabTerminate
+heimdallMatlabPrintStackTrace
+mlxFilterAndCalcFreq
+mlxSquare
+

@@ -1,0 +1,7 @@
+heimdallMatlabInitialize
+heimdallMatlabInitializeWithHandlers
+heimdallMatlabTerminate
+heimdallMatlabPrintStackTrace
+mlxFilterAndCalcFreq
+mlxSquare
+
