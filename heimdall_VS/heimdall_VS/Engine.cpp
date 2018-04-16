@@ -138,7 +138,7 @@ void Engine::calcResp()
 		{
 		}
 
-		vector<Mat> pulseFrames;
+		vector<Mat> frames;
 
 		double firstFrameTime = timeVector.front();
 		int i = 0;
