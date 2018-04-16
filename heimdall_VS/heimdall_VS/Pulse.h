@@ -13,6 +13,7 @@
 #include <fstream>
 
 #include "filt.h"
+#include "Matlab.h"
 
 /*
 Pulse-klassen är den klass som är ansvarig för att beräkna pulsen.
@@ -40,5 +41,6 @@ private:
 	cv::Mat getRedMinusGreen(cv::Mat & redMatrix, cv::Mat & greenMatrix);
 	
 	cv::CascadeClassifier face_cascade;
+	Matlab matlab;
 };
 

@@ -22,6 +22,9 @@
     <ClCompile Include="filt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Matlab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Respiration.h">
@@ -43,6 +46,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="heimdallMatlab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matlab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

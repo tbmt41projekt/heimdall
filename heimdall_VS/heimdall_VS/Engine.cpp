@@ -104,7 +104,6 @@ void Engine::calcPulse()
 		}
 
 		float fps = floor(pulseFrames.size() / pulse.time);
-		cout << fps << endl;
 
 		float test = pulse.calculate(pulseFrames, fps);
 
@@ -161,13 +160,13 @@ void Engine::runCamera()
 	{
 		VideoCapture cap(0);
 		namedWindow("Video");
-		cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
-		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 960);
+		cap.set(CV_CAP_PROP_FRAME_WIDTH, 960);
+		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);
 
 		int numOfFrames = 0;
 		if (!cap.isOpened())
 		{
-			cout << "Cam could not be opened" << endl;
+			//cout << "Cam could not be opened" << endl;
 			readyToCalc = false;
 		}
 

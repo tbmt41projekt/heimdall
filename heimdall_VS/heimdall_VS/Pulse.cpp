@@ -7,11 +7,12 @@ using namespace cv;
 
 Pulse::Pulse()
 	:
-	time{ 5 },
-	currentPulse{90.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
+	time{ 3 },
+	currentPulse{80.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
 {
 	//Inläsning av mallen för ansiktsigenkänning
-	if (!face_cascade.load("haarcascade_frontalface_alt.xml"))
+	String filepath = "C:/Users/nilge293/Documents/haarcascade_frontalface_alt.xml";
+	if (!face_cascade.load(filepath))
 	{
 		printf("--(!)Error loading face cascade\n");
 	}
@@ -40,15 +41,28 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 		Mat redMinusGreen = getRedMinusGreen(redNormValues, greenNormValues);
 		Mat normRMG = normalizeMatrix(redMinusGreen);
 
-		//Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
-		ofstream myfile1;
-		myfile1.open("normRMG23.txt");
-		for (int r = 0; r < normRMG.rows; r++)
+		vector<double> signal;
+
+		for (int i = 0; i < normRMG.rows; i++)
 		{
-			myfile1 << normRMG.at<float>(r, 0) << " ";
-			myfile1 << endl;
+			signal.push_back((double)normRMG.at<float>(i, 0));
 		}
-		myfile1.close();
+
+		float expectedPulse = currentPulse;
+
+		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 20.0f), (double)(expectedPulse + 10.0f), (double)(fps)));
+		cout << currentPulse << endl;
+
+
+		//Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
+		//ofstream myfile1;
+		//myfile1.open("normRMG23.txt");
+		//for (int r = 0; r < normRMG.rows; r++)
+		//{
+		//	myfile1 << normRMG.at<float>(r, 0) << " ";
+		//	myfile1 << endl;
+		//}
+		//myfile1.close();
 		//===============================================================
 
 		//float expectedPulse = currentPulse;
