@@ -97,7 +97,7 @@ void Engine::calcPulse()
 		double firstFrameTime = timeVector.front();
 		int i = 0;
 
-		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
+		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)		//mikrosekunder
 		{
 			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
 			i++;
@@ -113,7 +113,7 @@ void Engine::calcPulse()
 		{
 			currentTime = chrono::high_resolution_clock::now();
 			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
-		} while (loopTime.count() < pulse.time * 1000000);
+		} while (loopTime.count() < pulse.time * 1000000);		//mikrosekunder
 	}
 }
 
@@ -130,7 +130,7 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
-	while (isProgramRunning)
+	/*while (isProgramRunning)
 	{
 		auto loopStart = chrono::high_resolution_clock::now();
 
@@ -160,7 +160,7 @@ void Engine::calcResp()
 			currentTime = chrono::high_resolution_clock::now();
 			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
 		} while (loopTime.count() < pulse.time * 1000000);
-	}
+	}*/
 
 }
 
@@ -191,9 +191,15 @@ void Engine::runCamera()
 		}
 
 		auto startTime = std::chrono::high_resolution_clock::now();
-		while (cap.isOpened() && isProgramRunning)
+		while (true)
 		{
 			auto loopStart = std::chrono::high_resolution_clock::now();
+
+			if (!cap.isOpened() || !isProgramRunning)
+			{
+				break;
+			}
+
 			Mat frame;
 			cap >> frame;
 			auto currentTime = std::chrono::high_resolution_clock::now();
@@ -228,7 +234,7 @@ void Engine::runCamera()
 			{
 				currentTime = std::chrono::high_resolution_clock::now();
 				loopTime = std::chrono::duration_cast<std::chrono::microseconds>(currentTime - loopStart);
-			} while (loopTime.count() < (1 / maxFPS) * 1000000);
+			} while (loopTime.count() < (1 / maxFPS) * 1000000);		//mikrosekunder
 		}
 	}
 }

@@ -1,7 +1,7 @@
 clear all, close all, clc;
 
-videoObject = VideoReader('Martin-72-PO.avi');
-expPulse = 80;
+videoObject = VideoReader('Jet-156.avi');
+expPulse = 130;
 deviation = 30;
 % Determine how many frames there are.
 numberOfFrames = videoObject.NumberOfFrames;
@@ -51,8 +51,8 @@ redMinusGreen = normRed-normGreen;
 Wp = [expPulse-deviation expPulse+deviation]/(60*f_nyquist);                                         % Passband Frequency (Normalised)
 Wandning = 20/(60*f_nyquist);
 %butter-filter
-[b,a]=butter(6, Wp);
-[c,d] = butter(6, Wandning, 'high')
+[b,a]=butter(2, Wp);
+%[c,d] = butter(2, Wandning, 'high')
 
 %cheby1-filter
 %[b,a]=cheby1(6,3,Wp);
@@ -60,13 +60,10 @@ Wandning = 20/(60*f_nyquist);
 %cheby2-filter
 %[b,a]=cheby2(6,30,Wp);
 
-fileID = fopen('..\heimdall_VS\heimdall_VS\normRMG23.txt','r');
+fileID = fopen('..\heimdall_VS\heimdall_VS\Tester_Puls\FPS2/20fps2_1.txt','r');
 formatSpec = '%f';
 normRMG = fscanf(fileID,formatSpec);
-%normRMG = mat2gray(redMinusGreen);
-highRMG = filtfilt(c,d, normRMG)
-normhigh = mat2gray(highRMG);
-filteredRMG = filtfilt(b,a,highRMG);
+filteredRMG = filtfilt(b,a,normRMG);
 normFiltRMG = mat2gray(filteredRMG);                        %Enbart för visualisering
 
 findpeaks(double(normFiltRMG));                             %Enbart för visualisering
@@ -81,10 +78,11 @@ hold on
 %plot(normRed, '-r');
 %plot(normGreen, '-g');
 %plot(normBlue, '-b');
-%plot(normRMG, '-k');
-plot(normhigh, '-k');
+plot(normRMG, '-k');
+%plot(normhigh, '-k');
 %plot(normRMG, '-g');
 plot(normFiltRMG, '-m');
+print('-f1','..\heimdall_VS\heimdall_VS\Tester_Puls\FPS2/20fps2_1 ','-deps')
 hold off
 
 %figure(2)

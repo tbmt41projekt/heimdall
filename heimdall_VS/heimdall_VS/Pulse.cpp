@@ -43,18 +43,16 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 
 		vector<double> signal;
 
-		for (int i = 0; i < normRMG.rows; i++)
+		for (int r = 0; r < normRMG.rows; r++)
 		{
-			signal.push_back((double)normRMG.at<float>(i, 0));
+			signal.push_back((double)normRMG.at<float>(r, 0));
 		}
 
 		float expectedPulse = currentPulse;
-
 		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 20.0f), (double)(expectedPulse + 10.0f), (double)(fps)));
 		cout << currentPulse << endl;
 
-
-		//Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
+		////Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
 		//ofstream myfile1;
 		//myfile1.open("normRMG23.txt");
 		//for (int r = 0; r < normRMG.rows; r++)
@@ -63,12 +61,10 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 		//	myfile1 << endl;
 		//}
 		//myfile1.close();
-		//===============================================================
+		//cout << "*************************KLART**********************" << endl;
+		////===============================================================
 
-		//float expectedPulse = currentPulse;
-		//currentPulse = matlabFunktion(normRMG, fps, expectedPulse, osv osv);
-		//return currentPulse;
-		return 90.0f;
+		return currentPulse;
 	}
 	return -1.0f;		//returnerar -1 ifall det inte går att hitta något ansikte
 }
