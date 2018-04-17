@@ -128,37 +128,11 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
-	/*while (isProgramRunning)
+	while (isProgramRunning)
 	{
-		auto loopStart = chrono::high_resolution_clock::now();
-
-		while (!readyToCalc)
-		{
-		}
-
-		vector<Mat> frames;
-
-		double firstFrameTime = timeVector.front();
-		int i = 0;
-
-		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
-		{
-			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
-			i++;
-		}
-
-		float fps = floor(pulseFrames.size() / pulse.time);
-
-		float test = pulse.calculate(pulseFrames, fps);
-
-		chrono::time_point<chrono::steady_clock> currentTime;
-		chrono::microseconds loopTime;
-		do
-		{
-			currentTime = chrono::high_resolution_clock::now();
-			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
-		} while (loopTime.count() < pulse.time * 1000000);
-	}*/
+		resp.calculateRF();
+	}
+		
 
 }
 
@@ -189,7 +163,6 @@ void Engine::runCamera()
 		}
 
 		Respiration * respPtr = &resp;
-
 		setMouseCallback("Video", respPtr->onMouse, respPtr);
 
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -228,11 +201,12 @@ void Engine::runCamera()
 			timeVector.pop_back();
 			timeVector.insert(timeVector.begin(), frameTime.count());
 
-			//Tracking
-			resp.track(frame, frameTime.count());
+			resp.track(frame);
 
 			waitKey(1);
 			imshow("Video", frame);
+
+			//newFrame = true;
 			
 			std::chrono::microseconds loopTime;
 			do

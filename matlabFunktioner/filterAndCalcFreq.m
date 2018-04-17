@@ -16,6 +16,8 @@ Wp = passBand/Fn;
 [B,A] = butter(2, Wp);
 filteredY = filtfilt(B, A, signal);
 
+%plot(1:length(filteredY), filteredY)
+
 [~, peakLocations] = findpeaks(filteredY);
 
 T = diff(peakLocations);

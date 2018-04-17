@@ -1,5 +1,6 @@
 #include "Respiration.h"
 
+
 using namespace cv;
 using namespace std;
 
@@ -24,7 +25,7 @@ void Respiration::onMouse(int event, int x, int y, int, void * userdata)
 }
 
 
-void Respiration::track(cv::Mat &frame, double dt)
+void Respiration::track(cv::Mat &frame)
 {
 	frame.copyTo(image);
 	cvtColor(image, gray, COLOR_BGR2GRAY);
@@ -34,6 +35,7 @@ void Respiration::track(cv::Mat &frame, double dt)
 		vector<uchar> status;
 		vector<float> err;
 		
+		
 		if (prevGray.empty())
 		{
 			gray.copyTo(prevGray);
@@ -42,20 +44,7 @@ void Respiration::track(cv::Mat &frame, double dt)
 		calcOpticalFlowPyrLK(prevGray, gray, prevPoints, nextPoints, status, err, winSize,
 			3, termCriteria, 0, 0.001);
 
-		if (time < sampleTime)
-		{
-			toCalc.push_back(nextPoints[0]);
-			time = dt / 1000000 - prevTime;
-		}
-		else
-		{
-			frameRate = toCalc.size() / time;
-			cout << "Respiratory Frequency: " << calculateRF() << endl;
-			toCalc.clear();
-			prevTime = dt / 1000000;
-			time = 0;
-			//sampleTime = (1 / currentFrequency) * 3;
-		}
+		rfBuffer.push_back(nextPoints[0]);
 
 		size_t i, k;
 		for (i = k = 0; i < nextPoints.size(); i++)
@@ -102,24 +91,21 @@ void Respiration::track(cv::Mat &frame, double dt)
 
 }
 
-double Respiration::calculateRF()
+void Respiration::calculateRF()
 {
-	vector<double> data;
-	for (Point2f i : toCalc)
+	if (rfBuffer.size() >= bufferSize)
 	{
-		data.push_back(sqrt(pow(i.x, 2) + pow(i.y, 2)));
-	}
-	
-	for (double i : data)
-	{
-		cout << i << " ";
+		vector<double> data;
+		for (Point2f i : rfBuffer)
+		{
+			data.push_back(i.x + i.y);
+		}
+		rfBuffer.clear();
+
+
+
 	}
 
-	//double freq = matlab.filterCalc(data, 5, 50, frameRate);
-	//currentFrequency = freq;
-
-	return 1;
-	
 }
 
 

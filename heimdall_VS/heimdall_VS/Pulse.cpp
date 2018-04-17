@@ -49,7 +49,7 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 		}
 
 		float expectedPulse = currentPulse;
-		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 20.0f), (double)(expectedPulse + 10.0f), (double)(fps)));
+		//currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 20.0f), (double)(expectedPulse + 10.0f), (double)(fps)));
 		cout << currentPulse << endl;
 
 		////Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen

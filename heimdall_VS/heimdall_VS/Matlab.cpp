@@ -25,6 +25,7 @@ double Matlab::filterCalc(std::vector<double> signal, double lowLimit, double hi
 {
 	try 
 	{
+		
 		mwArray signalMat(1, signal.size(), mxDOUBLE_CLASS);
 		signalMat.SetData(&signal[0], signal.size());
 

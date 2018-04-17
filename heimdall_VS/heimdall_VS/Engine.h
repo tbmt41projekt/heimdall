@@ -48,5 +48,6 @@ private:
 	bool readyToCalc;
 	std::vector<cv::Mat> framesVector;
 	std::vector<double> timeVector;
+	//bool newFrame = false;
 };
 

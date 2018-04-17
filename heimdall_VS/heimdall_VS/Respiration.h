@@ -19,23 +19,22 @@ public:
 	void onMouse(int event, int x, int y);
 	static void onMouse(int event, int x, int y, int /*flags*/, void* userdata);
 
-	void track(cv::Mat &frame, double dt);
-	double calculateRF();
+	void track(cv::Mat &frame);
+	void calculateRF();
 	
 private:
 	cv::Point2f mousePoint;
 	bool addRemovePt = false;
-	std::vector<cv::Point2f> toCalc;
+	std::vector<cv::Point2f> rfBuffer;
+	int bufferSize = 20;
 	cv::Mat gray, prevGray, image;
 	std::vector<cv::Point2f> prevPoints, nextPoints;
 	cv::TermCriteria termCriteria{ cv::TermCriteria::COUNT | cv::TermCriteria::EPS, 20, 0.03 };
 	cv::Size subPixWinSize{ 10, 10 }, winSize{ 31, 31 };
-	double time;
-	double prevTime;
-	double sampleTime = 5;
-	double frameRate;
-	double currentFrequency;
 	Matlab matlab;
+	double frameRate = 20;
+	double currentFrequency;
+
 
 };
 
