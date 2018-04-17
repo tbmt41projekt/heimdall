@@ -47,8 +47,6 @@ int Engine::run()
 	//Visar fönstret
 	windowPtr->show();
 
-
-
 	//runCameraThread kör igång funktionen runCamera som hittas längre ner i filen
 	thread runCameraThread(&Engine::runCamera, this);
 
@@ -68,11 +66,11 @@ int Engine::run()
 		calcRespThread.join();
 		return 0;
 	}
+
 	return -1;
 }
 
 //________________________________________________________________________________________________
-
 
 
 //__________calcPulse()___________________________________________________________________________
@@ -190,6 +188,10 @@ void Engine::runCamera()
 			readyToCalc = false;
 		}
 
+		Respiration * respPtr = &resp;
+
+		setMouseCallback("Video", respPtr->onMouse, respPtr);
+
 		auto startTime = std::chrono::high_resolution_clock::now();
 		while (true)
 		{
@@ -225,7 +227,10 @@ void Engine::runCamera()
 			framesVector.insert(framesVector.begin(), frame);
 			timeVector.pop_back();
 			timeVector.insert(timeVector.begin(), frameTime.count());
-			
+
+			//Tracking
+			resp.track(frame, frameTime.count());
+
 			waitKey(1);
 			imshow("Video", frame);
 			
