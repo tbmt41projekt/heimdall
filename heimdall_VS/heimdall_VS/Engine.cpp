@@ -52,17 +52,33 @@ int Engine::run()
 	//calcRespThread kör igång funktionen calcResp som hittas längre ner i filen
 	thread calcRespThread(&Engine::calcResp, this);
 
-	//Denna if-sats är för när programmet stängs av, eftersom dom olika threadsen körs separat måste
-	//man vänta på att allt körs klart innan programmet stängs av helt
-	if (aPtr->exec() == 0)
+	while (windowPtr->isVisible())
 	{
-		isProgramRunning = false;
-		runCameraThread.join();
-		calcPulseThread.join();
-		calcRespThread.join();
-		return 0;
+		aPtr->processEvents();
+
+		if (newFrameReady)
+		{
+			windowPtr->updateFrame(framesVector.at(0));
+			newFrameReady = false;
+		}
+		if (newPulseReady && windowPtr->onDisplayWindow)
+		{
+			windowPtr->setPulse(newPulse);
+			newPulseReady = false;
+		}
+		if (newRespReady && windowPtr->onDisplayWindow)
+		{
+			windowPtr->setResp(newResp);
+			newRespReady = false;
+		}
 	}
-	return -1;
+
+	isProgramRunning = false;
+	runCameraThread.join();
+	calcPulseThread.join();
+	calcRespThread.join();
+
+	return 0;
 }
 
 //________________________________________________________________________________________________
@@ -78,6 +94,7 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcPulse()
 {
+	int tempPulse;
 	while (isProgramRunning)
 	{
 		auto loopStart = chrono::high_resolution_clock::now();
@@ -99,7 +116,12 @@ void Engine::calcPulse()
 
 		float fps = floor(pulseFrames.size() / pulse.time);
 
-		float test = pulse.calculate(pulseFrames, fps);
+		tempPulse = (int)pulse.calculate(pulseFrames, fps);
+		if (tempPulse != -1)		//tempPulse = -1 om inga toppar har hittats
+		{
+			newPulse = tempPulse;
+			newPulseReady = true;
+		}
 
 		chrono::time_point<chrono::steady_clock> currentTime;
 		chrono::microseconds loopTime;
@@ -219,10 +241,11 @@ void Engine::runCamera()
 			framesVector.insert(framesVector.begin(), frame);
 			timeVector.pop_back();
 			timeVector.insert(timeVector.begin(), frameTime.count());
-			
+			newFrameReady = true;
+
 			waitKey(1);
 			imshow("Video", frame);
-			
+
 			std::chrono::microseconds loopTime;
 			do
 			{

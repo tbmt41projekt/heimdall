@@ -1,26 +1,29 @@
 #include "heimdall_VS.h"
+#include <iostream>
 
 //________________________________________________________________________________________________
 
 heimdall_VS::heimdall_VS(QWidget *parent)
-	: QMainWindow(parent)
+	:
+	QMainWindow(parent),
+	onDisplayWindow{ false },
+	showSelectROI{ false }
 {
 	ui.setupUi(this);
 	ui.inputPnr->setFocus();
 	ui.inputPnr->setPlaceholderText("YYMMDD-XXXX");
-	readyToMeasure = false;
 	srand(time(NULL)); //SKA BORT, ENDAST FÖR TEST AV LARM
-		
+
 	//Skapar en timer så att klockan rullar
 	timer1 = new QTimer(this);
 	connect(timer1, SIGNAL(timeout()), this, SLOT(showTime()));
 	timer1->start();
-	
+
 	//Skapar en timer för updaterandomnumber, tillfällig funktion
-	timer2 = new QTimer(this);
-	timer2->setInterval(2000);
-	connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
-	timer2->start();
+	//timer2 = new QTimer(this);
+	//timer2->setInterval(2000);
+	//connect(timer2, SIGNAL(timeout()), this, SLOT(updateRandomNumber()));
+	//timer2->start();
 
 	//Fixar bakgrundsfärg på samtliga rutor
 	QPalette pal = palette();
@@ -63,11 +66,11 @@ void heimdall_VS::setLog(QString logstr)
 	QFile log(pnr + "_logg.txt");
 
 	if (log.open(QIODevice::ReadOnly))
-		{
-			QTextStream read(&log);
-			contAnt.append(read.readAll());
-			log.close();
-		}
+	{
+		QTextStream read(&log);
+		contAnt.append(read.readAll());
+		log.close();
+	}
 	if (log.open(QIODevice::WriteOnly))
 	{
 		QTextStream write(&log);
@@ -87,23 +90,40 @@ void heimdall_VS::setLog(QString logstr)
 
 
 
+
 //__________alarm()_______________________________________________________________________________
 
 void heimdall_VS::alarm()
 {
-	
+
 }
 
-//__________processFrameAndUpdateGUI()_____________________________________________________________
-void heimdall_VS::processFrameAndUpdateGUI()
+//__________updateFrame()__________________________________________________________________________
+
+void heimdall_VS::updateFrame(Mat & frame)
 {
-	Mat originalImage;
-	capCamera.read(originalImage);
 
-	if (originalImage.empty() == true) return;
+	if (onDisplayWindow)
+	{
+		QImage qOriginalImage((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_Grayscale8);
+		ui.labelVideo->setPixmap(QPixmap::fromImage(qOriginalImage));
+	}
+	if (showSelectROI)
+	{
+		imshow("Select ROI", frame);
 
-	QImage qOriginalImage((uchar*)originalImage.data, originalImage.cols, originalImage.rows, originalImage.step, QImage::Format_RGB888);
-	ui.labelVideo->setPixmap(QPixmap::fromImage(qOriginalImage));
+		//HWND hwnd = (HWND)cvGetWindowHandle("Select ROI");
+		//if (!IsWindowVisible(hwnd))
+		//{
+		//	showSelectROI = false;
+		//}
+		waitKey(1);
+		if (getWindowProperty("Select ROI", 0) < 0)
+		{
+			std::cout << "Hej" << std::endl;
+			showSelectROI = false;
+		}
+	}
 }
 
 //__________showTime()______________________________________________________________________________
@@ -119,7 +139,6 @@ void heimdall_VS::showTime()
 //__________Start - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushStart_clicked()
 {
-	readyToMeasure = true;
 	pnr = ui.inputPnr->text();
 	//QString pnr = ui.inputPnr->text();
 	QString maxHR = ui.inputMaxHR->text();
@@ -128,7 +147,7 @@ void heimdall_VS::on_pushStart_clicked()
 	QString minRR = ui.inputMinRR->text();
 	QString startString = ("\n   --- New measurement: " + pnr + " --- \n");
 	setLog(startString);
-	
+
 
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
@@ -160,16 +179,17 @@ void heimdall_VS::on_pushStart_clicked()
 		//Kör igång kameran och placerar den på frame_2
 		//readyForCamera = true;
 
-		capCamera.open(0);
-		if (capCamera.isOpened() == false)
-		{
-			qDebug() << "Camera can't open";
-			ui.labelVideo->setText("No camera connected");
-			return;
-		}
-		QTimer *timer = new QTimer(this);
-		connect(timer, SIGNAL(timeout()), this, SLOT(processFrameAndUpdateGUI()));
-		timer->start(20);
+		//capCamera.open(0);
+		//if (capCamera.isOpened() == false)
+		//{
+		//	qDebug() << "Camera can't open";
+		//	ui.labelVideo->setText("No camera connected");
+		//	return;
+		//}
+		//QTimer *timer = new QTimer(this);
+		//connect(timer, SIGNAL(timeout()), this, SLOT(processFrameAndUpdateGUI()));
+		//timer->start(20);
+		onDisplayWindow = true;
 	}
 	else
 	{
@@ -184,10 +204,10 @@ void heimdall_VS::on_pushStart_clicked()
 
 
 //__________Logg - klickfunktion_____________________________________________________________________
-void heimdall_VS::on_pushLog_clicked() 
+void heimdall_VS::on_pushLog_clicked()
 {
 	ui.calendarWidget->setVisible(true);
-	
+
 
 	/*LogWindow logWindow;
 	logWindow.setModal(true);
@@ -205,11 +225,11 @@ void heimdall_VS::on_pushLog_2_clicked()
 //_________Calendar_________________________________________________________________________________
 void heimdall_VS::on_calendarWidget_clicked()
 {
-	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
-	
+	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy");
+
 	findSelectedDate(dateStringnotis);
 	//qDebug() << dateStringnotis;
-	
+
 	LogbydateWindow LogbydateWindow;
 	LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
@@ -228,11 +248,11 @@ void heimdall_VS::findSelectedDate(QString search)
 	//QString search("110418");
 	QFile outputFile("output.txt");
 	QFile inputFile(pnr + "_logg.txt");
-	QString semi (":");
+	QString semi(":");
 
 	bool ifDate = false;
 
-	outputFile.open(QFile::WriteOnly|QFile::Truncate);
+	outputFile.open(QFile::WriteOnly | QFile::Truncate);
 	QTextStream out(&outputFile);
 
 	if (inputFile.open(QIODevice::ReadOnly))
@@ -244,44 +264,41 @@ void heimdall_VS::findSelectedDate(QString search)
 			QString line = in.readLine();
 
 			if (line.contains(search, Qt::CaseInsensitive)) {
-				
+
 				out << line << "\n";
 			}
 		}
 		inputFile.close();
 		outputFile.close();
 	}
-	
-	
+
+
 }
 
 //__________SelectROI - klickfunktion________________________________________________________________
 void heimdall_VS::on_pushSelectROI_clicked()
 {
+	showSelectROI = true;
+	//capCamera.open(0);
+	//namedWindow("Display window", 1);
 
-	capCamera.open(0);
-	namedWindow("Display window", 1);
-
-	if (capCamera.isOpened())
-	{
-		qDebug() << "Camera is open";
-	}
+	//if (capCamera.isOpened())
+	//{
+	//	qDebug() << "Camera is open";
+	//}
 
 
-	while (1)
-	{
-		Mat frame;
-		capCamera >> frame;
-		if (frame.empty()) break;
-		imshow("Display window", frame);
+	//while (1)
+	//{
+	//	Mat frame;
+	//	capCamera >> frame;
+	//	if (frame.empty()) break;
+	//	imshow("Display window", frame);
 
-		char c = (char)waitKey(25);
-		if (c == 27) break;
+	//	char c = (char)waitKey(25);
+	//	if (c == 27) break;
 
-	}
-
-	
-
+	//}
 
 }
 
@@ -315,163 +332,235 @@ void heimdall_VS::getValues()
 	ui.labelhighRR->hide();*/
 }
 
-//__________Tillfällig funktion_____________________________________________________________
-void heimdall_VS::updateRandomNumber()
+void heimdall_VS::setPulse(int pulse)
 {
-	if (readyToMeasure == true)
+	if (pulse == -2)
 	{
+		QMessageBox msgBoxError;
+		msgBoxError.setIcon(QMessageBox::Warning);
+		msgBoxError.setWindowTitle("Error message");
+		msgBoxError.setText("Trouble detecting patient's face.");
+		msgBoxError.setInformativeText("The program is having trouble detecting the patient's face.");
+		msgBoxError.show();
+		std::cout << "Hittar inget ansikte" << std::endl;
+	}
+	else
+	{
+		QString pulseString = QString::number(pulse);
+		ui.HRNumber->setText(pulseString);
 
-		qsrand((unsigned)time(0));
-		//Gör om alla strings till ints för enklare jämförelse
-		//Detta behöver fixas för inputs från puls- och andningsklasser
-		int RRNum = qrand() % 30; //värde för andningsfrekvens
-		int HRNum = qrand() % 30; //värde för hjärtfrekvens
-		ui.RRNumber->setText(QString::number(RRNum));
-		ui.HRNumber->setText(QString::number(HRNum));
+		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR);
+	}
 
-		//--------Koden nedan ska in i larmfunktionen-----------//
+}
 
-			//Gör om alla strings till ints för enklare jämförelse
-		QString MaxRRstring = ui.labelMaxRR_2->text();
-		QString MaxHRstring = ui.labelMaxHR_2->text();
-		QString MinRRstring = ui.labelMinRR_2->text();
-		QString MinHRstring = ui.labelMinHR_2->text();
-		int MaxRR = MaxRRstring.toInt();
-		int MaxHR = MaxHRstring.toInt();
-		int MinRR = MinRRstring.toInt();
-		int MinHR = MinHRstring.toInt();
+void heimdall_VS::setResp(int resp)
+{
+	if (resp == -2)
+	{
+		//Tracking failed eller något annat typ?
+	}
+	else
+	{
+		QString respString = QString::number(resp);
+		ui.RRNumber->setText(respString);
 
-		//Visar larmtext om värdet går utanför intervallen - fungerar!
-		QString logString;
-
-		QString HRNumString = QString::number(HRNum);
-		QString RRNumString = QString::number(RRNum);
-
-
-		if (HRNum > MaxHR)
-		{
-			ui.labelhighHR->show();
-			ui.labellowHR->hide();
-			ui.labelWARNING->show();
-
-			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-			logString.append("  -  ");
-			logString.append("High heart rate, ");
-			logString.append(HRNumString);
-			logString.append("\r\n");
-			setLog(logString);
-
-			if (RRNum > MaxRR)
-			{
-				ui.labelhighRR->show();
-				ui.labellowRR->hide();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("High respiratory rate, ");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else if (RRNum < MinRR)
-			{
-				ui.labellowRR->show();
-				ui.labelhighRR->hide();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("Low respiratory rate, ");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else
-			{
-				ui.labelhighRR->hide();
-				ui.labellowRR->hide();
-			}
-		}
-		else if (HRNum < MinHR)
-		{
-			ui.labellowHR->show();
-			ui.labelhighHR->hide();
-			ui.labelWARNING->show();
-
-			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-			logString.append("  -  ");
-			logString.append("Low heart rate, ");
-			logString.append(HRNumString);
-			logString.append("\r\n");
-			setLog(logString);
-
-			if (RRNum > MaxRR)
-			{
-				ui.labelhighRR->show();
-				ui.labellowRR->hide();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("High respiratory rate, ");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else if (RRNum < MinRR)
-			{
-				ui.labellowRR->show();
-				ui.labelhighRR->hide();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("Low respiratory rate.");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else
-			{
-				ui.labelhighRR->hide();
-				ui.labellowRR->hide();
-			}
-		}
-		else
-		{
-			ui.labelhighHR->hide();
-			ui.labellowHR->hide();
-			ui.labelWARNING->hide();
-
-			if (RRNum > MaxRR)
-			{
-				ui.labelhighRR->show();
-				ui.labellowRR->hide();
-				ui.labelWARNING->show();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("High respiratory rate.");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else if (RRNum < MinRR)
-			{
-				ui.labellowRR->show();
-				ui.labelhighRR->hide();
-				ui.labelWARNING->show();
-
-				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
-				logString.append("  -  ");
-				logString.append("Low respiratory rate.");
-				logString.append(RRNumString);
-				logString.append("\r\n");
-				setLog(logString);
-			}
-			else
-			{
-				ui.labelhighRR->hide();
-				ui.labellowRR->hide();
-				ui.labelWARNING->hide();
-			}
-		}
+		checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR);
 	}
 }
+
+void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel)
+{
+	QString logString;
+	QString warning;
+	int minRate = minQString.toInt();
+	int maxRate = maxQString.toInt();
+
+	if (measurement < minRate)		//Low rate warning
+	{
+		lowLabel->show();
+		highLabel->hide();
+		ui.labelWARNING->show();
+		warning = "Low";
+	}
+	else if (measurement > maxRate)		//High rate warning
+	{
+		highLabel->show();
+		lowLabel->hide();
+		ui.labelWARNING->show();
+		warning = "High";
+	}
+	if (!warning.isEmpty())
+	{
+		logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+		logString.append("  -  ");
+		logString.append(warning);
+		logString.append(" ");
+		logString.append(rateType);
+		logString.append(", ");
+		logString.append(QString::number(measurement));
+		logString.append("\r\n");
+		setLog(logString);
+	}
+}
+
+//__________Tillfällig funktion_____________________________________________________________
+//void heimdall_VS::updateRandomNumber()
+//{
+//	if (readyToMeasure == true)
+//	{
+//
+//		qsrand((unsigned)time(0));
+//		//Gör om alla strings till ints för enklare jämförelse
+//		//Detta behöver fixas för inputs från puls- och andningsklasser
+//		int RRNum = qrand() % 30; //värde för andningsfrekvens
+//		int HRNum = qrand() % 30; //värde för hjärtfrekvens
+//		ui.RRNumber->setText(QString::number(RRNum));
+//		ui.HRNumber->setText(QString::number(HRNum));
+//
+//		//--------Koden nedan ska in i larmfunktionen-----------//
+//
+//			//Gör om alla strings till ints för enklare jämförelse
+//		QString MaxRRstring = ui.labelMaxRR_2->text();
+//		QString MaxHRstring = ui.labelMaxHR_2->text();
+//		QString MinRRstring = ui.labelMinRR_2->text();
+//		QString MinHRstring = ui.labelMinHR_2->text();
+//		int MaxRR = MaxRRstring.toInt();
+//		int MaxHR = MaxHRstring.toInt();
+//		int MinRR = MinRRstring.toInt();
+//		int MinHR = MinHRstring.toInt();
+//
+//		//Visar larmtext om värdet går utanför intervallen - fungerar!
+//		QString logString;
+//
+//		QString HRNumString = QString::number(HRNum);
+//		QString RRNumString = QString::number(RRNum);
+//
+//
+//		if (HRNum > MaxHR)
+//		{
+//			ui.labelhighHR->show();
+//			ui.labellowHR->hide();
+//			ui.labelWARNING->show();
+//
+//			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//			logString.append("  -  ");
+//			logString.append("High heart rate, ");
+//			logString.append(HRNumString);
+//			logString.append("\r\n");
+//			setLog(logString);
+//
+//			if (RRNum > MaxRR)
+//			{
+//				ui.labelhighRR->show();
+//				ui.labellowRR->hide();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("High respiratory rate, ");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else if (RRNum < MinRR)
+//			{
+//				ui.labellowRR->show();
+//				ui.labelhighRR->hide();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("Low respiratory rate, ");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else
+//			{
+//				ui.labelhighRR->hide();
+//				ui.labellowRR->hide();
+//			}
+//		}
+//		else if (HRNum < MinHR)
+//		{
+//			ui.labellowHR->show();
+//			ui.labelhighHR->hide();
+//			ui.labelWARNING->show();
+//
+//			logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//			logString.append("  -  ");
+//			logString.append("Low heart rate, ");
+//			logString.append(HRNumString);
+//			logString.append("\r\n");
+//			setLog(logString);
+//
+//			if (RRNum > MaxRR)
+//			{
+//				ui.labelhighRR->show();
+//				ui.labellowRR->hide();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("High respiratory rate, ");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else if (RRNum < MinRR)
+//			{
+//				ui.labellowRR->show();
+//				ui.labelhighRR->hide();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("Low respiratory rate.");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else
+//			{
+//				ui.labelhighRR->hide();
+//				ui.labellowRR->hide();
+//			}
+//		}
+//		else
+//		{
+//			ui.labelhighHR->hide();
+//			ui.labellowHR->hide();
+//			ui.labelWARNING->hide();
+//
+//			if (RRNum > MaxRR)
+//			{
+//				ui.labelhighRR->show();
+//				ui.labellowRR->hide();
+//				ui.labelWARNING->show();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("High respiratory rate.");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else if (RRNum < MinRR)
+//			{
+//				ui.labellowRR->show();
+//				ui.labelhighRR->hide();
+//				ui.labelWARNING->show();
+//
+//				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
+//				logString.append("  -  ");
+//				logString.append("Low respiratory rate.");
+//				logString.append(RRNumString);
+//				logString.append("\r\n");
+//				setLog(logString);
+//			}
+//			else
+//			{
+//				ui.labelhighRR->hide();
+//				ui.labellowRR->hide();
+//				ui.labelWARNING->hide();
+//			}
+//		}
+//	}
+//}

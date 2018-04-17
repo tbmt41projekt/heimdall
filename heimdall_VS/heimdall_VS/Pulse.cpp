@@ -11,7 +11,7 @@ Pulse::Pulse()
 	currentPulse{80.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
 {
 	//Inläsning av mallen för ansiktsigenkänning
-	String filepath = "C:/Users/nilge293/Documents/haarcascade_frontalface_alt.xml";
+	String filepath = "C:/Users/maran731/Documents/haarcascade_frontalface_alt.xml";
 	if (!face_cascade.load(filepath))
 	{
 		printf("--(!)Error loading face cascade\n");
@@ -49,9 +49,12 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 		}
 
 		float expectedPulse = currentPulse;
-		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 20.0f), (double)(expectedPulse + 10.0f), (double)(fps)));
-		cout << currentPulse << endl;
+		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 30.0f), (double)(expectedPulse + 30.0f), (double)(fps)));
 
+		if ((int)currentPulse == -1)
+		{
+			return -1;		//Inga toppar hittade
+		}
 		////Kod för att skriva ut de normaliserade värden för Röd-Grön kanal, Behövs ej sen
 		//ofstream myfile1;
 		//myfile1.open("normRMG23.txt");
@@ -66,7 +69,7 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 
 		return currentPulse;
 	}
-	return -1.0f;		//returnerar -1 ifall det inte går att hitta något ansikte
+	return -2.0f;		//returnerar -2 ifall det inte går att hitta något ansikte
 }
 
 //================================================================================================

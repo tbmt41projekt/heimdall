@@ -27,6 +27,11 @@ public:
 		timeStored{ 10 },					//Ändra här om ni vill ändra hur många sekunders video som ska sparas undan
 		isProgramRunning{ true },
 		readyToCalc{ false },
+		newPulseReady{ false },
+		newRespReady{ false },
+		newPulse{ 0 },
+		newResp{ 0 },
+		newFrameReady{false},
 		framesVector{ std::vector<cv::Mat>(maxFPS*timeStored) },
 		timeVector{ std::vector<double>(maxFPS*timeStored) }
 	{}
@@ -50,5 +55,10 @@ private:
 	bool readyToCalc;
 	std::vector<cv::Mat> framesVector;
 	std::vector<double> timeVector;
+	bool newPulseReady;
+	bool newRespReady;
+	int newPulse;
+	int newResp;
+	bool newFrameReady;
 };
 
