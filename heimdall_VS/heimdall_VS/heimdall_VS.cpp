@@ -210,14 +210,11 @@ void heimdall_VS::on_calendarWidget_clicked()
 	findSelectedDate(dateStringnotis);
 	//qDebug() << dateStringnotis;
 	
-	
-
 	LogbydateWindow LogbydateWindow;
 	LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
 	ui.calendarWidget->setVisible(false);
 
-	
 
 }
 
