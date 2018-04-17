@@ -1,0 +1,16 @@
+Personal code number: 999999-9999  ---  Date: 170418
+170418 10:44:05  -  Low heart rate, 3
+170418 10:44:11  -  Low heart rate, 7
+170418 10:44:11  -  Low heart rate, 7
+170418 10:44:11  -  Low respiratory rate.0
+170418 10:44:13  -  Low respiratory rate.7
+170418 10:44:15  -  Low heart rate, 3
+170418 10:44:21  -  Low heart rate, 7
+170418 10:44:21  -  Low heart rate, 7
+170418 10:44:21  -  Low respiratory rate.3
+170418 10:44:23  -  Low respiratory rate.9
+170418 10:44:31  -  Low respiratory rate.5
+170418 10:49:06  -  Low heart rate, 1
+170418 10:49:06  -  Low heart rate, 1
+170418 10:49:06  -  Low respiratory rate.4
+170418 10:49:12  -  Low heart rate, 6

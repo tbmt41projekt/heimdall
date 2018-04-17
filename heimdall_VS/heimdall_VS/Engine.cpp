@@ -3,13 +3,11 @@
 #include <thread>
 #include <iostream>
 
-
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
+#include <opencv2\videoio.hpp>
 #include <opencv\cv.h>
-
-#include <iostream>
 
 #include <stdint.h>
 #include <stdio.h>
@@ -17,8 +15,6 @@
 #include <chrono>
 
 using namespace cv;
-
-
 using namespace std;
 
 
@@ -46,8 +42,6 @@ int Engine::run()
 {
 	//Visar fönstret
 	windowPtr->show();
-
-
 
 	//runCameraThread kör igång funktionen runCamera som hittas längre ner i filen
 	thread runCameraThread(&Engine::runCamera, this);
@@ -237,6 +231,7 @@ void Engine::runCamera()
 			} while (loopTime.count() < (1 / maxFPS) * 1000000);		//mikrosekunder
 		}
 	}
+
 }
 
 //________________________________________________________________________________________________

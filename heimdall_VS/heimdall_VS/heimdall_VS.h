@@ -16,10 +16,13 @@
 #include <QtCore>
 #include <QtGui>
 #include <QFont>
+#include <QFile>
+#include <QTextStream>
 #include <opencv2\opencv.hpp>
 #include <opencv2\objdetect.hpp>
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
+#include <opencv2\core.hpp>
 #include <opencv\cv.h>
 #include <iostream>
 #include <random>
@@ -31,6 +34,14 @@
 #include "ui_heimdall_VS.h"
 #include "Pulse.h"
 #include "Respiration.h"
+#include "LogWindow.h"
+#include "ui_LogWindow.h"
+#include "LogbydateWindow.h"
+#include "ui_LogbydateWindow.h"
+
+
+
+//#include "Engine.h"
 
 using namespace cv;
 
@@ -42,19 +53,30 @@ class heimdall_VS : public QMainWindow
 
 public:
 	heimdall_VS(QWidget *parent = Q_NULLPTR);
+	~heimdall_VS();
+	void setLog(QString logstr);
+	QString pnr;
 
 private: 
 	Ui::heimdall_VSClass ui;
+	QTimer *timer1;
+	QTimer *timer2;
+	//bool readyForCamera;
+	bool readyToMeasure;
+	
+	void findSelectedDate(QString search);
+	cv::VideoCapture capCamera;
+	
 
 private slots:
 	void on_pushStart_clicked();
-	//heimdall_VS();
-
+	void processFrameAndUpdateGUI();
 	void showTime();
 	void on_pushSelectROI_clicked();
+	void on_pushLog_clicked();
 	void getValues();
 	void updateRandomNumber();
 	void alarm();
-
-
+	void on_calendarWidget_clicked();
+	void on_pushLog_2_clicked();
 };

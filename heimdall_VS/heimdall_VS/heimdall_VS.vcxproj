@@ -127,6 +127,8 @@
     <ClCompile Include="DeviceEnumerator.cpp" />
     <ClCompile Include="filt.cpp" />
     <ClCompile Include="heimdall_VS.cpp" />
+    <ClCompile Include="LogbydateWindow.cpp" />
+    <ClCompile Include="LogWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matlab.cpp" />
     <ClCompile Include="Pulse.cpp" />
@@ -137,6 +139,8 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="heimdall_VS.ui" />
+    <QtUic Include="LogbydateWindow.ui" />
+    <QtUic Include="LogWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\matlabLibrary\matlabLibrary.h" />
@@ -144,6 +148,8 @@
     <ClInclude Include="filt.h" />
     <ClInclude Include="heimdallMatlab.h" />
     <ClInclude Include="Matlab.h" />
+    <QtMoc Include="LogWindow.h" />
+    <QtMoc Include="LogbydateWindow.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Respiration.h" />
