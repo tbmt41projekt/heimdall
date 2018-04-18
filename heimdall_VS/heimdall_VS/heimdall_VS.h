@@ -38,14 +38,11 @@
 #include "ui_LogWindow.h"
 #include "LogbydateWindow.h"
 #include "ui_LogbydateWindow.h"
-
-
-
+#include "AddNoteWindow.h"
+#include "ui_AddNoteWindow.h"
 //#include "Engine.h"
 
 using namespace cv;
-
-
 
 class heimdall_VS : public QMainWindow
 {
@@ -56,6 +53,7 @@ public:
 	~heimdall_VS();
 	void setLog(QString logstr);
 	QString pnr;
+	QString dateString;
 
 private: 
 	Ui::heimdall_VSClass ui;
@@ -63,20 +61,19 @@ private:
 	QTimer *timer2;
 	//bool readyForCamera;
 	bool readyToMeasure;
-	
+	void alarm();
 	void findSelectedDate(QString search);
+	void getValues();
+	void processFrameAndUpdateGUI();
 	cv::VideoCapture capCamera;
-	
 
 private slots:
 	void on_pushStart_clicked();
-	void processFrameAndUpdateGUI();
-	void showTime();
 	void on_pushSelectROI_clicked();
 	void on_pushLog_clicked();
-	void getValues();
-	void updateRandomNumber();
-	void alarm();
 	void on_calendarWidget_clicked();
 	void on_pushLog_2_clicked();
+	void on_pushAddNote_clicked();
+	void updateRandomNumber();
+	void showTime();
 };

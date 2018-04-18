@@ -115,6 +115,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddNoteWindow.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="DeviceEnumerator.cpp" />
     <ClCompile Include="heimdall_VS.cpp" />
@@ -128,11 +129,13 @@
     <QtMoc Include="heimdall_VS.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="AddNoteWindow.ui" />
     <QtUic Include="heimdall_VS.ui" />
     <QtUic Include="LogbydateWindow.ui" />
     <QtUic Include="LogWindow.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="AddNoteWindow.h" />
     <ClInclude Include="Engine.h" />
     <QtMoc Include="LogWindow.h" />
     <QtMoc Include="LogbydateWindow.h" />

@@ -55,11 +55,10 @@ heimdall_VS::~heimdall_VS()
 	//delete ui;
 }
 
+//__________setLog(QString)_______________________________________________________________________________
 void heimdall_VS::setLog(QString logstr)
 {
 	QString contAnt;
-	QString contAct;
-
 	QFile log(pnr + "_logg.txt");
 
 	if (log.open(QIODevice::ReadOnly))
@@ -75,16 +74,7 @@ void heimdall_VS::setLog(QString logstr)
 		write << logstr;
 		log.close();
 	}
-	if (log.open(QIODevice::ReadOnly))
-	{
-		QTextStream read(&log);
-		contAct.append(read.readAll());
-		log.close();
-	}
 }
-
-
-
 
 
 //__________alarm()_______________________________________________________________________________
@@ -110,7 +100,7 @@ void heimdall_VS::processFrameAndUpdateGUI()
 void heimdall_VS::showTime()
 {
 	QDateTime date = QDateTime::currentDateTime();
-	QString dateString = date.toString("ddMMyy hh:mm:ss");
+	dateString = date.toString("ddMMyy hh:mm:ss");
 	ui.labelDateTime->setText(dateString);
 	ui.labelDateTime_2->setText(dateString);
 }
@@ -121,14 +111,13 @@ void heimdall_VS::on_pushStart_clicked()
 {
 	readyToMeasure = true;
 	pnr = ui.inputPnr->text();
-	//QString pnr = ui.inputPnr->text();
+
 	QString maxHR = ui.inputMaxHR->text();
 	QString minHR = ui.inputMinHR->text();
 	QString maxRR = ui.inputMaxRR->text();
 	QString minRR = ui.inputMinRR->text();
 	QString startString = ("\n   --- New measurement: " + pnr + " --- \n");
 	setLog(startString);
-	
 
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
@@ -187,38 +176,35 @@ void heimdall_VS::on_pushStart_clicked()
 void heimdall_VS::on_pushLog_clicked() 
 {
 	ui.calendarWidget->setVisible(true);
-	
-
-	/*LogWindow logWindow;
-	logWindow.setModal(true);
-	logWindow.exec();
-*/
 }
+
 void heimdall_VS::on_pushLog_2_clicked()
 {
-	LogWindow logWindow(pnr);
+	LogWindow logWindow(pnr, dateString);
 	logWindow.setModal(true);
 	logWindow.exec();
-
 }
 
-//_________Calendar_________________________________________________________________________________
+//___________Notis - klickfunktion____________________________________________________________
+void heimdall_VS::on_pushAddNote_clicked()
+{
+	AddNoteWindow addNoteWindow(dateString, pnr);
+	addNoteWindow.setModal(true);
+	addNoteWindow.exec();
+}
+
+//_________Calendar - klickfunktion_________________________________________________________________________________
 void heimdall_VS::on_calendarWidget_clicked()
 {
 	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
-	
 	findSelectedDate(dateStringnotis);
-	//qDebug() << dateStringnotis;
 	
 	LogbydateWindow LogbydateWindow;
 	LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
 	ui.calendarWidget->setVisible(false);
 
-
 }
-
-
 
 
 //_________findSelectedDate()_____________________________________________________________________________
@@ -228,8 +214,6 @@ void heimdall_VS::findSelectedDate(QString search)
 	//QString search("110418");
 	QFile outputFile("output.txt");
 	QFile inputFile(pnr + "_logg.txt");
-	QString semi (":");
-
 	bool ifDate = false;
 
 	outputFile.open(QFile::WriteOnly|QFile::Truncate);
@@ -237,7 +221,7 @@ void heimdall_VS::findSelectedDate(QString search)
 
 	if (inputFile.open(QIODevice::ReadOnly))
 	{
-		out << "Personal code number: " << pnr << "  ---  Date: " << search << "\n";
+		out << "Personal ID-number: " << pnr << "  ---  Date: " << search << "\n";
 		QTextStream in(&inputFile);
 		while (!in.atEnd())
 		{
@@ -284,11 +268,6 @@ void heimdall_VS::on_pushSelectROI_clicked()
 
 
 }
-
-
-
-
-
 
 
 //__________getValues()_____________________________________________________________________
