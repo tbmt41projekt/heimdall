@@ -1,0 +1,35 @@
+function output = peakFinder(signal, passBand, frameRate, peakLimit, ampLim)
+
+    if (peakLimit < 2)
+        output = -10;
+    elseif (length(signal) < 12)
+        output = -3;
+    else
+        Fn = frameRate/2 * 60;
+        Wp = passBand/Fn;
+
+        [B,A] = butter(2, Wp);
+        filteredY = filtfilt(B, A, signal);
+
+        findpeaks(filteredY);
+        [PKS, peakLocations] = findpeaks(filteredY);
+        minPKS = findpeaks(-filteredY);
+        mins = max(minPKS);
+        
+        boolPKS = PKS >= max(minPKS) + abs(PKS
+        
+        if (length(peakLocations) >= peakLimit)
+            
+           if (sum(boolPKS) == length(boolPKS))
+                T = diff(peakLocations);
+                freq = (1/(mean(T) * 1/frameRate)) * 60;
+                output = freq;
+           else
+               output = 0;
+           end
+        else
+            output = -1;
+        end
+    end
+    
+end

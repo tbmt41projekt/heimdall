@@ -3,5 +3,6 @@ heimdallMatlabInitializeWithHandlers
 heimdallMatlabTerminate
 heimdallMatlabPrintStackTrace
 mlxFilterAndCalcFreq
+mlxPeakFinder
 mlxSquare
 

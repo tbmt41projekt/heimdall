@@ -44,6 +44,8 @@ Engine::~Engine()
 
 int Engine::run()
 {
+	
+
 	//Visar fönstret
 	windowPtr->show();
 
@@ -64,8 +66,18 @@ int Engine::run()
 		runCameraThread.join();
 		calcPulseThread.join();
 		calcRespThread.join();
+
+		ofstream myfile;
+		myfile.open("andningsvarden.txt");
+		for (double i : resp.pointSummation())
+		{
+			myfile << i << " ";
+		}
+		cout << "Sparning avslutad" << endl;
 		return 0;
 	}
+
+
 
 	return -1;
 }
@@ -128,9 +140,17 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
+	vector<double> rfVector;
+
 	while (isProgramRunning)
 	{
-		resp.calculateRF();
+		resp.calculateRF(rfVector);
+
+		if (resp.rfFound)
+		{
+			cout << "RF = " << rfVector.back() << endl;
+			resp.rfFound = false;
+		}
 	}
 		
 
@@ -148,7 +168,7 @@ Antalet frames som lagras bestäms i Engine.h.
 
 void Engine::runCamera()
 {
-	while (isProgramRunning)
+	while (true)
 	{
 		VideoCapture cap(0);
 		namedWindow("Video");
@@ -193,7 +213,7 @@ void Engine::runCamera()
 				{
 					readyToCalc = true;
 				}
-			}
+			}	
 
 			//Tar bort sista framen i framesVector och lägger till den nya framen längst fram.
 			framesVector.pop_back();
@@ -202,6 +222,7 @@ void Engine::runCamera()
 			timeVector.insert(timeVector.begin(), frameTime.count());
 
 			resp.track(frame);
+			resp.addTime(frameTime.count());
 
 			waitKey(1);
 			imshow("Video", frame);
@@ -216,6 +237,7 @@ void Engine::runCamera()
 			} while (loopTime.count() < (1 / maxFPS) * 1000000);		//mikrosekunder
 		}
 	}
+
 }
 
 //________________________________________________________________________________________________

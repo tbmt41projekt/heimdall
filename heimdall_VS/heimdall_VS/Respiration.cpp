@@ -1,8 +1,10 @@
 #include "Respiration.h"
-
+#include <fstream>
 
 using namespace cv;
 using namespace std;
+
+
 
 void Respiration::onMouse(int event, int x, int y)
 {
@@ -85,28 +87,50 @@ void Respiration::track(cv::Mat &frame)
 		prevPoints.clear();
 		nextPoints.clear();
 	}
-
+	
 	std::swap(nextPoints, prevPoints);
 	cv::swap(prevGray, gray);
 
 }
 
-void Respiration::calculateRF()
+void Respiration::calculateRF(vector<double> & output)
 {
-	if (rfBuffer.size() >= bufferSize)
+	if (rfBuffer.size() > 36)
 	{
-		vector<double> data;
-		for (Point2f i : rfBuffer)
+		frameRate = timeBuffer.size() / ((timeBuffer.back() - timeBuffer.front()) / 1000000);
+		double rf = matlab.findPeaks(pointSummation(), 10, 50, frameRate, 3, 1.2);
+		//cout << rf << endl;
+		if (rf >= 0)
 		{
-			data.push_back(i.x + i.y);
+			output.push_back(rf);
+			rfBuffer.clear();
+			timeBuffer.clear();
+			rfFound = true;
 		}
-		rfBuffer.clear();
-
-
-
+		
 	}
 
 }
+
+std::vector<double> Respiration::pointSummation()
+{
+	vector<double> temp;
+	for (Point2f i : rfBuffer)
+	{
+		temp.push_back(i.y + i.x);
+	}
+
+	return temp;
+}
+
+void Respiration::addTime(double time)
+{
+	timeBuffer.push_back(time);
+}
+
+
+
+
 
 
 

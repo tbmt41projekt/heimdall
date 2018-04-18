@@ -139,7 +139,6 @@
     <QtUic Include="heimdall_VS.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\matlabLibrary\matlabLibrary.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="filt.h" />
     <ClInclude Include="heimdallMatlab.h" />
