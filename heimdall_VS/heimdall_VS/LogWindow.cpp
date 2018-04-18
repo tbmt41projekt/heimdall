@@ -32,6 +32,42 @@ LogWindow::LogWindow(QString pnr, QDialog *parent)
 	
 }
 
+LogWindow::LogWindow()
+	:
+	QDialog()
+{
+	ui.setupUi(this);
+}
+
+void LogWindow::start()
+{
+	QString filename = pnr + "_logg.txt";
+	QFile log(filename);
+
+	if (!log.exists())
+	{
+		qDebug() << "No such file: " << filename;
+	}
+	else
+	{
+		qDebug() << filename << " OK.";
+	}
+
+	QString contAct;
+
+	if (log.open(QIODevice::ReadOnly))
+	{
+		QTextStream read(&log);
+		contAct.append(read.readAll());
+		log.close();
+	}
+
+	ui.logText->setText(contAct);
+	//ui.logTextEdit->verticalScrollBar->setValue(ui.logTextEdit->verticalScrollBar->maximum());
+
+}
+
 LogWindow::~LogWindow()
 {
+
 }

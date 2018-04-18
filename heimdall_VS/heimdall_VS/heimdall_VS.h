@@ -66,6 +66,11 @@ private:
 	QTimer *timer2;
 	//bool readyForCamera;
 	bool showSelectROI;
+	Mat newFrame;
+	//LogWindow *logWindow = nullptr;
+	QMessageBox faceError;
+	LogWindow logWindow{};
+	
 
 	void findSelectedDate(QString search);
 	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);
@@ -82,4 +87,5 @@ private:
 	void alarm();
 	void on_calendarWidget_clicked();
 	void on_pushLog_2_clicked();
+	//void updateLogWindow();
 };

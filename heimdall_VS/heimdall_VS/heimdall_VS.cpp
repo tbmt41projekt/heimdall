@@ -102,7 +102,6 @@ void heimdall_VS::alarm()
 
 void heimdall_VS::updateFrame(Mat & frame)
 {
-
 	if (onDisplayWindow)
 	{
 		QImage qOriginalImage((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_Grayscale8);
@@ -117,7 +116,7 @@ void heimdall_VS::updateFrame(Mat & frame)
 		//{
 		//	showSelectROI = false;
 		//}
-		waitKey(1);
+		waitKey(1000);
 		if (getWindowProperty("Select ROI", 0) < 0)
 		{
 			std::cout << "Hej" << std::endl;
@@ -189,6 +188,7 @@ void heimdall_VS::on_pushStart_clicked()
 		//QTimer *timer = new QTimer(this);
 		//connect(timer, SIGNAL(timeout()), this, SLOT(processFrameAndUpdateGUI()));
 		//timer->start(20);
+		logWindow.pnr = pnr;
 		onDisplayWindow = true;
 	}
 	else
@@ -216,11 +216,22 @@ void heimdall_VS::on_pushLog_clicked()
 }
 void heimdall_VS::on_pushLog_2_clicked()
 {
-	LogWindow logWindow(pnr);
-	logWindow.setModal(true);
-	logWindow.exec();
-
+	//delete logWindow;
+	//QDialog * temp = logWindow;
+	//logWindow = new LogWindow(pnr);
+	//delete temp;
+	//logWindow->setModal(true);
+	//QTimer *logTimer = new QTimer(this);
+	//connect(logTimer, SIGNAL(timeout()), this, SLOT(updateLogWindow()));
+	//logTimer->start(20);
+	logWindow.start();
+	logWindow.show();
 }
+
+//void heimdall_VS::updateLogWindow()
+//{
+//	logWindow->exec();
+//}
 
 //_________Calendar_________________________________________________________________________________
 void heimdall_VS::on_calendarWidget_clicked()
@@ -336,12 +347,11 @@ void heimdall_VS::setPulse(int pulse)
 {
 	if (pulse == -2)
 	{
-		QMessageBox msgBoxError;
-		msgBoxError.setIcon(QMessageBox::Warning);
-		msgBoxError.setWindowTitle("Error message");
-		msgBoxError.setText("Trouble detecting patient's face.");
-		msgBoxError.setInformativeText("The program is having trouble detecting the patient's face.");
-		msgBoxError.show();
+		faceError.setIcon(QMessageBox::Warning);
+		faceError.setWindowTitle("Error message");
+		faceError.setText("Trouble detecting patient's face.");
+		faceError.setInformativeText("The program is having trouble detecting the patient's face.");
+		faceError.show();
 		std::cout << "Hittar inget ansikte" << std::endl;
 	}
 	else
