@@ -1,3 +1,0 @@
-function output = overAmpLim(peaks, min, ampLim)
-
-end
