@@ -49,6 +49,7 @@ float Pulse::calculate(vector<Mat> & pulseFrames, float fps)
 		}
 
 		float expectedPulse = currentPulse;
+
 		currentPulse = (float)(matlab.filterCalc(signal, (double)(expectedPulse - 30.0f), (double)(expectedPulse + 30.0f), (double)(fps)));
 
 		if ((int)currentPulse == -1)

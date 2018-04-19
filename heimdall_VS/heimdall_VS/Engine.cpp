@@ -40,6 +40,8 @@ Engine::~Engine()
 
 int Engine::run()
 {
+	
+
 	//Visar fönstret
 	windowPtr->show();
 
@@ -82,7 +84,6 @@ int Engine::run()
 }
 
 //________________________________________________________________________________________________
-
 
 
 //__________calcPulse()___________________________________________________________________________
@@ -146,37 +147,19 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
-	/*while (isProgramRunning)
+	vector<double> rfVector;
+
+	while (isProgramRunning)
 	{
-		auto loopStart = chrono::high_resolution_clock::now();
+		resp.calculateRF(rfVector);
 
-		while (!readyToCalc)
+		if (resp.rfFound)
 		{
+			cout << "RF = " << rfVector.back() << endl;
+			resp.rfFound = false;
 		}
-
-		vector<Mat> frames;
-
-		double firstFrameTime = timeVector.front();
-		int i = 0;
-
-		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)
-		{
-			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
-			i++;
-		}
-
-		float fps = floor(pulseFrames.size() / pulse.time);
-
-		float test = pulse.calculate(pulseFrames, fps);
-
-		chrono::time_point<chrono::steady_clock> currentTime;
-		chrono::microseconds loopTime;
-		do
-		{
-			currentTime = chrono::high_resolution_clock::now();
-			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
-		} while (loopTime.count() < pulse.time * 1000000);
-	}*/
+	}
+		
 
 }
 
@@ -192,7 +175,7 @@ Antalet frames som lagras bestäms i Engine.h.
 
 void Engine::runCamera()
 {
-	while (isProgramRunning)
+	while (true)
 	{
 		VideoCapture cap(0);
 		namedWindow("Video");
@@ -205,6 +188,9 @@ void Engine::runCamera()
 			//cout << "Cam could not be opened" << endl;
 			readyToCalc = false;
 		}
+
+		Respiration * respPtr = &resp;
+		setMouseCallback("Video", respPtr->onMouse, respPtr);
 
 		auto startTime = std::chrono::high_resolution_clock::now();
 		while (true)
@@ -234,14 +220,18 @@ void Engine::runCamera()
 				{
 					readyToCalc = true;
 				}
-			}
+			}	
 
 			//Tar bort sista framen i framesVector och lägger till den nya framen längst fram.
 			framesVector.pop_back();
 			framesVector.insert(framesVector.begin(), frame);
 			timeVector.pop_back();
 			timeVector.insert(timeVector.begin(), frameTime.count());
+
 			newFrameReady = true;
+
+			resp.track(frame);
+			resp.addTime(frameTime.count());
 
 			waitKey(1);
 			imshow("Video", frame);

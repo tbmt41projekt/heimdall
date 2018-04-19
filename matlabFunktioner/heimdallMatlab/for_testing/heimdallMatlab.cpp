@@ -1,10 +1,11 @@
 //
 // MATLAB Compiler: 6.6 (R2018a)
-// Date: Mon Apr 16 13:44:02 2018
+// Date: Wed Apr 18 14:23:43 2018
 // Arguments:
 // "-B""macro_default""-W""cpplib:heimdallMatlab,all""-T""link:lib""-d""C:\Users
-// \nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing""-v""C:\Users\n
-// ilge293\Documents\filterAndCalcFreq.m""C:\Users\nilge293\Documents\square.m"
+// \nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing""-v""C:\Users\
+// nilge293\Documents\filterAndCalcFreq.m""C:\Users\nilge293\heimdall\matlabFunk
+// tioner\peakFinder.m""C:\Users\nilge293\Documents\square.m"
 //
 
 #include <stdio.h>
@@ -140,6 +141,12 @@ bool MW_CALL_CONV mlxFilterAndCalcFreq(int nlhs, mxArray *plhs[], int nrhs, mxAr
 }
 
 LIB_heimdallMatlab_C_API 
+bool MW_CALL_CONV mlxPeakFinder(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
+{
+    return mclFeval(_mcr_inst, "peakFinder", nlhs, plhs, nrhs, prhs);
+}
+
+LIB_heimdallMatlab_C_API 
 bool MW_CALL_CONV mlxSquare(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
 {
     return mclFeval(_mcr_inst, "square", nlhs, plhs, nrhs, prhs);
@@ -150,6 +157,14 @@ void MW_CALL_CONV filterAndCalcFreq(int nargout, mwArray& freq, const mwArray& s
                                     const mwArray& passBand, const mwArray& frameRate)
 {
     mclcppMlfFeval(_mcr_inst, "filterAndCalcFreq", nargout, 1, 3, &freq, &signal, &passBand, &frameRate);
+}
+
+LIB_heimdallMatlab_CPP_API 
+void MW_CALL_CONV peakFinder(int nargout, mwArray& output, const mwArray& signal, const 
+                             mwArray& passBand, const mwArray& frameRate, const mwArray& 
+                             peakLimit, const mwArray& ampLim)
+{
+    mclcppMlfFeval(_mcr_inst, "peakFinder", nargout, 1, 5, &output, &signal, &passBand, &frameRate, &peakLimit, &ampLim);
 }
 
 LIB_heimdallMatlab_CPP_API 

@@ -1,0 +1,77 @@
+mcc -W cpplib:heimdall -T link:lib -d C:\Users\nilge293\heimdall\for_testing -v \\ad.liu.se\home\nilge293\MATLAB\filterAndCalcFreq.m \\ad.liu.se\home\nilge293\MATLAB\square.m 
+Compiler version: 6.1 (R2015b)
+
+Dependency analysis by REQUIREMENTS.
+
+[Warning: Adding path "\\ad.liu.se\home\nilge293\MATLAB" to Compiler path
+instance.] 
+[] 
+[Warning: Adding path "\\ad.liu.se\home\nilge293\MATLAB" to Compiler path
+instance.] 
+[] 
+Parsing file "\\ad.liu.se\home\nilge293\MATLAB\filterAndCalcFreq.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "\\ad.liu.se\home\nilge293\MATLAB\square.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 0 temporary MEX authorization files.
+Generating file "C:\Users\nilge293\heimdall\for_testing\heimdall.h".
+Generating file "C:\Users\nilge293\heimdall\for_testing\heimdall.cpp".
+Generating file "C:\Users\nilge293\heimdall\for_testing\heimdall.exports".
+Generating file "C:\Users\nilge293\heimdall\for_testing\readme.txt".
+Executing command: ""C:\Program Files\Matlab\R2015b\bin\mbuild"  -client mbuild -O -v -output "heimdall" -I"C:\Users\nilge293\heimdall\for_testing" "C:\Users\nilge293\heimdall\for_testing\heimdall.cpp"  DEFFILE"=""C:\Users\nilge293\heimdall\for_testing\heimdall.def""" LINKEXPORT"=""/DLL /def:\"$DEFFILE\"""" LDEXT"="".dll""" CMDLINE250"=""mt -outputresource:$EXE;2 -manifest $MANIFEST""" -outdir "C:\Users\nilge293\heimdall\for_testing""Verbose mode is on.
+No MEX options file identified; looking for an implicit selection.
+... Looking for compiler 'Intel C++ Composer XE 2011 with Microsoft SDK 7.1' ...
+... Looking for environment variable 'ICPP_COMPILER12' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2011 with Microsoft SDK 7.1'.
+... Looking for compiler 'Intel C++ Composer XE 2011 with Microsoft Visual Studio 2008' ...
+... Looking for environment variable 'ICPP_COMPILER12' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2011 with Microsoft Visual Studio 2008'.
+... Looking for compiler 'Intel C++ Composer XE 2011 with Microsoft Visual Studio 2010 ' ...
+... Looking for environment variable 'ICPP_COMPILER12' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2011 with Microsoft Visual Studio 2010 '.
+... Looking for compiler 'Intel C++ Composer XE 2013 with Microsoft SDK 7.1' ...
+... Looking for environment variable 'ICPP_COMPILER14' ...No.
+... Looking for environment variable 'ICPP_COMPILER13' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2013 with Microsoft SDK 7.1'.
+... Looking for compiler 'Intel C++ Composer XE 2013 with Microsoft Visual Studio 2010' ...
+... Looking for environment variable 'ICPP_COMPILER14' ...No.
+... Looking for environment variable 'ICPP_COMPILER13' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2013 with Microsoft Visual Studio 2010'.
+... Looking for compiler 'Intel C++ Composer XE 2013 with Microsoft Visual Studio 2012' ...
+... Looking for environment variable 'ICPP_COMPILER14' ...No.
+... Looking for environment variable 'ICPP_COMPILER13' ...No.
+Did not find installed compiler 'Intel C++ Composer XE 2013 with Microsoft Visual Studio 2012'.
+... Looking for compiler 'MinGW64 Compiler (C++)' ...
+... Looking for environment variable 'MW_MINGW64_LOC' ...No.
+Did not find installed compiler 'MinGW64 Compiler (C++)'.
+... Looking for compiler 'Microsoft Visual C++ 2008' ...
+... Looking for environment variable 'VS90COMNTOOLS' ...No.
+Did not find installed compiler 'Microsoft Visual C++ 2008'.
+... Looking for compiler 'Microsoft Visual C++ 2010' ...
+... Looking for environment variable 'VS100COMNTOOLS' ...No.
+Did not find installed compiler 'Microsoft Visual C++ 2010'.
+... Looking for compiler 'Microsoft Visual C++ 2012' ...
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 11.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 11.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 11.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 11.0 ...No.
+Did not find installed compiler 'Microsoft Visual C++ 2012'.
+... Looking for compiler 'Microsoft Visual C++ 2013 Professional' ...
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+Did not find installed compiler 'Microsoft Visual C++ 2013 Professional'.
+... Looking for compiler 'Microsoft Visual C++ 2015 Professional' ...
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 14.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 14.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 14.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 14.0 ...No.
+Did not find installed compiler 'Microsoft Visual C++ 2015 Professional'.
+... Looking for compiler 'Microsoft Windows SDK 7.1 (C++)' ...
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v7.1' InstallationFolder ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows\v7.1' InstallationFolder ...No.
+Did not find installed compiler 'Microsoft Windows SDK 7.1 (C++)'.
+No supported compiler or SDK was found. You can install the freely available MinGW-w64 C/C++ compiler; visit http://www.mathworks.com/help/matlab/matlab_external/install-mingw-support-package.html . For more options, visit http://www.mathworks.com/support/compilers/R2015b/win64.html.
+Error: An error occurred while shelling out to mbuild (error code = -1).
+Unable to build executable.

@@ -13,8 +13,10 @@ function freq = filterAndCalcFreq(signal, passBand, frameRate)
 Fn = frameRate/2 * 60;
 Wp = passBand/Fn;
 
-[B,A] = butter(2, Wp);
+[B,A] = butter(6, Wp);
 filteredY = filtfilt(B, A, signal);
+
+%plot(1:length(filteredY), filteredY)
 
 [~, peakLocations] = findpeaks(filteredY);
 

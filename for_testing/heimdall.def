@@ -1,0 +1,9 @@
+LIBRARY heimdall
+EXPORTS
+heimdallInitialize
+heimdallInitializeWithHandlers
+heimdallTerminate
+heimdallPrintStackTrace
+mlxFilterAndCalcFreq
+mlxSquare
+

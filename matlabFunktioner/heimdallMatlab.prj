@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab.prj" location="C:\Users\nilge293\Documents\heimdallMatlab" name="heimdallMatlab" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration file="C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab.prj" location="C:\Users\nilge293\heimdall\matlabFunktioner" name="heimdallMatlab" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>heimdallMatlab</param.appname>
     <param.icon />
     <param.icons />
@@ -99,24 +99,28 @@
     <fileset.exports>
       <file>C:\Users\nilge293\Documents\filterAndCalcFreq.m</file>
       <file>C:\Users\nilge293\Documents\square.m</file>
+      <file>${PROJECT_ROOT}\peakFinder.m</file>
     </fileset.exports>
     <fileset.classes>
       <entity.package name="">
         <entity.class name="Class1">
           <file>C:\Users\nilge293\Documents\filterAndCalcFreq.m</file>
+          <file>${PROJECT_ROOT}\peakFinder.m</file>
           <file>C:\Users\nilge293\Documents\square.m</file>
         </entity.class>
       </entity.package>
     </fileset.classes>
     <fileset.resources />
-    <fileset.depfun />
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\overAmpLim.m</file>
+    </fileset.depfun>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.lib" optional="false">C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing\heimdallMatlab.lib</file>
-      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.dll" optional="false">C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing\heimdallMatlab.dll</file>
-      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.h" optional="false">C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing\heimdallMatlab.h</file>
-      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="readme.txt" optional="true">C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing\readme.txt</file>
-      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="v2" optional="false">C:\Users\nilge293\Documents\heimdallMatlab\heimdallMatlab\for_testing\v2</file>
+      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.dll" optional="false">C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll</file>
+      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.lib" optional="false">C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.lib</file>
+      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="heimdallMatlab.h" optional="false">C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.h</file>
+      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="readme.txt" optional="true">C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\heimdallMatlab\for_testing" name="v2" optional="false">C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\v2</file>
     </build-deliverables>
     <workflow />
     <matlab>

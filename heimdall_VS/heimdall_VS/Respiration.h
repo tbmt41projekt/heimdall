@@ -1,9 +1,19 @@
 #pragma once
 
+#include "opencv2/video/tracking.hpp"
+#include "opencv2/highgui.hpp"
+#include <iostream>
+#include <cmath>
+#include "Matlab.h"
 
 //Respiration-klassen är den klass som är ansvarig för att beräkna andningen.
 //Tanken är att den ska ta in en videosekvens, bearbeta den och sedan returnera ett uppdaterat
 //värde för andningen.
+
+class RespirationError : public std::logic_error
+{
+	using std::logic_error::logic_error;
+};
 
 class Respiration
 {
@@ -11,41 +21,26 @@ public:
 	Respiration() = default;
 	~Respiration() = default;
 
-	int calculate();
+	void onMouse(int event, int x, int y);
+	static void onMouse(int event, int x, int y, int /*flags*/, void* userdata);
+
+	void track(cv::Mat &frame);
+	void calculateRF(std::vector<double> & output);
+	std::vector<double> pointSummation();
+	bool rfFound = false;
+	void addTime(double time);
 	
 private:
-	/*
-	Här tänker jag att vi skapar funktioner för dom olika momenten. Lite osäker på vad dom olika
-	typerna heter men ni kanske förstår vad jag menar med exemplen nedan.
-	*/
-
-	/*
-	filterVideo är en funktion som tar in en videosekvens, filtrerar den, och sedan returnerar den
-	filtrerade videosekvensen.
-	*/
-
-	//Videosekvens filterVideo(Videosekvens);
-
-	/*
-	calcSignal är en funktion som tar in en videosekvens, hittar en signal som går att räkna på,
-	och sedan returnerar den signalen.
-	*/
-
-	//signal calcSignal(Videosekvens);
-
-	/*
-	calcValue är en funktion som tar in en signal, beräknar andningshastigheten, och sedan
-	returnerar ett värde som en float.
-	En float är typ som en double fast på slutet lägger man på ett "f", t.ex 1.7f.
-	Kan diskuteras om vi vill använda double istället.
-	*/
-
-	//float calcValue(signal);
-
-	/*
-	Detta är som sagt bara lite exempel och exempel på hur man kan göra det. Men tror att det 
-	kan va nice å dela upp alla dom olika momenten i separata funktioner.
-	*/
+	std::vector<cv::Point2f> rfBuffer;
+	std::vector<double> timeBuffer;
+	cv::Point2f mousePoint;
+	bool addRemovePt = false;
+	cv::Mat gray, prevGray, image;
+	std::vector<cv::Point2f> prevPoints, nextPoints;
+	cv::TermCriteria termCriteria{ cv::TermCriteria::COUNT | cv::TermCriteria::EPS, 20, 0.03 };
+	cv::Size subPixWinSize{ 10, 10 }, winSize{ 31, 31 };
+	Matlab matlab;
+	double frameRate;
 
 };
 
