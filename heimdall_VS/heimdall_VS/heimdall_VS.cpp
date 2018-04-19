@@ -102,26 +102,32 @@ void heimdall_VS::alarm()
 
 void heimdall_VS::updateFrame(Mat & frame)
 {
+	Mat frameCopy;
+	cv::cvtColor(frame, frameCopy, CV_BGR2RGB);
+	QImage qOriginalImage((uchar*)frameCopy.data, frameCopy.cols, frameCopy.rows,
+		frameCopy.step, QImage::Format_RGB888);
+
 	if (onDisplayWindow)
 	{
-		QImage qOriginalImage((uchar*)frame.data, frame.cols, frame.rows, frame.step, QImage::Format_Grayscale8);
+		//QPixmap pixMap{ui.labelVideo->width, ui.labelVideo->height};
 		ui.labelVideo->setPixmap(QPixmap::fromImage(qOriginalImage));
+
+		ui.labelVideo->setScaledContents(true);
+
+		ui.labelVideo->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 	}
-	if (showSelectROI)
+	if (roiWindow.isVisible())
 	{
-		imshow("Select ROI", frame);
+		roiWindow.ui.labelROIVideo->setPixmap(QPixmap::fromImage(qOriginalImage));
+		roiWindow.ui.labelROIVideo->setScaledContents(true);
+		roiWindow.ui.labelROIVideo->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+		//imshow("Select ROI", frame);
 
 		//HWND hwnd = (HWND)cvGetWindowHandle("Select ROI");
 		//if (!IsWindowVisible(hwnd))
 		//{
 		//	showSelectROI = false;
 		//}
-		waitKey(1000);
-		if (getWindowProperty("Select ROI", 0) < 0)
-		{
-			std::cout << "Hej" << std::endl;
-			showSelectROI = false;
-		}
 	}
 }
 
@@ -289,7 +295,11 @@ void heimdall_VS::findSelectedDate(QString search)
 //__________SelectROI - klickfunktion________________________________________________________________
 void heimdall_VS::on_pushSelectROI_clicked()
 {
-	showSelectROI = true;
+	//showSelectROI = true;
+
+	//roiWindow.start();
+	roiWindow.show();
+
 	//capCamera.open(0);
 	//namedWindow("Display window", 1);
 
@@ -365,18 +375,13 @@ void heimdall_VS::setPulse(int pulse)
 }
 
 void heimdall_VS::setResp(int resp)
-{
-	if (resp == -2)
-	{
-		//Tracking failed eller något annat typ?
-	}
-	else
-	{
-		QString respString = QString::number(resp);
-		ui.RRNumber->setText(respString);
+{	
+	
+	QString respString = QString::number(resp);
+	ui.RRNumber->setText(respString);
 
-		checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR);
-	}
+	checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR);
+
 }
 
 void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel)

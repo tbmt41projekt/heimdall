@@ -60,5 +60,6 @@ private:
 	int newPulse;
 	int newResp;
 	bool newFrameReady;
+	std::vector<double> rfVector;
 };
 

@@ -39,10 +39,10 @@
 #include "LogbydateWindow.h"
 #include "ui_LogbydateWindow.h"
 #include <windows.h>
-
+#include "ui_RoiWindow.h"
+#include "RoiWindow.h"
 
 using namespace cv;
-
 
 class heimdall_VS : public QMainWindow
 {
@@ -70,7 +70,7 @@ private:
 	//LogWindow *logWindow = nullptr;
 	QMessageBox faceError;
 	LogWindow logWindow{};
-	
+	RoiWindow roiWindow{};
 
 	void findSelectedDate(QString search);
 	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);

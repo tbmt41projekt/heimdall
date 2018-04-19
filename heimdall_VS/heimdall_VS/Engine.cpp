@@ -68,10 +68,10 @@ int Engine::run()
 			windowPtr->setPulse(newPulse);
 			newPulseReady = false;
 		}
-		if (newRespReady && windowPtr->onDisplayWindow)
+		if (resp.rfFound && windowPtr->onDisplayWindow)
 		{
-			windowPtr->setResp(newResp);
-			newRespReady = false;
+			windowPtr->setResp(rfVector.back());
+			resp.rfFound = false;
 		}
 	}
 
@@ -100,37 +100,36 @@ void Engine::calcPulse()
 	{
 		auto loopStart = chrono::high_resolution_clock::now();
 
-		while (!readyToCalc)
+		if (readyToCalc)
 		{
+			vector<Mat> pulseFrames;
+
+			double firstFrameTime = timeVector.front();
+			int i = 0;
+
+			while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)		//mikrosekunder
+			{
+				pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
+				i++;
+			}
+
+			float fps = floor(pulseFrames.size() / pulse.time);
+
+			tempPulse = (int)pulse.calculate(pulseFrames, fps);
+			if (tempPulse != -1)		//tempPulse = -1 om inga toppar har hittats
+			{
+				newPulse = tempPulse;
+				newPulseReady = true;
+			}
+
+			chrono::time_point<chrono::steady_clock> currentTime;
+			chrono::microseconds loopTime;
+			do
+			{
+				currentTime = chrono::high_resolution_clock::now();
+				loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
+			} while (loopTime.count() < pulse.time * 1000000);		//mikrosekunder
 		}
-
-		vector<Mat> pulseFrames;
-
-		double firstFrameTime = timeVector.front();
-		int i = 0;
-
-		while (firstFrameTime - timeVector.at(i) <= pulse.time * 1000000)		//mikrosekunder
-		{
-			pulseFrames.insert(pulseFrames.begin(), framesVector.at(i));
-			i++;
-		}
-
-		float fps = floor(pulseFrames.size() / pulse.time);
-
-		tempPulse = (int)pulse.calculate(pulseFrames, fps);
-		if (tempPulse != -1)		//tempPulse = -1 om inga toppar har hittats
-		{
-			newPulse = tempPulse;
-			newPulseReady = true;
-		}
-
-		chrono::time_point<chrono::steady_clock> currentTime;
-		chrono::microseconds loopTime;
-		do
-		{
-			currentTime = chrono::high_resolution_clock::now();
-			loopTime = chrono::duration_cast<chrono::microseconds>(currentTime - loopStart);
-		} while (loopTime.count() < pulse.time * 1000000);		//mikrosekunder
 	}
 }
 
@@ -147,8 +146,6 @@ klart. Skickar sedan till window(?) att uppdatera det nya värdet.
 
 void Engine::calcResp()
 {
-	vector<double> rfVector;
-
 	while (isProgramRunning)
 	{
 		resp.calculateRF(rfVector);

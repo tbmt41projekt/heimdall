@@ -133,6 +133,7 @@
     <ClCompile Include="Matlab.cpp" />
     <ClCompile Include="Pulse.cpp" />
     <ClCompile Include="Respiration.cpp" />
+    <ClCompile Include="RoiWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="heimdall_VS.h" />
@@ -141,12 +142,14 @@
     <QtUic Include="heimdall_VS.ui" />
     <QtUic Include="LogbydateWindow.ui" />
     <QtUic Include="LogWindow.ui" />
+    <QtUic Include="RoiWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="filt.h" />
     <ClInclude Include="heimdallMatlab.h" />
     <ClInclude Include="Matlab.h" />
+    <QtMoc Include="RoiWindow.h" />
     <QtMoc Include="LogWindow.h" />
     <QtMoc Include="LogbydateWindow.h" />
     <ClInclude Include="Pulse.h" />
