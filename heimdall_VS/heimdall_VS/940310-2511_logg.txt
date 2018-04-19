@@ -1,0 +1,72 @@
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+190418 11:07:11  -  Low respiratory rate, 0
+190418 11:07:15  -  Low respiratory rate, 0
+190418 11:07:24  -  Low respiratory rate, 0
+190418 11:07:34  -  Low respiratory rate, 0
+190418 11:08:04  -  Low respiratory rate, 0
+190418 11:08:11  -  Low respiratory rate, 0
+
+   --- New measurement: 940310-2511 --- 
+190418 11:11:04  -  High respiratory rate, 41
+
+   --- New measurement: 940310-2511 --- 
+190418 11:51:41  -  High heart rate, 100
+
+   --- New measurement: 940310-2511 --- 
+190418 12:02:46  -  High heart rate, 92
+190418 12:03:12  -  High heart rate, 120
+190418 12:03:15  -  High heart rate, 97
+190418 12:03:27  -  High heart rate, 111
+190418 12:03:31  -  High heart rate, 97
+190418 12:03:33  -  High heart rate, 100
+190418 12:03:36  -  High heart rate, 121
+190418 12:03:39  -  High heart rate, 122
+
+   --- New measurement: 940310-2511 --- 
+190418 12:04:18  -  High heart rate, 97
+190418 12:04:21  -  High heart rate, 83
+190418 12:04:24  -  High heart rate, 72
+190418 12:04:33  -  High heart rate, 83
+190418 12:04:35  -  High heart rate, 77
+190418 12:04:42  -  High heart rate, 72
+190418 12:04:45  -  High heart rate, 80
+190418 12:04:48  -  High heart rate, 75
+190418 12:04:51  -  High heart rate, 68
+190418 12:04:53  -  High heart rate, 76
+190418 12:05:00  -  High heart rate, 97
+
+   --- New measurement: 940310-2511 --- 
+190418 12:06:28  -  High heart rate, 104
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+190418 12:15:20  -  High heart rate, 90
+190418 12:15:21  -  High heart rate, 72
+190418 12:15:24  -  High heart rate, 81
+190418 12:15:27  -  High heart rate, 70
+190418 12:15:30  -  High heart rate, 80
+190418 12:15:33  -  High heart rate, 60
+190418 12:15:43  -  High heart rate, 81
+
+   --- New measurement: 940310-2511 --- 
+190418 12:17:23  -  High heart rate, 66
+190418 12:17:26  -  High heart rate, 54
+190418 12:17:31  -  Low heart rate, -2147483648
+
+   --- New measurement: 940310-2511 --- 
+190418 12:26:56  -  High heart rate, 78
+190418 12:27:10  -  High heart rate, 100
+
+   --- New measurement: 940310-2511 --- 
+190418 12:30:33  -  High heart rate, 83
+190418 12:30:36  -  High heart rate, 106
+190418 12:30:38  -  High heart rate, 115
+190418 12:30:43  -  High heart rate, 106
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
