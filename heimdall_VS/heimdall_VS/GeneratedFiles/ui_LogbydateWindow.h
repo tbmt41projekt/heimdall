@@ -56,7 +56,7 @@ public:
     void retranslateUi(QWidget *LogbydateWindow)
     {
         LogbydateWindow->setWindowTitle(QApplication::translate("LogbydateWindow", "LogbydateWindow", 0));
-        label->setText(QApplication::translate("LogbydateWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">LOG</span></p></body></html>", 0));
+        label->setText(QApplication::translate("LogbydateWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">Log by date</span></p></body></html>", 0));
     } // retranslateUi
 
 };

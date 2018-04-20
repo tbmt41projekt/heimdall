@@ -8,6 +8,10 @@ AddNoteWindow::AddNoteWindow(QString dateString, QString pnr, QDialog *parent)
 	DateString = dateString;
 }
 
+AddNoteWindow::~AddNoteWindow()
+{
+}
+
 void AddNoteWindow::on_pushAdd_clicked()
 {
 	QString filename = Pnr + "_logg.txt";
@@ -25,6 +29,17 @@ void AddNoteWindow::on_pushAdd_clicked()
 }
 
 
-AddNoteWindow::~AddNoteWindow()
+void AddNoteWindow::on_pushFalseAlarm_clicked()
 {
+	ui.lineNote->setText("False alarm.");
+}
+
+void AddNoteWindow::on_pushGivenPatient_clicked()
+{
+	ui.lineNote->setText("Patient has been given: ");
+}
+
+void AddNoteWindow::on_pushSleep_clicked()
+{
+	ui.lineNote->setText("Patient is asleep.");
 }

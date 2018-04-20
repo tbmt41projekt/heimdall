@@ -40,6 +40,8 @@
 #include "ui_LogbydateWindow.h"
 #include "AddNoteWindow.h"
 #include "ui_AddNoteWindow.h"
+#include "qt_windows.h"
+
 //#include "Engine.h"
 
 using namespace cv;
@@ -74,6 +76,7 @@ private slots:
 	void on_calendarWidget_clicked();
 	void on_pushLog_2_clicked();
 	void on_pushAddNote_clicked();
+	void on_pushRestart_clicked();
 	void updateRandomNumber();
 	void showTime();
 };

@@ -1,4 +1,6 @@
 #include "heimdall_VS.h"
+#include <QtMultimedia/QSound>
+#include <QtMultimedia/QSoundEffect>
 
 //________________________________________________________________________________________________
 
@@ -52,7 +54,6 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 heimdall_VS::~heimdall_VS()
 {
-	//delete ui;
 }
 
 //__________setLog(QString)_______________________________________________________________________________
@@ -78,7 +79,6 @@ void heimdall_VS::setLog(QString logstr)
 
 
 //__________alarm()_______________________________________________________________________________
-
 void heimdall_VS::alarm()
 {
 	
@@ -172,12 +172,39 @@ void heimdall_VS::on_pushStart_clicked()
 }
 
 
-//__________Logg - klickfunktion_____________________________________________________________________
+//__________Logg by date - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushLog_clicked() 
 {
-	ui.calendarWidget->setVisible(true);
+	//MASSA olika ljudtester nedan..... 
+	
+	/*QSound sound("beep.wav");
+	sound.play();*/
+
+	/*QSound sound("C:/Qt/Tools/QtCreator/bin/sounds/beep.wav");
+	sound.play();*/
+	
+	/*QSound::play("beep.wav");*/
+
+	/*QSoundEffect sound;
+	sound.setSource(QUrl::fromLocalFile("beep.wav"));
+	sound.setVolume(0.25f);
+	sound.play();*/
+
+
+
+	if (ui.calendarWidget->isVisible() == true)
+	{
+		ui.calendarWidget->setVisible(false);
+		ui.pushLog->setText("Log by date");
+	}
+	else
+	{
+		ui.calendarWidget->setVisible(true);
+		ui.pushLog->setText("Close calendar");
+	}
 }
 
+//___________Logg - klickfunktion____________________________________________________________
 void heimdall_VS::on_pushLog_2_clicked()
 {
 	LogWindow logWindow(pnr, dateString);
@@ -185,7 +212,7 @@ void heimdall_VS::on_pushLog_2_clicked()
 	logWindow.exec();
 }
 
-//___________Notis - klickfunktion____________________________________________________________
+//___________Notis - klickfunktion__________________________________________________________________
 void heimdall_VS::on_pushAddNote_clicked()
 {
 	AddNoteWindow addNoteWindow(dateString, pnr);
@@ -193,9 +220,18 @@ void heimdall_VS::on_pushAddNote_clicked()
 	addNoteWindow.exec();
 }
 
-//_________Calendar - klickfunktion_________________________________________________________________________________
+//___________Restart - klickfunktion_________________________________________________________________
+void heimdall_VS::on_pushRestart_clicked()
+{
+	readyToMeasure = false; 
+	ui.frame_2->hide();
+	ui.frame_1->show();
+}
+
+//_________Calendar - klickfunktion__________________________________________________________________
 void heimdall_VS::on_calendarWidget_clicked()
 {
+	ui.pushLog->setText("Log by date");
 	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
 	findSelectedDate(dateStringnotis);
 	
@@ -206,9 +242,7 @@ void heimdall_VS::on_calendarWidget_clicked()
 
 }
 
-
 //_________findSelectedDate()_____________________________________________________________________________
-
 void heimdall_VS::findSelectedDate(QString search)
 {
 	//QString search("110418");
@@ -402,7 +436,7 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("Low respiratory rate.");
+				logString.append("Low respiratory rate,");
 				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
@@ -427,7 +461,7 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("High respiratory rate.");
+				logString.append("High respiratory rate,");
 				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);
@@ -440,7 +474,7 @@ void heimdall_VS::updateRandomNumber()
 
 				logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
 				logString.append("  -  ");
-				logString.append("Low respiratory rate.");
+				logString.append("Low respiratory rate,");
 				logString.append(RRNumString);
 				logString.append("\r\n");
 				setLog(logString);

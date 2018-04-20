@@ -20,4 +20,7 @@ private:
 
 private slots:
 	void on_pushAdd_clicked();
+	void on_pushFalseAlarm_clicked();
+	void on_pushGivenPatient_clicked();
+	void on_pushSleep_clicked();
 };

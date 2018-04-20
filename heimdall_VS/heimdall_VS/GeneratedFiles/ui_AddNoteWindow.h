@@ -27,21 +27,33 @@ public:
     QLineEdit *lineNote;
     QPushButton *pushAdd;
     QLabel *label;
+    QPushButton *pushFalseAlarm;
+    QPushButton *pushGivenPatient;
+    QPushButton *pushSleep;
 
     void setupUi(QDialog *AddNoteWindow)
     {
         if (AddNoteWindow->objectName().isEmpty())
             AddNoteWindow->setObjectName(QStringLiteral("AddNoteWindow"));
-        AddNoteWindow->resize(506, 90);
+        AddNoteWindow->resize(516, 156);
         lineNote = new QLineEdit(AddNoteWindow);
         lineNote->setObjectName(QStringLiteral("lineNote"));
-        lineNote->setGeometry(QRect(20, 40, 401, 31));
+        lineNote->setGeometry(QRect(20, 40, 401, 21));
         pushAdd = new QPushButton(AddNoteWindow);
         pushAdd->setObjectName(QStringLiteral("pushAdd"));
         pushAdd->setGeometry(QRect(430, 40, 75, 23));
         label = new QLabel(AddNoteWindow);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 10, 101, 21));
+        pushFalseAlarm = new QPushButton(AddNoteWindow);
+        pushFalseAlarm->setObjectName(QStringLiteral("pushFalseAlarm"));
+        pushFalseAlarm->setGeometry(QRect(20, 80, 401, 21));
+        pushGivenPatient = new QPushButton(AddNoteWindow);
+        pushGivenPatient->setObjectName(QStringLiteral("pushGivenPatient"));
+        pushGivenPatient->setGeometry(QRect(20, 120, 401, 21));
+        pushSleep = new QPushButton(AddNoteWindow);
+        pushSleep->setObjectName(QStringLiteral("pushSleep"));
+        pushSleep->setGeometry(QRect(20, 100, 401, 21));
 
         retranslateUi(AddNoteWindow);
 
@@ -53,6 +65,9 @@ public:
         AddNoteWindow->setWindowTitle(QApplication::translate("AddNoteWindow", "AddNoteWindow", 0));
         pushAdd->setText(QApplication::translate("AddNoteWindow", "Add", 0));
         label->setText(QApplication::translate("AddNoteWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">New note:</span></p></body></html>", 0));
+        pushFalseAlarm->setText(QApplication::translate("AddNoteWindow", "False alarm.", 0));
+        pushGivenPatient->setText(QApplication::translate("AddNoteWindow", "Patient has been given", 0));
+        pushSleep->setText(QApplication::translate("AddNoteWindow", "Patient is asleep.", 0));
     } // retranslateUi
 
 };
