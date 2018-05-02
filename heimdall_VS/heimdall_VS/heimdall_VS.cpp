@@ -131,6 +131,8 @@ void heimdall_VS::updateFrame(Mat & frame)
 	}
 }
 
+
+
 //__________showTime()______________________________________________________________________________
 void heimdall_VS::showTime()
 {

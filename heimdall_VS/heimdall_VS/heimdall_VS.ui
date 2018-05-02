@@ -765,8 +765,8 @@ color: rgb(255, 0, 0);
     <widget class="QCalendarWidget" name="calendarWidget">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>60</y>
+       <x>-80</x>
+       <y>230</y>
        <width>341</width>
        <height>221</height>
       </rect>

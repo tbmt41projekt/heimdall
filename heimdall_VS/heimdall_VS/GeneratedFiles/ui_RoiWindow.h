@@ -14,16 +14,16 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <roilabel.h>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_RoiWindow
 {
 public:
-    QLabel *labelROIVideo;
+    RoiLabel *labelROIVideo;
     QPushButton *SaveROIButton;
     QPushButton *ClearPointButton;
 
@@ -32,11 +32,11 @@ public:
         if (RoiWindow->objectName().isEmpty())
             RoiWindow->setObjectName(QStringLiteral("RoiWindow"));
         RoiWindow->resize(1140, 720);
-        labelROIVideo = new QLabel(RoiWindow);
+        labelROIVideo = new RoiLabel(RoiWindow);
         labelROIVideo->setObjectName(QStringLiteral("labelROIVideo"));
         labelROIVideo->setGeometry(QRect(0, 0, 960, 720));
         labelROIVideo->setCursor(QCursor(Qt::ArrowCursor));
-        labelROIVideo->setMouseTracking(false);
+        labelROIVideo->setMouseTracking(true);
         labelROIVideo->setAutoFillBackground(true);
         labelROIVideo->setAlignment(Qt::AlignCenter);
         SaveROIButton = new QPushButton(RoiWindow);

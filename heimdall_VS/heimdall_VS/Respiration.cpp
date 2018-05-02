@@ -128,6 +128,25 @@ void Respiration::addTime(double time)
 	timeBuffer.push_back(time);
 }
 
+void Respiration::setAddRemovePt(bool bl)
+{
+	addRemovePt = bl;
+}
+
+
+void Respiration::setMousePoint(int x, int y)
+{
+	Point2f point{(float)x, (float)y};
+	mousePoint = point;
+	addRemovePt = true;
+}
+
+void Respiration::clearPoints()
+{
+	prevPoints.clear();
+	nextPoints.clear();
+}
+
 
 
 

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>RoiWindow</string>
   </property>
-  <widget class="QLabel" name="labelROIVideo">
+  <widget class="RoiLabel" name="labelROIVideo">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -26,7 +26,7 @@
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="mouseTracking">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="autoFillBackground">
     <bool>true</bool>
@@ -66,6 +66,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>RoiLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">roilabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

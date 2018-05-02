@@ -10,6 +10,7 @@
 #include <opencv2\opencv.hpp>
 
 
+
 //Engine-klassen fungerar som en motor och uppgiftsuppdelare. Den säger till andra klassen vad
 //dom ska göra.
 

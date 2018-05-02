@@ -58,6 +58,7 @@ public:
 	void setPulse(int pulse);
 	void setResp(int resp);
 	void updateFrame(Mat & frame);
+	RoiWindow roiWindow;
 
 
 private:
@@ -69,8 +70,8 @@ private:
 	Mat newFrame;
 	//LogWindow *logWindow = nullptr;
 	QMessageBox faceError;
-	LogWindow logWindow{};
-	RoiWindow roiWindow{};
+	LogWindow logWindow;
+	
 
 	void findSelectedDate(QString search);
 	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);

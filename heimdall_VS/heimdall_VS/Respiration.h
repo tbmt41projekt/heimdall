@@ -29,6 +29,9 @@ public:
 	std::vector<double> pointSummation();
 	bool rfFound = false;
 	void addTime(double time);
+	void setAddRemovePt(bool bl);
+	void setMousePoint(int x, int y);
+	void clearPoints();
 	
 private:
 	std::vector<cv::Point2f> rfBuffer;
@@ -41,6 +44,7 @@ private:
 	cv::Size subPixWinSize{ 10, 10 }, winSize{ 31, 31 };
 	Matlab matlab;
 	double frameRate;
+
 
 };
 

@@ -150,11 +150,25 @@ void Engine::calcResp()
 	{
 		resp.calculateRF(rfVector);
 
+		if (windowPtr->roiWindow.newPoint)
+		{
+			resp.setMousePoint(windowPtr->roiWindow.getX(), windowPtr->roiWindow.getY());
+			windowPtr->roiWindow.newPoint = false;
+		}
+
+		if (windowPtr->roiWindow.clearPoints)
+		{
+			//resp.setAddRemovePt(false);
+			resp.clearPoints();
+			windowPtr->roiWindow.clearPoints = false;
+		}
+
 		if (resp.rfFound)
 		{
 			cout << "RF = " << rfVector.back() << endl;
 			resp.rfFound = false;
 		}
+		
 	}
 		
 
@@ -175,7 +189,7 @@ void Engine::runCamera()
 	while (true)
 	{
 		VideoCapture cap(0);
-		namedWindow("Video");
+		//namedWindow("Video");
 		cap.set(CV_CAP_PROP_FRAME_WIDTH, 960);
 		cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);
 
@@ -219,6 +233,11 @@ void Engine::runCamera()
 				}
 			}	
 
+
+			resp.track(frame);
+			resp.addTime(frameTime.count());
+
+
 			//Tar bort sista framen i framesVector och lägger till den nya framen längst fram.
 			framesVector.pop_back();
 			framesVector.insert(framesVector.begin(), frame);
@@ -227,11 +246,8 @@ void Engine::runCamera()
 
 			newFrameReady = true;
 
-			resp.track(frame);
-			resp.addTime(frameTime.count());
-
 			waitKey(1);
-			imshow("Video", frame);
+			//imshow("Video", frame);
 
 			std::chrono::microseconds loopTime;
 			do

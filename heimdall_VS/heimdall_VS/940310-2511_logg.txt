@@ -70,3 +70,11 @@
    --- New measurement: 940310-2511 --- 
 
    --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+020518 14:15:15  -  High respiratory rate, 25
+020518 14:15:19  -  High respiratory rate, 32
+
+   --- New measurement: 940310-2511 --- 
+020518 14:24:16  -  Low respiratory rate, 0
+020518 14:24:21  -  High respiratory rate, 32

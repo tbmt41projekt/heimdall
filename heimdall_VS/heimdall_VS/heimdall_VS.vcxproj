@@ -133,6 +133,7 @@
     <ClCompile Include="Matlab.cpp" />
     <ClCompile Include="Pulse.cpp" />
     <ClCompile Include="Respiration.cpp" />
+    <ClCompile Include="RoiLabel.cpp" />
     <ClCompile Include="RoiWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="filt.h" />
     <ClInclude Include="heimdallMatlab.h" />
     <ClInclude Include="Matlab.h" />
+    <QtMoc Include="RoiLabel.h" />
     <QtMoc Include="RoiWindow.h" />
     <QtMoc Include="LogWindow.h" />
     <QtMoc Include="LogbydateWindow.h" />
