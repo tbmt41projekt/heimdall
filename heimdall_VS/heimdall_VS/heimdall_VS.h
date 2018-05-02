@@ -84,14 +84,14 @@ private:
 	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);
 	bool readyToMeasure;
 	//void alarm();
-	void findSelectedDate(QString search);
+	//void findSelectedDate(QString search);
 	void getValues();
 	//void processFrameAndUpdateGUI();
 	cv::VideoCapture capCamera;
 
 	private slots:
 	void on_pushStart_clicked();
-
+	void on_reselectROI_clicked();
 	//void processFrameAndUpdateGUI();
 	//void showTime();
 	void on_pushSelectROI_clicked();

@@ -834,6 +834,23 @@ color: rgb(255, 0, 0);
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="reselectROI">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>80</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string>Reselect ROI</string>
+     </property>
+    </widget>
     <zorder>pushAddNote</zorder>
     <zorder>HeartRate</zorder>
     <zorder>RespRate</zorder>
@@ -861,6 +878,7 @@ color: rgb(255, 0, 0);
     <zorder>labelWARNING</zorder>
     <zorder>pushRestart</zorder>
     <zorder>calendarWidget</zorder>
+    <zorder>reselectROI</zorder>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">

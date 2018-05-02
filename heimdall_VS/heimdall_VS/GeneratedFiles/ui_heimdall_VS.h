@@ -75,6 +75,7 @@ public:
     QLabel *labelWARNING;
     QPushButton *pushRestart;
     QCalendarWidget *calendarWidget;
+    QPushButton *reselectROI;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -82,7 +83,6 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-
         heimdall_VSClass->resize(532, 409);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
@@ -315,6 +315,11 @@ public:
         calendarWidget->setHorizontalHeaderFormat(QCalendarWidget::ShortDayNames);
         calendarWidget->setNavigationBarVisible(true);
         calendarWidget->setDateEditEnabled(true);
+        reselectROI = new QPushButton(frame_2);
+        reselectROI->setObjectName(QStringLiteral("reselectROI"));
+        reselectROI->setGeometry(QRect(230, 80, 81, 31));
+        reselectROI->setStyleSheet(QLatin1String("font: 8pt \"MS Shell Dlg 2\";\n"
+""));
         pushAddNote->raise();
         HeartRate->raise();
         RespRate->raise();
@@ -342,6 +347,7 @@ public:
         labelWARNING->raise();
         pushRestart->raise();
         calendarWidget->raise();
+        reselectROI->raise();
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -408,6 +414,7 @@ public:
         pushAddNote->setText(QApplication::translate("heimdall_VSClass", "Add note", 0));
         labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
+        reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
     } // retranslateUi
 
 };

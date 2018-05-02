@@ -34,6 +34,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.frame_1->setPalette(pal);
 	ui.frame_2->setAutoFillBackground(true);
 	ui.frame_2->setPalette(pal);
+	ui.reselectROI->hide();
 
 
 	//Startruta
@@ -171,6 +172,7 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelhighHR->hide();
 		ui.labellowRR->hide();
 		ui.labelhighRR->hide();
+		ui.reselectROI->show();
 
 		//Kör igång kameran och placerar den på frame_2
 		//readyForCamera = true;
@@ -311,6 +313,13 @@ void heimdall_VS::findSelectedDate(QString search)
 		outputFile.close();
 	}
 
+
+}
+
+void heimdall_VS::on_reselectROI_clicked()
+{
+
+	roiWindow.show();
 
 }
 

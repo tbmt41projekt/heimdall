@@ -13,6 +13,7 @@ class LogWindow : public QDialog
 
 public:
 	LogWindow(QString pnr, QString dateString, QDialog *parent = Q_NULLPTR);
+	LogWindow();
 	~LogWindow();
 
 	QString pnr;
