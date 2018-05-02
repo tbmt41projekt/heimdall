@@ -161,6 +161,9 @@ void Engine::calcResp()
 			//resp.setAddRemovePt(false);
 			resp.clearPoints();
 			windowPtr->roiWindow.clearPoints = false;
+			rfVector.clear();
+			rfVector.push_back(0);
+			resp.rfFound = true;
 		}
 
 		if (resp.rfFound)
@@ -259,5 +262,7 @@ void Engine::runCamera()
 	}
 
 }
+
+
 
 //________________________________________________________________________________________________

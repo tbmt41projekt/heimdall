@@ -33,6 +33,7 @@ public:
 	void setMousePoint(int x, int y);
 	void clearPoints();
 	
+	
 private:
 	std::vector<cv::Point2f> rfBuffer;
 	std::vector<double> timeBuffer;

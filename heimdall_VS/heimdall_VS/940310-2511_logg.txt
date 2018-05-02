@@ -137,3 +137,244 @@
 020518 15:20:22  -  High respiratory rate, 23
 020518 15:20:25  -  High heart rate, 164
 020518 15:20:29  -  High respiratory rate, 34
+
+   --- New measurement: 940310-2511 --- 
+020518 15:35:50  -  Low heart rate, 51
+020518 15:35:51  -  Low heart rate, -2147483648
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+020518 15:44:47  -  Low heart rate, -2
+020518 15:44:49  -  Low heart rate, -2
+020518 15:44:52  -  Low heart rate, -2
+020518 15:44:54  -  Low heart rate, -2
+020518 15:44:57  -  Low heart rate, -2
+020518 15:45:00  -  Low heart rate, -2
+020518 15:45:03  -  Low heart rate, -2
+020518 15:45:08  -  High heart rate, 83
+020518 15:45:10  -  Low heart rate, -2
+020518 15:45:13  -  Low heart rate, -2
+020518 15:45:15  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:00:32  -  Low heart rate, -2
+020518 16:00:38  -  Low heart rate, -2
+020518 16:00:41  -  Low heart rate, -2
+020518 16:00:44  -  Low heart rate, -2
+020518 16:00:59  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:01:47  -  Low heart rate, -2
+020518 16:01:50  -  Low heart rate, -2
+020518 16:01:53  -  Low heart rate, -2
+020518 16:01:57  -  High heart rate, 68
+020518 16:01:59  -  Low heart rate, -2
+020518 16:02:02  -  Low heart rate, -2
+020518 16:02:05  -  Low heart rate, -2
+020518 16:02:10  -  High heart rate, 82
+020518 16:02:11  -  High heart rate, 79
+020518 16:02:14  -  High heart rate, 94
+020518 16:02:15  -  High respiratory rate, 47
+020518 16:02:17  -  Low heart rate, -2
+020518 16:02:20  -  High heart rate, 114
+020518 16:02:22  -  High heart rate, 136
+020518 16:02:26  -  High heart rate, 144
+020518 16:02:29  -  Low heart rate, -2
+020518 16:02:32  -  Low heart rate, -2
+020518 16:02:35  -  High heart rate, 125
+020518 16:02:38  -  High heart rate, 100
+020518 16:02:41  -  Low heart rate, -2
+020518 16:02:44  -  Low heart rate, -2
+020518 16:02:47  -  Low heart rate, -2
+020518 16:02:50  -  Low heart rate, -2
+020518 16:02:53  -  Low heart rate, -2
+020518 16:02:56  -  Low heart rate, -2
+020518 16:02:59  -  Low heart rate, -2
+020518 16:03:02  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:08:25  -  High heart rate, 108
+020518 16:08:27  -  Low heart rate, -2
+020518 16:08:30  -  Low heart rate, -2
+020518 16:08:33  -  Low heart rate, -2
+020518 16:08:36  -  High heart rate, 96
+020518 16:08:38  -  High respiratory rate, 42
+020518 16:08:39  -  Low heart rate, -2
+020518 16:08:42  -  Low heart rate, -2
+020518 16:08:45  -  Low heart rate, -2
+020518 16:08:48  -  Low heart rate, -2
+020518 16:08:51  -  Low heart rate, -2
+020518 16:08:54  -  Low heart rate, -2
+020518 16:08:57  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:12:10  -  Low heart rate, -2
+020518 16:12:13  -  Low heart rate, -2
+020518 16:12:15  -  High respiratory rate, 42
+020518 16:12:16  -  Low heart rate, -2
+020518 16:12:19  -  Low heart rate, -2
+020518 16:12:22  -  Low heart rate, -2
+020518 16:12:25  -  Low heart rate, -2
+020518 16:12:28  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:13:38  -  High heart rate, 77
+020518 16:13:43  -  Low heart rate, -2
+020518 16:13:46  -  Low heart rate, -2
+020518 16:13:49  -  Low heart rate, -2
+020518 16:13:52  -  Low heart rate, -2
+020518 16:13:55  -  Low heart rate, -2
+020518 16:13:58  -  Low heart rate, -2
+020518 16:14:02  -  High heart rate, 75
+020518 16:14:04  -  Low heart rate, -2
+020518 16:14:07  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:15:59  -  Low heart rate, -2
+020518 16:15:59  -  High respiratory rate, 45
+020518 16:16:01  -  Low heart rate, -2
+020518 16:16:04  -  Low heart rate, -2
+020518 16:16:07  -  Low heart rate, -2
+020518 16:16:10  -  Low heart rate, -2
+020518 16:16:13  -  Low heart rate, -2
+020518 16:16:16  -  Low heart rate, -2
+020518 16:16:19  -  Low heart rate, -2
+020518 16:16:22  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:17:24  -  High respiratory rate, 44
+020518 16:17:26  -  High heart rate, 101
+020518 16:17:29  -  High heart rate, 99
+020518 16:17:31  -  Low heart rate, -2
+020518 16:17:32  -  Low respiratory rate, 0
+020518 16:17:34  -  Low heart rate, -2
+020518 16:17:37  -  Low heart rate, -2
+020518 16:17:40  -  Low heart rate, -2
+020518 16:17:44  -  High heart rate, 117
+020518 16:17:46  -  Low heart rate, -2
+020518 16:17:49  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:18:26  -  High heart rate, 96
+020518 16:18:28  -  Low heart rate, -2
+020518 16:18:29  -  High respiratory rate, 42
+020518 16:18:31  -  Low heart rate, -2
+020518 16:18:33  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:19:20  -  High heart rate, 83
+020518 16:19:21  -  High heart rate, 109
+020518 16:19:22  -  High respiratory rate, 42
+020518 16:19:29  -  High heart rate, 102
+020518 16:19:32  -  Low heart rate, -2
+020518 16:19:35  -  Low heart rate, -2
+020518 16:19:38  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:20:15  -  Low heart rate, -2
+020518 16:20:18  -  Low heart rate, -2
+020518 16:20:21  -  Low heart rate, -2
+020518 16:20:24  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:20:27  -  Low heart rate, -2
+020518 16:20:30  -  Low heart rate, -2
+020518 16:20:33  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:20:37  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:20:39  -  Low heart rate, -2
+020518 16:20:46  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:21:34  -  High heart rate, 67
+020518 16:21:35  -  High heart rate, 71
+020518 16:21:38  -  Low heart rate, -2
+020518 16:21:41  -  High heart rate, 85
+020518 16:21:44  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:22:49  -  Low heart rate, -2
+020518 16:22:52  -  Low heart rate, -2
+020518 16:22:55  -  Low heart rate, -2
+020518 16:22:58  -  Low heart rate, -2
+020518 16:23:05  -  Low heart rate, -2
+020518 16:23:07  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:23:45  -  High heart rate, 81
+020518 16:23:46  -  Low heart rate, -2
+020518 16:23:50  -  High heart rate, 96
+
+   --- New measurement: 940310-2511 --- 
+020518 16:24:25  -  Low heart rate, -2
+020518 16:24:28  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+020518 16:26:35  -  NOTE: hejhje 
+020518 16:26:43  -  Low heart rate, -2
+020518 16:26:46  -  Low heart rate, -2
+020518 16:26:49  -  Low heart rate, -2
+020518 16:26:52  -  Low heart rate, -2
+020518 16:26:55  -  Low heart rate, -2
+020518 16:26:58  -  Low heart rate, -2
+020518 16:27:01  -  Low heart rate, -2
+020518 16:27:04  -  Low heart rate, -2
+020518 16:27:06  -  Low heart rate, -2
+020518 16:27:10  -  Low heart rate, -2
+020518 16:27:13  -  Low heart rate, -2
+020518 16:27:16  -  Low heart rate, -2
+020518 16:27:19  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
+020518 16:29:25  -  Low heart rate, -2
+020518 16:29:28  -  Low heart rate, -2
+020518 16:29:29  -  Low respiratory rate, 0
+020518 16:29:29  -  Low respiratory rate, 0
+020518 16:29:32  -  High heart rate, 92
+020518 16:29:34  -  Low heart rate, -2
+020518 16:29:36  -  High respiratory rate, 35
+020518 16:29:37  -  Low heart rate, -2
+020518 16:29:40  -  Low heart rate, -2
+020518 16:29:40  -  High respiratory rate, 26
+020518 16:29:43  -  Low heart rate, -2
+020518 16:29:46  -  Low heart rate, -2
+020518 16:29:49  -  Low heart rate, -2
+020518 16:29:51  -  High respiratory rate, 23
+020518 16:29:52  -  Low heart rate, -2
+020518 16:29:55  -  Low heart rate, -2
+020518 16:29:57  -  High respiratory rate, 29
+020518 16:29:58  -  Low heart rate, -2
+020518 16:29:58  -  Low respiratory rate, 0
+020518 16:30:01  -  Low heart rate, -2
+020518 16:30:04  -  Low heart rate, -2
+020518 16:30:07  -  Low heart rate, -2

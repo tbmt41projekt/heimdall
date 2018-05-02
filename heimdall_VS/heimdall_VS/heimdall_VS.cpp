@@ -257,7 +257,6 @@ void heimdall_VS::on_pushLog_2_clicked()
 void heimdall_VS::on_pushAddNote_clicked()
 {
 	AddNoteWindow addNoteWindow(dateString, pnr);
-	addNoteWindow.setModal(true);
 	addNoteWindow.exec();
 }
 
@@ -277,7 +276,7 @@ void heimdall_VS::on_calendarWidget_clicked()
 	findSelectedDate(dateStringnotis);
 	
 	LogbydateWindow LogbydateWindow;
-	LogbydateWindow.setModal(true);
+	//LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
 	ui.calendarWidget->setVisible(false);
 
@@ -320,6 +319,21 @@ void heimdall_VS::on_reselectROI_clicked()
 {
 
 	roiWindow.show();
+
+}
+
+void heimdall_VS::on_muteFaceAlarm_clicked()
+{
+	if (mutedFaceError)
+	{
+		ui.muteFaceAlarm->setText("Mute face alarm");
+		mutedFaceError = false;
+	}
+	else
+	{
+		ui.muteFaceAlarm->setText("Enable face alarm");
+		mutedFaceError = true;
+	}
 
 }
 
@@ -381,7 +395,7 @@ void heimdall_VS::getValues()
 
 void heimdall_VS::setPulse(int pulse)
 {
-	if (pulse == -2)
+	if (!mutedFaceError && pulse == -2)
 	{
 		faceError.setIcon(QMessageBox::Warning);
 		faceError.setWindowTitle("Error message");

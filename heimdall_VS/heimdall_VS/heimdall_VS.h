@@ -78,6 +78,7 @@ private:
 	//LogWindow *logWindow = nullptr;
 	QMessageBox faceError;
 	LogWindow logWindow;
+	bool mutedFaceError{false};
 	
 
 	void findSelectedDate(QString search);
@@ -92,6 +93,7 @@ private:
 	private slots:
 	void on_pushStart_clicked();
 	void on_reselectROI_clicked();
+	void on_muteFaceAlarm_clicked();
 	//void processFrameAndUpdateGUI();
 	//void showTime();
 	void on_pushSelectROI_clicked();

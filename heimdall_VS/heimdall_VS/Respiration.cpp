@@ -65,7 +65,7 @@ void Respiration::track(cv::Mat &frame)
 
 			nextPoints[k] = nextPoints[i];
 			k++;
-			circle(frame,nextPoints[i], 3, Scalar(0, 255, 0), -1, 8);
+			circle(frame,nextPoints[i], 17, Scalar(0, 255, 0), -1, 8);
 		}
 
 		nextPoints.resize(k);
@@ -146,6 +146,7 @@ void Respiration::clearPoints()
 	prevPoints.clear();
 	nextPoints.clear();
 }
+
 
 
 

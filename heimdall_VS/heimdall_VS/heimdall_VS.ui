@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>532</width>
-    <height>409</height>
+    <width>580</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="font">
@@ -851,6 +851,19 @@ color: rgb(255, 0, 0);
       <string>Reselect ROI</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="muteFaceAlarm">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>330</y>
+       <width>121</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mute face alarm</string>
+     </property>
+    </widget>
     <zorder>pushAddNote</zorder>
     <zorder>HeartRate</zorder>
     <zorder>RespRate</zorder>
@@ -879,6 +892,7 @@ color: rgb(255, 0, 0);
     <zorder>pushRestart</zorder>
     <zorder>calendarWidget</zorder>
     <zorder>reselectROI</zorder>
+    <zorder>muteFaceAlarm</zorder>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">

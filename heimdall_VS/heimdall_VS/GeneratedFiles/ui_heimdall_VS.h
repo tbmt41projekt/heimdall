@@ -76,6 +76,7 @@ public:
     QPushButton *pushRestart;
     QCalendarWidget *calendarWidget;
     QPushButton *reselectROI;
+    QPushButton *muteFaceAlarm;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -83,7 +84,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(532, 409);
+        heimdall_VSClass->resize(580, 449);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -320,6 +321,9 @@ public:
         reselectROI->setGeometry(QRect(230, 80, 81, 31));
         reselectROI->setStyleSheet(QLatin1String("font: 8pt \"MS Shell Dlg 2\";\n"
 ""));
+        muteFaceAlarm = new QPushButton(frame_2);
+        muteFaceAlarm->setObjectName(QStringLiteral("muteFaceAlarm"));
+        muteFaceAlarm->setGeometry(QRect(300, 330, 121, 23));
         pushAddNote->raise();
         HeartRate->raise();
         RespRate->raise();
@@ -348,6 +352,7 @@ public:
         pushRestart->raise();
         calendarWidget->raise();
         reselectROI->raise();
+        muteFaceAlarm->raise();
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -415,6 +420,7 @@ public:
         labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
         reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
+        muteFaceAlarm->setText(QApplication::translate("heimdall_VSClass", "Mute face alarm", 0));
     } // retranslateUi
 
 };
