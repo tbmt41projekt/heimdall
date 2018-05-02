@@ -123,6 +123,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddNoteWindow.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="DeviceEnumerator.cpp" />
     <ClCompile Include="filt.cpp" />
@@ -140,12 +141,14 @@
     <QtMoc Include="heimdall_VS.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="AddNoteWindow.ui" />
     <QtUic Include="heimdall_VS.ui" />
     <QtUic Include="LogbydateWindow.ui" />
     <QtUic Include="LogWindow.ui" />
     <QtUic Include="RoiWindow.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="AddNoteWindow.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="filt.h" />
     <ClInclude Include="heimdallMatlab.h" />
@@ -176,4 +179,5 @@
       <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2015_64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
+  
 </Project>

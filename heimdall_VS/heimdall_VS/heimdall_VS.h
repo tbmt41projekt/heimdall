@@ -41,6 +41,11 @@
 #include <windows.h>
 #include "ui_RoiWindow.h"
 #include "RoiWindow.h"
+#include "AddNoteWindow.h"
+#include "ui_AddNoteWindow.h"
+#include "qt_windows.h"
+
+//#include "Engine.h"
 
 using namespace cv;
 
@@ -54,6 +59,8 @@ public:
 	void setLog(QString logstr);
 	QString pnr;
 	bool onDisplayWindow;
+	QString dateString;
+
 
 	void setPulse(int pulse);
 	void setResp(int resp);
@@ -75,18 +82,33 @@ private:
 
 	void findSelectedDate(QString search);
 	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);
+	bool readyToMeasure;
+	//void alarm();
+	void findSelectedDate(QString search);
+	void getValues();
+	//void processFrameAndUpdateGUI();
 	cv::VideoCapture capCamera;
 
 	private slots:
 	void on_pushStart_clicked();
+
 	//void processFrameAndUpdateGUI();
-	void showTime();
+	//void showTime();
 	void on_pushSelectROI_clicked();
 	void on_pushLog_clicked();
-	void getValues();
+	//void getValues(); EHROI2WHROIUJHEWQROIQHJW
 	//void updateRandomNumber();
-	void alarm();
+	//void alarm(); KANSKE SKA VARA HÄR
 	void on_calendarWidget_clicked();
 	void on_pushLog_2_clicked();
 	//void updateLogWindow();
+	//void on_pushSelectROI_clicked();
+	//void on_pushLog_clicked();
+	//void on_calendarWidget_clicked();
+	//void on_pushLog_2_clicked();
+	void on_pushAddNote_clicked();
+	void on_pushRestart_clicked();
+	//void updateRandomNumber();
+	void showTime();
+
 };

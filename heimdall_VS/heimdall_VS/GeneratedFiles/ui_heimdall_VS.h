@@ -9,6 +9,7 @@
 #ifndef UI_HEIMDALL_VS_H
 #define UI_HEIMDALL_VS_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
@@ -68,9 +69,11 @@ public:
     QLabel *labelhighHR;
     QLabel *labelhighRR;
     QLabel *labelVideo;
-    QLabel *labelWARNING;
     QPushButton *pushLog;
     QPushButton *pushLog_2;
+    QPushButton *pushAddNote;
+    QLabel *labelWARNING;
+    QPushButton *pushRestart;
     QCalendarWidget *calendarWidget;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -79,6 +82,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
+
         heimdall_VSClass->resize(532, 409);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
@@ -156,7 +160,7 @@ public:
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(9, 9, 494, 365));
+        frame_2->setGeometry(QRect(0, 0, 501, 361));
         frame_2->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
 ""));
         frame_2->setFrameShape(QFrame::StyledPanel);
@@ -236,7 +240,7 @@ public:
         labelDateTime_2->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         labelPnr_2 = new QLabel(frame_2);
         labelPnr_2->setObjectName(QStringLiteral("labelPnr_2"));
-        labelPnr_2->setGeometry(QRect(210, 0, 151, 31));
+        labelPnr_2->setGeometry(QRect(190, 0, 151, 31));
         labelMinHR_2 = new QLabel(frame_2);
         labelMinHR_2->setObjectName(QStringLiteral("labelMinHR_2"));
         labelMinHR_2->setGeometry(QRect(80, 240, 41, 21));
@@ -278,23 +282,66 @@ public:
         labelVideo->setGeometry(QRect(16, 32, 211, 131));
         labelVideo->setAutoFillBackground(true);
         labelVideo->setAlignment(Qt::AlignCenter);
-        labelWARNING = new QLabel(frame_2);
-        labelWARNING->setObjectName(QStringLiteral("labelWARNING"));
-        labelWARNING->setGeometry(QRect(240, 130, 241, 221));
-        labelWARNING->setFont(font1);
-        labelWARNING->setFrameShape(QFrame::Box);
-        labelWARNING->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         pushLog = new QPushButton(frame_2);
         pushLog->setObjectName(QStringLiteral("pushLog"));
-        pushLog->setGeometry(QRect(410, 10, 71, 31));
+        pushLog->setGeometry(QRect(410, 40, 71, 31));
         pushLog->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
         pushLog_2 = new QPushButton(frame_2);
         pushLog_2->setObjectName(QStringLiteral("pushLog_2"));
-        pushLog_2->setGeometry(QRect(410, 50, 71, 31));
+        pushLog_2->setGeometry(QRect(410, 10, 71, 31));
         pushLog_2->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
+        pushAddNote = new QPushButton(frame_2);
+        pushAddNote->setObjectName(QStringLiteral("pushAddNote"));
+        pushAddNote->setGeometry(QRect(410, 70, 71, 31));
+        pushAddNote->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
+        labelWARNING = new QLabel(frame_2);
+        labelWARNING->setObjectName(QStringLiteral("labelWARNING"));
+        labelWARNING->setGeometry(QRect(240, 140, 241, 221));
+        labelWARNING->setFont(font1);
+        labelWARNING->setFrameShape(QFrame::Box);
+        labelWARNING->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+        pushRestart = new QPushButton(frame_2);
+        pushRestart->setObjectName(QStringLiteral("pushRestart"));
+        pushRestart->setGeometry(QRect(410, 100, 71, 31));
+        pushRestart->setStyleSheet(QStringLiteral("font: 7pt \"MS Shell Dlg 2\";"));
         calendarWidget = new QCalendarWidget(frame_2);
         calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
-        calendarWidget->setGeometry(QRect(100, 60, 341, 221));
+        calendarWidget->setGeometry(QRect(60, 60, 341, 221));
+        calendarWidget->setFont(font1);
+        calendarWidget->setAutoFillBackground(true);
+        calendarWidget->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        calendarWidget->setFirstDayOfWeek(Qt::Monday);
+        calendarWidget->setGridVisible(true);
+        calendarWidget->setHorizontalHeaderFormat(QCalendarWidget::ShortDayNames);
+        calendarWidget->setNavigationBarVisible(true);
+        calendarWidget->setDateEditEnabled(true);
+        pushAddNote->raise();
+        HeartRate->raise();
+        RespRate->raise();
+        HRNumber->raise();
+        RRNumber->raise();
+        MinHR->raise();
+        MinRR->raise();
+        MaxHR->raise();
+        MaxRR->raise();
+        bpm1->raise();
+        bpm2->raise();
+        labelDateTime_2->raise();
+        labelPnr_2->raise();
+        labelMinHR_2->raise();
+        labelMaxHR_2->raise();
+        labelMinRR_2->raise();
+        labelMaxRR_2->raise();
+        labellowHR->raise();
+        labellowRR->raise();
+        labelhighHR->raise();
+        labelhighRR->raise();
+        labelVideo->raise();
+        pushLog->raise();
+        pushLog_2->raise();
+        labelWARNING->raise();
+        pushRestart->raise();
+        calendarWidget->raise();
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -302,6 +349,16 @@ public:
         statusBar = new QStatusBar(heimdall_VSClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         heimdall_VSClass->setStatusBar(statusBar);
+        QWidget::setTabOrder(inputPnr, inputMinHR);
+        QWidget::setTabOrder(inputMinHR, inputMaxHR);
+        QWidget::setTabOrder(inputMaxHR, inputMinRR);
+        QWidget::setTabOrder(inputMinRR, inputMaxRR);
+        QWidget::setTabOrder(inputMaxRR, pushSelectROI);
+        QWidget::setTabOrder(pushSelectROI, pushStart);
+        QWidget::setTabOrder(pushStart, pushLog);
+        QWidget::setTabOrder(pushLog, pushLog_2);
+        QWidget::setTabOrder(pushLog_2, pushAddNote);
+        QWidget::setTabOrder(pushAddNote, calendarWidget);
 
         retranslateUi(heimdall_VSClass);
 
@@ -346,9 +403,11 @@ public:
         labelhighHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High heart rate</span></p></body></html>", 0));
         labelhighRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">High respiratory rate</span></p></body></html>", 0));
         labelVideo->setText(QString());
-        labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
         pushLog->setText(QApplication::translate("heimdall_VSClass", "Log by date", 0));
         pushLog_2->setText(QApplication::translate("heimdall_VSClass", "Log", 0));
+        pushAddNote->setText(QApplication::translate("heimdall_VSClass", "Add note", 0));
+        labelWARNING->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; color:#ff0000;\">WARNING</span></p></body></html>", 0));
+        pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
     } // retranslateUi
 
 };

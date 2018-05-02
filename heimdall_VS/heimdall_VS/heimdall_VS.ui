@@ -288,10 +288,10 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>494</width>
-      <height>365</height>
+      <x>0</x>
+      <y>0</y>
+      <width>501</width>
+      <height>361</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -549,7 +549,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="labelPnr_2">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>190</x>
        <y>0</y>
        <width>151</width>
        <height>31</height>
@@ -702,11 +702,59 @@ color: rgb(255, 0, 0);
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushLog">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>40</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Log by date</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushLog_2">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>10</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Log</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushAddNote">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>70</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Add note</string>
+     </property>
+    </widget>
     <widget class="QLabel" name="labelWARNING">
      <property name="geometry">
       <rect>
        <x>240</x>
-       <y>130</y>
+       <y>140</y>
        <width>241</width>
        <height>221</height>
       </rect>
@@ -730,11 +778,11 @@ color: rgb(255, 0, 0);
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushLog">
+    <widget class="QPushButton" name="pushRestart">
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>10</y>
+       <y>100</y>
        <width>71</width>
        <height>31</height>
       </rect>
@@ -743,35 +791,76 @@ color: rgb(255, 0, 0);
       <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>Log by date</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushLog_2">
-     <property name="geometry">
-      <rect>
-       <x>410</x>
-       <y>50</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Log</string>
+      <string>Restart</string>
      </property>
     </widget>
     <widget class="QCalendarWidget" name="calendarWidget">
      <property name="geometry">
       <rect>
-       <x>-80</x>
-       <y>230</y>
+       <x>60</x>
+       <y>60</y>
        <width>341</width>
        <height>221</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="firstDayOfWeek">
+      <enum>Qt::Monday</enum>
+     </property>
+     <property name="gridVisible">
+      <bool>true</bool>
+     </property>
+     <property name="horizontalHeaderFormat">
+      <enum>QCalendarWidget::ShortDayNames</enum>
+     </property>
+     <property name="navigationBarVisible">
+      <bool>true</bool>
+     </property>
+     <property name="dateEditEnabled">
+      <bool>true</bool>
+     </property>
     </widget>
+    <zorder>pushAddNote</zorder>
+    <zorder>HeartRate</zorder>
+    <zorder>RespRate</zorder>
+    <zorder>HRNumber</zorder>
+    <zorder>RRNumber</zorder>
+    <zorder>MinHR</zorder>
+    <zorder>MinRR</zorder>
+    <zorder>MaxHR</zorder>
+    <zorder>MaxRR</zorder>
+    <zorder>bpm1</zorder>
+    <zorder>bpm2</zorder>
+    <zorder>labelDateTime_2</zorder>
+    <zorder>labelPnr_2</zorder>
+    <zorder>labelMinHR_2</zorder>
+    <zorder>labelMaxHR_2</zorder>
+    <zorder>labelMinRR_2</zorder>
+    <zorder>labelMaxRR_2</zorder>
+    <zorder>labellowHR</zorder>
+    <zorder>labellowRR</zorder>
+    <zorder>labelhighHR</zorder>
+    <zorder>labelhighRR</zorder>
+    <zorder>labelVideo</zorder>
+    <zorder>pushLog</zorder>
+    <zorder>pushLog_2</zorder>
+    <zorder>labelWARNING</zorder>
+    <zorder>pushRestart</zorder>
+    <zorder>calendarWidget</zorder>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -785,6 +874,19 @@ color: rgb(255, 0, 0);
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>inputPnr</tabstop>
+  <tabstop>inputMinHR</tabstop>
+  <tabstop>inputMaxHR</tabstop>
+  <tabstop>inputMinRR</tabstop>
+  <tabstop>inputMaxRR</tabstop>
+  <tabstop>pushSelectROI</tabstop>
+  <tabstop>pushStart</tabstop>
+  <tabstop>pushLog</tabstop>
+  <tabstop>pushLog_2</tabstop>
+  <tabstop>pushAddNote</tabstop>
+  <tabstop>calendarWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="heimdall_VS.qrc"/>
  </resources>
