@@ -25,6 +25,7 @@
 #include <opencv2\core.hpp>
 #include <opencv\cv.h>
 #include <iostream>
+#include <fstream>
 #include <random>
 #include <QPixmap>
 #include <QImage>
@@ -44,8 +45,6 @@
 #include "AddNoteWindow.h"
 #include "ui_AddNoteWindow.h"
 #include "qt_windows.h"
-
-//#include "Engine.h"
 
 using namespace cv;
 
@@ -79,6 +78,7 @@ private:
 	QMessageBox faceError;
 	LogWindow logWindow;
 	bool mutedFaceError{false};
+	std::ofstream saveRespFile;
 	
 
 	void findSelectedDate(QString search);

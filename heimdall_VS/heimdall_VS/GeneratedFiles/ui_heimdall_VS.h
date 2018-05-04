@@ -77,6 +77,7 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *reselectROI;
     QPushButton *muteFaceAlarm;
+    QPushButton *pushButton;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -112,6 +113,7 @@ public:
         pushStart->setMouseTracking(false);
         pushStart->setStyleSheet(QLatin1String("font: 75 12pt \"MS Shell Dlg 2\";\n"
 ""));
+        pushStart->setAutoDefault(false);
         labelMinRR = new QLabel(frame_1);
         labelMinRR->setObjectName(QStringLiteral("labelMinRR"));
         labelMinRR->setGeometry(QRect(220, 200, 47, 13));
@@ -353,6 +355,9 @@ public:
         calendarWidget->raise();
         reselectROI->raise();
         muteFaceAlarm->raise();
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(180, 370, 161, 31));
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -372,6 +377,9 @@ public:
         QWidget::setTabOrder(pushAddNote, calendarWidget);
 
         retranslateUi(heimdall_VSClass);
+
+        pushStart->setDefault(true);
+
 
         QMetaObject::connectSlotsByName(heimdall_VSClass);
     } // setupUi
@@ -421,6 +429,7 @@ public:
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
         reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
         muteFaceAlarm->setText(QApplication::translate("heimdall_VSClass", "Mute face alarm", 0));
+        pushButton->setText(QApplication::translate("heimdall_VSClass", "Load patient history", 0));
     } // retranslateUi
 
 };

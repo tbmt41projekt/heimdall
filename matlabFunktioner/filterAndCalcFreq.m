@@ -7,7 +7,7 @@ function freq = filterAndCalcFreq(signal, passBand, frameRate)
 %            [undreGränsFrekvens övreGränsfrekvens] Frekvens i [1/min]
 % frameRate = samplefrekvensen, eller i vårat fall frameraten på
 %            videoklippet som har används för att ta in datan.
-
+940
 %Bandpassfilter
 
 Fn = frameRate/2 * 60;

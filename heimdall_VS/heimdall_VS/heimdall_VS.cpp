@@ -3,6 +3,8 @@
 #include <QtMultimedia/QSound>
 #include <QtMultimedia/QSoundEffect>
 
+using namespace std;
+
 //________________________________________________________________________________________________
 
 heimdall_VS::heimdall_VS(QWidget *parent)
@@ -58,6 +60,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 
 heimdall_VS::~heimdall_VS()
 {
+	saveRespFile.close();
 }
 
 //__________setLog(QString)_______________________________________________________________________________
@@ -137,6 +140,20 @@ void heimdall_VS::showTime()
 void heimdall_VS::on_pushStart_clicked()
 {
 	pnr = ui.inputPnr->text();
+	QDateTime time = QDateTime::currentDateTime();
+
+	string dateString = time.toString("ddMMyy").toStdString();//"ddMMyy hh:mm:ss"
+	string timeString = time.toString("hh-mm-ss").toStdString();
+	cout << timeString << endl;
+	saveRespFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + ".txt");
+
+	if (!saveRespFile.is_open())
+	{
+		cout << "Save file could not be opened!" << endl;
+	}
+
+	/*saveRespFile << "----------" << time.toString("ddMMyy hh:mm:ss").toStdString()
+		<< "----------" << endl;*/
 
 	QString maxHR = ui.inputMaxHR->text();
 	QString minHR = ui.inputMinHR->text();
@@ -421,6 +438,11 @@ void heimdall_VS::setResp(int resp)
 	ui.RRNumber->setText(respString);
 
 	checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR);
+
+	QDateTime time = QDateTime::currentDateTime();
+
+	saveRespFile << resp << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+
 
 }
 
