@@ -77,6 +77,8 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *reselectROI;
     QPushButton *muteFaceAlarm;
+    QLabel *labelNoHR;
+    QLabel *labelNoRR;
     QPushButton *pushButton;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -161,6 +163,21 @@ public:
         labelDateTime->setObjectName(QStringLiteral("labelDateTime"));
         labelDateTime->setGeometry(QRect(10, 0, 231, 31));
         labelDateTime->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
+        pushSelectROI->raise();
+        pushStart->raise();
+        labelMinRR->raise();
+        labelRespRate->raise();
+        labelMaxRR->raise();
+        labelMaxHR->raise();
+        labelMinHR->raise();
+        labelHeartRate->raise();
+        labelPnr->raise();
+        inputPnr->raise();
+        inputMinHR->raise();
+        inputMinRR->raise();
+        inputMaxRR->raise();
+        inputMaxHR->raise();
+        labelDateTime->raise();
         frame_2 = new QFrame(centralWidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
         frame_2->setGeometry(QRect(0, 0, 501, 361));
@@ -326,6 +343,18 @@ public:
         muteFaceAlarm = new QPushButton(frame_2);
         muteFaceAlarm->setObjectName(QStringLiteral("muteFaceAlarm"));
         muteFaceAlarm->setGeometry(QRect(300, 330, 121, 23));
+        labelNoHR = new QLabel(frame_2);
+        labelNoHR->setObjectName(QStringLiteral("labelNoHR"));
+        labelNoHR->setGeometry(QRect(270, 200, 191, 31));
+        labelNoHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
+        labelNoRR = new QLabel(frame_2);
+        labelNoRR->setObjectName(QStringLiteral("labelNoRR"));
+        labelNoRR->setGeometry(QRect(250, 300, 221, 31));
+        labelNoRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
         pushAddNote->raise();
         HeartRate->raise();
         RespRate->raise();
@@ -355,6 +384,8 @@ public:
         calendarWidget->raise();
         reselectROI->raise();
         muteFaceAlarm->raise();
+        labelNoHR->raise();
+        labelNoRR->raise();
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(180, 370, 161, 31));
@@ -429,6 +460,8 @@ public:
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
         reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
         muteFaceAlarm->setText(QApplication::translate("heimdall_VSClass", "Mute face alarm", 0));
+        labelNoHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">No heart rate</span></p></body></html>", 0));
+        labelNoRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">No respiratory rate</span></p></body></html>", 0));
         pushButton->setText(QApplication::translate("heimdall_VSClass", "Load patient history", 0));
     } // retranslateUi
 

@@ -189,6 +189,8 @@ void heimdall_VS::on_pushStart_clicked()
 		ui.labelhighHR->hide();
 		ui.labellowRR->hide();
 		ui.labelhighRR->hide();
+		ui.labelNoHR->hide();
+		ui.labelNoRR->hide();
 		ui.reselectROI->show();
 
 		//Kör igång kameran och placerar den på frame_2
@@ -426,18 +428,21 @@ void heimdall_VS::setPulse(int pulse)
 		QString pulseString = QString::number(pulse);
 		ui.HRNumber->setText(pulseString);
 
-		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR);
+		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR, ui.labelNoHR);
 	}
 
 }
 
 void heimdall_VS::setResp(int resp)
 {	
-	
+	if (resp == 0)
+	{
+		
+	}
 	QString respString = QString::number(resp);
 	ui.RRNumber->setText(respString);
 
-	checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR);
+	checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR, ui.labelNoRR);
 
 	QDateTime time = QDateTime::currentDateTime();
 
@@ -446,24 +451,34 @@ void heimdall_VS::setResp(int resp)
 
 }
 
-void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel)
+void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel)
 {
 	QString logString;
 	QString warning;
 	int minRate = minQString.toInt();
 	int maxRate = maxQString.toInt();
 
-	if (measurement < minRate)		//Low rate warning
+	if (measurement == 0)
 	{
-		lowLabel->show();
+		lowLabel->hide();
 		highLabel->hide();
+		noRateLabel->show();
+		ui.labelWARNING->show();
+		warning = "No";
+	}
+	else if (measurement < minRate)		//Low rate warning
+	{
+		noRateLabel->hide();
+		highLabel->hide();
+		lowLabel->show();
 		ui.labelWARNING->show();
 		warning = "Low";
 	}
 	else if (measurement > maxRate)		//High rate warning
 	{
-		highLabel->show();
+		noRateLabel->hide();
 		lowLabel->hide();
+		highLabel->show();
 		ui.labelWARNING->show();
 		warning = "High";
 	}

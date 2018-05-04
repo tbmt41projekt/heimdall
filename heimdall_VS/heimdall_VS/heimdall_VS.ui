@@ -290,6 +290,22 @@ font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
       <string>Date and Time</string>
      </property>
     </widget>
+    <zorder>pushSelectROI</zorder>
+    <zorder>pushStart</zorder>
+    <zorder>labelMinRR</zorder>
+    <zorder>labelRespRate</zorder>
+    <zorder>labelMaxRR</zorder>
+    <zorder>labelMaxHR</zorder>
+    <zorder>labelMinHR</zorder>
+    <zorder>labelHeartRate</zorder>
+    <zorder>labelPnr</zorder>
+    <zorder>inputPnr</zorder>
+    <zorder>inputMinHR</zorder>
+    <zorder>inputMinRR</zorder>
+    <zorder>inputMaxRR</zorder>
+    <zorder>inputMaxHR</zorder>
+    <zorder>labelDateTime</zorder>
+    <zorder>frame_2</zorder>
    </widget>
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
@@ -870,6 +886,42 @@ color: rgb(255, 0, 0);
       <string>Mute face alarm</string>
      </property>
     </widget>
+    <widget class="QLabel" name="labelNoHR">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>200</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 0, 0);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;No heart rate&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelNoRR">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>300</y>
+       <width>221</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 0, 0);
+</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;No respiratory rate&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
     <zorder>pushAddNote</zorder>
     <zorder>HeartRate</zorder>
     <zorder>RespRate</zorder>
@@ -899,6 +951,8 @@ color: rgb(255, 0, 0);
     <zorder>calendarWidget</zorder>
     <zorder>reselectROI</zorder>
     <zorder>muteFaceAlarm</zorder>
+    <zorder>labelNoHR</zorder>
+    <zorder>labelNoRR</zorder>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">

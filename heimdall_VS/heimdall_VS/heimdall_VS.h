@@ -82,7 +82,7 @@ private:
 	
 
 	void findSelectedDate(QString search);
-	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel);
+	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel);
 	bool readyToMeasure;
 	//void alarm();
 	//void findSelectedDate(QString search);
