@@ -900,7 +900,7 @@ color: rgb(255, 0, 0);
     <zorder>reselectROI</zorder>
     <zorder>muteFaceAlarm</zorder>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="patientHistoryButton">
     <property name="geometry">
      <rect>
       <x>180</x>

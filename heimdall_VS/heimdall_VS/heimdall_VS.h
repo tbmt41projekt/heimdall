@@ -45,6 +45,8 @@
 #include "AddNoteWindow.h"
 #include "ui_AddNoteWindow.h"
 #include "qt_windows.h"
+#include "patientHistoryWindow.h"
+
 
 using namespace cv;
 
@@ -65,6 +67,7 @@ public:
 	void setResp(int resp);
 	void updateFrame(Mat & frame);
 	RoiWindow roiWindow;
+	patientHistoryWindow historyWindow;
 
 
 private:
@@ -94,6 +97,7 @@ private:
 	void on_pushStart_clicked();
 	void on_reselectROI_clicked();
 	void on_muteFaceAlarm_clicked();
+	void on_patientHistoryButton_clicked();
 	//void processFrameAndUpdateGUI();
 	//void showTime();
 	void on_pushSelectROI_clicked();

@@ -226,3 +226,5 @@
    --- New measurement: 940310-2511 --- 
 040518 10:40:08  -  High heart rate, 87
 040518 10:40:10  -  High heart rate, 85
+
+   --- New measurement: 940310-2511 --- 

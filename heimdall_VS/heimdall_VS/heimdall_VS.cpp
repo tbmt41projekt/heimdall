@@ -354,6 +354,11 @@ void heimdall_VS::on_muteFaceAlarm_clicked()
 
 }
 
+void heimdall_VS::on_patientHistoryButton_clicked()
+{
+	historyWindow.show();
+}
+
 //__________SelectROI - klickfunktion________________________________________________________________
 void heimdall_VS::on_pushSelectROI_clicked()
 {
