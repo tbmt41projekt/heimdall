@@ -12,9 +12,9 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	QMainWindow(parent),
 	onDisplayWindow{ false },
 	showSelectROI{ false },
-	prevRespZero{false},
-	pulseWarning{false},
-	respWarning{false}
+	prevRespZero{ false },
+	pulseWarning{ false },
+	respWarning{ false }
 {
 	ui.setupUi(this);
 	ui.inputPnr->setFocus();
@@ -51,7 +51,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	QValidator *validatorPnr = new QRegExpValidator(rxPnr);
 	ui.inputPnr->setValidator(validatorPnr);
 
-	QRegExp rxMaxMin("\[0-9]{1,3}");
+	QRegExp rxMaxMin("^([0-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9])$");
 	QValidator *validatorMaxMin = new QRegExpValidator(rxMaxMin);
 	ui.inputMaxHR->setValidator(validatorMaxMin);
 	ui.inputMinHR->setValidator(validatorMaxMin);
@@ -167,14 +167,13 @@ void heimdall_VS::on_pushStart_clicked()
 	QString startString = ("\n   --- New measurement: " + pnr + " --- \n");
 	setLog(startString);
 
-
 	if (ui.inputPnr->hasAcceptableInput() &&
 		ui.inputMaxHR->hasAcceptableInput() &&
 		ui.inputMinHR->hasAcceptableInput() &&
 		ui.inputMaxRR->hasAcceptableInput() &&
 		ui.inputMinRR->hasAcceptableInput() &&
-		maxHR > minHR &&
-		maxRR > minRR)
+		maxHR.toInt() > minHR.toInt() &&
+		maxRR.toInt() > minRR.toInt())
 	{
 		//Visa nästa frame, dvs mätrutan
 		ui.frame_2->setVisible(true);
@@ -233,7 +232,7 @@ void heimdall_VS::on_pushLog_clicked()
 
 	/*QSound sound("C:/Qt/Tools/QtCreator/bin/sounds/beep.wav");
 	sound.play();*/
-	
+
 	/*QSound::play("beep.wav");*/
 
 	/*QSoundEffect sound;
@@ -287,7 +286,7 @@ void heimdall_VS::on_pushAddNote_clicked()
 //___________Restart - klickfunktion_________________________________________________________________
 void heimdall_VS::on_pushRestart_clicked()
 {
-	readyToMeasure = false; 
+	readyToMeasure = false;
 	ui.frame_2->hide();
 	ui.frame_1->show();
 }
@@ -296,9 +295,9 @@ void heimdall_VS::on_pushRestart_clicked()
 void heimdall_VS::on_calendarWidget_clicked()
 {
 	ui.pushLog->setText("Log by date");
-	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy"); 
+	QString dateStringnotis = ui.calendarWidget->selectedDate().toString("ddMMyy");
 	findSelectedDate(dateStringnotis);
-	
+
 	LogbydateWindow LogbydateWindow;
 	//LogbydateWindow.setModal(true);
 	LogbydateWindow.exec();
@@ -439,7 +438,7 @@ void heimdall_VS::setPulse(int pulse)
 }
 
 void heimdall_VS::setResp(int resp)
-{		
+{
 	if (resp == 0 && !prevRespZero)
 	{
 		zeroRespStartTime = chrono::high_resolution_clock::now();
