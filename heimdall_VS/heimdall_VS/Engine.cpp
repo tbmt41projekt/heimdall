@@ -71,6 +71,7 @@ int Engine::run()
 		if (resp.rfFound && windowPtr->onDisplayWindow)
 		{
 			windowPtr->setResp(rfVector.back());
+			cout << "RF = " << rfVector.back() << endl;
 			resp.rfFound = false;
 		}
 	}
@@ -166,11 +167,6 @@ void Engine::calcResp()
 			resp.rfFound = true;
 		}
 
-		if (resp.rfFound)
-		{
-			cout << "RF = " << rfVector.back() << endl;
-			resp.rfFound = false;
-		}
 		
 	}
 		

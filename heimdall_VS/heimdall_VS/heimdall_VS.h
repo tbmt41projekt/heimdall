@@ -45,6 +45,7 @@
 #include "AddNoteWindow.h"
 #include "ui_AddNoteWindow.h"
 #include "qt_windows.h"
+#include <chrono>
 
 using namespace cv;
 
@@ -79,10 +80,13 @@ private:
 	LogWindow logWindow;
 	bool mutedFaceError{false};
 	std::ofstream saveRespFile;
-	
+	bool prevRespZero;
+	std::chrono::time_point<std::chrono::steady_clock> zeroRespStartTime;
+	bool pulseWarning;
+	bool respWarning;
 
 	void findSelectedDate(QString search);
-	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel);
+	void checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel, bool & typeWarning);
 	bool readyToMeasure;
 	//void alarm();
 	//void findSelectedDate(QString search);

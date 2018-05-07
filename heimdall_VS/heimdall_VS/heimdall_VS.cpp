@@ -11,7 +11,10 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	:
 	QMainWindow(parent),
 	onDisplayWindow{ false },
-	showSelectROI{ false }
+	showSelectROI{ false },
+	prevRespZero{false},
+	pulseWarning{false},
+	respWarning{false}
 {
 	ui.setupUi(this);
 	ui.inputPnr->setFocus();
@@ -54,6 +57,8 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 	ui.inputMinHR->setValidator(validatorMaxMin);
 	ui.inputMaxRR->setValidator(validatorMaxMin);
 	ui.inputMinRR->setValidator(validatorMaxMin);
+
+	zeroRespStartTime = chrono::high_resolution_clock::now();
 }
 
 //__________Destruktor____________________________________________________________________________
@@ -428,60 +433,89 @@ void heimdall_VS::setPulse(int pulse)
 		QString pulseString = QString::number(pulse);
 		ui.HRNumber->setText(pulseString);
 
-		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR, ui.labelNoHR);
+		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR, ui.labelNoHR, pulseWarning);
 	}
 
 }
 
 void heimdall_VS::setResp(int resp)
-{	
-	if (resp == 0)
+{		
+	if (resp == 0 && !prevRespZero)
 	{
-		
+		zeroRespStartTime = chrono::high_resolution_clock::now();
+		prevRespZero = true;
 	}
-	QString respString = QString::number(resp);
-	ui.RRNumber->setText(respString);
+	else
+	{
+		auto currentTime = chrono::high_resolution_clock::now();
+		chrono::seconds timeSinceFirstZero = chrono::duration_cast<chrono::seconds>(currentTime - zeroRespStartTime);
 
-	checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR, ui.labelNoRR);
+		cout << timeSinceFirstZero.count() << endl;
 
-	QDateTime time = QDateTime::currentDateTime();
+		if (resp != 0 || timeSinceFirstZero.count() >= 10)
+		{
+			QString respString = QString::number(resp);
+			ui.RRNumber->setText(respString);
 
-	saveRespFile << resp << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+			checkLarm("respiratory rate", resp, ui.labelMinRR_2->text(), ui.labelMaxRR_2->text(), ui.labellowRR, ui.labelhighRR, ui.labelNoRR, respWarning);
+
+			QDateTime time = QDateTime::currentDateTime();
+
+			saveRespFile << resp << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+			prevRespZero = false;
+		}
+	}
+
 
 
 }
 
-void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel)
+void heimdall_VS::checkLarm(QString rateType, int measurement, QString & minQString, QString & maxQString, QLabel * lowLabel, QLabel * highLabel, QLabel * noRateLabel, bool & typeWarning)
 {
 	QString logString;
 	QString warning;
 	int minRate = minQString.toInt();
 	int maxRate = maxQString.toInt();
 
-	if (measurement == 0)
+	if (typeWarning)
 	{
 		lowLabel->hide();
 		highLabel->hide();
+		noRateLabel->hide();
+	}
+
+	if (measurement == 0)
+	{
 		noRateLabel->show();
-		ui.labelWARNING->show();
 		warning = "No";
+		typeWarning = true;
 	}
 	else if (measurement < minRate)		//Low rate warning
 	{
-		noRateLabel->hide();
-		highLabel->hide();
 		lowLabel->show();
-		ui.labelWARNING->show();
 		warning = "Low";
+		typeWarning = true;
 	}
 	else if (measurement > maxRate)		//High rate warning
 	{
-		noRateLabel->hide();
-		lowLabel->hide();
 		highLabel->show();
-		ui.labelWARNING->show();
 		warning = "High";
+		typeWarning = true;
 	}
+	else
+	{
+		typeWarning = false;
+	}
+
+	if (pulseWarning || respWarning)
+	{
+		ui.labelWARNING->show();
+	}
+	else
+	{
+		ui.labelWARNING->hide();
+	}
+
 	if (!warning.isEmpty())
 	{
 		logString.append(QDateTime::currentDateTime().toString("ddMMyy hh:mm:ss"));
