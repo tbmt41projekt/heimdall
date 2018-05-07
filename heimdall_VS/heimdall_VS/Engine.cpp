@@ -165,12 +165,6 @@ void Engine::calcResp()
 			rfVector.push_back(0);
 			resp.rfFound = true;
 		}
-
-		if (resp.rfFound)
-		{
-			cout << "RF = " << rfVector.back() << endl;
-			resp.rfFound = false;
-		}
 		
 	}
 		

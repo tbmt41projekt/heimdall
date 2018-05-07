@@ -24,7 +24,7 @@ patientHistoryWindow::patientHistoryWindow(QWidget *parent)
 		counter = counter + 1;
 		List << "\n Patient: " + QString::fromStdString(i.pnr) + "\n"
 			"Datum: " + QString::fromStdString(i.date) + "\n"
-			"Tid: " + QString::fromStdString(replace(i.time, '-', ':')) + "\n";
+			"Starttid: " + QString::fromStdString(replace(i.time, '-', ':')) + "\n";
 	}
 
 	model->setStringList(List);
@@ -48,25 +48,29 @@ void patientHistoryWindow::get_measurements(std::experimental::filesystem::path 
 	string pnr;
 	string date;
 	string time;
+	string neutralFilename;
+	string respFilename;
+	string pulseFilename;
 
 	for (fs::directory_iterator iter{ path }; iter != end; ++iter)
 	{
 		filename = iter->path().filename().string();
-		stringstream ss{filename};
+		stringstream ss{ filename };
 
 		getline(ss, pnr, '_');
 		getline(ss, date, '_');
-		getline(ss, time, '.');
+		getline(ss, time, '_');
 
-		measurements.push_back(Measurement{ filename, pnr, date, time });
-	}
+		neutralFilename = filename.substr(0, 27);
+		respFilename = neutralFilename + "_resp.txt";
+		pulseFilename = neutralFilename + "_pulse.txt";
 
-	for (Measurement i : measurements)
-	{
+		if (!exists(pnr, date, time))
+		{
+			measurements.push_back(Measurement{ respFilename, pulseFilename, pnr, date, time });
+		}
 		
-		cout << i.pnr << " " << i.date << " " << replace(i.time, '-', ':') << endl;
 	}
-	
 }
 
 std::string patientHistoryWindow::replace(std::string str, char toReplace, char toInsert)
@@ -89,6 +93,51 @@ std::string patientHistoryWindow::replace(std::string str, char toReplace, char 
 	return output;
 }
 
+bool patientHistoryWindow::exists(std::string pnr, std::string date, std::string time)
+{
+	Measurement curr;
+	int i{ 0 };
+	while (i < measurements.size())
+	{
+		curr = measurements[i];
+
+		if (curr.pnr == pnr && curr.date == date && curr.time == time)
+		{
+			return true;
+		}
+		i++;
+	}
+	return false;
+}
+
+void patientHistoryWindow::getMeasValues(vector<int>& values, vector<std::string>& timeStamps, std::ifstream & file)
+{
+	string line;
+	string valueStr;
+	string dateTimeStr;
+	string month;
+
+	while (getline(file, line))
+	{
+		cout << "hej" << endl;
+		stringstream ss{ line };
+		getline(ss, valueStr, ' ');
+		values.push_back(stoi(valueStr));
+
+		getline(ss, dateTimeStr);
+		stringstream ss2{ dateTimeStr };
+		ss2.ignore(3);
+		getline(ss2, month, '-');
+		if (month == "maj")
+		{
+			dateTimeStr = replace(dateTimeStr, 'maj', 'may');
+		}
+
+		timeStamps.push_back(dateTimeStr);
+	}
+
+}
+
 void patientHistoryWindow::on_DoubleClick(QModelIndex index)
 {
 	int indexInt = index.row();
@@ -97,7 +146,41 @@ void patientHistoryWindow::on_DoubleClick(QModelIndex index)
 	{
 		if (i.index == indexInt)
 		{
-			cout << i.time << endl;
+			ifstream respFile("Save files/" + i.respFilename);
+			ifstream pulseFile("Save files/" + i.pulseFilename);
+			if (!respFile.is_open())
+			{
+				cout << "Respiratory load file cannot be opened!" << endl;
+			}
+			if (!pulseFile.is_open())
+			{
+				cout << "Pulse load file cannot be opened!" << endl;
+			}
+
+			vector<int> respValues;
+			vector<string> respTimeStamps;
+			vector<int> pulseValues;
+			vector<string> pulseTimeStamps;
+		
+			getMeasValues(respValues, respTimeStamps, respFile);
+			getMeasValues(pulseValues, pulseTimeStamps, pulseFile);
+
+			for (int i : pulseValues)
+			{
+				cout << i << " ";
+			}
+			cout << endl;
+
+			matlab.plot(respValues, respTimeStamps, pulseValues, pulseTimeStamps, i.pnr);
+
+			respFile.close();
+			pulseFile.close();
+
+
+
+
+
+
 		}
 	}
 

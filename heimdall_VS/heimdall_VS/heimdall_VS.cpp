@@ -61,6 +61,7 @@ heimdall_VS::heimdall_VS(QWidget *parent)
 heimdall_VS::~heimdall_VS()
 {
 	saveRespFile.close();
+	savePulseFile.close();
 }
 
 //__________setLog(QString)_______________________________________________________________________________
@@ -145,11 +146,16 @@ void heimdall_VS::on_pushStart_clicked()
 	string dateString = time.toString("ddMMyy").toStdString();//"ddMMyy hh:mm:ss"
 	string timeString = time.toString("hh-mm-ss").toStdString();
 	cout << timeString << endl;
-	saveRespFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + ".txt");
+	saveRespFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_resp.txt");
+	savePulseFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_pulse.txt");
 
 	if (!saveRespFile.is_open())
 	{
-		cout << "Save file could not be opened!" << endl;
+		cout << "Respiratory Save file could not be opened!" << endl;
+	}
+	if (!savePulseFile.is_open())
+	{
+		cout << "Pulse save file could not be opened!" << endl;
 	}
 
 	/*saveRespFile << "----------" << time.toString("ddMMyy hh:mm:ss").toStdString()
@@ -432,6 +438,10 @@ void heimdall_VS::setPulse(int pulse)
 		ui.HRNumber->setText(pulseString);
 
 		checkLarm("heart rate", pulse, ui.labelMinHR_2->text(), ui.labelMaxHR_2->text(), ui.labellowHR, ui.labelhighHR);
+		QDateTime time = QDateTime::currentDateTime();
+
+		savePulseFile << pulse << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+
 	}
 
 }

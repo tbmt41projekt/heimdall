@@ -14,6 +14,9 @@ public:
 	double findPeaks(std::vector<double> input, double lowLim,
 		double highLim, double frameRate, double peakLimit, double ampLimit);
 
+	void plot(std::vector<int> respData, std::vector<std::string> respTimeStamps,
+		std::vector<int> pulseData, std::vector<std::string> pulseTimeStamps, std::string pnr);
+
 private:
 	bool initialized;
 };

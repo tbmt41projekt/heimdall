@@ -97,16 +97,16 @@
       <param.cpp.api />
     </unset>
     <fileset.exports>
-      <file>C:\Users\nilge293\Documents\filterAndCalcFreq.m</file>
-      <file>C:\Users\nilge293\Documents\square.m</file>
+      <file>${PROJECT_ROOT}\filterAndCalcFreq.m</file>
       <file>${PROJECT_ROOT}\peakFinder.m</file>
+      <file>${PROJECT_ROOT}\plotValues.m</file>
     </fileset.exports>
     <fileset.classes>
       <entity.package name="">
         <entity.class name="Class1">
-          <file>C:\Users\nilge293\Documents\filterAndCalcFreq.m</file>
+          <file>${PROJECT_ROOT}\filterAndCalcFreq.m</file>
           <file>${PROJECT_ROOT}\peakFinder.m</file>
-          <file>C:\Users\nilge293\Documents\square.m</file>
+          <file>${PROJECT_ROOT}\plotValues.m</file>
         </entity.class>
       </entity.package>
     </fileset.classes>

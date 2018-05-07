@@ -82,6 +82,7 @@ private:
 	LogWindow logWindow;
 	bool mutedFaceError{false};
 	std::ofstream saveRespFile;
+	std::ofstream savePulseFile;
 	
 
 	void findSelectedDate(QString search);

@@ -8,10 +8,13 @@
 #include <experimental/filesystem>
 #include <iostream>
 #include <sstream>
+#include <fstream>
+#include "Matlab.h"
 
 struct Measurement
 {
-	std::string filename;
+	std::string respFilename;
+	std::string pulseFilename;
 	std::string pnr;
 	std::string date;
 	std::string time;
@@ -25,7 +28,7 @@ class patientHistoryWindow : public QWidget
 public:
 	patientHistoryWindow(QWidget *parent = Q_NULLPTR);
 	~patientHistoryWindow();
-
+	Matlab matlab;
 	void get_measurements(std::experimental::filesystem::path path);
 
 private:
@@ -33,7 +36,10 @@ private:
 	QStringListModel * model;
 	std::vector<Measurement> measurements;
 
+
 	std::string replace(std::string str, char toReplace, char toInsert);
+	bool exists(std::string pnr, std::string date, std::string time);
+	void getMeasValues(std::vector<int> & values, std::vector<std::string> & timeStamps, std::ifstream & file);
 
 private slots:
 	void on_DoubleClick(QModelIndex index);

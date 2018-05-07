@@ -6,5 +6,5 @@ heimdallMatlabTerminate
 heimdallMatlabPrintStackTrace
 mlxFilterAndCalcFreq
 mlxPeakFinder
-mlxSquare
+mlxPlotValues
 
