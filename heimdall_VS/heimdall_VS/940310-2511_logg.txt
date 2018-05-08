@@ -539,3 +539,5 @@
 080518 13:34:28  -  Low heart rate, -2
 080518 13:34:33  -  Low heart rate, -2
 080518 13:34:38  -  Low heart rate, -2
+
+   --- New measurement: 940310-2511 --- 
