@@ -541,3 +541,9 @@
 080518 13:34:38  -  Low heart rate, -2
 
    --- New measurement: 940310-2511 --- 
+
+   --- New measurement: 940310-2511 --- 
+080518 13:40:10  -  High respiratory rate, 33
+080518 13:40:14  -  High respiratory rate, 42
+080518 13:40:18  -  High respiratory rate, 37
+080518 13:40:22  -  High respiratory rate, 42
