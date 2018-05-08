@@ -119,7 +119,6 @@ void patientHistoryWindow::getMeasValues(vector<int>& values, vector<std::string
 
 	while (getline(file, line))
 	{
-		cout << "hej" << endl;
 		stringstream ss{ line };
 		getline(ss, valueStr, ' ');
 		values.push_back(stoi(valueStr));
@@ -165,19 +164,11 @@ void patientHistoryWindow::on_DoubleClick(QModelIndex index)
 			getMeasValues(respValues, respTimeStamps, respFile);
 			getMeasValues(pulseValues, pulseTimeStamps, pulseFile);
 
-			for (int i : pulseValues)
-			{
-				cout << i << " ";
-			}
-			cout << endl;
-
+	
 			matlab.plot(respValues, respTimeStamps, pulseValues, pulseTimeStamps, i.pnr);
 
 			respFile.close();
 			pulseFile.close();
-
-
-
 
 
 

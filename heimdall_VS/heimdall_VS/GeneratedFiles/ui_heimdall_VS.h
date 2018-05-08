@@ -352,9 +352,9 @@ public:
         pushLog_2->raise();
         labelWARNING->raise();
         pushRestart->raise();
-        calendarWidget->raise();
         reselectROI->raise();
         muteFaceAlarm->raise();
+        calendarWidget->raise();
         patientHistoryButton = new QPushButton(centralWidget);
         patientHistoryButton->setObjectName(QStringLiteral("patientHistoryButton"));
         patientHistoryButton->setGeometry(QRect(180, 370, 161, 31));

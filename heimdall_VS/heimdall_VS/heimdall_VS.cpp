@@ -145,7 +145,6 @@ void heimdall_VS::on_pushStart_clicked()
 
 	string dateString = time.toString("ddMMyy").toStdString();//"ddMMyy hh:mm:ss"
 	string timeString = time.toString("hh-mm-ss").toStdString();
-	cout << timeString << endl;
 	saveRespFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_resp.txt");
 	savePulseFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_pulse.txt");
 
@@ -228,7 +227,7 @@ void heimdall_VS::on_pushStart_clicked()
 //__________Logg - klickfunktion_____________________________________________________________________
 void heimdall_VS::on_pushLog_clicked()
 {
-	ui.calendarWidget->setVisible(true);
+	//ui.calendarWidget->setVisible(true);
 
 	/*QSound sound("C:/Qt/Tools/QtCreator/bin/sounds/beep.wav");
 	sound.play();*/

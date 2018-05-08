@@ -16,7 +16,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListView>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +25,6 @@ class Ui_patientHistoryWindow
 public:
     QListView *patientList;
     QLabel *historyTitle;
-    QPushButton *loadButton;
 
     void setupUi(QWidget *patientHistoryWindow)
     {
@@ -35,13 +33,10 @@ public:
         patientHistoryWindow->resize(625, 653);
         patientList = new QListView(patientHistoryWindow);
         patientList->setObjectName(QStringLiteral("patientList"));
-        patientList->setGeometry(QRect(60, 70, 451, 521));
+        patientList->setGeometry(QRect(60, 70, 501, 521));
         historyTitle = new QLabel(patientHistoryWindow);
         historyTitle->setObjectName(QStringLiteral("historyTitle"));
         historyTitle->setGeometry(QRect(180, 30, 241, 31));
-        loadButton = new QPushButton(patientHistoryWindow);
-        loadButton->setObjectName(QStringLiteral("loadButton"));
-        loadButton->setGeometry(QRect(530, 110, 81, 31));
 
         retranslateUi(patientHistoryWindow);
 
@@ -52,7 +47,6 @@ public:
     {
         patientHistoryWindow->setWindowTitle(QApplication::translate("patientHistoryWindow", "patientHistoryWindow", 0));
         historyTitle->setText(QApplication::translate("patientHistoryWindow", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Load patient history</span></p></body></html>", 0));
-        loadButton->setText(QApplication::translate("patientHistoryWindow", "Load", 0));
     } // retranslateUi
 
 };
