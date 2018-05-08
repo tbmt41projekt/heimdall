@@ -77,6 +77,8 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *reselectROI;
     QPushButton *muteFaceAlarm;
+    QLabel *labelNoHR;
+    QLabel *labelNoRR;
     QPushButton *patientHistoryButton;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -85,7 +87,7 @@ public:
     {
         if (heimdall_VSClass->objectName().isEmpty())
             heimdall_VSClass->setObjectName(QStringLiteral("heimdall_VSClass"));
-        heimdall_VSClass->resize(580, 449);
+        heimdall_VSClass->resize(529, 446);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(12);
@@ -326,6 +328,18 @@ public:
         muteFaceAlarm = new QPushButton(frame_2);
         muteFaceAlarm->setObjectName(QStringLiteral("muteFaceAlarm"));
         muteFaceAlarm->setGeometry(QRect(300, 330, 121, 23));
+        labelNoHR = new QLabel(frame_2);
+        labelNoHR->setObjectName(QStringLiteral("labelNoHR"));
+        labelNoHR->setGeometry(QRect(270, 200, 191, 31));
+        labelNoHR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
+        labelNoRR = new QLabel(frame_2);
+        labelNoRR->setObjectName(QStringLiteral("labelNoRR"));
+        labelNoRR->setGeometry(QRect(250, 300, 221, 31));
+        labelNoRR->setStyleSheet(QLatin1String("font: 12pt \"MS Shell Dlg 2\";\n"
+"color: rgb(255, 0, 0);\n"
+""));
         pushAddNote->raise();
         HeartRate->raise();
         RespRate->raise();
@@ -355,6 +369,8 @@ public:
         reselectROI->raise();
         muteFaceAlarm->raise();
         calendarWidget->raise();
+        labelNoHR->raise();
+        labelNoRR->raise();
         patientHistoryButton = new QPushButton(centralWidget);
         patientHistoryButton->setObjectName(QStringLiteral("patientHistoryButton"));
         patientHistoryButton->setGeometry(QRect(180, 370, 161, 31));
@@ -429,6 +445,8 @@ public:
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
         reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
         muteFaceAlarm->setText(QApplication::translate("heimdall_VSClass", "Mute face alarm", 0));
+        labelNoHR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">No heart rate</span></p></body></html>", 0));
+        labelNoRR->setText(QApplication::translate("heimdall_VSClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">No respiratory rate</span></p></body></html>", 0));
         patientHistoryButton->setText(QApplication::translate("heimdall_VSClass", "Load patient history", 0));
     } // retranslateUi
 
