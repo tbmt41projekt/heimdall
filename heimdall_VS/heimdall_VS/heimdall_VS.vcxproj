@@ -132,6 +132,7 @@
     <ClCompile Include="LogWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matlab.cpp" />
+    <ClCompile Include="patientHistoryWindow.cpp" />
     <ClCompile Include="Pulse.cpp" />
     <ClCompile Include="Respiration.cpp" />
     <ClCompile Include="RoiLabel.cpp" />
@@ -145,6 +146,7 @@
     <QtUic Include="heimdall_VS.ui" />
     <QtUic Include="LogbydateWindow.ui" />
     <QtUic Include="LogWindow.ui" />
+    <QtUic Include="patientHistoryWindow.ui" />
     <QtUic Include="RoiWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +159,7 @@
     <QtMoc Include="RoiWindow.h" />
     <QtMoc Include="LogWindow.h" />
     <QtMoc Include="LogbydateWindow.h" />
+    <QtMoc Include="patientHistoryWindow.h" />
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Respiration.h" />
@@ -179,5 +182,4 @@
       <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2015_64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
-  
 </Project>

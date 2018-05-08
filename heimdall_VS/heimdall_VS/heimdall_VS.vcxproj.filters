@@ -35,12 +35,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RoiLabel.cpp">
-	 <Filter>Source Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddNoteWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-	
+    <ClCompile Include="patientHistoryWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Respiration.h">
@@ -82,9 +84,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RoiLabel.h">
-	  <Filter>Header Files</Filter>
+      <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AddNoteWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="patientHistoryWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -99,9 +104,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="RoiWindow.ui">
-	  <Filter>Form Files</Filter>
+      <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="AddNoteWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="patientHistoryWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -77,7 +77,7 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *reselectROI;
     QPushButton *muteFaceAlarm;
-    QPushButton *pushButton;
+    QPushButton *patientHistoryButton;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -352,12 +352,12 @@ public:
         pushLog_2->raise();
         labelWARNING->raise();
         pushRestart->raise();
-        calendarWidget->raise();
         reselectROI->raise();
         muteFaceAlarm->raise();
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(180, 370, 161, 31));
+        calendarWidget->raise();
+        patientHistoryButton = new QPushButton(centralWidget);
+        patientHistoryButton->setObjectName(QStringLiteral("patientHistoryButton"));
+        patientHistoryButton->setGeometry(QRect(180, 370, 161, 31));
         heimdall_VSClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(heimdall_VSClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -429,7 +429,7 @@ public:
         pushRestart->setText(QApplication::translate("heimdall_VSClass", "Restart", 0));
         reselectROI->setText(QApplication::translate("heimdall_VSClass", "Reselect ROI", 0));
         muteFaceAlarm->setText(QApplication::translate("heimdall_VSClass", "Mute face alarm", 0));
-        pushButton->setText(QApplication::translate("heimdall_VSClass", "Load patient history", 0));
+        patientHistoryButton->setText(QApplication::translate("heimdall_VSClass", "Load patient history", 0));
     } // retranslateUi
 
 };

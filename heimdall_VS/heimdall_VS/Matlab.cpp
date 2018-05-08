@@ -95,3 +95,53 @@ double Matlab::findPeaks(std::vector<double> input, double lowLim,
 		return -3;
 	}
 }
+
+void Matlab::plot(std::vector<int> respData, std::vector<std::string> respTimeStamps,
+	std::vector<int> pulseData, std::vector<std::string> pulseTimeStamps, std::string pnr)
+{
+	if (respData.empty())
+	{
+		cout << "No respiration data!" << endl;
+	}
+	else if (pulseData.empty())
+	{
+		cout << "No pulse data" << endl;
+	}
+	else
+	{
+
+
+		mwArray respDataMat(1, respData.size(), mxDOUBLE_CLASS);
+		mwArray respTimeStampsMat;
+
+		respDataMat.SetData(&respData[0], respData.size());
+
+		std::vector<const char*> cstringsResp;
+		for (size_t i = 0; i < respTimeStamps.size(); ++i)
+		{
+			cstringsResp.push_back(respTimeStamps[i].c_str());  //convert string to const char*
+		}
+		respTimeStampsMat = mwArray(cstringsResp.size(), cstringsResp.data());  //cstrings.data() is const char**
+
+
+	/********************************************************/
+		mwArray pulseDataMat(1, pulseData.size(), mxDOUBLE_CLASS);
+		if (!pulseData.empty())
+		{
+			pulseDataMat.SetData(&pulseData[0], pulseData.size());
+		}
+		std::vector<const char*> cstringsPulse;
+		for (size_t i = 0; i < pulseTimeStamps.size(); ++i)
+		{
+			cstringsPulse.push_back(pulseTimeStamps[i].c_str());  //convert string to const char*
+		}
+		mwArray pulseTimeStampsMat(cstringsPulse.size(), cstringsPulse.data());  //cstrings.data() is const char**
+		/*****************************/
+		const char * c = pnr.c_str();
+		const mwArray pnrMat(c);
+
+		plotValues(respDataMat, respTimeStampsMat, pulseDataMat, pulseTimeStampsMat, pnrMat);
+	}
+	
+
+}

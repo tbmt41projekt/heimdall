@@ -896,11 +896,11 @@ color: rgb(255, 0, 0);
     <zorder>pushLog_2</zorder>
     <zorder>labelWARNING</zorder>
     <zorder>pushRestart</zorder>
-    <zorder>calendarWidget</zorder>
     <zorder>reselectROI</zorder>
     <zorder>muteFaceAlarm</zorder>
+    <zorder>calendarWidget</zorder>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="patientHistoryButton">
     <property name="geometry">
      <rect>
       <x>180</x>

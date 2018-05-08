@@ -1,17 +1,17 @@
 <html><meta charset="UTF-8"><pre>
-<font color=blue>mcc -W 'cpplib:heimdallMatlab,all' -T link:lib -d C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing -v C:\Users\nilge293\Documents\filterAndCalcFreq.m C:\Users\nilge293\heimdall\matlabFunktioner\peakFinder.m C:\Users\nilge293\Documents\square.m </font>
+<font color=blue>mcc -W 'cpplib:heimdallMatlab,all' -T link:lib -d C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing -v C:\Users\nilge293\heimdall\matlabFunktioner\filterAndCalcFreq.m C:\Users\nilge293\heimdall\matlabFunktioner\peakFinder.m C:\Users\nilge293\heimdall\matlabFunktioner\plotValues.m </font>
 Compiler version: 6.6 (R2018a)
 
 Dependency analysis by REQUIREMENTS.
 
-Parsing file "C:\Users\nilge293\Documents\filterAndCalcFreq.m"
+Parsing file "C:\Users\nilge293\heimdall\matlabFunktioner\filterAndCalcFreq.m"
 	(Referenced from: "Compiler Command Line").
 Parsing file "C:\Users\nilge293\heimdall\matlabFunktioner\peakFinder.m"
 	(Referenced from: "Compiler Command Line").
-Parsing file "C:\Users\nilge293\Documents\square.m"
+Parsing file "C:\Users\nilge293\heimdall\matlabFunktioner\plotValues.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 1 temporary MEX authorization files.
-Removing: 'C:\Users\nilge293\AppData\Local\Temp\dcf5-12b3-9db4-97cf_6368.auth'.
+Removing: 'C:\Users\nilge293\AppData\Local\Temp\765a-1020-4c9d-1f29_10772.auth'.
 Generating file "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\readme.txt".
 Generating file "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.h".
 Generating file "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp".
@@ -60,9 +60,26 @@ Did not find installed compiler 'Microsoft Visual C++ 2012'.
 ... Looking for compiler 'Microsoft Visual C++ 2013' ...
 ... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
 ... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
-... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
-... Looking for registry setting 'HKCU\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
-Did not find installed compiler 'Microsoft Visual C++ 2013'.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...Yes ('C:\Program Files (x86)\Microsoft Visual Studio 12.0\').
+... Looking for file 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\amd64\cl.exe' ...Yes.
+... Looking for folder 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC' ...Yes.
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.1' InstallationFolder ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.1' InstallationFolder ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows\v8.1' InstallationFolder ...Yes ('C:\Program Files (x86)\Windows Kits\8.1\').
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...Yes ('C:\Program Files (x86)\Microsoft Visual Studio 12.0\').
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VC7' 12.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VC7' 12.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VC7' 12.0 ...Yes ('C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\').
+... Looking for environment variable 'VS120COMNTOOLS' ...Yes ('C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\').
+... Looking for file 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe' ...Yes.
+... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VS7' 12.0 ...No.
+... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\SxS\VS7' 12.0 ...Yes ('C:\Program Files (x86)\Microsoft Visual Studio 12.0\').
+... Looking for file 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat' ...Yes.
+... Looking for folder 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC' ...Yes.
+Found installed compiler 'Microsoft Visual C++ 2013'.
 ... Looking for compiler 'Microsoft Visual C++ 2015' ...
 ... Looking for registry setting 'HKLM\SOFTWARE\Microsoft\VisualStudio\SxS\VC7' 14.0 ...No.
 ... Looking for registry setting 'HKCU\SOFTWARE\Microsoft\VisualStudio\SxS\VC7' 14.0 ...No.
@@ -93,7 +110,7 @@ Did not find installed compiler 'Microsoft Visual C++ 2015'.
 ... Looking for registry setting 'HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows Kits\Installed Roots' KitsRoot10 ...Yes ('C:\Program Files (x86)\Windows Kits\10\').
 ... Executing command 'echo off&set "sdkversion="&(for /f %a IN ('dir "C:\Program Files (x86)\Windows Kits\10\include\" /b /ad-h /on') do ( @if exist "C:\Program Files (x86)\Windows Kits\10\include\%a\ucrt\" set "sdkversion=%a" ))&call echo %sdkversion%' ...Yes ('10.0.16299.0').
 Found installed compiler 'Microsoft Visual C++ 2017'.
-Set PATH = C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\bin\HostX64\x64\;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\vcpackages;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools;C:\Program Files (x86)\Windows Kits\10\\Bin\10.0.16299.0\x64;C:\Program Files (x86)\Windows Kits\10\\Bin\10.0.16299.0\x86;C:\Program Files (x86)\Windows Kits\10\\Bin\x64;C:\Program Files (x86)\Windows Kits\10\\Bin\x86;;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\MATLAB\R2018a\runtime\win64;C:\Program Files\MATLAB\R2018a\bin;C:\Program Files\Matlab\R2015b\runtime\win64;C:\Program Files\Matlab\R2015b\bin;C:\Program Files\Matlab\R2013a\runtime\win64;C:\Program Files\Matlab\R2013a\bin;C:\Program Files\MATLAB\MATLAB Compiler Runtime\v83\runtime\win64;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\MATLAB Runtime\v94\runtime\win64
+Set PATH = C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\bin\HostX64\x64\;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\vcpackages;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools;C:\Program Files (x86)\Windows Kits\10\\Bin\10.0.16299.0\x64;C:\Program Files (x86)\Windows Kits\10\\Bin\10.0.16299.0\x86;C:\Program Files (x86)\Windows Kits\10\\Bin\x64;C:\Program Files (x86)\Windows Kits\10\\Bin\x86;;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\libnvvp;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\MATLAB\R2018a\runtime\win64;C:\Program Files\MATLAB\R2018a\bin;C:\Program Files\Matlab\R2015b\runtime\win64;C:\Program Files\Matlab\R2015b\bin;C:\Program Files\Matlab\R2013a\runtime\win64;C:\Program Files\Matlab\R2013a\bin;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\MATLAB\MATLAB Compiler Runtime\v83\runtime\win64;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\MATLAB Runtime\v94\runtime\win64
 Set INCLUDE = C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\include;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\atlmfc\include;C:\Program Files (x86)\Windows Kits\10\\include\10.0.16299.0\ucrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.16299.0\shared;C:\Program Files (x86)\Windows Kits\10\\include\10.0.16299.0\um;C:\Program Files (x86)\Windows Kits\10\\include\10.0.16299.0\winrt;C:\Program Files\MATLAB\R2018a\extern\include;
 Set LIB = C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\atlmfc\lib\x64;C:\Program Files (x86)\Windows Kits\10\\Lib\10.0.16299.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\\lib\10.0.16299.0\um\x64;C:\Program Files\MATLAB\R2018a\lib\win64;
 Set LIBPATH = C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\atlmfc\lib\x64;
@@ -101,8 +118,8 @@ Options file details
 -------------------------------------------------------------------
 	Compiler location: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\
 	Options file: C:\Program Files\MATLAB\R2018a\bin\win64\mexopts\msvcpp2017.xml
-	CMDLINE100 : cl /c -MD -Zp8 -GR -W3 -EHsc- -nologo -O2 -DNDEBUG /DMATLAB_DEFAULT_RELEASE=R2017b  /DUSE_MEX_CMD   /DMSVC /DIBMPC /D_CRT_SECURE_NO_DEPRECATE -I"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing"  -I"C:\Program Files\MATLAB\R2018a\extern\include" -I"C:\Program Files\MATLAB\R2018a\extern\include\win64" "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp" /FoC:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj /UMX_COMPAT_SC
-	CMDLINE200 : link /nologo /manifest /DELAYLOAD:libMatlabDataArray.dll   /DLL /def:"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.def" C:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj  /MACHINE:AMD64 /LIBPATH:"C:\Program Files\MATLAB\R2018a\extern\lib\win64\microsoft" libMatlabDataArray.lib libMatlabCppSharedLib.lib mclmcrrt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib /out:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll
+	CMDLINE100 : cl /c -MD -Zp8 -GR -W3 -EHsc- -nologo -O2 -DNDEBUG /DMATLAB_DEFAULT_RELEASE=R2017b  /DUSE_MEX_CMD   /DMSVC /DIBMPC /D_CRT_SECURE_NO_DEPRECATE -I"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing"  -I"C:\Program Files\MATLAB\R2018a\extern\include" -I"C:\Program Files\MATLAB\R2018a\extern\include\win64" "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp" /FoC:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj /UMX_COMPAT_SC
+	CMDLINE200 : link /nologo /manifest /DELAYLOAD:libMatlabDataArray.dll   /DLL /def:"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.def" C:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj  /MACHINE:AMD64 /LIBPATH:"C:\Program Files\MATLAB\R2018a\extern\lib\win64\microsoft" libMatlabDataArray.lib libMatlabCppSharedLib.lib mclmcrrt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib /out:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll
 	CMDLINE250 : mt -outputresource:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll;2 -manifest "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll.manifest"
 	CMDLINE300 : del "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll.manifest" "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.map"
 	COMPILER : cl
@@ -141,10 +158,10 @@ Options file details
 	ARCH : win64
 	MTCMDLINE : mt -outputresource:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll;2 -manifest "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll.manifest"
 	SRC : "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp"
-	OBJ : C:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj
-	OBJS : C:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj 
+	OBJ : C:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj
+	OBJS : C:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj 
 	SRCROOT : C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab
-	DEF : C:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.def
+	DEF : C:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.def
 	EXP : "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.exp"
 	LIB : "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.lib"
 	EXE : C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll
@@ -159,10 +176,10 @@ Options file details
 	LINKOPTIM : 
 -------------------------------------------------------------------
 Building with 'Microsoft Visual C++ 2017'.
-cl /c -MD -Zp8 -GR -W3 -EHsc- -nologo -O2 -DNDEBUG /DMATLAB_DEFAULT_RELEASE=R2017b  /DUSE_MEX_CMD   /DMSVC /DIBMPC /D_CRT_SECURE_NO_DEPRECATE -I"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing"  -I"C:\Program Files\MATLAB\R2018a\extern\include" -I"C:\Program Files\MATLAB\R2018a\extern\include\win64" "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp" /FoC:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj /UMX_COMPAT_SC
+cl /c -MD -Zp8 -GR -W3 -EHsc- -nologo -O2 -DNDEBUG /DMATLAB_DEFAULT_RELEASE=R2017b  /DUSE_MEX_CMD   /DMSVC /DIBMPC /D_CRT_SECURE_NO_DEPRECATE -I"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing"  -I"C:\Program Files\MATLAB\R2018a\extern\include" -I"C:\Program Files\MATLAB\R2018a\extern\include\win64" "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.cpp" /FoC:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj /UMX_COMPAT_SC
 heimdallMatlab.cpp
 
-link /nologo /manifest /DELAYLOAD:libMatlabDataArray.dll   /DLL /def:"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.def" C:\Users\nilge293\AppData\Local\Temp\mex_1519218295981643_11892\heimdallMatlab.obj  /MACHINE:AMD64 /LIBPATH:"C:\Program Files\MATLAB\R2018a\extern\lib\win64\microsoft" libMatlabDataArray.lib libMatlabCppSharedLib.lib mclmcrrt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib /out:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll
+link /nologo /manifest /DELAYLOAD:libMatlabDataArray.dll   /DLL /def:"C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.def" C:\Users\nilge293\AppData\Local\Temp\mex_1655936185672227_828\heimdallMatlab.obj  /MACHINE:AMD64 /LIBPATH:"C:\Program Files\MATLAB\R2018a\extern\lib\win64\microsoft" libMatlabDataArray.lib libMatlabCppSharedLib.lib mclmcrrt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib /out:C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.dll
    Creating library C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.lib and object C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heimdallMatlab.exp
 LINK : warning LNK4199: /DELAYLOAD:libMatlabDataArray.dll ignored; no imports found from libMatlabDataArray.dll
 
@@ -179,5 +196,5 @@ del "C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing\heim
 Creating the bundle...
 Web based installer created at C:\Users\nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_redistribution\MyAppInstaller_web.exe.
 Packaging complete.
-Elapsed packaging time was: 35 seconds.
+Elapsed packaging time was: 43 seconds.
 </pre></html>
