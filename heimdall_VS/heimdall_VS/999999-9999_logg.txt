@@ -1,0 +1,21 @@
+
+   --- New measurement: 999999-9999 --- 
+
+   --- New measurement: 999999-9999 --- 
+
+   --- New measurement: 999999-9999 --- 
+
+   --- New measurement: 999999-9999 --- 
+
+   --- New measurement: 999999-9999 --- 
+080518 15:18:50  -  No respiratory rate, 0
+
+   --- New measurement: 999999-9999 --- 
+080518 15:23:48  -  No respiratory rate, 0
+080518 15:24:26  -  No respiratory rate, 0
+080518 15:25:13  -  Low heart rate, -2
+080518 15:25:13  -  No respiratory rate, 0
+080518 15:25:24  -  No respiratory rate, 0
+080518 15:25:26  -  High heart rate, 187
+080518 15:25:31  -  High heart rate, 209
+080518 15:25:41  -  High heart rate, 213
