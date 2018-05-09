@@ -1,0 +1,56 @@
+
+   --- New measurement: 888888-0010 --- 
+090518 14:09:20  -  Low heart rate, -2
+090518 14:09:24  -  Low heart rate, -2
+090518 14:09:29  -  Low heart rate, -2
+090518 14:09:33  -  Low heart rate, -2
+090518 14:09:38  -  Low heart rate, -2
+090518 14:09:42  -  Low heart rate, -2
+090518 14:09:47  -  Low heart rate, -2
+090518 14:09:51  -  Low heart rate, -2
+090518 14:09:55  -  Low heart rate, -2
+090518 14:10:00  -  Low heart rate, -2
+090518 14:10:04  -  Low heart rate, -2
+090518 14:10:08  -  Low heart rate, -2
+090518 14:10:12  -  Low heart rate, -2
+090518 14:10:16  -  Low heart rate, -2
+090518 14:10:20  -  Low heart rate, -2
+090518 14:10:25  -  Low heart rate, -2
+090518 14:10:31  -  Low heart rate, -2
+090518 14:10:36  -  Low heart rate, -2
+090518 14:10:40  -  Low heart rate, -2
+090518 14:10:44  -  Low heart rate, -2
+090518 14:10:48  -  Low heart rate, -2
+090518 14:10:52  -  Low heart rate, -2
+090518 14:10:57  -  Low heart rate, -2
+090518 14:11:07  -  Low heart rate, -2
+090518 14:11:11  -  Low heart rate, -2
+090518 14:11:15  -  Low heart rate, -2
+090518 14:11:20  -  Low heart rate, -2
+090518 14:11:24  -  Low heart rate, -2
+090518 14:11:28  -  Low heart rate, -2
+090518 14:11:32  -  Low heart rate, -2
+090518 14:11:36  -  Low heart rate, -2
+090518 14:11:40  -  Low heart rate, -2
+090518 14:11:45  -  Low heart rate, -2
+090518 14:11:49  -  Low heart rate, -2
+
+   --- New measurement: 888888-0010 --- 
+090518 14:13:41  -  Low heart rate, -2
+090518 14:13:46  -  Low heart rate, -2
+090518 14:13:50  -  Low heart rate, -2
+090518 14:13:54  -  Low heart rate, -2
+090518 14:13:58  -  Low heart rate, -2
+090518 14:14:02  -  Low heart rate, -2
+090518 14:14:06  -  Low heart rate, -2
+090518 14:14:10  -  Low heart rate, -2
+090518 14:14:14  -  Low heart rate, -2
+090518 14:14:18  -  Low heart rate, -2
+090518 14:14:23  -  Low heart rate, -2
+090518 14:14:27  -  Low heart rate, -2
+090518 14:14:31  -  Low heart rate, -2
+090518 14:14:35  -  Low heart rate, -2
+090518 14:14:38  -  Low heart rate, -2
+090518 14:14:42  -  Low heart rate, -2
+090518 14:14:46  -  Low heart rate, -2
+090518 14:14:50  -  Low heart rate, -2

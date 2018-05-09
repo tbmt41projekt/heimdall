@@ -8,7 +8,7 @@ using namespace cv;
 Pulse::Pulse()
 	:
 	time{ 3 },
-	currentPulse{80.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
+	currentPulse{50.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
 {
 	//Inläsning av mallen för ansiktsigenkänning
 	String filepath = "C:/Users/nilge293/Documents/haarcascade_frontalface_alt.xml";

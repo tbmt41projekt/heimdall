@@ -1,0 +1,28 @@
+
+   --- New measurement: 555555-0001 --- 
+
+   --- New measurement: 555555-0001 --- 
+090518 15:27:29  -  High heart rate, 130
+090518 15:27:32  -  High heart rate, 138
+090518 15:27:36  -  High heart rate, 146
+090518 15:27:38  -  High heart rate, 156
+090518 15:27:41  -  High heart rate, 171
+090518 15:27:44  -  High heart rate, 146
+090518 15:27:48  -  High heart rate, 135
+090518 15:27:50  -  High heart rate, 128
+090518 15:27:53  -  High heart rate, 125
+090518 15:27:56  -  High heart rate, 123
+090518 15:27:59  -  High heart rate, 130
+090518 15:28:08  -  High heart rate, 133
+090518 15:28:14  -  High heart rate, 133
+090518 15:28:17  -  High heart rate, 141
+090518 15:28:20  -  High heart rate, 141
+090518 15:28:23  -  High heart rate, 122
+090518 15:28:26  -  High heart rate, 133
+090518 15:28:34  -  High heart rate, 130
+090518 15:28:40  -  High heart rate, 142
+090518 15:28:43  -  High heart rate, 142
+090518 15:28:46  -  High heart rate, 146
+090518 15:28:49  -  High heart rate, 159
+
+   --- New measurement: 555555-0001 --- 

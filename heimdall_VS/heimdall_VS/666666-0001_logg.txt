@@ -1,0 +1,13 @@
+
+   --- New measurement: 666666-0001 --- 
+
+   --- New measurement: 666666-0001 --- 
+090518 15:04:38  -  High heart rate, 120
+090518 15:04:46  -  High heart rate, 109
+090518 15:04:47  -  High heart rate, 111
+090518 15:04:50  -  High heart rate, 102
+090518 15:04:53  -  High heart rate, 115
+090518 15:04:56  -  High heart rate, 136
+090518 15:04:59  -  High heart rate, 130
+
+   --- New measurement: 666666-0001 --- 

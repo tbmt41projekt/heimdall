@@ -1,0 +1,26 @@
+
+   --- New measurement: 777777-0010 --- 
+090518 15:43:01  -  Low heart rate, -2
+090518 15:43:07  -  Low heart rate, -2
+090518 15:43:15  -  Low heart rate, -2
+090518 15:43:28  -  Low heart rate, -2
+090518 15:43:44  -  Low heart rate, -2
+090518 15:43:49  -  Low heart rate, -2
+090518 15:43:54  -  Low heart rate, -2
+090518 15:43:59  -  Low heart rate, -2
+090518 15:44:04  -  Low heart rate, -2
+090518 15:44:19  -  Low heart rate, -2
+090518 15:44:24  -  Low heart rate, -2
+
+   --- New measurement: 777777-0010 --- 
+090518 15:48:00  -  Low heart rate, -2
+090518 15:48:04  -  Low heart rate, -2
+090518 15:48:12  -  Low heart rate, -2
+090518 15:48:17  -  Low heart rate, -2
+090518 15:48:24  -  Low heart rate, -2
+090518 15:48:29  -  Low heart rate, -2
+090518 15:48:34  -  Low heart rate, -2
+090518 15:48:39  -  Low heart rate, -2
+090518 15:48:44  -  Low heart rate, -2
+090518 15:48:49  -  Low heart rate, -2
+090518 15:48:56  -  Low heart rate, -2
