@@ -98,7 +98,7 @@ void Respiration::calculateRF(vector<double> & output)
 	if (rfBuffer.size() > 36)
 	{
 		frameRate = timeBuffer.size() / ((timeBuffer.back() - timeBuffer.front()) / 1000000);
-		double rf = matlab.findPeaks(pointSummation(), 10, 50, frameRate, 3, 0.6);
+		double rf = matlab.findPeaks(pointSummation(), 10, 50, frameRate, 3, 1);
 		//cout << rf << endl;
 		if (rf >= 0)
 		{
