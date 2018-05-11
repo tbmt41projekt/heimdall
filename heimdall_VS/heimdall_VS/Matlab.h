@@ -11,8 +11,8 @@ public:
 	double filterCalc(std::vector<double> data, double lowLimit,
 		double highLimit, double frameRate);
 
-	double findPeaks(std::vector<double> input, double lowLim,
-		double highLim, double frameRate, double peakLimit, double ampLimit);
+	double findPeaks(std::vector<double> input, double cutoff, double frameRate,
+		double peakLimit, double ampLimit);
 
 	void plot(std::vector<int> respData, std::vector<std::string> respTimeStamps,
 		std::vector<int> pulseData, std::vector<std::string> pulseTimeStamps, std::string pnr);

@@ -57,17 +57,17 @@ double Matlab::filterCalc(std::vector<double> signal, double lowLimit, double hi
 
 }
 
-double Matlab::findPeaks(std::vector<double> input, double lowLim,
-	double highLim, double frameRate, double peakLimit, double ampLimit)
+double Matlab::findPeaks(std::vector<double> input, double cutoff,
+	double frameRate, double peakLimit, double ampLimit)
 {
 	try
 	{
 		mwArray inputMat(1, input.size(), mxDOUBLE_CLASS);
 		inputMat.SetData(&input[0], input.size());
 
-		double data[2] = { lowLim, highLim };
-		mwArray passBand(1, 2, mxDOUBLE_CLASS);
-		passBand.SetData(data, 2);
+		
+		mwArray cutoffMat(1, 1, mxDOUBLE_CLASS);
+		cutoffMat.SetData(&cutoff, 1);
 
 		mwArray frameRateMat(1, 1, mxDOUBLE_CLASS);
 		frameRateMat.SetData(&frameRate, 1);
@@ -80,7 +80,7 @@ double Matlab::findPeaks(std::vector<double> input, double lowLim,
 
 		mwArray output;
 	
-		peakFinder(1, output, inputMat, passBand, frameRateMat, peakLimitMat, ampLimitMat);
+		peakFinder(1, output, inputMat, cutoffMat, frameRateMat, peakLimitMat, ampLimitMat);
 
 		return output;
 	}

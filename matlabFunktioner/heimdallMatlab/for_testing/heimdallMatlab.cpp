@@ -1,6 +1,6 @@
 //
 // MATLAB Compiler: 6.6 (R2018a)
-// Date: Mon May  7 14:08:11 2018
+// Date: Fri May 11 13:09:12 2018
 // Arguments:
 // "-B""macro_default""-W""cpplib:heimdallMatlab,all""-T""link:lib""-d""C:\Users
 // \nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing""-v""C:\Users\
@@ -162,10 +162,10 @@ void MW_CALL_CONV filterAndCalcFreq(int nargout, mwArray& freq, const mwArray& s
 
 LIB_heimdallMatlab_CPP_API 
 void MW_CALL_CONV peakFinder(int nargout, mwArray& output, const mwArray& signal, const 
-                             mwArray& passBand, const mwArray& frameRate, const mwArray& 
+                             mwArray& cutOff, const mwArray& frameRate, const mwArray& 
                              peakLimit, const mwArray& ampLim)
 {
-    mclcppMlfFeval(_mcr_inst, "peakFinder", nargout, 1, 5, &output, &signal, &passBand, &frameRate, &peakLimit, &ampLim);
+    mclcppMlfFeval(_mcr_inst, "peakFinder", nargout, 1, 5, &output, &signal, &cutOff, &frameRate, &peakLimit, &ampLim);
 }
 
 LIB_heimdallMatlab_CPP_API 

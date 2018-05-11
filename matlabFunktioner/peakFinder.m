@@ -1,4 +1,4 @@
-function output = peakFinder(signal, passBand, frameRate, peakLimit, ampLim)
+function output = peakFinder(signal, cutOff, frameRate, peakLimit, ampLim)
 
     if (peakLimit < 2)
         output = -10;
@@ -6,9 +6,9 @@ function output = peakFinder(signal, passBand, frameRate, peakLimit, ampLim)
         output = -3;
     else
         Fn = frameRate/2 * 60;
-        Wp = passBand/Fn;
+        Wp = cutOff/Fn;
 
-        [B,A] = butter(6, Wp);
+        [B,A] = butter(6, Wp, 'low');
         filteredY = filtfilt(B, A, signal);
 
         [PKS, peakLocations] = findpeaks(filteredY);
