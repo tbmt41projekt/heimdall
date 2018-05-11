@@ -106,12 +106,12 @@ void Respiration::calculateRF(vector<double> & output)
 		{
 			output.push_back(rf);
 			currentRF = rf;
-			cout << lowLim << " " << highLim << endl;
-			cout << "hej = " << rf << endl;
 			if (currentRF > 0)
 			{
 				//lowLim = (1 - bandRadius) * currentRF;
 				highLim =  currentRF + bandRadius;
+				cout << "[" <<lowLim << " " << highLim << "]" << endl;
+				
 			}
 			rfBuffer.clear();
 			timeBuffer.clear();
