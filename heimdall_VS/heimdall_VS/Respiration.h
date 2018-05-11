@@ -45,6 +45,9 @@ private:
 	cv::Size subPixWinSize{ 10, 10 }, winSize{ 31, 31 };
 	Matlab matlab;
 	double frameRate;
+	int lowLim{ 5 };
+	int highLim{ 60 };
+	double currentRF{ -5 };
 
 
 };

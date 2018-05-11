@@ -11,7 +11,7 @@ Pulse::Pulse()
 	currentPulse{50.0f}		//OBS!!!!!!! Denna ska sättas manuellt när programmet startas
 {
 	//Inläsning av mallen för ansiktsigenkänning
-	String filepath = "C:/Users/nilge293/Documents/haarcascade_frontalface_alt.xml";
+	String filepath = "C:/Users/idaej483/Documents/haarcascade_frontalface_alt.xml";
 	if (!face_cascade.load(filepath))
 	{
 		printf("--(!)Error loading face cascade\n");
