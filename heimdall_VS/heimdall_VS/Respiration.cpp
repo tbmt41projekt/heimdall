@@ -98,11 +98,21 @@ void Respiration::calculateRF(vector<double> & output)
 	if (rfBuffer.size() > 36)
 	{
 		frameRate = timeBuffer.size() / ((timeBuffer.back() - timeBuffer.front()) / 1000000);
+
 		double rf = matlab.findPeaks(pointSummation(), 10, 50, frameRate, 3, 1);
 		//cout << rf << endl;
+
 		if (rf >= 0)
 		{
 			output.push_back(rf);
+			currentRF = rf;
+			if (currentRF > 0)
+			{
+				//lowLim = (1 - bandRadius) * currentRF;
+				highLim =  currentRF + bandRadius;
+				cout << "[" <<lowLim << " " << highLim << "]" << endl;
+				
+			}
 			rfBuffer.clear();
 			timeBuffer.clear();
 			rfFound = true;
