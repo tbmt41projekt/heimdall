@@ -12,12 +12,24 @@ pnr = "999999-0001";
     top = 1.1 .* pulseEKG;
     bot = 0.9 .* pulseEKG;
     
+    newY = [];
+    for i = 1:length(pulseHeimdall)
+        if (i == 1)
+            newY = [pulseHeimdall(1)];
+        end
+                
+        newY = [newY pulseHeimdall(i) pulseHeimdall(i)];
+    end
+    newY
+    
+    
     figure('NumberTitle', 'off', 'Name', "Patient: " + pnr);
     %subplot(2, 1, 1)
     hold on;
-    plot(pulset, pulseHeimdall, '-or'), title('Pulse');
+    plot(pulset, pulseHeimdall, '-og'), title('Pulse');
    % plot(pulset, pulseEKG, '-ob');
-     plot(pulset, top, '-og');
-      plot(pulset, bot, '-oy');
+     plot(pulset, pulseEKG, '-k');
+     plot(pulset, top, '--')
+     plot(pulset, bot, '--')
     legend('Heimdall', 'EKG')
     %subplot(2, 1, 2), plot(respt, respData, '-og'), title('Respiratory rate')

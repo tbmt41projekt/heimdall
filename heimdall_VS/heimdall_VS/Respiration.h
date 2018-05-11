@@ -46,8 +46,9 @@ private:
 	Matlab matlab;
 	double frameRate;
 	int lowLim{ 5 };
-	int highLim{ 60 };
+	int highLim{ 90};
 	double currentRF{ -5 };
+	int counter{ 0 };
 
 
 };

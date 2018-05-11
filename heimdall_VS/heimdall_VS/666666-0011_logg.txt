@@ -1,0 +1,20 @@
+
+   --- New measurement: 666666-0011 --- 
+110518 14:47:16  -  Low heart rate, -2
+110518 14:47:20  -  Low heart rate, -2
+110518 14:47:24  -  Low heart rate, -2
+110518 14:47:28  -  Low heart rate, -2
+110518 14:47:31  -  Low heart rate, -2
+110518 14:47:35  -  Low heart rate, -2
+110518 14:47:40  -  Low heart rate, -2
+110518 14:47:44  -  Low heart rate, -2
+110518 14:47:47  -  Low heart rate, -2
+110518 14:47:51  -  Low heart rate, -2
+110518 14:47:55  -  Low heart rate, -2
+110518 14:47:59  -  Low heart rate, -2
+110518 14:48:02  -  Low heart rate, -2
+110518 14:48:06  -  Low heart rate, -2
+110518 14:48:09  -  Low heart rate, -2
+110518 14:48:13  -  Low heart rate, -2
+110518 14:48:17  -  Low heart rate, -2
+110518 14:48:21  -  Low heart rate, -2

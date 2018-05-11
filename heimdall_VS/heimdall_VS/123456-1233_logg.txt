@@ -1,0 +1,10 @@
+
+   --- New measurement: 123456-1233 --- 
+110518 18:43:54  -  High heart rate, 111
+110518 18:43:56  -  High heart rate, 109
+110518 18:44:02  -  High heart rate, 104
+110518 18:44:05  -  High heart rate, 102
+110518 18:44:11  -  High heart rate, 109
+110518 18:44:17  -  High heart rate, 109
+110518 18:44:21  -  High heart rate, 102
+110518 18:44:24  -  High heart rate, 122

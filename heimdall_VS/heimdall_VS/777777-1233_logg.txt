@@ -1,0 +1,18 @@
+
+   --- New measurement: 777777-1233 --- 
+110518 18:53:13  -  Low heart rate, 37
+
+   --- New measurement: 777777-1233 --- 
+110518 18:55:11  -  High heart rate, 117
+110518 18:55:14  -  High heart rate, 133
+110518 18:55:17  -  High heart rate, 133
+110518 18:55:20  -  High heart rate, 133
+110518 18:55:23  -  High heart rate, 130
+110518 18:55:26  -  High heart rate, 150
+110518 18:55:29  -  High heart rate, 130
+110518 18:55:32  -  High heart rate, 122
+110518 18:55:35  -  High heart rate, 111
+110518 18:55:38  -  High heart rate, 120
+110518 18:55:41  -  High heart rate, 131
+110518 18:55:44  -  High heart rate, 117
+110518 18:55:50  -  High heart rate, 111
