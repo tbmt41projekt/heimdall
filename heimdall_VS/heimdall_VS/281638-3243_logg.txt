@@ -1,0 +1,33 @@
+
+   --- New measurement: 281638-3243 --- 
+110518 11:42:38  -  Low heart rate, -2
+110518 11:42:38  -  High respiratory rate, 52
+110518 11:42:42  -  Low heart rate, -2
+110518 11:42:42  -  High respiratory rate, 43
+110518 11:42:46  -  Low heart rate, -2
+110518 11:42:47  -  High respiratory rate, 45
+110518 11:42:50  -  Low heart rate, -2
+110518 11:42:51  -  High respiratory rate, 39
+110518 11:42:54  -  Low heart rate, -2
+110518 11:42:55  -  High respiratory rate, 48
+110518 11:42:58  -  Low heart rate, -2
+110518 11:43:00  -  High respiratory rate, 42
+110518 11:43:02  -  Low heart rate, -2
+110518 11:43:04  -  High respiratory rate, 46
+110518 11:43:06  -  Low heart rate, -2
+110518 11:43:08  -  High respiratory rate, 40
+110518 11:43:09  -  Low heart rate, -2
+110518 11:43:13  -  High respiratory rate, 40
+110518 11:43:13  -  Low heart rate, -2
+110518 11:43:16  -  Low heart rate, -2
+110518 11:43:18  -  High respiratory rate, 41
+110518 11:43:20  -  Low heart rate, -2
+110518 11:43:23  -  High respiratory rate, 31
+110518 11:43:24  -  Low heart rate, -2
+110518 11:43:24  -  High heart rate, 50
+110518 11:43:28  -  High respiratory rate, 26
+110518 11:43:32  -  High heart rate, 55
+110518 11:43:34  -  High respiratory rate, 21
+110518 11:43:35  -  Low heart rate, -2
+110518 11:43:38  -  Low heart rate, -2
+110518 11:43:42  -  Low heart rate, -2

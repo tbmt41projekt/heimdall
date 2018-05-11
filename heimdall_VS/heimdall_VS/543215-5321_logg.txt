@@ -1,0 +1,12 @@
+
+   --- New measurement: 543215-5321 --- 
+110518 11:46:27  -  Low heart rate, -2
+110518 11:46:31  -  Low heart rate, -2
+110518 11:46:33  -  High respiratory rate, 24
+110518 11:46:35  -  Low heart rate, -2
+110518 11:46:39  -  Low heart rate, -2
+110518 11:46:41  -  High respiratory rate, 21
+110518 11:46:42  -  Low heart rate, -2
+110518 11:46:45  -  Low heart rate, -2
+110518 11:46:47  -  High respiratory rate, 21
+110518 11:46:49  -  Low heart rate, -2

@@ -100,7 +100,7 @@ void Respiration::calculateRF(vector<double> & output)
 		frameRate = timeBuffer.size() / ((timeBuffer.back() - timeBuffer.front()) / 1000000);
 
 		double rf = matlab.findPeaks(pointSummation(), lowLim, highLim, frameRate, 3, 0.6);
-		double bandRadius = 10;
+		double bandRadius = 15;
 
 		if (rf >= 0)
 		{
@@ -127,7 +127,7 @@ std::vector<double> Respiration::pointSummation()
 	vector<double> temp;
 	for (Point2f i : rfBuffer)
 	{
-		temp.push_back(i.y + i.x);
+		temp.push_back(i.y);
 	}
 
 	return temp;
