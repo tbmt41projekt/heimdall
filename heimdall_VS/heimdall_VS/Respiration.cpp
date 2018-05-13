@@ -82,10 +82,11 @@ void Respiration::track(cv::Mat &frame)
 
 	char c = (char)waitKey(10);
 
-	if (c == 'c')
+	if (timeToClear)
 	{
 		prevPoints.clear();
 		nextPoints.clear();
+		timeToClear = false;
 	}
 	
 	std::swap(nextPoints, prevPoints);
@@ -155,8 +156,15 @@ void Respiration::setMousePoint(int x, int y)
 
 void Respiration::clearPoints()
 {
-	prevPoints.clear();
-	nextPoints.clear();
+	for (Point2f i : prevPoints)
+	{
+		cout << "PrevPoints: " << i << endl;
+	}
+	for (Point2f i : nextPoints)
+	{
+		cout << "nextPoints: " << i << endl;
+	}
+	timeToClear = true;
 }
 
 

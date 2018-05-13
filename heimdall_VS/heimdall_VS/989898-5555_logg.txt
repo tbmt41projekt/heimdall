@@ -1,0 +1,35 @@
+
+   --- New measurement: 989898-5555 --- 
+130518 11:18:26  -  High heart rate, 48
+130518 11:18:28  -  High heart rate, 57
+130518 11:18:31  -  High heart rate, 57
+130518 11:18:34  -  High heart rate, 60
+130518 11:18:37  -  High heart rate, 64
+130518 11:18:40  -  High heart rate, 58
+130518 11:18:43  -  High heart rate, 57
+130518 11:18:46  -  High heart rate, 48
+130518 11:18:49  -  High heart rate, 54
+130518 11:18:52  -  High heart rate, 58
+130518 11:18:55  -  High heart rate, 58
+130518 11:18:58  -  High heart rate, 55
+130518 11:19:01  -  High heart rate, 58
+130518 11:19:04  -  High heart rate, 58
+130518 11:19:07  -  High heart rate, 50
+130518 11:19:10  -  High heart rate, 51
+130518 11:19:13  -  High heart rate, 57
+130518 11:19:16  -  High heart rate, 58
+130518 11:19:19  -  High heart rate, 67
+130518 11:19:22  -  High heart rate, 88
+130518 11:19:25  -  High heart rate, 90
+130518 11:19:28  -  High heart rate, 106
+130518 11:19:31  -  High heart rate, 115
+130518 11:19:34  -  High heart rate, 111
+130518 11:19:37  -  High heart rate, 109
+130518 11:19:40  -  High heart rate, 111
+130518 11:19:43  -  High heart rate, 120
+130518 11:19:46  -  High heart rate, 133
+130518 11:19:49  -  High heart rate, 150
+130518 11:19:52  -  High heart rate, 153
+130518 11:19:55  -  High heart rate, 150
+130518 11:19:58  -  High heart rate, 168
+130518 11:20:01  -  High heart rate, 152

@@ -49,6 +49,7 @@ private:
 	int highLim{ 90};
 	double currentRF{ -5 };
 	int counter{ 0 };
+	bool timeToClear{false};
 
 
 };

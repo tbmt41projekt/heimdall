@@ -67,6 +67,8 @@ heimdall_VS::~heimdall_VS()
 {
 	saveRespFile.close();
 	savePulseFile.close();
+	forTestFileValue.close();
+	forTestFileTime.close();
 }
 
 //__________setLog(QString)_______________________________________________________________________________
@@ -152,6 +154,8 @@ void heimdall_VS::on_pushStart_clicked()
 	string timeString = time.toString("hh-mm-ss").toStdString();
 	saveRespFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_resp.txt");
 	savePulseFile.open("Save files/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_pulse.txt");
+	forTestFileValue.open("Test/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_test_values.txt");
+	forTestFileTime.open("Test/" + pnr.toStdString() + "_" + dateString + "_" + timeString + "_test_time.txt");
 
 	if (!saveRespFile.is_open())
 	{
@@ -448,6 +452,13 @@ void heimdall_VS::setPulse(int pulse)
 
 		savePulseFile << pulse << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
 
+		if (testMode == "pulse")
+		{
+			forTestFileValue << pulse << " " << flush;
+			forTestFileTime << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << " " << flush;
+		}
+
+
 	}
 
 }
@@ -477,6 +488,13 @@ void heimdall_VS::setResp(int resp)
 			QDateTime time = QDateTime::currentDateTime();
 
 			saveRespFile << resp << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+
+			if (testMode == "resp")
+			{
+				forTestFileValue << resp << " " << flush;
+				forTestFileTime << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << " " <<flush;
+			}
+
 			prevRespZero = false;
 		}
 	}

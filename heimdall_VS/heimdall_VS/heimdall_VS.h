@@ -83,6 +83,9 @@ private:
 	bool mutedFaceError{false};
 	std::ofstream saveRespFile;
 	std::ofstream savePulseFile;
+	std::ofstream forTestFileValue;
+	std::ofstream forTestFileTime;
+	std::string testMode{"resp"};
 	bool prevRespZero;
 	std::chrono::time_point<std::chrono::steady_clock> zeroRespStartTime;
 	bool pulseWarning;

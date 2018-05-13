@@ -1,0 +1,42 @@
+
+   --- New measurement: 323232-2323 --- 
+130518 10:47:51  -  High heart rate, 57
+130518 10:47:53  -  High heart rate, 57
+130518 10:47:56  -  High heart rate, 54
+130518 10:47:59  -  High heart rate, 61
+130518 10:48:02  -  High heart rate, 55
+130518 10:48:05  -  High heart rate, 58
+130518 10:48:08  -  High heart rate, 57
+130518 10:48:11  -  High heart rate, 67
+130518 10:48:14  -  High heart rate, 55
+130518 10:48:17  -  High heart rate, 60
+130518 10:48:20  -  High heart rate, 53
+130518 10:48:23  -  High heart rate, 68
+130518 10:48:26  -  High heart rate, 57
+130518 10:48:29  -  High heart rate, 48
+130518 10:48:32  -  High heart rate, 57
+130518 10:48:35  -  High heart rate, 53
+130518 10:48:38  -  High heart rate, 61
+130518 10:48:41  -  High heart rate, 54
+130518 10:48:44  -  High heart rate, 57
+130518 10:48:47  -  High heart rate, 57
+130518 10:48:50  -  High heart rate, 58
+130518 10:48:53  -  High heart rate, 48
+130518 10:48:56  -  High heart rate, 65
+130518 10:48:59  -  High heart rate, 75
+130518 10:49:02  -  High heart rate, 57
+130518 10:49:05  -  High heart rate, 57
+130518 10:49:08  -  High heart rate, 51
+130518 10:49:11  -  High heart rate, 53
+130518 10:49:14  -  Low heart rate, -2147483648
+
+   --- New measurement: 323232-2323 --- 
+130518 10:52:26  -  Low heart rate, -2
+130518 10:52:29  -  Low heart rate, -2
+130518 10:52:32  -  Low heart rate, -2
+130518 10:52:34  -  High respiratory rate, 32
+130518 10:52:35  -  Low heart rate, -2
+130518 10:52:38  -  Low heart rate, -2
+130518 10:52:42  -  High respiratory rate, 45
+130518 10:52:49  -  High respiratory rate, 27
+130518 10:52:53  -  High respiratory rate, 38
