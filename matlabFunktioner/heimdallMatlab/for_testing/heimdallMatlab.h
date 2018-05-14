@@ -1,6 +1,6 @@
 //
 // MATLAB Compiler: 6.6 (R2018a)
-// Date: Fri May 11 13:09:12 2018
+// Date: Mon May 14 14:45:47 2018
 // Arguments:
 // "-B""macro_default""-W""cpplib:heimdallMatlab,all""-T""link:lib""-d""C:\Users
 // \nilge293\heimdall\matlabFunktioner\heimdallMatlab\for_testing""-v""C:\Users\

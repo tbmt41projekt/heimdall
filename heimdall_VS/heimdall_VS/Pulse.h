@@ -31,7 +31,7 @@ public:
 	float calculate(std::vector<cv::Mat> & pulseFrames, float fps);
 
 	int time;
-	float currentPulse;			//OBS!!!!!!!!!
+	float currentPulse;	//OBS!!!!!!!!!
 
 private:
 	std::vector<cv::Mat> getROI(std::vector<cv::Mat> & frames, float fps);

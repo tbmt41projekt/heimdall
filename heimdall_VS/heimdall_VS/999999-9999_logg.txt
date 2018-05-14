@@ -189,3 +189,7 @@
 110518 13:53:56  -  Low heart rate, -2
 110518 13:53:57  -  High respiratory rate, 46
 110518 13:54:00  -  Low heart rate, -2
+
+   --- New measurement: 999999-9999 --- 
+
+   --- New measurement: 999999-9999 --- 

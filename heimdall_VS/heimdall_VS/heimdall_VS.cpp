@@ -455,7 +455,7 @@ void heimdall_VS::setPulse(int pulse)
 		if (testMode == "pulse")
 		{
 			forTestFileValue << pulse << " " << flush;
-			forTestFileTime << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << " " << flush;
+			forTestFileTime << "\'" << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << "\'" << " " << flush;
 		}
 
 
@@ -488,11 +488,12 @@ void heimdall_VS::setResp(int resp)
 			QDateTime time = QDateTime::currentDateTime();
 
 			saveRespFile << resp << " " << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << endl;
+			cout << resp << endl;
 
 			if (testMode == "resp")
 			{
 				forTestFileValue << resp << " " << flush;
-				forTestFileTime << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << " " <<flush;
+				forTestFileTime << "\'" << time.toString("dd-MMM-yy hh:mm:ss").toStdString() << "\'" << " " << flush;
 			}
 
 			prevRespZero = false;

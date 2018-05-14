@@ -85,7 +85,7 @@ private:
 	std::ofstream savePulseFile;
 	std::ofstream forTestFileValue;
 	std::ofstream forTestFileTime;
-	std::string testMode{"resp"};
+	std::string testMode{"pulse"};
 	bool prevRespZero;
 	std::chrono::time_point<std::chrono::steady_clock> zeroRespStartTime;
 	bool pulseWarning;
