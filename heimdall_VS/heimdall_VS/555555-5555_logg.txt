@@ -1,0 +1,27 @@
+
+   --- New measurement: 555555-5555 --- 
+140518 15:53:57  -  High heart rate, 27
+140518 15:54:45  -  Low heart rate, -2
+140518 15:54:50  -  Low heart rate, -2
+140518 15:54:56  -  Low heart rate, -2
+140518 15:55:01  -  Low heart rate, -2
+140518 15:55:06  -  Low heart rate, -2
+140518 15:55:12  -  Low heart rate, -2
+140518 15:55:17  -  Low heart rate, -2
+140518 15:55:23  -  Low heart rate, -2
+140518 15:55:29  -  Low heart rate, -2
+140518 15:55:30  -  High respiratory rate, 31
+140518 15:55:34  -  Low heart rate, -2
+140518 15:55:38  -  High respiratory rate, 24
+140518 15:55:38  -  Low heart rate, -2
+140518 15:55:43  -  Low heart rate, -2
+140518 15:55:45  -  High respiratory rate, 22
+140518 15:55:47  -  Low heart rate, -2
+140518 15:55:52  -  Low heart rate, -2
+140518 15:55:53  -  High respiratory rate, 22
+140518 15:55:57  -  Low heart rate, -2
+140518 15:56:01  -  Low heart rate, -2
+140518 15:56:03  -  High respiratory rate, 21
+140518 15:56:06  -  Low heart rate, -2
+140518 15:56:11  -  Low heart rate, -2
+140518 15:56:11  -  High respiratory rate, 22
