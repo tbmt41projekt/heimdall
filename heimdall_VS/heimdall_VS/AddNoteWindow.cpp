@@ -14,7 +14,7 @@ AddNoteWindow::~AddNoteWindow()
 
 void AddNoteWindow::on_pushAdd_clicked()
 {
-	QString filename = Pnr + "_logg.txt";
+	QString filename = "Log files/" + Pnr + "_logg.txt";
 	QFile log(filename);
 	QString noteString = (DateString + "  -  NOTE: " + ui.lineNote->text() + " \n");
 

@@ -6,7 +6,7 @@ LogWindow::LogWindow(QString pnr, QString dateString, QDialog *parent)
 {
 	ui.setupUi(this);
 
-	QString filename = pnr + "_logg.txt";
+	QString filename = "Log files/" + pnr + "_logg.txt";
 	QFile log(filename);
 
 	/*if(!log.exists())
@@ -41,7 +41,7 @@ LogWindow::LogWindow()
 
 void LogWindow::start()
 {
-	QString filename = pnr + "_logg.txt";
+	QString filename = "Log files/" + pnr + "_logg.txt";
 	QFile log(filename);
 
 	if (!log.exists())

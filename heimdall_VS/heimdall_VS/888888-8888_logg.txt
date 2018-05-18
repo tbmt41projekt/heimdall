@@ -1,4 +1,0 @@
-
-   --- New measurement: 888888-8888 --- 
-140518 15:26:13  -  Low heart rate, 36
-140518 15:26:20  -  Low heart rate, -2147483648

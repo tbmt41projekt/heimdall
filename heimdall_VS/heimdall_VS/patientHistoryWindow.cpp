@@ -10,7 +10,7 @@ patientHistoryWindow::patientHistoryWindow(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	fs::path path{ "C:/Users/nilge293/heimdall/heimdall_VS/heimdall_VS/Save files" };
+	fs::path path{ "Save files" };
 	get_measurements(path);
 
 	model = new QStringListModel(this);

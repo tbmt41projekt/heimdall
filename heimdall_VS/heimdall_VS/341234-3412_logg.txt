@@ -1,7 +1,0 @@
-
-   --- New measurement: 341234-3412 --- 
-110518 13:05:49  -  High heart rate, 55
-110518 13:05:50  -  High heart rate, 40
-110518 13:05:56  -  High respiratory rate, 45
-110518 13:05:57  -  High heart rate, 54
-110518 13:06:02  -  High heart rate, 72

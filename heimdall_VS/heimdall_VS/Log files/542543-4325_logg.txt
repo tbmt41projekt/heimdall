@@ -1,0 +1,11 @@
+
+   --- New measurement: 542543-4325 --- 
+180518 09:39:37  -  High heart rate, 38
+180518 09:39:43  -  Low heart rate, -2
+180518 09:39:47  -  High heart rate, 45
+180518 09:39:57  -  High heart rate, 40
+180518 09:40:03  -  Low heart rate, -2
+180518 09:40:08  -  Low heart rate, -2
+180518 09:40:16  -  High heart rate, 42
+180518 09:40:22  -  High heart rate, 54
+180518 09:40:28  -  Low heart rate, -2

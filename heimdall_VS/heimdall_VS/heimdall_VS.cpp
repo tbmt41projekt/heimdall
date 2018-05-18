@@ -75,7 +75,7 @@ heimdall_VS::~heimdall_VS()
 void heimdall_VS::setLog(QString logstr)
 {
 	QString contAnt;
-	QFile log(pnr + "_logg.txt");
+	QFile log("Log files/" + pnr + "_logg.txt");
 
 	if (log.open(QIODevice::ReadOnly))
 	{
@@ -320,7 +320,7 @@ void heimdall_VS::findSelectedDate(QString search)
 {
 	//QString search("110418");
 	QFile outputFile("output.txt");
-	QFile inputFile(pnr + "_logg.txt");
+	QFile inputFile("Log files/" + pnr + "_logg.txt");
 	QString semi(":");
 
 	bool ifDate = false;

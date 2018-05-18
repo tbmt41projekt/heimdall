@@ -1,0 +1,9 @@
+
+   --- New measurement: 654365-5453 --- 
+180518 09:41:23  -  NOTE: Patient has been given:  
+180518 09:41:37  -  High heart rate, 65
+180518 09:41:38  -  NOTE: Patient has been given: drugs 
+180518 09:41:44  -  High heart rate, 73
+180518 09:41:49  -  High heart rate, 96
+180518 09:41:51  -  High heart rate, 114
+180518 09:41:57  -  High heart rate, 104

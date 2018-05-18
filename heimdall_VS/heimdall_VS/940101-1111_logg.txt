@@ -1,8 +1,0 @@
-
-   --- New measurement: 940101-1111 --- 
-070518 14:45:28  -  High heart rate, 92
-070518 14:45:41  -  High heart rate, 70
-070518 14:45:50  -  High heart rate, 58
-070518 14:45:55  -  Low heart rate, -2
-070518 14:46:01  -  Low heart rate, -2
-070518 14:46:07  -  High heart rate, 57

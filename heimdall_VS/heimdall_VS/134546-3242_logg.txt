@@ -1,9 +1,0 @@
-
-   --- New measurement: 134546-3242 --- 
-140518 09:57:06  -  Low heart rate, -2
-140518 09:57:10  -  Low heart rate, -2
-140518 09:57:12  -  No respiratory rate, 0
-140518 09:57:14  -  Low heart rate, -2
-140518 09:57:19  -  Low heart rate, -2
-140518 09:57:23  -  Low heart rate, -2
-140518 09:57:25  -  No respiratory rate, 0

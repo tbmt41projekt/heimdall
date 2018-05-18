@@ -184,7 +184,7 @@ Antalet frames som lagras bestäms i Engine.h.
 
 void Engine::runCamera()
 {
-	while (true)
+	while (isProgramRunning)
 	{
 		VideoCapture cap(0);
 		//namedWindow("Video");

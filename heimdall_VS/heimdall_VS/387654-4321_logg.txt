@@ -1,4 +1,0 @@
-
-   --- New measurement: 387654-4321 --- 
-110518 12:59:58  -  High heart rate, 66
-110518 13:00:05  -  High heart rate, 90
